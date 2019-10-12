@@ -1,0 +1,53 @@
+<footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="<%- url_for('/') %>">
+                <% if (has_config('logo.text') && get_config('logo.text')) { %>
+                    <%= get_config('logo.text') %>
+                <% } else { %>
+                    <img src="<%- url_for(get_config('logo')) %>" alt="<%= get_config('title') %>" height="28">
+                <% } %>
+                </a>
+                <p class="is-size-7">
+                &copy; <%= date(new Date(), 'YYYY') %> <%= get_config('author') || get_config('title') %>&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                <% if (has_config('plugins.busuanzi') ? get_config('plugins.busuanzi') : false) { %>
+                <span id="busuanzi_container_site_uv">
+                <%- _p('plugin.visitor', '<span id="busuanzi_value_site_uv">0</span>') %>
+                </span>
+                <% } %>
+				<% if (has_config('footer.no_org')) { %>
+				<br>
+                  <span class="post-count"><%= totalcount(site) %></span> Words in Total
+				<% } %>
+				<% if (!has_config('footer.no_org')) { %>
+				<br>
+				 <a class="has-link-black-ter-2 -link" href="https://big-news.cn/org/index.html">Origin</a> | 
+				 <a class="has-link-black-ter-2 -link" href="http://beian.miit.gov.cn/" target="_blank">鲁ICP备19035721号-1</a>
+				<% } %>
+				</p>				
+            </div>
+            <div class="level-end">
+            <% if (has_config('footer.links')) { %>
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                <% let links = get_config('footer.links'); %>
+                <% for (let name in links) {
+                        let link = links[name]; %>
+                <p class="control">
+                    <a class="button is-white <%= typeof(link) !== 'string' ? 'is-large' : '' %>" target="_blank" title="<%= name %>" href="<%= url_for(typeof(link) === 'string' ? link : link.url) %>">
+                        <% if (typeof(link) === 'string') { %>
+                        <%= name %>
+                        <% } else { %>
+                        <i class="<%= link.icon %>"></i>
+                        <% } %>
+                    </a>
+                </p>
+                <% } %>
+                </div>
+            <% } %>
+            </div>
+        </div>
+    </div>
+</footer>
