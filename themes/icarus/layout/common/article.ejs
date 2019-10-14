@@ -105,24 +105,7 @@
             </div>
         </div>	
         <% } %>	
-<!--强行加入sharethis-->		
-		<% if (!index
-			&& post.path !== "friends.html"
-			&& post.path !== "about/index.html"
-			&& post.path !== "about/license.html"
-			&& post.path !== "about/maintenance-log.html"
-			&& post.path !== "org/index.html"
-            && post.path !== "orzlla.html"  			
-				) { %>	
-			<hr>				
-			<h3 class="menu-label has-text-centered">好看到一无是处的分享按钮们</h3>
-			<div class="sharethis-inline-share-buttons"></div>	
-		    <script type='text/javascript' 
-				    src='https://platform-api.sharethis.com/js/sharethis.js#property=5d3d97072b23f00012d0463a&product=custom-share-buttons' 
-				    async='async'>
-		    </script>
-		<% } %>
-<!--强行加入sharethis END-->	
+
         <% if (!index && has_config('share.type')) { %>
         <%- partial('share/' + get_config('share.type')) %>
         <% } %>		

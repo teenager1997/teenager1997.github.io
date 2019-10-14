@@ -30,9 +30,9 @@ navbar:
         关于我: /about
     # Navigation bar links to be shown on the right
     links:
-        Download on GitHub:
+        Go to GitHub:
             icon: fab fa-github
-            url: 'http://github.com/ppoffice/hexo-theme-icarus'
+            url: 'https://github.com/teenager1997/teenager1997.github.io'
 # Footer section link settings
 footer:
     # Links to be shown on the right of the footer section
@@ -43,9 +43,9 @@ footer:
         Attribution 4.0 International:
             icon: fab fa-creative-commons-by
             url: 'https://creativecommons.org/licenses/by/4.0/'
-        Download on GitHub:
+        Go to GitHub:
             icon: fab fa-github
-            url: 'http://github.com/ppoffice/hexo-theme-icarus'
+            url: 'https://github.com/teenager1997'
 # Article display settings
 article:
     # Code highlight settings
@@ -79,18 +79,18 @@ comment:
 
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
-# donate:
-#     -
+donate:
+    -
 #         # Donation entry name
-#         type: alipay
+        type: wechat
 #         # Qrcode image URL
-#         qrcode: /gallery/donate/alipay.png
-#     -
+        qrcode: /images/wx.jpg
+    -
 #         # Donation entry name
-#         type: wechat
+      type: alipay
 #         # Qrcode image URL
-#         qrcode: /gallery/donate/wechat.jpg
-#     -
+      qrcode: /images/alipay.jpg
+    -
 #         # Donation entry name
 #         type: paypal
 #         # Paypal business ID or email address
