@@ -6,7 +6,7 @@
 title: It Fool
 subtitle: Welcome !
 description:
-keywords: 没能入行的程序员
+keywords: 前端博客,JavaScript,html,css,Jquery,NodeJs,Vue
 author: 董冬懂冻
 language: zh-CN
 timezone:
@@ -27,6 +27,16 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+
+# site Map
+sitemap:
+  path: sitemap.xml
+
+# rss订阅
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
 
 # Writing
 new_post_name: :title.md # File name of new posts

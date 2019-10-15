@@ -3,7 +3,7 @@ version: 2.6.0
 # Path or URL to the website's icon
 favicon: /images/avatar.jpg
 # Path or URL to RSS atom.xml
-rss:
+rss: /atom.xml
 # Path or URL to the website's logo to be shown on the left of the navigation bar or footer
 logo: /images/avatar.jpg
 # Open Graph metadata
