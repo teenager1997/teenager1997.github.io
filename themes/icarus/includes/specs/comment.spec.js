@@ -58,18 +58,6 @@ const GitmentGitalkSpec = {
             [type]: 'string',
             [required]: true
         }
-    },
-    create_issue_manually: {
-        [type]: 'boolean',
-        [doc]: 'Create GitHub issue manually for each page',
-        [defaultValue]: false,
-        [requires]: comment => comment.type === 'gitalk'
-    },
-    distraction_free_mode: {
-        [type]: 'boolean',
-        [doc]: 'Facebook-like distraction free mode',
-        [defaultValue]: false,
-        [requires]: comment => comment.type === 'gitalk'
     }
 };
 
@@ -126,7 +114,7 @@ const ValineSpec = {
 
 module.exports = {
     [type]: 'object',
-    [doc]: 'Comment plugin settings\nhttps://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Comment',
+    [doc]: 'Comment plugin settings\nhttp://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Comment-Plugins',
     type: {
         [type]: 'string',
         [doc]: 'Name of the comment plugin',

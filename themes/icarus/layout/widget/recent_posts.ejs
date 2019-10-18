@@ -4,7 +4,7 @@
         <h3 class="menu-label">
             <%= __('widget.recents') %>
         </h3>
-        <% site.posts.sort('priority', -1).limit(5).each(post => { %>
+        <% site.posts.sort('date', -1).limit(5).each(post => { %>
         <article class="media">
             <% if (!has_config('article.thumbnail') || get_config('article.thumbnail') !== false) { %>
             <a href="<%- url_for((post.link?post.link:post.path)) %>" class="media-left">

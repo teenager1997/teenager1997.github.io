@@ -1,38 +1,6 @@
-<!--Baidu 自动推送-->
-<script>
-(function(){
-    var bp = document.createElement('script');
-    var curProtocol = window.location.protocol.split(':')[0];
-    if (curProtocol === 'https'){
-   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-  }
-  else{
-  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-  }
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
-<!--End-->
-
 <%- _js(cdn('jquery', '3.3.1', 'dist/jquery.min.js')) %>
 <%- _js(cdn('moment', '2.22.2', 'min/moment-with-locales.min.js')) %>
 <script>moment.locale("<%= get_config('language', 'en') %>");</script>
-
-<script>
-var IcarusThemeSettings = {
-    article: {
-        highlight: {
-            clipboard: <%= get_config('article.highlight.clipboard', true) %>,
-            fold: '<%= get_config('article.highlight.fold', true) %>'
-        }
-    }
-};
-</script>
-
-<% if (get_config('article.highlight.clipboard')) { %>
-    <%- _js(cdn('clipboard', '2.0.4', 'dist/clipboard.min.js'), true) %>
-<% } %>
 
 <% if (has_config('plugins')) { %>
     <% for (let plugin in get_config('plugins')) { %>

@@ -1,4 +1,3 @@
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <footer class="footer">
     <div class="container">
         <div class="level">
@@ -15,25 +14,12 @@
                 Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
                         href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
                 <% if (has_config('plugins.busuanzi') ? get_config('plugins.busuanzi') : false) { %>
+                <br>
                 <span id="busuanzi_container_site_uv">
                 <%- _p('plugin.visitor', '<span id="busuanzi_value_site_uv">0</span>') %>
                 </span>
                 <% } %>
-				<% if (has_config('footer.no_org')) { %>
-				<br>
-                  <span class="post-count"><%= totalcount(site) %></span> Words in Total
-				<% } %>
-				<% if (!has_config('footer.no_org')) { %>
-				<br>
-				<span id="busuanzi_container_site_uv">
-				  访客数<span id="busuanzi_value_site_uv"></span>人次
-				</span>
-				|
-				<span id="busuanzi_container_site_pv">
-				    总访问量<span id="busuanzi_value_site_pv"></span>次
-				</span>
-				<% } %>
-				</p>
+                </p>
             </div>
             <div class="level-end">
             <% if (has_config('footer.links')) { %>
@@ -46,7 +32,7 @@
                         <% if (typeof(link) === 'string') { %>
                         <%= name %>
                         <% } else { %>
-                        <i class="<%= link.icon %>"></i>
+                        <% for (let icon of (Array.isArray(link.icon) ? link.icon : [link.icon])) { %><i class="<%= icon %>"></i>&nbsp;<% } %>
                         <% } %>
                     </a>
                 </p>
