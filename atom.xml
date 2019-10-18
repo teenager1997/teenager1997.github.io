@@ -5,9 +5,9 @@
   <subtitle>Welcome !</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="/"/>
+  <link href="https://teenager1997.github.io/"/>
   <updated>2019-10-13T10:47:01.066Z</updated>
-  <id>/</id>
+  <id>https://teenager1997.github.io/</id>
   
   <author>
     <name>董冬懂冻</name>
@@ -18,9 +18,9 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="/JavaScript/hello-world/"/>
-    <id>/JavaScript/hello-world/</id>
-    <published>2019-10-12T01:32:56.666Z</published>
+    <link href="https://teenager1997.github.io/JavaScript/hello-world/"/>
+    <id>https://teenager1997.github.io/JavaScript/hello-world/</id>
+    <published>2019-10-16T10:07:50.768Z</published>
     <updated>2019-10-13T10:47:01.066Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><a id="more"></a><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="hljs-string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
@@ -32,10 +32,10 @@
     </summary>
     
     
-      <category term="JavaScript" scheme="/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="https://teenager1997.github.io/categories/JavaScript/"/>
     
     
-      <category term="hexo" scheme="/tags/hexo/"/>
+      <category term="hexo" scheme="https://teenager1997.github.io/tags/hexo/"/>
     
   </entry>
   
