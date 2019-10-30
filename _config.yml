@@ -93,5 +93,7 @@ theme: icarus
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/teenager1997/teenager1997.github.io.git
+  repo: 
+     github: https://github.com/teenager1997/teenager1997.github.io.git
+     coding: https://e.coding.net/teenager1997/teenager1997.git
   branch: master
