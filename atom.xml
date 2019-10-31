@@ -5,9 +5,9 @@
   <subtitle>Welcome !</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://teenager1997.github.io/"/>
+  <link href="http://www.itfool.cn/"/>
   <updated>2019-10-13T10:47:01.066Z</updated>
-  <id>https://teenager1997.github.io/</id>
+  <id>http://www.itfool.cn/</id>
   
   <author>
     <name>董冬懂冻</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="https://teenager1997.github.io/JavaScript/hello-world/"/>
-    <id>https://teenager1997.github.io/JavaScript/hello-world/</id>
+    <link href="http://www.itfool.cn/JavaScript/hello-world/"/>
+    <id>http://www.itfool.cn/JavaScript/hello-world/</id>
     <published>2019-10-16T10:07:50.768Z</published>
     <updated>2019-10-13T10:47:01.066Z</updated>
     
@@ -32,10 +32,10 @@
     </summary>
     
     
-      <category term="JavaScript" scheme="https://teenager1997.github.io/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.itfool.cn/categories/JavaScript/"/>
     
     
-      <category term="hexo" scheme="https://teenager1997.github.io/tags/hexo/"/>
+      <category term="hexo" scheme="http://www.itfool.cn/tags/hexo/"/>
     
   </entry>
   
