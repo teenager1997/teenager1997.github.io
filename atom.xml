@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>It Fool</title>
+  <title>It Fool - 前端小白</title>
   
-  <subtitle>Welcome !</subtitle>
+  <subtitle>前端blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.itfool.cn/"/>
