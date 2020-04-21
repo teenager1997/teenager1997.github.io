@@ -95,5 +95,5 @@ deploy:
   type: git
   repo: 
      github: https://github.com/teenager1997/teenager1997.github.io.git
-     coding: https://e.coding.net/teenager1997/teenager1997.git
+     coding: git@e.coding.net:teenager1997/teenager1997.git
   branch: master
