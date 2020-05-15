@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>01-前言&amp;WEB标准 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第01阶段.前端基础.认识WEB  基础班学习目标目标：  能根据psd文件，用HTML+CSS 布局出符合W3C规范的网页。 网站首页  列表页、详情页、登录页、 注册页等等。。。。 课程安排 HTML 第一天目标  能够写出基本的html页面（里面包含图片、链接、文字等网页元素标签）   认识WEB1. 认识网页1网页主要由文字、图像和超链接等元素构成。当然，除了这些元素，网页中还可以包含音">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01-前言&amp;WEB标准">
+<meta property="og:url" content="http://www.itfool.cn/HTML/01-前言-web标准/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第01阶段.前端基础.认识WEB  基础班学习目标目标：  能根据psd文件，用HTML+CSS 布局出符合W3C规范的网页。 网站首页  列表页、详情页、登录页、 注册页等等。。。。 课程安排 HTML 第一天目标  能够写出基本的html页面（里面包含图片、链接、文字等网页元素标签）   认识WEB1. 认识网页1网页主要由文字、图像和超链接等元素构成。当然，除了这些元素，网页中还可以包含音">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/images/og_image.png">
+<meta property="og:updated_time" content="2020-05-15T09:42:12.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="01-前言&amp;WEB标准">
+<meta name="twitter:description" content="第01阶段.前端基础.认识WEB  基础班学习目标目标：  能根据psd文件，用HTML+CSS 布局出符合W3C规范的网页。 网站首页  列表页、详情页、登录页、 注册页等等。。。。 课程安排 HTML 第一天目标  能够写出基本的html页面（里面包含图片、链接、文字等网页元素标签）   认识WEB1. 认识网页1网页主要由文字、图像和超链接等元素构成。当然，除了这些元素，网页中还可以包含音">
+<meta name="twitter:image" content="http://www.itfool.cn/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="01-前言&amp;WEB标准" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>01-前言&amp;WEB标准
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-15T09:27:19.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-15</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-15T09:42:12.010Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-15</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/HTML/">HTML</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    11 分钟 读完 (大约 1641 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第01阶段.前端基础.认识WEB</p>
+</blockquote>
+<h1 id="基础班学习目标"><a href="#基础班学习目标" class="headerlink" title="基础班学习目标"></a>基础班学习目标</h1><p>目标：  能根据psd文件，用HTML+CSS 布局出符合W3C规范的网页。</p>
+<p>网站首页</p>
+<p><img src="/HTML/01-前言-web标准/.%5Cmedia%5C%E7%94%B5%E5%95%86-%E4%B8%BB%E9%A1%B5-gai.jpg" alt></p>
+<p>列表页、详情页、登录页、 注册页等等。。。。</p>
+<h1 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h1><p><img src="/HTML/01-前言-web标准/.%5Cmedia%5Ckec.png" alt></p>
+<h1 id="HTML-第一天目标"><a href="#HTML-第一天目标" class="headerlink" title="HTML 第一天目标"></a>HTML 第一天目标</h1><p>  能够写出基本的html页面（里面包含图片、链接、文字等网页元素标签）</p>
+<img src="/HTML/01-前言-web标准/a.png" width="1000">
+
+<h1 id="认识WEB"><a href="#认识WEB" class="headerlink" title="认识WEB"></a>认识WEB</h1><h2 id="1-认识网页"><a href="#1-认识网页" class="headerlink" title="1. 认识网页"></a>1. 认识网页</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网页主要由文字、图像和超链接等元素构成。当然，除了这些元素，网页中还可以包含音频、视频以及Flash等。</span><br></pre></td></tr></table></figure>
+
+<p>&lt;img src=”media/mi.png”alt=””&gt;</p>
+<p><strong>思考：</strong> </p>
+<p>网页是如何形成的呢?</p>
+<img src="/HTML/01-前言-web标准/web.png">
+
+
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>网页有图片、链接、文字等元素组成，我们后面的任务就是要把这部分网页元素用代码写出来。。。</p>
+<h2 id="2-浏览器（显示代码）"><a href="#2-浏览器（显示代码）" class="headerlink" title="2. 浏览器（显示代码）"></a>2. 浏览器（显示代码）</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浏览器是网页显示、运行的平台，常用的浏览器有IE、火狐（Firefox）、谷歌（Chrome）、Safari和Opera等。我们平时称为五大浏览器。</span><br></pre></td></tr></table></figure>
+
+<img src="/HTML/01-前言-web标准/b.png">
+
+<p>可能你最熟悉的是 IE浏览器，但是。。。</p>
+<img src="/HTML/01-前言-web标准/liulan.jpg">
+
+<h3 id="2-1-查看浏览器占有的市场份额"><a href="#2-1-查看浏览器占有的市场份额" class="headerlink" title="2.1 查看浏览器占有的市场份额"></a>2.1 查看浏览器占有的市场份额</h3><p>查看网站： <a href="http://tongji.baidu.com/data/browser" target="_blank">http://tongji.baidu.com/data/browser</a></p>
+<img src="/HTML/01-前言-web标准/count.png">
+
+<p> 2008年，大名鼎鼎的互联网巨头Google公司发布了它的首款浏览器Chrome浏览器。   </p>
+<p> 跟王思聪一样，没办法，生下来人家就是富二代官二代啊，后台太强，而且确实先天能力得天独厚。 </p>
+<p><strong>pink老师 一句话说出他们:</strong></p>
+<blockquote>
+<p>出自谷歌，唯我不败；一统江湖，千秋万代。 </p>
+</blockquote>
+<h3 id="2-2-常见浏览器内核（了解）"><a href="#2-2-常见浏览器内核（了解）" class="headerlink" title="2.2 常见浏览器内核（了解）"></a>2.2 常见浏览器内核（了解）</h3><p>首先解释一下浏览器内核是什么东西。英文叫做：Rendering Engine，中文翻译很多，排版引擎、解释引擎、渲染引擎，现在流行称为浏览器内核.</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">负责读取网页内容，整理讯息，计算网页的显示方式并显示页面.</span><br></pre></td></tr></table></figure>
+
+<p>因为浏览器太多啦， 但是现在主要流行的就是下面几个：</p>
+<table>
+<thead>
+<tr>
+<th align="left">浏览器</th>
+<th align="center">内核</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">IE</td>
+<td align="center">Trident</td>
+<td align="left">IE、猎豹安全、360极速浏览器、百度浏览器</td>
+</tr>
+<tr>
+<td align="left">firefox</td>
+<td align="center">Gecko</td>
+<td align="left">可惜这几年已经没落了，打开速度慢、升级频繁、猪一样的队友flash、神一样的对手chrome。</td>
+</tr>
+<tr>
+<td align="left">Safari</td>
+<td align="center">webkit</td>
+<td align="left">现在很多人错误地把 webkit 叫做 chrome内核（即使 chrome内核已经是 blink 了）。苹果感觉像被别人抢了媳妇，都哭晕再厕所里面了。</td>
+</tr>
+<tr>
+<td align="left">chrome</td>
+<td align="center">Chromium/Blink</td>
+<td align="left">在 Chromium 项目中研发 Blink 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。Blink 其实是 WebKit 的分支。大部分国产浏览器最新版都采用Blink内核。二次开发</td>
+</tr>
+<tr>
+<td align="left">Opera</td>
+<td align="center">blink</td>
+<td align="left">现在跟随chrome用blink内核。</td>
+</tr>
+</tbody></table>
+<p><strong>拓展阅读：</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">移动端的浏览器内核主要说的是系统内置浏览器的内核。</span><br><span class="line"></span><br><span class="line">Android手机而言，使用率最高的就是Webkit内核，大部分国产浏览器宣称的自己的内核，基本上也是属于webkit二次开发。</span><br><span class="line"></span><br><span class="line">iOS以及WP7平台上，由于系统原因，系统大部分自带浏览器内核，一般是Safari或者IE内核Trident的</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Web标准（重点）"><a href="#3-Web标准（重点）" class="headerlink" title="3. Web标准（重点）"></a>3. Web标准（重点）</h2><p>目标</p>
+<ul>
+<li>记忆<ul>
+<li>能说出网页 中 web 标准三层组成</li>
+</ul>
+</li>
+<li>理解<ul>
+<li>能结合人来表述web标准三层</li>
+</ul>
+</li>
+</ul>
+<p>Web标准不是某一个标准，而是由W3C组织和其他标准化组织制定的一系列标准的集合。</p>
+<p>W3C 万维网联盟是国际最著名的标准化组织。1994年成立后，至今已发布近百项相关万维网的标准，对万维网发展做出了杰出的贡献。</p>
+<p><strong>w3c就类似于现实世界中的联合国。</strong></p>
+<h3 id="3-1-为什么要遵循WEB标准呢？"><a href="#3-1-为什么要遵循WEB标准呢？" class="headerlink" title="3.1 为什么要遵循WEB标准呢？"></a>3.1 为什么要遵循WEB标准呢？</h3><p> 通过以上浏览器不同内核不同，我们知道他们显示页面或者排版就有些许差异。</p>
+<img src="/HTML/01-前言-web标准/bz.png">
+
+<h3 id="3-2-Web-标准的好处"><a href="#3-2-Web-标准的好处" class="headerlink" title="3.2 Web 标准的好处"></a>3.2 Web 标准的好处</h3><p>遵循web标准可以让不同我们写的页面更标准更统一外，还有许多优点</p>
+<p><em>1</em>、让Web的发展前景更广阔<br><em>2</em>、内容能被更广泛的设备访问<br><em>3</em>、更容易被搜寻引擎搜索<br><em>4</em>、降低网站流量费用<br><em>5</em>、使网站更易于维护<br><em>6</em>、提高页面浏览速度</p>
+<h3 id="3-3-Web-标准构成"><a href="#3-3-Web-标准构成" class="headerlink" title="3.3 Web 标准构成"></a>3.3 Web 标准构成</h3><p><strong>构成：</strong> 主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面。</p>
+<table>
+<thead>
+<tr>
+<th align="left">标准</th>
+<th align="left">说明</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">结构</td>
+<td align="left">结构用于对<strong>网页元素</strong>进行整理和分类，咱们主要学的是HTML。</td>
+<td align="left"><img src="/HTML/01-前言-web标准/htmll.jpg"></td>
+</tr>
+<tr>
+<td align="left">表现</td>
+<td align="left">表现用于设置网页元素的版式、颜色、大小等<strong>外观样式</strong>，主要指的是CSS</td>
+<td align="left"><img src="/HTML/01-前言-web标准/css.jpg"></td>
+</tr>
+<tr>
+<td align="left">行为</td>
+<td align="left">行为是指网页模型的定义及<strong>交互</strong>的编写，咱们主要学的是 Javascript</td>
+<td align="left"><img src="/HTML/01-前言-web标准/search.gif"></td>
+</tr>
+</tbody></table>
+<p> 理想状态我们的源码： .HTML      .css      .js </p>
+<p><strong>结合人来记忆web标准：</strong></p>
+<ul>
+<li>结构标准：   <img src="/HTML/01-前言-web标准/hb1.png" width="300"> 是你天然的身体 </li>
+</ul>
+<ul>
+<li>表现标准：   <img src="/HTML/01-前言-web标准/hb2.png" width="300">  决定你是否打扮的美丽外观(衣服？化妆？)</li>
+</ul>
+<ul>
+<li>行为标准：   <img src="/HTML/01-前言-web标准/hb3.jpg" width="420">  决定你是否有吸引人的行为(动作)</li>
+</ul>
+<hr>
+<h3 id="web标准小结"><a href="#web标准小结" class="headerlink" title="web标准小结"></a>web标准小结</h3><ul>
+<li>web标准有三层结构，分别是结构（html）、表现（css）和行为（javascript）  </li>
+<li>结构类似人的身体， 表现类似人的着装， 行为类似人的行为动作</li>
+<li>理想状态下，他们三层都是独立的， 放到不同的文件里面</li>
+</ul>
+<h2 id="4-拓展"><a href="#4-拓展" class="headerlink" title="4. 拓展@"></a>4. 拓展@</h2><ul>
+<li><p><strong>介绍一下你对浏览器内核的理解？常见的浏览器内核有哪些？</strong></p>
+<p>浏览器内核包括两部分，渲染引擎和js引擎。渲染引擎负责读取网页内容，整理讯息，计算网页的显示方式并显示页面，js引擎是解析执行js获取网页的动态效果。 后来 JS 引擎越来越独立，内核就倾向于只指渲染引擎。<br>IE：Trident<br>firefox：Gecko<br>chrom、safari：webkit<br>Opera：Presto<br>Microsoft Edge：EdgeHTML</p>
+<p>深度阅读：<a href="http://blog.csdn.net/summer_15/article/details/71249203" target="_blank" rel="noopener">五大主流浏览器内核的源起以及国内各大浏览器内核总结</a> </p>
+</li>
+</ul>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/HTML/01-前言-web标准/">01-前言&amp;WEB标准</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/HTML/01-前言-web标准/">http://www.itfool.cn/HTML/01-前言-web标准/</a></li>
+            <li><strong>发布时间：</strong>2020-05-15</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/HTML/">HTML</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/JavaScript/hello-world/">
+                <span class="level-item">Hello World</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#基础班学习目标">
+        <span class="has-mr-6">1</span>
+        <span>基础班学习目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#课程安排">
+        <span class="has-mr-6">2</span>
+        <span>课程安排</span>
+        </a></li><li>
+        <a class="is-flex" href="#HTML-第一天目标">
+        <span class="has-mr-6">3</span>
+        <span>HTML 第一天目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#认识WEB">
+        <span class="has-mr-6">4</span>
+        <span>认识WEB</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-认识网页">
+        <span class="has-mr-6">4.1</span>
+        <span>1. 认识网页</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#总结">
+        <span class="has-mr-6">4.1.1</span>
+        <span>总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#2-浏览器（显示代码）">
+        <span class="has-mr-6">4.2</span>
+        <span>2. 浏览器（显示代码）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#2-1-查看浏览器占有的市场份额">
+        <span class="has-mr-6">4.2.1</span>
+        <span>2.1 查看浏览器占有的市场份额</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-2-常见浏览器内核（了解）">
+        <span class="has-mr-6">4.2.2</span>
+        <span>2.2 常见浏览器内核（了解）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#3-Web标准（重点）">
+        <span class="has-mr-6">4.3</span>
+        <span>3. Web标准（重点）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#3-1-为什么要遵循WEB标准呢？">
+        <span class="has-mr-6">4.3.1</span>
+        <span>3.1 为什么要遵循WEB标准呢？</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-2-Web-标准的好处">
+        <span class="has-mr-6">4.3.2</span>
+        <span>3.2 Web 标准的好处</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-3-Web-标准构成">
+        <span class="has-mr-6">4.3.3</span>
+        <span>3.3 Web 标准构成</span>
+        </a></li><li>
+        <a class="is-flex" href="#web标准小结">
+        <span class="has-mr-6">4.3.4</span>
+        <span>web标准小结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#4-拓展">
+        <span class="has-mr-6">4.4</span>
+        <span>4. 拓展@</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="01-前言&amp;WEB标准" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
