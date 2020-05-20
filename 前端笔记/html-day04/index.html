@@ -2,24 +2,25 @@
 <html lang="zh">
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-<title>分类: 前端笔记 - It Fool - 前端小白</title>
+<title>HTML-Day04 - It Fool - 前端小白</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="description" content="董冬懂冻的博客">
-<meta name="keywords" content="前端,JavaScript,html,css,Jquery,NodeJs,Vue">
-<meta property="og:type" content="website">
-<meta property="og:title" content="It Fool - 前端小白">
-<meta property="og:url" content="http://www.itfool.cn/categories/前端笔记/index.html">
+    <meta name="description" content="第01阶段.前端基础.表格  HTML 第二天目标 能够利用表格、列表和表单完成注册页面的综合案例  能出说表格用来做什么的 能说出列表用来做什么的 能说出表单用来做什么的  为了让我们页面显示的更加整齐，我们需要学习三个表（表格、表单、列表）  表格 table(会使用)目标：  理解： 能说出表格用来做什么的 表格的基本结构组成   应用： 能够熟练写出n行n列的表格 能简单的合并单元格​">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML-Day04">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/html-day04/index.html">
 <meta property="og:site_name" content="It Fool - 前端小白">
-<meta property="og:description" content="董冬懂冻的博客">
+<meta property="og:description" content="第01阶段.前端基础.表格  HTML 第二天目标 能够利用表格、列表和表单完成注册页面的综合案例  能出说表格用来做什么的 能说出列表用来做什么的 能说出表单用来做什么的  为了让我们页面显示的更加整齐，我们需要学习三个表（表格、表单、列表）  表格 table(会使用)目标：  理解： 能说出表格用来做什么的 表格的基本结构组成   应用： 能够熟练写出n行n列的表格 能简单的合并单元格​">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.itfool.cn/images/og_image.png">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/html-day03/h.png">
+<meta property="og:updated_time" content="2020-05-20T07:13:13.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="It Fool - 前端小白">
-<meta name="twitter:description" content="董冬懂冻的博客">
-<meta name="twitter:image" content="http://www.itfool.cn/images/og_image.png">
+<meta name="twitter:title" content="HTML-Day04">
+<meta name="twitter:description" content="第01阶段.前端基础.表格  HTML 第二天目标 能够利用表格、列表和表单完成注册页面的综合案例  能出说表格用来做什么的 能说出列表用来做什么的 能说出表单用来做什么的  为了让我们页面显示的更加整齐，我们需要学习三个表（表格、表单、列表）  表格 table(会使用)目标：  理解： 能说出表格用来做什么的 表格的基本结构组成   应用： 能够熟练写出n行n列的表格 能简单的合并单元格​">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/html-day03/h.png">
 
 
 
@@ -97,7 +98,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="It Fool - 前端小白" height="28">
+                <img src="/images/logo.png" alt="HTML-Day04" height="28">
             
             </a>
         </div>
@@ -129,6 +130,10 @@
                     
                 
                 
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
                 
                 <a class="navbar-item search" title="搜索" href="javascript:;">
                     <i class="fas fa-search"></i>
@@ -142,26 +147,14 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
-    <div class="card-content">
-        <nav class="breadcrumb" aria-label="breadcrumbs">
-        <ul>
-            <li><a href="/categories">分类</a></li>
-            
-            <li class="is-active"><a href="#" aria-current="page">前端笔记</a></li>
-        </ul>
-        </nav>
-    </div>
-</div>
-
-    <div class="card">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
     <!-- 
 	
 	 
      <div class="card-image">
-         <a href="/前端笔记/html-day04/" class="image is-7by1">
+         <span  class="image is-7by1">
              <img class="thumbnail" src="/前端笔记/html-day03/h.png" alt="HTML-Day04">
-         </a>
+         </span>
      </div>
       
 	 
@@ -170,7 +163,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/前端笔记/html-day04/"><i class="fas fa-angle-double-right"></i>HTML-Day04</a>
+                <i class="fas fa-angle-double-right"></i>HTML-Day04
             
         </h1>
         
@@ -194,6 +187,11 @@
                     11 分钟 读完 (大约 1639 个字)
                 </span>
                 
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
                 
             </div>
         </div>
@@ -376,101 +374,26 @@
 
         </div>
         
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-    <div class="card">
-    <!-- 
-	
-	 
-     <div class="card-image">
-         <a href="/前端笔记/html-day03/" class="image is-7by1">
-             <img class="thumbnail" src="/前端笔记/html-day03/h.png" alt="HTML-Day03">
-         </a>
-     </div>
-      
-	 
-	 -->
-	
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/前端笔记/html-day03/"><i class="fas fa-angle-double-right"></i>HTML-Day03</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-19T06:55:44.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-19</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-19T08:48:51.078Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-19</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    27 分钟 读完 (大约 4063 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <blockquote>
-<p>第01阶段.前端基础.HTML常用标签</p>
-</blockquote>
-<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul>
-<li><p>理解：</p>
-<ul>
-<li>相对路径三种形式</li>
-</ul>
-</li>
-<li><p>应用</p>
-<ul>
-<li>排版标签</li>
-<li>文本格式化标签</li>
-<li>图像标签</li>
-<li>链接</li>
-<li>相对路径，绝对路径的使用</li></ul></li></ul>
-        </div>
-        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/html-day04/">HTML-Day04</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/html-day04/">http://www.itfool.cn/前端笔记/html-day04/</a></li>
+            <li><strong>发布时间：</strong>2020-05-20</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
         
         
         <hr style="height:1px;margin:1rem 0">
-        <div class="level is-mobile is-flex">
+        <div class="level is-size-7 is-uppercase">
             <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
+                <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
                     <a class="has-link-grey -link" href="/tags/HTML/">HTML</a>
                 </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/前端笔记/html-day03/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
             </div>
         </div>
+        
         
         
     </div>
@@ -478,187 +401,73 @@
 
 
 
-
-
-
-
-
-
-    <div class="card">
-    <!-- 
-	
-	 
-     <div class="card-image">
-         <a href="/前端笔记/html-day02/" class="image is-7by1">
-             <img class="thumbnail" src="https://itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/html-day02/01html%E9%AA%A8%E6%9E%B6.jpg" alt="HTML-Day02">
-         </a>
-     </div>
-      
-	 
-	 -->
-	
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
             
-                <a class="has-link-black-ter" href="/前端笔记/html-day02/"><i class="fas fa-angle-double-right"></i>HTML-Day02</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-18T09:06:54.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-18</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-18T09:40:39.862Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-18</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                </div>
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
                 
                 
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    17 分钟 读完 (大约 2530 个字)
-                </span>
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
                 
-                
-            </div>
         </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="content">
-            <blockquote>
-<p>第01阶段.前端基础.认识HTML</p>
-</blockquote>
-<h2 id="学习目标"><a href="#学习目标" class="headerlink" title="学习目标"></a>学习目标</h2><ul>
-<li><p>理解</p>
-<ul>
-<li>HTML标签的概念</li>
-<li>HTML标签的分类</li>
-<li>HTML标签的关系</li>
-<li>HTML标签的语义化</li>
-</ul>
-</li>
-<li><p>应用</p>
-<ul>
-<li>HTML骨架格式</li>
-<li>sublime基本使用</li></ul></li></ul>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/html-day03/">
+                <span class="level-item">HTML-Day03</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
         </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0">
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/HTML/">HTML</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/前端笔记/html-day02/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
         
     </div>
 </div>
 
 
 
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
 
-
-
-
-
-
-    <div class="card">
-    <!-- 
-	
-	 
-     <div class="card-image">
-         <a href="/前端笔记/html-day01/" class="image is-7by1">
-             <img class="thumbnail" src="https://itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/html-day01/kec.png" alt="HTML-Day01">
-         </a>
-     </div>
-      
-	 
-	 -->
-	
-    <div class="card-content article ">
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/前端笔记/html-day01/"><i class="fas fa-angle-double-right"></i>HTML-Day01</a>
-            
-        </h1>
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-05-18T07:39:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-18</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-18T09:27:00.571Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-18</time>
-                
-                
-                <div class="level-item">
-                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
-                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    <i class="far fa-clock"></i>&nbsp;
-                    
-                    
-                    11 分钟 读完 (大约 1635 个字)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <div class="content">
-            <blockquote>
-<p>第01阶段.前端基础.认识WEB</p>
-</blockquote>
-<h1 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h1><p><img src="/前端笔记/html-day01/kec.png" alt></p>
-        </div>
-        
-        
-        
-        <hr style="height:1px;margin:1rem 0">
-        <div class="level is-mobile is-flex">
-            <div class="level-start">
-                
-                <div class="level-item is-size-7 is-uppercase">
-                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/HTML/">HTML</a>
-                </div>
-                
-            </div>
-            <div class="level-start">
-                <div class="level-item">
-                <a class="button is-size-7 is-light" href="/前端笔记/html-day01/#more"><i class="fas fa-book-reader has-text-grey"></i>&nbsp;&nbsp;阅读更多</a>
-                </div>
-            </div>
-        </div>
-        
-        
     </div>
 </div>
-
-
-
-
-
-
-
-
 
 </div>
                 
@@ -739,49 +548,66 @@
 
     
         
-
-    
-        
-
-
-    
-        
-<div class="card widget">
+<div class="card widget column-left is-sticky" id="toc">
     <div class="card-content">
         <div class="menu">
             <h3 class="menu-label">
-                分类
+                目录
             </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/JavaScript/">
-            <span class="level-start">
-                <span class="level-item">JavaScript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#HTML-第二天目标">
+        <span class="has-mr-6">1</span>
+        <span>HTML 第二天目标</span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/前端笔记/">
-            <span class="level-start">
-                <span class="level-item">前端笔记</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">4</span>
-            </span>
-        </a></li>
-            </ul>
+        <a class="is-flex" href="#表格-table-会使用">
+        <span class="has-mr-6">2</span>
+        <span>表格 table(会使用)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#1-创建表格">
+        <span class="has-mr-6">2.1</span>
+        <span>1. 创建表格</span>
+        </a></li><li>
+        <a class="is-flex" href="#2-表格属性">
+        <span class="has-mr-6">2.2</span>
+        <span>2. 表格属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-表头单元格标签th">
+        <span class="has-mr-6">2.3</span>
+        <span>3. 表头单元格标签th</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-表格标题caption">
+        <span class="has-mr-6">2.4</span>
+        <span>4. 表格标题caption</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-合并单元格-难点">
+        <span class="has-mr-6">2.5</span>
+        <span>5. 合并单元格(难点)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#5-1-合并单元格2种方式">
+        <span class="has-mr-6">2.5.1</span>
+        <span>5.1 合并单元格2种方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-2-合并单元格顺序">
+        <span class="has-mr-6">2.5.2</span>
+        <span>5.2 合并单元格顺序</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-3-合并单元格三步曲">
+        <span class="has-mr-6">2.5.3</span>
+        <span>5.3 合并单元格三步曲</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#6-总结表格">
+        <span class="has-mr-6">2.6</span>
+        <span>6. 总结表格</span>
+        </a></li><li>
+        <a class="is-flex" href="#7-拓展阅读">
+        <span class="has-mr-6">2.7</span>
+        <span>7. 拓展阅读@</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#表格划分结构（了解）">
+        <span class="has-mr-6">2.7.1</span>
+        <span>表格划分结构（了解）</span>
+        </a></li></ul></li></ul></li></ul>
         </div>
-    </div>
-</div>
-    
-        
-<div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/HTML/" style="font-size: 20px;">HTML</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
     </div>
 </div>
 
@@ -790,304 +616,11 @@
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day04/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/前端笔记/html-day03/h.png" alt="HTML-Day04">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-20T07:05:52.000Z">2020-05-20</time></div>
-                    <a href="/前端笔记/html-day04/" class="has-link-black-ter is-size-6">HTML-Day04</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day03/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/前端笔记/html-day03/h.png" alt="HTML-Day03">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-19T06:55:44.000Z">2020-05-19</time></div>
-                    <a href="/前端笔记/html-day03/" class="has-link-black-ter is-size-6">HTML-Day03</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day02/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/html-day02/01html%E9%AA%A8%E6%9E%B6.jpg" alt="HTML-Day02">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-18T09:06:54.000Z">2020-05-18</time></div>
-                    <a href="/前端笔记/html-day02/" class="has-link-black-ter is-size-6">HTML-Day02</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day01/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/html-day01/kec.png" alt="HTML-Day01">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-18T07:39:00.000Z">2020-05-18</time></div>
-                    <a href="/前端笔记/html-day01/" class="has-link-black-ter is-size-6">HTML-Day01</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/JavaScript/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-16T10:07:50.768Z">2019-10-16</time></div>
-                    <a href="/JavaScript/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-        
-            <div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-        
         </div>
     
 </div>
 
                 
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day04/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/前端笔记/html-day03/h.png" alt="HTML-Day04">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-20T07:05:52.000Z">2020-05-20</time></div>
-                    <a href="/前端笔记/html-day04/" class="has-link-black-ter is-size-6">HTML-Day04</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day03/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/前端笔记/html-day03/h.png" alt="HTML-Day03">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-19T06:55:44.000Z">2020-05-19</time></div>
-                    <a href="/前端笔记/html-day03/" class="has-link-black-ter is-size-6">HTML-Day03</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day02/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/html-day02/01html%E9%AA%A8%E6%9E%B6.jpg" alt="HTML-Day02">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-18T09:06:54.000Z">2020-05-18</time></div>
-                    <a href="/前端笔记/html-day02/" class="has-link-black-ter is-size-6">HTML-Day02</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/前端笔记/html-day01/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="https://itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/html-day01/kec.png" alt="HTML-Day01">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-05-18T07:39:00.000Z">2020-05-18</time></div>
-                    <a href="/前端笔记/html-day01/" class="has-link-black-ter is-size-6">HTML-Day01</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/JavaScript/hello-world/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Hello World">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-10-16T10:07:50.768Z">2019-10-16</time></div>
-                    <a href="/JavaScript/hello-world/" class="has-link-black-ter is-size-6">Hello World</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/JavaScript/">JavaScript</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-
-    
-        <div class="card widget is-hidden-mobile">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2020/05/">
-                <span class="level-start">
-                    <span class="level-item">五月 2020</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">4</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/10/">
-                <span class="level-start">
-                    <span class="level-item">十月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
-    
-</div>
-
             </div>
         </div>
     </section>
@@ -1097,7 +630,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="It Fool - 前端小白" height="28">
+                    <img src="/images/logo.png" alt="HTML-Day04" height="28">
                 
                 </a>
                 <p class="is-size-7">
