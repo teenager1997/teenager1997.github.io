@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>CSS-Day02 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第01阶段.前端基础.CSS选择器">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-Day02">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/css-day02/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第01阶段.前端基础.CSS选择器">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/css-day02/day2.png">
+<meta property="og:updated_time" content="2020-05-20T09:07:46.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-Day02">
+<meta name="twitter:description" content="第01阶段.前端基础.CSS选择器">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/css-day02/day2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="CSS-Day02" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/css-day02/day2.png" alt="CSS-Day02">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>CSS-Day02
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-20T08:06:33.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-20</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-20T09:07:46.761Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-20</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    32 分钟 读完 (大约 4747 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第01阶段.前端基础.CSS选择器</p>
+</blockquote>
+<p><img src="/前端笔记/css-day02/day2.png" alt></p>
+<a id="more"></a>
+
+<p>今天我们围绕一个 导航栏案例进行学习知识点。</p>
+<h1 id="CSS复合选择器"><a href="#CSS复合选择器" class="headerlink" title="CSS复合选择器"></a>CSS复合选择器</h1><h2 id="今日重点："><a href="#今日重点：" class="headerlink" title="今日重点："></a>今日重点：</h2><ul>
+<li>复合选择器<ul>
+<li>后代选择器</li>
+<li>并集选择器</li>
+</ul>
+</li>
+<li>标签显示模式</li>
+<li>CSS背景<ul>
+<li>背景位置</li>
+</ul>
+</li>
+<li>CSS三大特性<ul>
+<li>优先级</li>
+</ul>
+</li>
+</ul>
+<p> 目标</p>
+<ul>
+<li><p>理解</p>
+<ul>
+<li>理解css复合选择器分别的应用场景</li>
+</ul>
+</li>
+<li><p>应用</p>
+<ul>
+<li>使用后代选择器给元素添加样式</li>
+<li>使用并集选择器给元素添加样式</li>
+<li>使用伪类选择器</li>
+</ul>
+</li>
+</ul>
+<p><strong>为什么要学习css复合选择器</strong></p>
+<p>  CSS选择器分为 基础选择器 和 复合选择器 ，但是基础选择器不能满足我们实际开发中，快速高效的选择标签。</p>
+<ul>
+<li>目的是为了可以选择更准确更精细的目标元素标签。</li>
+<li>复合选择器是由两个或多个基础选择器，通过不同的方式组合而成的</li>
+</ul>
+<h2 id="后代选择器（重点）"><a href="#后代选择器（重点）" class="headerlink" title="后代选择器（重点）"></a>后代选择器（重点）</h2><ul>
+<li><p>概念：</p>
+<p>后代选择器又称为包含选择器</p>
+</li>
+<li><p>作用：</p>
+<p>用来选择元素或元素组的<strong>子孙后代</strong></p>
+</li>
+<li><p>其写法就是把外层标签写在前面，内层标签写在后面，中间用<strong>空格</strong>分隔，先写父亲爷爷，在写儿子孙子。 </p>
+</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父级 子级&#123;属性:属性值;属性:属性值;&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.class h3&#123;color:red;font-size:16px;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/css-day02/hou.png" alt></p>
+<ul>
+<li>当标签发生嵌套时，内层标签就成为外层标签的后代。</li>
+<li>子孙后代都可以这么选择。 或者说，它能选择任何包含在内 的标签。</li>
+</ul>
+<h2 id="子元素选择器"><a href="#子元素选择器" class="headerlink" title="子元素选择器"></a>子元素选择器</h2><ul>
+<li><p>作用：</p>
+<p>子元素选择器只能选择作为某元素<strong>子元素(亲儿子)</strong>的元素。</p>
+</li>
+<li><p>其写法就是把父级标签写在前面，子级标签写在后面，中间跟一个 <code>&gt;</code> 进行连接</p>
+</li>
+<li><p>语法：</p>
+</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.class&gt;h3&#123;color:red;font-size:14px;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/css-day02/zi1.png" alt></p>
+<p><strong>pink老师一句话说出他们</strong></p>
+<blockquote>
+<p>这里的子 指的是 亲儿子  不包含孙子 重孙子之类。</p>
+</blockquote>
+<p>白话：  </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如：  .demo &gt; h3 &#123;color: red;&#125;   说明  h3 一定是demo 亲儿子。  demo 元素包含着h3。</span><br></pre></td></tr></table></figure>
+
+<h2 id="交集选择器"><a href="#交集选择器" class="headerlink" title="交集选择器"></a>交集选择器</h2><ul>
+<li><p>条件</p>
+<p>交集选择器由两个选择器构成，找到的标签必须满足：既有标签一的特点，也有标签二的特点。</p>
+</li>
+</ul>
+<p><img src="/前端笔记/css-day02/jiaoji.png" alt></p>
+<ul>
+<li>语法：</li>
+</ul>
+<p><img src="/前端笔记/css-day02/jiao.png" alt></p>
+<ul>
+<li>其中第一个为标签选择器，第二个为class选择器，两个选择器之间<strong>不能有空格</strong>，如h3.special。</li>
+</ul>
+<p><strong>记忆技巧：</strong></p>
+<p>交集选择器 是 并且的意思。  即…又…的意思</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比如：   p.one   选择的是： 类名为 .one  的 段落标签。</span><br></pre></td></tr></table></figure>
+
+<p>用的相对来说比较少，不太建议使用。</p>
+<h2 id="并集选择器（重点）"><a href="#并集选择器（重点）" class="headerlink" title="并集选择器（重点）"></a>并集选择器（重点）</h2><ul>
+<li>应用：<ul>
+<li>如果某些选择器定义的相同样式，就可以利用并集选择器，可以让代码更简洁。</li>
+</ul>
+</li>
+<li>并集选择器（CSS选择器分组）是各个选择器通过<code>,</code>连接而成的，通常用于集体声明。</li>
+<li>语法：</li>
+</ul>
+<p><img src="/前端笔记/css-day02/bing.png" alt></p>
+<ul>
+<li><p>任何形式的选择器（包括标签选择器、class类选择器id选择器等），都可以作为并集选择器的一部分。</p>
+</li>
+<li><p>记忆技巧：</p>
+<p>并集选择器通常用于集体声明  ，逗号隔开的，所有选择器都会执行后面样式，逗号可以理解为 和的意思。</p>
+</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">比如  .one, p , #test &#123;color: #F00;&#125;  </span><br><span class="line">表示   .one 和 p  和 #test 这三个选择器都会执行颜色为红色。 </span><br><span class="line">通常用于集体声明。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/css-day02/hu.gif" alt>他和他，在一起， 在一起    一起的意思</p>
+<h2 id="测试题"><a href="#测试题" class="headerlink" title="测试题"></a>测试题</h2><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">&lt;!-- 主导航栏 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav"</span>&gt;</span>   </span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>公司首页<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>公司简介<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>公司产品<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>联系我们<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-comment">&lt;!-- 侧导航栏 --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"sitenav"</span>&gt;</span>    </span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"site-l"</span>&gt;</span>左侧侧导航栏<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"site-r"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span>登录<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在不修改以上结构代码的前提下，完成以下任务：</p>
+<ol>
+<li>链接 登录 的颜色为红色</li>
+<li>主导航栏里面的所有的链接改为橙色    </li>
+<li>主导航栏和侧导航栏里面文字都是14像素并且是微软雅黑。</li>
+</ol>
+<h2 id="链接伪类选择器（重点）"><a href="#链接伪类选择器（重点）" class="headerlink" title="链接伪类选择器（重点）"></a>链接伪类选择器（重点）</h2><p> 伪类选择器：</p>
+<p> 为了和我们刚才学的类选择器相区别<br>类选择器是一个点 比如 .demo {}<br>而我们的伪类 用 2个点 就是 冒号  比如  :link{}    伪娘 </p>
+<p>作用：</p>
+<p>用于向某些选择器添加特殊的效果。比如给链接添加特殊效果， 比如可以选择 第1个，第n个元素。</p>
+<p>因为伪类选择器很多，比如链接伪类，结构伪类等等。我们这里先给大家讲解链接伪类选择器。</p>
+<ul>
+<li>a:link      /* 未访问的链接 */</li>
+<li>a:visited   /* 已访问的链接 */</li>
+<li>a:hover     /* 鼠标移动到链接上 */</li>
+<li>a:active    /* 选定的链接 */</li>
+</ul>
+<p>  <strong>注意</strong></p>
+<ul>
+<li>写的时候，他们的顺序尽量不要颠倒  按照  lvha 的顺序。否则可能引起错误。  </li>
+<li>记忆法  <ul>
+<li><strong>l</strong>o<strong>v</strong>e   <strong>ha</strong>te     爱上了讨厌    </li>
+<li><strong>lv *<em>包包   非常 *</em>ha</strong>o   </li>
+</ul>
+</li>
+<li>因为叫链接伪类，所以都是 利用交集选择器  a:link    a:hover  </li>
+<li>因为a链接浏览器具有默认样式，所以我们实际工作中都需要给链接单独指定样式。</li>
+<li>实际工作开发中，我们很少写全四个状态，一般我们写法如下：</li>
+</ul>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">a</span> &#123;   <span class="hljs-comment">/* a是标签选择器  所有的链接 */</span></span><br><span class="line">			<span class="hljs-attribute">font-weight</span>: <span class="hljs-number">700</span>;</span><br><span class="line">			<span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;</span><br><span class="line">			<span class="hljs-attribute">color</span>: gray;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;   <span class="hljs-comment">/* :hover 是链接伪类选择器 鼠标经过 */</span></span><br><span class="line">			<span class="hljs-attribute">color</span>: red; <span class="hljs-comment">/*  鼠标经过的时候，由原来的 灰色 变成了红色 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="复合选择器总结"><a href="#复合选择器总结" class="headerlink" title="复合选择器总结"></a>复合选择器总结</h2><table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>作用</th>
+<th>特征</th>
+<th>使用情况</th>
+<th>隔开符号及用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>后代选择器</td>
+<td>用来选择元素后代</td>
+<td>是选择所有的子孙后代</td>
+<td>较多</td>
+<td>符号是<strong>空格</strong> .nav a</td>
+</tr>
+<tr>
+<td>子代选择器</td>
+<td>选择 最近一级元素</td>
+<td>只选亲儿子</td>
+<td>较少</td>
+<td>符号是<strong>&gt;</strong>   .nav&gt;p</td>
+</tr>
+<tr>
+<td>交集选择器</td>
+<td>选择两个标签交集的部分</td>
+<td>既是 又是</td>
+<td>较少</td>
+<td><strong>没有符号</strong>  p.one</td>
+</tr>
+<tr>
+<td>并集选择器</td>
+<td>选择某些相同样式的选择器</td>
+<td>可以用于集体声明</td>
+<td>较多</td>
+<td>符号是<strong>逗号</strong> .nav, .header</td>
+</tr>
+<tr>
+<td>链接伪类选择器</td>
+<td>给链接更改状态</td>
+<td></td>
+<td>较多</td>
+<td>重点记住 a{} 和 a:hover  实际开发的写法</td>
+</tr>
+</tbody></table>
+<h1 id="标签显示模式（display）重点"><a href="#标签显示模式（display）重点" class="headerlink" title="标签显示模式（display）重点"></a>标签显示模式（display）重点</h1><p>目标：</p>
+<ul>
+<li>理解<ul>
+<li>标签的三种显示模式</li>
+<li>三种显示模式的特点以及区别</li>
+<li>理解三种显示模式的相互转化</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>实现三种显示模式的相互转化</li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是标签显示模式"><a href="#什么是标签显示模式" class="headerlink" title="什么是标签显示模式"></a>什么是标签显示模式</h2><ul>
+<li><p>什么是标签的显示模式？</p>
+<p>标签以什么方式进行显示，比如div 自己占一行， 比如span 一行可以放很多个</p>
+</li>
+<li><p>作用： </p>
+<p>我们网页的标签非常多，再不同地方会用到不同类型的标签，以便更好的完成我们的网页。</p>
+</li>
+<li><p>标签的类型(分类)</p>
+<p>HTML标签一般分为块标签和行内标签两种类型，它们也称块元素和行内元素。</p>
+</li>
+</ul>
+<h2 id="块级元素-block-level"><a href="#块级元素-block-level" class="headerlink" title="块级元素(block-level)"></a>块级元素(block-level)</h2><ul>
+<li>例：</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">常见的块元素有&lt;h1&gt;~&lt;h6&gt;、&lt;p&gt;、&lt;div&gt;、&lt;ul&gt;、&lt;ol&gt;、&lt;li&gt;等，其中&lt;div&gt;标签是最典型的块元素。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/css-day02/12%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0.png" alt></p>
+<ul>
+<li>块级元素的特点</li>
+</ul>
+<p>（1）比较霸道，自己独占一行</p>
+<p>（2）高度，宽度、外边距以及内边距都可以控制。</p>
+<p>（3）宽度默认是容器（父级宽度）的100%</p>
+<p>（4）是一个容器及盒子，里面可以放行内或者块级元素。</p>
+<ul>
+<li>注意：<ul>
+<li>只有 文字才 能组成段落  因此 p  里面不能放块级元素，特别是 p 不能放div </li>
+<li>同理还有这些标签h1,h2,h3,h4,h5,h6,dt，他们都是文字类块级标签，里面不能放其他块级元素。</li>
+</ul>
+</li>
+</ul>
+<h2 id="行内元素-inline-level"><a href="#行内元素-inline-level" class="headerlink" title="行内元素(inline-level)"></a>行内元素(inline-level)</h2><ul>
+<li>例：</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">常见的行内元素有&lt;a&gt;、&lt;strong&gt;、&lt;b&gt;、&lt;em&gt;、&lt;i&gt;、&lt;del&gt;、&lt;s&gt;、&lt;ins&gt;、&lt;u&gt;、&lt;span&gt;等，其中&lt;span&gt;标签最典型的行内元素。有的地方也成内联元素</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/css-day02/13%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0.png" alt></p>
+<ul>
+<li>行内元素的特点：</li>
+</ul>
+<p>（1）相邻行内元素在一行上，一行可以显示多个。</p>
+<p>（2）高、宽直接设置是无效的。</p>
+<p>（3）默认宽度就是它本身内容的宽度。</p>
+<p>（4）<strong>行内元素只能容纳文本或则其他行内元素。</strong></p>
+<p>  <img src="/前端笔记/css-day02/w-1589962975224.jpg" alt>    注意：</p>
+<ul>
+<li>链接里面不能再放链接。</li>
+<li>特殊情况a里面可以放块级元素，但是给a转换一下块级模式最安全。</li>
+</ul>
+<h2 id="行内块元素（inline-block）"><a href="#行内块元素（inline-block）" class="headerlink" title="行内块元素（inline-block）"></a>行内块元素（inline-block）</h2><ul>
+<li>例：</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在行内元素中有几个特殊的标签——&lt;img /&gt;、&lt;input /&gt;、&lt;td&gt;，可以对它们设置宽高和对齐属性，有些资料可能会称它们为行内块元素。</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/css-day02/14%E8%A1%8C%E5%86%85%E5%9D%97%E5%85%83%E7%B4%A0.png" alt></p>
+<ul>
+<li><p>行内块元素的特点：</p>
+<p>（1）和相邻行内元素（行内块）在一行上,但是之间会有空白缝隙。一行可以显示多个<br>（2）默认宽度就是它本身内容的宽度。<br>（3）高度，行高、外边距以及内边距都可以控制。</p>
+</li>
+</ul>
+<h2 id="三种模式总结区别"><a href="#三种模式总结区别" class="headerlink" title="三种模式总结区别"></a>三种模式总结区别</h2><table>
+<thead>
+<tr>
+<th>元素模式</th>
+<th>元素排列</th>
+<th>设置样式</th>
+<th>默认宽度</th>
+<th>包含</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>块级元素</td>
+<td>一行只能放一个块级元素</td>
+<td>可以设置宽度高度</td>
+<td>容器的100%</td>
+<td>容器级可以包含任何标签</td>
+</tr>
+<tr>
+<td>行内元素</td>
+<td>一行可以放多个行内元素</td>
+<td>不可以直接设置宽度高度</td>
+<td>它本身内容的宽度</td>
+<td>容纳文本或则其他行内元素</td>
+</tr>
+<tr>
+<td>行内块元素</td>
+<td>一行放多个行内块元素</td>
+<td>可以设置宽度和高度</td>
+<td>它本身内容的宽度</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="标签显示模式转换-display"><a href="#标签显示模式转换-display" class="headerlink" title="标签显示模式转换 display"></a>标签显示模式转换 display</h2><ul>
+<li>块转行内：display:inline;</li>
+<li>行内转块：display:block;</li>
+<li>块、行内元素转换为行内块： display: inline-block;</li>
+</ul>
+<p>此阶段，我们只需关心这三个，其他的是我们后面的工作。</p>
+<h1 id="行高那些事（line-height）"><a href="#行高那些事（line-height）" class="headerlink" title="行高那些事（line-height）"></a>行高那些事（line-height）</h1><p>目标</p>
+<ul>
+<li>理解<ul>
+<li>能说出 行高  和 高度  三种关系</li>
+<li>能简单理解为什么行高等于高度单行文字会垂直居中</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>使用行高实现单行文字垂直居中</li>
+<li>能会测量行高</li>
+</ul>
+</li>
+</ul>
+<h2 id="行高测量"><a href="#行高测量" class="headerlink" title="行高测量"></a>行高测量</h2><p>行高的测量方法：</p>
+<p> <img src="/前端笔记/css-day02/line1.png" alt></p>
+<p><img src="/前端笔记/css-day02/line2.png" alt></p>
+<h2 id="单行文本垂直居中"><a href="#单行文本垂直居中" class="headerlink" title="单行文本垂直居中"></a>单行文本垂直居中</h2><p> 行高我们利用最多的一个地方是： 可以让单行文本在盒子中垂直居中对齐。</p>
+<blockquote>
+<p><strong>文字的行高等于盒子的高度。</strong></p>
+</blockquote>
+<p>这里情况些许复杂，开始学习，我们可以先从简单地方入手学会。</p>
+<p>行高   =  上距离 +  内容高度  + 下距离 </p>
+<p> <img src="/前端笔记/css-day02/1.png" alt></p>
+<p>上距离和下距离总是相等的，因此文字看上去是垂直居中的。</p>
+<p><strong>行高和高度的三种关系</strong></p>
+<ul>
+<li>如果 行高 等 高度  文字会 垂直居中</li>
+<li>如果行高 大于 高度   文字会 偏下 </li>
+<li>如果行高小于高度   文字会  偏上 </li>
+</ul>
+<h1 id="CSS-背景-background"><a href="#CSS-背景-background" class="headerlink" title="CSS 背景(background)"></a>CSS 背景(background)</h1><p>目标</p>
+<ul>
+<li>理解<ul>
+<li>背景的作用</li>
+<li>css背景图片和插入图片的区别</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>通过css背景属性，给页面元素添加背景样式</li>
+<li>能设置不同的背景图片位置</li>
+</ul>
+</li>
+</ul>
+<h2 id="背景颜色-color"><a href="#背景颜色-color" class="headerlink" title="背景颜色(color)"></a>背景颜色(color)</h2><ul>
+<li><p>语法：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-color:颜色值;   默认的值是 transparent  透明的</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="背景图片-image"><a href="#背景图片-image" class="headerlink" title="背景图片(image)"></a>背景图片(image)</h2><ul>
+<li>语法： </li>
+</ul>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image : none | url (url)</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>none</td>
+<td align="center">无背景图（默认的）</td>
+</tr>
+<tr>
+<td>url</td>
+<td align="center">使用绝对或相对地址指定背景图像</td>
+</tr>
+</tbody></table>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-image : url(images/demo.png);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>小技巧：  我们提倡 背景图片后面的地址，url不要加引号。</li>
+</ul>
+<h2 id="背景平铺（repeat）"><a href="#背景平铺（repeat）" class="headerlink" title="背景平铺（repeat）"></a>背景平铺（repeat）</h2><ul>
+<li>语法： </li>
+</ul>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-repeat : repeat | no-repeat | repeat-x | repeat-y</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>repeat</td>
+<td align="center">背景图像在纵向和横向上平铺（默认的）</td>
+</tr>
+<tr>
+<td>no-repeat</td>
+<td align="center">背景图像不平铺</td>
+</tr>
+<tr>
+<td>repeat-x</td>
+<td align="center">背景图像在横向上平铺</td>
+</tr>
+<tr>
+<td>repeat-y</td>
+<td align="center">背景图像在纵向平铺</td>
+</tr>
+</tbody></table>
+<h2 id="背景位置-position-重点"><a href="#背景位置-position-重点" class="headerlink" title="背景位置(position) 重点"></a>背景位置(position) 重点</h2><ul>
+<li>语法： </li>
+</ul>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">background-position : length || length</span><br><span class="line"></span><br><span class="line">background-position : position || position</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th align="center">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>length</td>
+<td align="center">百分数 | 由浮点数字和单位标识符组成的长度值</td>
+</tr>
+<tr>
+<td>position</td>
+<td align="center">top | center | bottom | left | center | right   方位名词</td>
+</tr>
+</tbody></table>
+<ul>
+<li>注意：<ul>
+<li>必须先指定background-image属性</li>
+<li>position 后面是x坐标和y坐标。 可以使用方位名词或者 精确单位。</li>
+<li>如果指定两个值，两个值都是方位名字，则两个值前后顺序无关，比如left  top和top  left效果一致</li>
+<li>如果只指定了一个方位名词，另一个值默认居中对齐。</li>
+<li>如果position 后面是精确坐标， 那么第一个，肯定是 x  第二的一定是y</li>
+<li>如果只指定一个数值,那该数值一定是x坐标，另一个默认垂直居中</li>
+<li>如果指定的两个值是 精确单位和方位名字混合使用，则第一个值是x坐标，第二个值是y坐标</li>
+</ul>
+</li>
+</ul>
+<p><strong>实际工作用的最多的，就是背景图片居中对齐了。</strong></p>
+<p>练习1：</p>
+<p>背景大图</p>
+<p>练习2：</p>
+<p>小图片在盒子左侧垂直居中</p>
+<h2 id="背景附着"><a href="#背景附着" class="headerlink" title="背景附着"></a>背景附着</h2><ul>
+<li><p>背景附着就是解释背景是滚动的还是固定的</p>
+</li>
+<li><p>语法： </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-attachment : scroll | fixed</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scroll</td>
+<td align="center">背景图像是随对象内容滚动</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td align="center">背景图像固定</td>
+</tr>
+</tbody></table>
+<h2 id="背景简写"><a href="#背景简写" class="headerlink" title="背景简写"></a>背景简写</h2><ul>
+<li>background：属性的值的书写顺序官方并没有强制标准的。为了可读性，建议大家如下写：</li>
+<li>background: 背景颜色 背景图片地址 背景平铺 背景滚动 背景位置;</li>
+<li>语法：</li>
+</ul>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">transparent</span> <span class="hljs-selector-tag">url</span>(<span class="hljs-selector-tag">image</span><span class="hljs-selector-class">.jpg</span>) <span class="hljs-selector-tag">repeat-y</span>  <span class="hljs-selector-tag">scroll</span> <span class="hljs-selector-tag">center</span> <span class="hljs-selector-tag">top</span> ;</span><br></pre></td></tr></table></figure>
+
+<p>案例：</p>
+<p>导航栏案例</p>
+<h2 id="背景透明-CSS3"><a href="#背景透明-CSS3" class="headerlink" title="背景透明(CSS3)"></a>背景透明(CSS3)</h2><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">background</span>: <span class="hljs-selector-tag">rgba</span>(0, 0, 0, 0<span class="hljs-selector-class">.3</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最后一个参数是alpha 透明度  取值范围 0~1之间</li>
+<li>我们习惯把0.3 的 0 省略掉  这样写  background: rgba(0, 0, 0, .3);</li>
+<li>注意：  背景半透明是指盒子背景半透明， 盒子里面的内容不受影响</li>
+<li>因为是CSS3 ，所以 低于 ie9 的版本是不支持的。</li>
+</ul>
+<h2 id="背景总结"><a href="#背景总结" class="headerlink" title="背景总结"></a>背景总结</h2><table>
+<thead>
+<tr>
+<th>属性</th>
+<th align="left">作用</th>
+<th align="left">值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>background-color</td>
+<td align="left">背景颜色</td>
+<td align="left">预定义的颜色值/十六进制/RGB代码</td>
+</tr>
+<tr>
+<td>background-image</td>
+<td align="left">背景图片</td>
+<td align="left">url(图片路径)</td>
+</tr>
+<tr>
+<td>background-repeat</td>
+<td align="left">是否平铺</td>
+<td align="left">repeat/no-repeat/repeat-x/repeat-y</td>
+</tr>
+<tr>
+<td>background-position</td>
+<td align="left">背景位置</td>
+<td align="left">length/position    分别是x  和 y坐标， 切记 如果有 精确数值单位，则必须按照先X 后Y 的写法</td>
+</tr>
+<tr>
+<td>background-attachment</td>
+<td align="left">背景固定还是滚动</td>
+<td align="left">scroll/fixed</td>
+</tr>
+<tr>
+<td>背景简写</td>
+<td align="left">更简单</td>
+<td align="left">背景颜色 背景图片地址 背景平铺 背景滚动 背景位置;  他们没有顺序</td>
+</tr>
+<tr>
+<td>背景透明</td>
+<td align="left">让盒子半透明</td>
+<td align="left">background: rgba(0,0,0,0.3);   后面必须是 4个值</td>
+</tr>
+</tbody></table>
+<h1 id="CSS-三大特性"><a href="#CSS-三大特性" class="headerlink" title="CSS 三大特性"></a>CSS 三大特性</h1><p>目标：</p>
+<ul>
+<li>理解<ul>
+<li>能说出css样式冲突采取的原则</li>
+<li>能说出那些常见的样式会有继承</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>能写出CSS优先级的算法</li>
+<li>能会计算常见选择器的叠加值</li>
+</ul>
+</li>
+</ul>
+<h2 id="CSS层叠性"><a href="#CSS层叠性" class="headerlink" title="CSS层叠性"></a>CSS层叠性</h2><p><img src="/前端笔记/css-day02/20%E5%B1%82%E5%8F%A0%E6%80%A7.png" alt></p>
+<ul>
+<li><p>概念：</p>
+<p>所谓层叠性是指多种CSS样式的叠加。</p>
+<p>是浏览器处理冲突的一个能力,如果一个属性通过两个相同选择器设置到同一个元素上，那么这个时候一个属性就会将另一个属性层叠掉</p>
+</li>
+<li><p>原则：</p>
+<ul>
+<li>样式冲突，遵循的原则是<strong>就近原则。</strong> 那个样式离着结构近，就执行那个样式。</li>
+<li>样式不冲突，不会层叠</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSS层叠性最后的执行口诀：  长江后浪推前浪，前浪死在沙滩上。</span><br></pre></td></tr></table></figure>
+
+<p> <img src="/前端笔记/css-day02/hai.gif" alt></p>
+<h2 id="5-2-CSS继承性"><a href="#5-2-CSS继承性" class="headerlink" title="5.2 CSS继承性"></a>5.2 CSS继承性</h2><p><img src="/前端笔记/css-day02/21%E7%BB%A7%E6%89%BF%E6%80%A7.png" alt></p>
+<ul>
+<li><p>概念：</p>
+<p>子标签会继承父标签的某些样式，如文本颜色和字号。</p>
+<p> 想要设置一个可继承的属性，只需将它应用于父元素即可。</p>
+</li>
+</ul>
+<p>简单的理解就是：  子承父业。</p>
+<ul>
+<li><strong>注意</strong>：<ul>
+<li>恰当地使用继承可以简化代码，降低CSS样式的复杂性。比如有很多子级孩子都需要某个样式，可以给父级指定一个，这些孩子继承过来就好了。</li>
+<li>子元素可以继承父元素的样式（<strong>text-，font-，line-这些元素开头的可以继承，以及color属性</strong>）</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CSS继承性口诀：  龙生龙，凤生凤，老鼠生的孩子会打洞。</span><br></pre></td></tr></table></figure>
+
+<p> <img src="/前端笔记/css-day02/shu.gif" alt></p>
+<h2 id="CSS优先级（重点）"><a href="#CSS优先级（重点）" class="headerlink" title="CSS优先级（重点）"></a>CSS优先级（重点）</h2><p><img src="/前端笔记/css-day02/22%E4%BC%98%E5%85%88%E7%BA%A7.png" alt></p>
+<ul>
+<li><p>概念：</p>
+<p>定义CSS样式时，经常出现两个或更多规则应用在同一元素上，此时，</p>
+<ul>
+<li>选择器相同，则执行层叠性</li>
+<li>选择器不同，就会出现优先级的问题。</li>
+</ul>
+</li>
+</ul>
+<h4 id="权重计算公式"><a href="#权重计算公式" class="headerlink" title="权重计算公式"></a>权重计算公式</h4><p>关于CSS权重，我们需要一套计算公式来去计算，这个就是 CSS Specificity（特殊性）</p>
+<table>
+<thead>
+<tr>
+<th>标签选择器</th>
+<th>计算权重公式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>继承或者 *</td>
+<td>0,0,0,0</td>
+</tr>
+<tr>
+<td>每个元素（标签选择器）</td>
+<td>0,0,0,1</td>
+</tr>
+<tr>
+<td>每个类，伪类</td>
+<td>0,0,1,0</td>
+</tr>
+<tr>
+<td>每个ID</td>
+<td>0,1,0,0</td>
+</tr>
+<tr>
+<td>每个行内样式 style=””</td>
+<td>1,0,0,0</td>
+</tr>
+<tr>
+<td>每个!important  重要的</td>
+<td>∞ 无穷大</td>
+</tr>
+</tbody></table>
+<ul>
+<li>值从左到右，左面的最大，一级大于一级，数位之间没有进制，级别之间不可超越。 </li>
+<li>关于CSS权重，我们需要一套计算公式来去计算，这个就是 CSS Specificity（特殊性）</li>
+<li>div {<pre><code>color: pink!important;  </code></pre>}</li>
+</ul>
+<h4 id="权重叠加"><a href="#权重叠加" class="headerlink" title="权重叠加"></a>权重叠加</h4><p>我们经常用交集选择器，后代选择器等，是有多个基础选择器组合而成，那么此时，就会出现权重叠加。</p>
+<p>就是一个简单的加法计算</p>
+<ul>
+<li><p>div ul  li   ——&gt;      0,0,0,3</p>
+</li>
+<li><p>.nav ul li   ——&gt;      0,0,1,2</p>
+</li>
+<li><p>a:hover      —–—&gt;   0,0,1,1</p>
+</li>
+<li><p>.nav a       ——&gt;      0,0,1,1</p>
+<p><img src="/前端笔记/css-day02/w.jpg" alt> 注意： </p>
+</li>
+</ul>
+<ol>
+<li>数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 =0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。</li>
+</ol>
+<h4 id="继承的权重是0"><a href="#继承的权重是0" class="headerlink" title="继承的权重是0"></a>继承的权重是0</h4><p>这个不难，但是忽略很容易绕晕。其实，我们修改样式，一定要看该标签有没有被选中。</p>
+<p>1） 如果选中了，那么以上面的公式来计权重。谁大听谁的。<br>2） 如果没有选中，那么权重是0，因为继承的权重为0.</p>
+<h1 id="CSS注释"><a href="#CSS注释" class="headerlink" title="CSS注释"></a>CSS注释</h1><p><strong>CSS注释规则：</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/*  需要注释的内容  */  进行注释的，即在需要注释的内容前使用 &quot;/*&quot; 标记开始注释，在内容的结尾使用 &quot;*/&quot;结束。</span><br></pre></td></tr></table></figure>
+
+<p>   例如：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">p</span> &#123;</span><br><span class="line"> <span class="hljs-comment">/* 所有的字体是14像素大小*/</span></span><br><span class="line">  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">14px</span>;                 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/css-day02/">CSS-Day02</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/css-day02/">http://www.itfool.cn/前端笔记/css-day02/</a></li>
+            <li><strong>发布时间：</strong>2020-05-20</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/css-day03/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">CSS-Day03</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/css-day01/">
+                <span class="level-item">CSS-Day01</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#CSS复合选择器">
+        <span class="has-mr-6">1</span>
+        <span>CSS复合选择器</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#今日重点：">
+        <span class="has-mr-6">1.1</span>
+        <span>今日重点：</span>
+        </a></li><li>
+        <a class="is-flex" href="#后代选择器（重点）">
+        <span class="has-mr-6">1.2</span>
+        <span>后代选择器（重点）</span>
+        </a></li><li>
+        <a class="is-flex" href="#子元素选择器">
+        <span class="has-mr-6">1.3</span>
+        <span>子元素选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#交集选择器">
+        <span class="has-mr-6">1.4</span>
+        <span>交集选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#并集选择器（重点）">
+        <span class="has-mr-6">1.5</span>
+        <span>并集选择器（重点）</span>
+        </a></li><li>
+        <a class="is-flex" href="#测试题">
+        <span class="has-mr-6">1.6</span>
+        <span>测试题</span>
+        </a></li><li>
+        <a class="is-flex" href="#链接伪类选择器（重点）">
+        <span class="has-mr-6">1.7</span>
+        <span>链接伪类选择器（重点）</span>
+        </a></li><li>
+        <a class="is-flex" href="#复合选择器总结">
+        <span class="has-mr-6">1.8</span>
+        <span>复合选择器总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#标签显示模式（display）重点">
+        <span class="has-mr-6">2</span>
+        <span>标签显示模式（display）重点</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是标签显示模式">
+        <span class="has-mr-6">2.1</span>
+        <span>什么是标签显示模式</span>
+        </a></li><li>
+        <a class="is-flex" href="#块级元素-block-level">
+        <span class="has-mr-6">2.2</span>
+        <span>块级元素(block-level)</span>
+        </a></li><li>
+        <a class="is-flex" href="#行内元素-inline-level">
+        <span class="has-mr-6">2.3</span>
+        <span>行内元素(inline-level)</span>
+        </a></li><li>
+        <a class="is-flex" href="#行内块元素（inline-block）">
+        <span class="has-mr-6">2.4</span>
+        <span>行内块元素（inline-block）</span>
+        </a></li><li>
+        <a class="is-flex" href="#三种模式总结区别">
+        <span class="has-mr-6">2.5</span>
+        <span>三种模式总结区别</span>
+        </a></li><li>
+        <a class="is-flex" href="#标签显示模式转换-display">
+        <span class="has-mr-6">2.6</span>
+        <span>标签显示模式转换 display</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#行高那些事（line-height）">
+        <span class="has-mr-6">3</span>
+        <span>行高那些事（line-height）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#行高测量">
+        <span class="has-mr-6">3.1</span>
+        <span>行高测量</span>
+        </a></li><li>
+        <a class="is-flex" href="#单行文本垂直居中">
+        <span class="has-mr-6">3.2</span>
+        <span>单行文本垂直居中</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#CSS-背景-background">
+        <span class="has-mr-6">4</span>
+        <span>CSS 背景(background)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#背景颜色-color">
+        <span class="has-mr-6">4.1</span>
+        <span>背景颜色(color)</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景图片-image">
+        <span class="has-mr-6">4.2</span>
+        <span>背景图片(image)</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景平铺（repeat）">
+        <span class="has-mr-6">4.3</span>
+        <span>背景平铺（repeat）</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景位置-position-重点">
+        <span class="has-mr-6">4.4</span>
+        <span>背景位置(position) 重点</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景附着">
+        <span class="has-mr-6">4.5</span>
+        <span>背景附着</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景简写">
+        <span class="has-mr-6">4.6</span>
+        <span>背景简写</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景透明-CSS3">
+        <span class="has-mr-6">4.7</span>
+        <span>背景透明(CSS3)</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景总结">
+        <span class="has-mr-6">4.8</span>
+        <span>背景总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#CSS-三大特性">
+        <span class="has-mr-6">5</span>
+        <span>CSS 三大特性</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#CSS层叠性">
+        <span class="has-mr-6">5.1</span>
+        <span>CSS层叠性</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-2-CSS继承性">
+        <span class="has-mr-6">5.2</span>
+        <span>5.2 CSS继承性</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS优先级（重点）">
+        <span class="has-mr-6">5.3</span>
+        <span>CSS优先级（重点）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#权重计算公式">
+        <span class="has-mr-6">5.3.1</span>
+        <span>权重计算公式</span>
+        </a></li><li>
+        <a class="is-flex" href="#权重叠加">
+        <span class="has-mr-6">5.3.2</span>
+        <span>权重叠加</span>
+        </a></li><li>
+        <a class="is-flex" href="#继承的权重是0">
+        <span class="has-mr-6">5.3.3</span>
+        <span>继承的权重是0</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#CSS注释">
+        <span class="has-mr-6">6</span>
+        <span>CSS注释</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="CSS-Day02" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
