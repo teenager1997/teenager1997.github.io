@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>CSS-day05 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="学成在线页面制作目标 理解 能够说写单页面我们基本的流程 能说出常见的css初始化语句 能说出我们CSS属性书写顺序   应用 能利用ps切图 能引入外部样式表 能把psd文件转换为html页面    学成在线的目的就是为了串联前面的所有知识。来一个春晚大联欢。 pink老师： 取义学有所成，为师之期望，君等成才者也，故曰学成网是也~~">
+<meta name="keywords" content="demo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-day05">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/css-day05/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="学成在线页面制作目标 理解 能够说写单页面我们基本的流程 能说出常见的css初始化语句 能说出我们CSS属性书写顺序   应用 能利用ps切图 能引入外部样式表 能把psd文件转换为html页面    学成在线的目的就是为了串联前面的所有知识。来一个春晚大联欢。 pink老师： 取义学有所成，为师之期望，君等成才者也，故曰学成网是也~~">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/CSS-day05/2.png">
+<meta property="og:updated_time" content="2020-05-21T07:23:15.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-day05">
+<meta name="twitter:description" content="学成在线页面制作目标 理解 能够说写单页面我们基本的流程 能说出常见的css初始化语句 能说出我们CSS属性书写顺序   应用 能利用ps切图 能引入外部样式表 能把psd文件转换为html页面    学成在线的目的就是为了串联前面的所有知识。来一个春晚大联欢。 pink老师： 取义学有所成，为师之期望，君等成才者也，故曰学成网是也~~">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/CSS-day05/2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="CSS-day05" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/CSS-day05/2.png" alt="CSS-day05">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>CSS-day05
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-21T07:06:08.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-21</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-21T07:23:15.900Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-21</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1844 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <h1 id="学成在线页面制作"><a href="#学成在线页面制作" class="headerlink" title="学成在线页面制作"></a>学成在线页面制作</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li><strong>理解</strong><ul>
+<li>能够说写单页面我们基本的流程</li>
+<li>能说出常见的css初始化语句</li>
+<li><strong>能说出我们CSS属性书写顺序</strong></li>
+</ul>
+</li>
+<li><strong>应用</strong><ul>
+<li>能利用ps切图</li>
+<li>能引入外部样式表</li>
+<li>能把psd文件转换为html页面</li>
+</ul>
+</li>
+</ul>
+<p>学成在线的目的就是为了串联前面的所有知识。来一个春晚大联欢。</p>
+<p><strong>pink老师：</strong></p>
+<p>取义<strong>学有所成</strong>，为师之期望，君等成才者也，故曰学成网是也~~</p>
+<a id="more"></a>
+<h2 id="前期准备素材"><a href="#前期准备素材" class="headerlink" title="前期准备素材"></a>前期准备素材</h2><ul>
+<li>学成在线PSD源文件 <a href="https://itfool.cn/前端笔记/css-day05/学成网首页.psd" target="_blank" rel="noopener">https://itfool.cn/前端笔记/css-day05/学成网首页.psd</a></li>
+<li>开发工具  =  PS（切图） +  sublime（代码） + chrome（测试）</li>
+</ul>
+<h2 id="前期准备工作"><a href="#前期准备工作" class="headerlink" title="前期准备工作"></a>前期准备工作</h2><p>欲先善其事，必先利其器。 先把我们的前期准备工作做好， 我们本次采取结构与样式相分离思想。</p>
+<ol>
+<li>创建 study 目录文件夹 (用于存放我们这个页面的相关内容)</li>
+<li>study目录内新建images 文件夹 用于保存图片。</li>
+<li>新建index.html 首页html 文件（以后我们的网站首页统一规定为index.html)</li>
+<li>新建style.css 样式文件。 我们本次采用外链样式表。</li>
+<li>将样式引入到我们HTML页面文件中。</li>
+<li>样式表写入 清除内外边距样式，来检测样式表是否引入成功。</li>
+</ol>
+<h2 id="CSS属性书写顺序-重点"><a href="#CSS属性书写顺序-重点" class="headerlink" title="CSS属性书写顺序(重点)"></a>CSS属性书写顺序(重点)</h2><p>建议遵循以下顺序：</p>
+<ol>
+<li>布局定位属性：display / position / float / clear / visibility / overflow（建议 display 第一个写，毕竟关系到模式）</li>
+<li>自身属性：width / height / margin / padding / border / background</li>
+<li>文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word</li>
+<li>其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …</li>
+</ol>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.jdc</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">display</span>: block;</span><br><span class="line">    <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">    <span class="hljs-attribute">float</span>: left;</span><br><span class="line">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">    <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span> <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">font-family</span>: Arial, <span class="hljs-string">'Helvetica Neue'</span>, Helvetica, sans-serif;</span><br><span class="line">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#333</span>;</span><br><span class="line">    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">rgba</span>(0,0,0,.5);</span><br><span class="line">    <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">-o-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">-ms-border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="布局流程"><a href="#布局流程" class="headerlink" title="布局流程"></a>布局流程</h2><p>为了提高网页制作的效率，布局时通常有以下的布局流程，具体如下：</p>
+<p>1、必须确定页面的版心（可视区）， 我们测量可得知。</p>
+<p>2、分析页面中的行模块，以及每个行模块中的列模块。其实页面布局，就是一行行罗列而成</p>
+<p>3、制作HTML结构。我们还是遵循，先有结构，后有样式的原则。结构永远最重要。</p>
+<p>4、然后开始运用盒子模型的原理，通过DIV+CSS布局来控制网页的各个模块。</p>
+<h2 id="页面制作"><a href="#页面制作" class="headerlink" title="页面制作"></a>页面制作</h2><p>这个页面的版心是 1200像素   每个版心都要水平居中对齐，所以，我们干脆把版心定义为：</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-class">.w</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">width</span>: <span class="hljs-number">1200px</span>;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="头部制作"><a href="#头部制作" class="headerlink" title="头部制作"></a>头部制作</h4><p>结构图如下：</p>
+<p><img src="/前端笔记/css-day05/1.png" alt></p>
+<ul>
+<li>1号是版心盒子header  1200 *  42 的盒子水平居中对齐, 上下给一个margin值就好了。</li>
+<li>版心盒子 里面包含 2号盒子 logo</li>
+<li>版心盒子 里面包含 3号盒子 nav导航栏</li>
+<li>版心盒子 里面包含 4号盒子 search搜索框</li>
+<li>版心盒子 里面包含 5号盒子 user个人信息</li>
+<li>注意，要求里面的 4个盒子 必须都浮动</li>
+</ul>
+<h4 id="banner制作"><a href="#banner制作" class="headerlink" title="banner制作"></a>banner制作</h4><p>结构图如下：</p>
+<p><img src="/前端笔记/css-day05/2.png" alt></p>
+<ul>
+<li>1号盒子是通栏的大盒子banner， 不给宽度，给高度，给一个蓝色背景。</li>
+<li>2号盒子是版心， 要水平居中对齐。</li>
+<li>3号盒子版心内，左对齐 subnav侧导航栏。</li>
+<li>4号盒子版心内，右对齐  course 课程。</li>
+</ul>
+<h4 id="课程表模块"><a href="#课程表模块" class="headerlink" title="课程表模块"></a>课程表模块</h4><p>结构图如下：</p>
+<p> <img src="/前端笔记/css-day05/6.png" alt></p>
+<ul>
+<li>1号盒子 是  228 * 300 的盒子 右浮动  注意 浮动的元素 不会有外边距塌陷的问题</li>
+<li>1号盒子内 分为 上下 两个 子盒子</li>
+<li>2号子盒子是 上部分  我们命名为 course-hd    (hd  是  head  的简写 头部的意思，我们经常用)</li>
+<li>3号子盒子是 下部分  我们命名为 course-bd    (bd  是  body  的简写 主体的意思，我们经常用)</li>
+</ul>
+<h4 id="精品推荐小模块"><a href="#精品推荐小模块" class="headerlink" title="精品推荐小模块"></a>精品推荐小模块</h4><p>结构图如下：</p>
+<p><img src="/前端笔记/css-day05/3.png" alt></p>
+<ul>
+<li><strong>复习点：</strong>  因为里面三个盒子都要垂直居中，我们利用 继承性，给 最大的盒子 一个垂直居中的代码就好了，还记得 那些 样式可以继承吗？？？ font-  line-  text- color</li>
+<li>大盒子水平居中 goods  精品 ，注意此处有个盒子阴影</li>
+<li>1号盒子是标题 H3  左侧浮动</li>
+<li>2号盒子 里面放链接  左侧浮动  goods-item    距离可以控制链接的 左右外边距（注意行内元素只给左右内外边距）</li>
+<li>3号盒子 右浮动 mod 修改</li>
+</ul>
+<h4 id="精品推荐大模块"><a href="#精品推荐大模块" class="headerlink" title="精品推荐大模块"></a>精品推荐大模块</h4><p>结构图如下：</p>
+<p><img src="/前端笔记/css-day05/4.png" alt></p>
+<ul>
+<li>1号盒子为最大的盒子 box  版心水平居中对齐</li>
+<li>2号盒子为上面部分 box-hd  – 里面   左侧标题H3 左浮动   右侧 链接 a 右浮动</li>
+<li>3号盒子为底下部分 box-bd — 里面是无序列表 有 10个 小li 组成</li>
+<li>小li 外边距的问题， 这里有个小技巧。  给box-hd 宽度为 1215 就可以一行装开5个 li了</li>
+<li>复习点：  我们用到清除浮动  因为 box-hd 里面的盒子个数不一定多少，我们就不给高度了，但是里面的盒子浮动了， 影响下面的布局，此时需要浮动</li>
+</ul>
+<h4 id="底部模块制作"><a href="#底部模块制作" class="headerlink" title="底部模块制作"></a>底部模块制作</h4><p>结构图如下：</p>
+<p><img src="/前端笔记/css-day05/5.png" alt></p>
+<ul>
+<li>1号盒子通栏大盒子 底部 footer  给高度  底色是白色</li>
+<li>2号盒子版心水平居中</li>
+<li>3号盒子版权 copyright  左对齐 </li>
+<li>4号盒子 链接组 links  右对齐</li>
+</ul>
+<h1 id="chrome调试工具"><a href="#chrome调试工具" class="headerlink" title="chrome调试工具"></a>chrome调试工具</h1><p>“工欲善其事，必先利其器”</p>
+<p>Chrome浏览器不仅可以调试页面、JS、请求、资源、cookie，还可以模拟手机进行调试。我们现在只是使用html和css，我们先讲一下现在常用的调试。</p>
+<h2 id="怎样打开Chrome的开发者工具？"><a href="#怎样打开Chrome的开发者工具？" class="headerlink" title="怎样打开Chrome的开发者工具？"></a>怎样打开Chrome的开发者工具？</h2><p>直接在页面上点击右键，然后选择  “检查”     快捷键    F12  或者   ctrl+shift+i</p>
+<p> <img src="/前端笔记/css-day05/chrome1.png" alt></p>
+<p>基本的结构布局是左边html 右边是 css</p>
+<p><img src="/前端笔记/css-day05/chrome2.png" alt></p>
+<h3 id="chrome调试数值"><a href="#chrome调试数值" class="headerlink" title="chrome调试数值"></a>chrome调试数值</h3><p>可以鼠标点击后面的数值，  按下键盘  上箭头 是 调大 数值， 下箭头是 调小数值</p>
+<p><img src="/前端笔记/css-day05/chrome5.png" alt></p>
+<h3 id="快速定位css所在行数"><a href="#快速定位css所在行数" class="headerlink" title="快速定位css所在行数"></a>快速定位css所在行数</h3><p><img src="/前端笔记/css-day05/chrome6.png" alt></p>
+<h2 id="Chrome提示的常见布局错误"><a href="#Chrome提示的常见布局错误" class="headerlink" title="Chrome提示的常见布局错误"></a>Chrome提示的常见布局错误</h2><h3 id="css单词书写错误提示"><a href="#css单词书写错误提示" class="headerlink" title="css单词书写错误提示"></a>css单词书写错误提示</h3><p>用下图所示的黑色箭头，点击我们需要的 html 元素。</p>
+<p><img src="/前端笔记/css-day05/chrome3.png" alt></p>
+<h3 id="css无显示"><a href="#css无显示" class="headerlink" title="css无显示"></a>css无显示</h3><p>声明类名和html调用名不一致   或者   css文件引入不对  或者  这个样式的前面 多余了一些符号影响的</p>
+<p><img src="/前端笔记/css-day05/chrome4.png" alt></p>
+<h3 id="html-结构不匹配-重要"><a href="#html-结构不匹配-重要" class="headerlink" title="html 结构不匹配(重要)"></a>html 结构不匹配(重要)</h3><p>左侧   展开可以看到html 标签是否匹配</p>
+<p> <img src="/前端笔记/css-day05/chrome7.png" alt></p>
+<h3 id="通过颜色判断盒子"><a href="#通过颜色判断盒子" class="headerlink" title="通过颜色判断盒子"></a>通过颜色判断盒子</h3><p>蓝色是 盒子的 宽度高度     青色是 内边距     橙色 是外边距   通过这个很方便的看到盒子给的范围</p>
+<p> <img src="/前端笔记/css-day05/chrome8.png" alt></p>
+<h3 id="看看你有如下错误吗"><a href="#看看你有如下错误吗" class="headerlink" title="看看你有如下错误吗"></a>看看你有如下错误吗</h3><p> <img src="/前端笔记/css-day05/a.png" alt></p>
+<p> <img src="/前端笔记/css-day05/b.png" alt></p>
+<p> <img src="/前端笔记/css-day05/c.png" alt></p>
+<p> <img src="/前端笔记/css-day05/d.png" alt></p>
+<p> <img src="/前端笔记/css-day05/e.png" alt></p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/css-day05/">CSS-day05</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/css-day05/">http://www.itfool.cn/前端笔记/css-day05/</a></li>
+            <li><strong>发布时间：</strong>2020-05-21</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/css-day04/">
+                <span class="level-item">CSS-Day04</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#学成在线页面制作">
+        <span class="has-mr-6">1</span>
+        <span>学成在线页面制作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#目标">
+        <span class="has-mr-6">1.1</span>
+        <span>目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#前期准备素材">
+        <span class="has-mr-6">1.2</span>
+        <span>前期准备素材</span>
+        </a></li><li>
+        <a class="is-flex" href="#前期准备工作">
+        <span class="has-mr-6">1.3</span>
+        <span>前期准备工作</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS属性书写顺序-重点">
+        <span class="has-mr-6">1.4</span>
+        <span>CSS属性书写顺序(重点)</span>
+        </a></li><li>
+        <a class="is-flex" href="#布局流程">
+        <span class="has-mr-6">1.5</span>
+        <span>布局流程</span>
+        </a></li><li>
+        <a class="is-flex" href="#页面制作">
+        <span class="has-mr-6">1.6</span>
+        <span>页面制作</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#chrome调试工具">
+        <span class="has-mr-6">2</span>
+        <span>chrome调试工具</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#怎样打开Chrome的开发者工具？">
+        <span class="has-mr-6">2.1</span>
+        <span>怎样打开Chrome的开发者工具？</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#chrome调试数值">
+        <span class="has-mr-6">2.1.1</span>
+        <span>chrome调试数值</span>
+        </a></li><li>
+        <a class="is-flex" href="#快速定位css所在行数">
+        <span class="has-mr-6">2.1.2</span>
+        <span>快速定位css所在行数</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Chrome提示的常见布局错误">
+        <span class="has-mr-6">2.2</span>
+        <span>Chrome提示的常见布局错误</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#css单词书写错误提示">
+        <span class="has-mr-6">2.2.1</span>
+        <span>css单词书写错误提示</span>
+        </a></li><li>
+        <a class="is-flex" href="#css无显示">
+        <span class="has-mr-6">2.2.2</span>
+        <span>css无显示</span>
+        </a></li><li>
+        <a class="is-flex" href="#html-结构不匹配-重要">
+        <span class="has-mr-6">2.2.3</span>
+        <span>html 结构不匹配(重要)</span>
+        </a></li><li>
+        <a class="is-flex" href="#通过颜色判断盒子">
+        <span class="has-mr-6">2.2.4</span>
+        <span>通过颜色判断盒子</span>
+        </a></li><li>
+        <a class="is-flex" href="#看看你有如下错误吗">
+        <span class="has-mr-6">2.2.5</span>
+        <span>看看你有如下错误吗</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="CSS-day05" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
