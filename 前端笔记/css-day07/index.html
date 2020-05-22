@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>CSS-Day07 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第01阶段.前端基础.CSS高级技巧  CSS高级技巧目标  理解 能说出元素显示隐藏最常见的写法 能说出精灵图产生的目的 能说出去除图片底侧空白缝隙的方法   应用 能写出最常见的鼠标样式 能使用精灵图技术 能用滑动门做导航栏案例">
+<meta name="keywords" content="css技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS-Day07">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/css-day07/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第01阶段.前端基础.CSS高级技巧  CSS高级技巧目标  理解 能说出元素显示隐藏最常见的写法 能说出精灵图产生的目的 能说出去除图片底侧空白缝隙的方法   应用 能写出最常见的鼠标样式 能使用精灵图技术 能用滑动门做导航栏案例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/css-day07/xian.jpg">
+<meta property="og:updated_time" content="2020-05-22T02:29:05.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS-Day07">
+<meta name="twitter:description" content="第01阶段.前端基础.CSS高级技巧  CSS高级技巧目标  理解 能说出元素显示隐藏最常见的写法 能说出精灵图产生的目的 能说出去除图片底侧空白缝隙的方法   应用 能写出最常见的鼠标样式 能使用精灵图技术 能用滑动门做导航栏案例">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/css-day07/xian.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="CSS-Day07" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/css-day07/xian.jpg" alt="CSS-Day07">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>CSS-Day07
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-22T02:19:33.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-22</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-22T02:29:05.242Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-22</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    20 分钟 读完 (大约 2948 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第01阶段.前端基础.CSS高级技巧</p>
+</blockquote>
+<h1 id="CSS高级技巧"><a href="#CSS高级技巧" class="headerlink" title="CSS高级技巧"></a>CSS高级技巧</h1><p><strong>目标</strong></p>
+<ul>
+<li>理解<ul>
+<li>能说出元素显示隐藏最常见的写法</li>
+<li>能说出精灵图产生的目的</li>
+<li>能说出去除图片底侧空白缝隙的方法</li>
+</ul>
+</li>
+<li>应用<ul>
+<li>能写出最常见的鼠标样式</li>
+<li>能使用精灵图技术</li>
+<li>能用滑动门做导航栏案例<a id="more"></a>
+<h2 id="元素的显示与隐藏"><a href="#元素的显示与隐藏" class="headerlink" title="元素的显示与隐藏"></a>元素的显示与隐藏</h2></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>目的</p>
+<p>让一个元素在页面中消失或者显示出来</p>
+</li>
+<li><p>场景</p>
+<p>类似网站广告，当我们点击关闭就不见了，但是我们重新刷新页面，会重新出现！</p>
+</li>
+</ul>
+<h3 id="display-显示（重点）"><a href="#display-显示（重点）" class="headerlink" title="display 显示（重点）"></a>display 显示（重点）</h3><ul>
+<li><p>display 设置或检索对象是否及如何显示。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">display: none 隐藏对象</span><br><span class="line"></span><br><span class="line">display：block 除了转换为块级元素之外，同时还有显示元素的意思。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特点： 隐藏之后，不再保留位置。</p>
+</li>
+</ul>
+<p><img src="/前端笔记/css-day07/29none.png" alt></p>
+<p>实际开发场景：</p>
+<blockquote>
+<p>配合后面js做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单， 应用极为广泛</p>
+</blockquote>
+<h3 id="visibility-可见性-了解"><a href="#visibility-可见性-了解" class="headerlink" title="visibility 可见性 (了解)"></a>visibility 可见性 (了解)</h3><ul>
+<li><p>设置或检索是否显示对象。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">visibility：visible ; 　对象可视</span><br><span class="line"></span><br><span class="line">visibility：hidden; 　  对象隐藏</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特点： 隐藏之后，继续保留原有位置。（停职留薪）</p>
+</li>
+</ul>
+<p><img src="/前端笔记/css-day07/30visibility.png" alt></p>
+<h3 id="overflow-溢出-重点"><a href="#overflow-溢出-重点" class="headerlink" title="overflow 溢出(重点)"></a>overflow 溢出(重点)</h3><ul>
+<li>检索或设置当对象的内容超过其指定高度及宽度时如何管理内容。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>visible</strong></td>
+<td>不剪切内容也不添加滚动条</td>
+</tr>
+<tr>
+<td><strong>hidden</strong></td>
+<td>不显示超过对象尺寸的内容，超出的部分隐藏掉</td>
+</tr>
+<tr>
+<td><strong>scroll</strong></td>
+<td>不管超出内容否，总是显示滚动条</td>
+</tr>
+<tr>
+<td><strong>auto</strong></td>
+<td>超出自动显示滚动条，不超出不显示滚动条</td>
+</tr>
+</tbody></table>
+<p> <img src="/前端笔记/css-day07/33overflow.png" alt></p>
+<p>实际开发场景：</p>
+<ol>
+<li>清除浮动</li>
+<li>隐藏超出内容，隐藏掉,  不允许内容超过父盒子。</li>
+</ol>
+<h3 id="显示与隐藏总结"><a href="#显示与隐藏总结" class="headerlink" title="显示与隐藏总结"></a>显示与隐藏总结</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>区别</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>display</strong></td>
+<td>隐藏对象，不保留位置</td>
+<td>配合后面js做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单， 应用极为广泛</td>
+</tr>
+<tr>
+<td><strong>visibility</strong></td>
+<td>隐藏对象，保留位置</td>
+<td>使用较少</td>
+</tr>
+<tr>
+<td><strong>overflow</strong></td>
+<td>只是隐藏超出大小的部分</td>
+<td>1. 可以清除浮动 2. 保证盒子里面的内容不会超出该盒子范围</td>
+</tr>
+</tbody></table>
+<h2 id="CSS用户界面样式"><a href="#CSS用户界面样式" class="headerlink" title="CSS用户界面样式"></a>CSS用户界面样式</h2><ul>
+<li>所谓的界面样式， 就是更改一些用户操作样式，以便提高更好的用户体验。<ul>
+<li>更改用户的鼠标样式 (滚动条因为兼容性非常差，我们不研究) </li>
+<li>表单轮廓等。</li>
+<li>防止表单域拖拽</li>
+</ul>
+</li>
+</ul>
+<h3 id="鼠标样式cursor"><a href="#鼠标样式cursor" class="headerlink" title="鼠标样式cursor"></a>鼠标样式cursor</h3><p> 设置或检索在对象上移动的鼠标指针采用何种系统预定义的光标形状。</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>default</strong></td>
+<td>小白  默认</td>
+</tr>
+<tr>
+<td><strong>pointer</strong></td>
+<td>小手</td>
+</tr>
+<tr>
+<td><strong>move</strong></td>
+<td>移动</td>
+</tr>
+<tr>
+<td><strong>text</strong></td>
+<td>文本</td>
+</tr>
+<tr>
+<td><strong>not-allowed</strong></td>
+<td>禁止</td>
+</tr>
+</tbody></table>
+<p> 鼠标放我身上查看效果哦：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"cursor:default"</span>&gt;</span>我是小白<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"cursor:pointer"</span>&gt;</span>我是小手<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"cursor:move"</span>&gt;</span>我是移动<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"cursor:text"</span>&gt;</span>我是文本<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"cursor:not-allowed"</span>&gt;</span>我是文本<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="轮廓线-outline"><a href="#轮廓线-outline" class="headerlink" title="轮廓线 outline"></a>轮廓线 outline</h3><p><img src="/前端笔记/css-day07/outline.png" alt></p>
+<p> 是绘制于元素周围的一条线，位于边框边缘的外围，可起到突出元素的作用。 </p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">outline : outline-color ||outline-style || outline-width</span><br></pre></td></tr></table></figure>
+
+<p> 但是我们都不关心可以设置多少，我们平时都是去掉的。 li  </p>
+<p>最直接的写法是 ：  outline: 0;   或者  outline: none;</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">input</span>  <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>  <span class="hljs-attr">style</span>=<span class="hljs-string">"outline: 0;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="防止拖拽文本域resize"><a href="#防止拖拽文本域resize" class="headerlink" title="防止拖拽文本域resize"></a>防止拖拽文本域resize</h3><p><img src="/前端笔记/css-day07/34textarea.png" alt></p>
+<p>实际开发中，我们文本域右下角是不可以拖拽： </p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>  <span class="hljs-attr">style</span>=<span class="hljs-string">"resize: none;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="用户界面样式总结"><a href="#用户界面样式总结" class="headerlink" title="用户界面样式总结"></a>用户界面样式总结</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>用途</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>鼠标样式</strong></td>
+<td>更改鼠标样式cursor</td>
+<td>样式很多，重点记住 pointer</td>
+</tr>
+<tr>
+<td><strong>轮廓线</strong></td>
+<td>表单默认outline</td>
+<td>outline 轮廓线，我们一般直接去掉，border是边框，我们会经常用</td>
+</tr>
+<tr>
+<td>防止拖拽</td>
+<td>主要针对文本域resize</td>
+<td>防止用户随意拖拽文本域，造成页面布局混乱，我们resize:none</td>
+</tr>
+</tbody></table>
+<h2 id="vertical-align-垂直对齐"><a href="#vertical-align-垂直对齐" class="headerlink" title="vertical-align 垂直对齐"></a>vertical-align 垂直对齐</h2><ul>
+<li>有宽度的块级元素居中对齐，是margin: 0 auto;</li>
+<li>让文字居中对齐，是 text-align: center;</li>
+</ul>
+<p>但是我们从来没有讲过有垂直居中的属性。</p>
+<p>vertical-align 垂直对齐，它只针对于<strong>行内元素</strong>或者<strong>行内块元素</strong>，</p>
+<p><img src="/前端笔记/css-day07/xian.jpg" alt></p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vertical-align : baseline |top |middle |bottom</span><br></pre></td></tr></table></figure>
+
+<p>设置或检索对象内容的垂直对其方式。</p>
+<ul>
+<li><p>注意：</p>
+<p>vertical-align 不影响块级元素中的内容对齐，它只针对于<strong>行内元素</strong>或者<strong>行内块元素</strong>，</p>
+<p>特别是行内块元素， <strong>通常用来控制图片/表单与文字的对齐</strong>。</p>
+</li>
+</ul>
+<h3 id="图片、表单和文字对齐"><a href="#图片、表单和文字对齐" class="headerlink" title="图片、表单和文字对齐"></a>图片、表单和文字对齐</h3><p>所以我们知道，我们可以通过vertical-align 控制图片和文字的垂直关系了。 默认的图片会和文字基线对齐。</p>
+<p> <img src="/前端笔记/css-day07/%E5%9F%BA%E7%BA%BF%E5%AF%B9%E9%BD%90.jpg" alt></p>
+<p><img src="/前端笔记/css-day07/1498467742995.png" alt></p>
+<h3 id="去除图片底侧空白缝隙"><a href="#去除图片底侧空白缝隙" class="headerlink" title="去除图片底侧空白缝隙"></a>去除图片底侧空白缝隙</h3><p><img src="/前端笔记/css-day07/35vertical.png" alt></p>
+<ul>
+<li><p>原因：</p>
+<p>图片或者表单等行内块元素，他的底线会和父级盒子的基线对齐。</p>
+<p>就是图片底侧会有一个空白缝隙。</p>
+</li>
+<li><p>解决的方法就是：  </p>
+<ul>
+<li>给img vertical-align:middle | top| bottom等等。  让图片不要和基线对齐。<img src="/前端笔记/css-day07/1633.png" alt></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>给img 添加 display：block; 转换为块级元素就不会存在问题了。<img src="/前端笔记/css-day07/sina1.png" alt></li>
+</ul>
+<h2 id="溢出的文字省略号显示"><a href="#溢出的文字省略号显示" class="headerlink" title="溢出的文字省略号显示"></a>溢出的文字省略号显示</h2><h3 id="white-space"><a href="#white-space" class="headerlink" title="white-space"></a>white-space</h3><ul>
+<li>white-space设置或检索对象内文本显示方式。通常我们使用于强制一行显示内容 </li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">white-space:normal ；默认处理方式</span><br><span class="line"></span><br><span class="line">white-space:nowrap ；　强制在同一行内显示所有文本，直到文本结束或者遭遇br标签对象才换行。</span><br></pre></td></tr></table></figure>
+
+<h3 id="text-overflow-文字溢出"><a href="#text-overflow-文字溢出" class="headerlink" title="text-overflow 文字溢出"></a>text-overflow 文字溢出</h3><ul>
+<li>设置或检索是否使用一个省略标记（…）标示对象内文本的溢出</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text-overflow : clip ；不显示省略标记（...），而是简单的裁切 </span><br><span class="line"></span><br><span class="line">text-overflow：ellipsis ； 当对象内文本溢出时显示省略标记（...）</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<p>一定要首先强制一行内显示，再次和overflow属性  搭配使用</p>
+<p><img src="/前端笔记/css-day07/dot.png" alt></p>
+<h3 id="总结三步曲"><a href="#总结三步曲" class="headerlink" title="总结三步曲"></a>总结三步曲</h3><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*1. 先强制一行内显示文本*/</span></span><br><span class="line">    <span class="hljs-selector-tag">white-space</span>: <span class="hljs-selector-tag">nowrap</span>;</span><br><span class="line"><span class="hljs-comment">/*2. 超出的部分隐藏*/</span></span><br><span class="line">    <span class="hljs-selector-tag">overflow</span>: <span class="hljs-selector-tag">hidden</span>;</span><br><span class="line"><span class="hljs-comment">/*3. 文字用省略号替代超出的部分*/</span></span><br><span class="line">    <span class="hljs-selector-tag">text-overflow</span>: <span class="hljs-selector-tag">ellipsis</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="CSS精灵技术（sprite-重点"><a href="#CSS精灵技术（sprite-重点" class="headerlink" title="CSS精灵技术（sprite) 重点"></a>CSS精灵技术（sprite) 重点</h2><h3 id="为什么需要精灵技术"><a href="#为什么需要精灵技术" class="headerlink" title="为什么需要精灵技术"></a>为什么需要精灵技术</h3><p><img src="/前端笔记/css-day07/sss.png" alt></p>
+<p>图所示为网页的请求原理图，当用户访问一个网站时，需要向服务器发送请求，网页上的每张图像都要经过一次请求才能展现给用户。</p>
+<p>然而，一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多时，服务器就会频繁地接受和发送请求，这将大大降低页面的加载速度。</p>
+<p><strong>pink老师告诉你我们为什么需要精灵技术：</strong></p>
+<blockquote>
+<p> <strong>为了有效地减少服务器接受和发送请求的次数，提高页面的加载速度。</strong></p>
+</blockquote>
+<p>出现了CSS精灵技术（也称CSS Sprites、CSS雪碧）。</p>
+<h3 id="精灵技术讲解"><a href="#精灵技术讲解" class="headerlink" title="精灵技术讲解"></a>精灵技术讲解</h3><p>CSS 精灵其实是将网页中的一些背景图像整合到一张大图中（精灵图），然而，各个网页元素通常只需要精灵图中不同位置的某个小图，要想精确定位到精灵图中的某个小图。</p>
+<p><img src="/前端笔记/css-day07/jds.png" alt></p>
+<p>这样，当用户访问该页面时，只需向服务发送一次请求，网页中的背景图像即可全部展示出来。</p>
+<p>我们需要使用CSS的</p>
+<ul>
+<li>background-image、</li>
+<li>background-repeat</li>
+<li>background-position属性进行背景定位，</li>
+<li>其中最关键的是使用background-position 属性精确地定位。</li>
+</ul>
+<h3 id="精灵技术使用的核心总结"><a href="#精灵技术使用的核心总结" class="headerlink" title="精灵技术使用的核心总结"></a>精灵技术使用的核心总结</h3><p>首先我们知道，css精灵技术主要针对于背景图片，插入的图片img 是不需要这个技术的。</p>
+<ol>
+<li>精确测量，每个小背景图片的大小和 位置。</li>
+<li>给盒子指定小背景图片时， 背景定位基本都是 负值。</li>
+</ol>
+<h3 id="制作精灵图-了解"><a href="#制作精灵图-了解" class="headerlink" title="制作精灵图(了解)"></a>制作精灵图(了解)</h3><p>CSS 精灵其实是将网页中的一些背景图像整合到一张大图中（精灵图），那我们要做的，就是把小图拼合成一张大图。</p>
+<p>大部分情况下，精灵图都是网页美工做。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">我们精灵图上放的都是小的装饰性质的背景图片。 插入图片不能往上放。</span><br><span class="line">我们可以横向摆放也可以纵向摆放，但是每个图片之间留有适当的空隙</span><br><span class="line">在我们精灵图的最低端，留一片空隙，方便我们以后添加其他精灵图。</span><br></pre></td></tr></table></figure>
+
+<p>结束语：   小公司，背景图片很少的情况，没有必要使用精灵技术，维护成本太高。 如果是背景图片比较多，可以建议使用精灵技术。</p>
+<h2 id="滑动门"><a href="#滑动门" class="headerlink" title="滑动门"></a>滑动门</h2><p>先来体会下现实中的滑动门,或者你可以叫做推拉门：</p>
+<p><img src="/前端笔记/css-day07/h.gif" alt></p>
+<h3 id="滑动门出现的背景"><a href="#滑动门出现的背景" class="headerlink" title="滑动门出现的背景"></a>滑动门出现的背景</h3><p>制作网页时，为了美观，常常需要为网页元素设置特殊形状的背景，比如微信导航栏，有凸起和凹下去的感觉，最大的问题是里面的字数不一样多，咋办？</p>
+<p><img src="/前端笔记/css-day07/wxx.jpg" alt></p>
+<p>为了使各种特殊形状的背景能够自适应元素中文本内容的多少，出现了CSS滑动门技术。它从新的角度构建页面，使各种特殊形状的背景能够自由拉伸滑动，以适应元素内部的文本内容，可用性更强。 最常见于各种导航栏的滑动门。</p>
+<p><a href="http://weixin.qq.com/" target="_blank" rel="noopener">http://weixin.qq.com/</a></p>
+<h3 id="核心技术"><a href="#核心技术" class="headerlink" title="核心技术"></a>核心技术</h3><p>核心技术就是利用CSS精灵（主要是背景位置）和 盒子padding撑开宽度, 以便能适应不同字数的导航栏。</p>
+<p>一般的经典布局都是这样的：</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>导航栏内容<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>css样式</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">      <span class="hljs-attribute">padding</span>:<span class="hljs-number">0</span>;</span><br><span class="line">      <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-tag">body</span>&#123;</span><br><span class="line">      <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(images/wx.jpg) repeat-x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-class">.father</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">padding-top</span>:<span class="hljs-number">20px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-tag">li</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">padding-left</span>: <span class="hljs-number">16px</span>;</span><br><span class="line">      <span class="hljs-attribute">height</span>: <span class="hljs-number">33px</span>;</span><br><span class="line">      <span class="hljs-attribute">float</span>: left;</span><br><span class="line">      <span class="hljs-attribute">line-height</span>: <span class="hljs-number">33px</span>;</span><br><span class="line">      <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span>  <span class="hljs-number">10px</span>;</span><br><span class="line">      <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(./images/to.png) no-repeat left ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">padding-right</span>: <span class="hljs-number">16px</span>;</span><br><span class="line">      <span class="hljs-attribute">height</span>: <span class="hljs-number">33px</span>;</span><br><span class="line">      <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="line">      <span class="hljs-attribute">color</span>:<span class="hljs-number">#fff</span>;</span><br><span class="line">      <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(./images/to.png) no-repeat right ;</span><br><span class="line">      <span class="hljs-attribute">text-decoration</span>: none;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:hover</span>,</span><br><span class="line">     <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">background-image</span>:<span class="hljs-built_in">url</span>(./images/ao.png);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结： </p>
+<ol>
+<li>a 设置 背景左侧，padding撑开合适宽度。    </li>
+<li>span 设置背景右侧， padding撑开合适宽度 剩下由文字继续撑开宽度。</li>
+<li>之所以a包含span就是因为 整个导航都是可以点击的。</li>
+</ol>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展@"></a>拓展@</h2><h3 id="margin负值之美"><a href="#margin负值之美" class="headerlink" title="margin负值之美"></a>margin负值之美</h3><h4 id="负边距-定位：水平垂直居中"><a href="#负边距-定位：水平垂直居中" class="headerlink" title="负边距+定位：水平垂直居中"></a>负边距+定位：水平垂直居中</h4><p>咱们前面讲过， 一个绝对定位的盒子， 利用  父级盒子的 50%，  然后 往左(上) 走 自己宽度的一半 ，可以实现盒子水平垂直居中。</p>
+<h4 id="压住盒子相邻边框"><a href="#压住盒子相邻边框" class="headerlink" title="压住盒子相邻边框"></a>压住盒子相邻边框</h4><p><img src="/前端笔记/css-day07/margin.png" alt></p>
+<h3 id="CSS三角形之美"><a href="#CSS三角形之美" class="headerlink" title="CSS三角形之美"></a>CSS三角形之美</h3><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="hljs-attribute">width</span>: <span class="hljs-number">0</span>; </span><br><span class="line"></span><br><span class="line">   <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;</span><br><span class="line">   <span class="hljs-attribute">line-height</span>:<span class="hljs-number">0</span>；</span><br><span class="line">   font-size: <span class="hljs-number">0</span>;</span><br><span class="line"><span class="hljs-attribute">border-top</span>: <span class="hljs-number">10px</span> solid red;</span><br><span class="line"></span><br><span class="line"><span class="hljs-attribute">border-right</span>: <span class="hljs-number">10px</span> solid green;</span><br><span class="line"></span><br><span class="line"><span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">10px</span> solid blue;</span><br><span class="line"></span><br><span class="line"><span class="hljs-attribute">border-left</span>: <span class="hljs-number">10px</span> solid <span class="hljs-number">#000</span>; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一张图， 你就知道 css 三角是怎么来的了, 做法如下：</p>
+<p> <img src="/前端笔记/css-day07/arr.png" alt></p>
+<ol>
+<li>我们用css 边框可以模拟三角效果</li>
+<li>宽度高度为0</li>
+<li>我们4个边框都要写， 只保留需要的边框颜色，其余的不能省略，都改为 transparent 透明就好了</li>
+<li>为了照顾兼容性 低版本的浏览器，加上 font-size: 0;  line-height: 0;</li>
+</ol>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/css-day07/">CSS-Day07</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/css-day07/">http://www.itfool.cn/前端笔记/css-day07/</a></li>
+            <li><strong>发布时间：</strong>2020-05-22</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/CSS/">CSS</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/css-day06/">
+                <span class="level-item">CSS-Day06</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        13
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        3
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#CSS高级技巧">
+        <span class="has-mr-6">1</span>
+        <span>CSS高级技巧</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#元素的显示与隐藏">
+        <span class="has-mr-6">1.1</span>
+        <span>元素的显示与隐藏</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#display-显示（重点）">
+        <span class="has-mr-6">1.1.1</span>
+        <span>display 显示（重点）</span>
+        </a></li><li>
+        <a class="is-flex" href="#visibility-可见性-了解">
+        <span class="has-mr-6">1.1.2</span>
+        <span>visibility 可见性 (了解)</span>
+        </a></li><li>
+        <a class="is-flex" href="#overflow-溢出-重点">
+        <span class="has-mr-6">1.1.3</span>
+        <span>overflow 溢出(重点)</span>
+        </a></li><li>
+        <a class="is-flex" href="#显示与隐藏总结">
+        <span class="has-mr-6">1.1.4</span>
+        <span>显示与隐藏总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#CSS用户界面样式">
+        <span class="has-mr-6">1.2</span>
+        <span>CSS用户界面样式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#鼠标样式cursor">
+        <span class="has-mr-6">1.2.1</span>
+        <span>鼠标样式cursor</span>
+        </a></li><li>
+        <a class="is-flex" href="#轮廓线-outline">
+        <span class="has-mr-6">1.2.2</span>
+        <span>轮廓线 outline</span>
+        </a></li><li>
+        <a class="is-flex" href="#防止拖拽文本域resize">
+        <span class="has-mr-6">1.2.3</span>
+        <span>防止拖拽文本域resize</span>
+        </a></li><li>
+        <a class="is-flex" href="#用户界面样式总结">
+        <span class="has-mr-6">1.2.4</span>
+        <span>用户界面样式总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#vertical-align-垂直对齐">
+        <span class="has-mr-6">1.3</span>
+        <span>vertical-align 垂直对齐</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#图片、表单和文字对齐">
+        <span class="has-mr-6">1.3.1</span>
+        <span>图片、表单和文字对齐</span>
+        </a></li><li>
+        <a class="is-flex" href="#去除图片底侧空白缝隙">
+        <span class="has-mr-6">1.3.2</span>
+        <span>去除图片底侧空白缝隙</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#溢出的文字省略号显示">
+        <span class="has-mr-6">1.4</span>
+        <span>溢出的文字省略号显示</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#white-space">
+        <span class="has-mr-6">1.4.1</span>
+        <span>white-space</span>
+        </a></li><li>
+        <a class="is-flex" href="#text-overflow-文字溢出">
+        <span class="has-mr-6">1.4.2</span>
+        <span>text-overflow 文字溢出</span>
+        </a></li><li>
+        <a class="is-flex" href="#总结三步曲">
+        <span class="has-mr-6">1.4.3</span>
+        <span>总结三步曲</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#CSS精灵技术（sprite-重点">
+        <span class="has-mr-6">1.5</span>
+        <span>CSS精灵技术（sprite) 重点</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#为什么需要精灵技术">
+        <span class="has-mr-6">1.5.1</span>
+        <span>为什么需要精灵技术</span>
+        </a></li><li>
+        <a class="is-flex" href="#精灵技术讲解">
+        <span class="has-mr-6">1.5.2</span>
+        <span>精灵技术讲解</span>
+        </a></li><li>
+        <a class="is-flex" href="#精灵技术使用的核心总结">
+        <span class="has-mr-6">1.5.3</span>
+        <span>精灵技术使用的核心总结</span>
+        </a></li><li>
+        <a class="is-flex" href="#制作精灵图-了解">
+        <span class="has-mr-6">1.5.4</span>
+        <span>制作精灵图(了解)</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#滑动门">
+        <span class="has-mr-6">1.6</span>
+        <span>滑动门</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#滑动门出现的背景">
+        <span class="has-mr-6">1.6.1</span>
+        <span>滑动门出现的背景</span>
+        </a></li><li>
+        <a class="is-flex" href="#核心技术">
+        <span class="has-mr-6">1.6.2</span>
+        <span>核心技术</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#拓展">
+        <span class="has-mr-6">1.7</span>
+        <span>拓展@</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#margin负值之美">
+        <span class="has-mr-6">1.7.1</span>
+        <span>margin负值之美</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS三角形之美">
+        <span class="has-mr-6">1.7.2</span>
+        <span>CSS三角形之美</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="CSS-Day07" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
