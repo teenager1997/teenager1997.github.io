@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>HTML5+CSS3-Day01 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第02阶段.移动Web网页开发.HTML5标签  HTML5  第一天什么是 HTML5 HTML5 的概念与定义   定义：HTML5 定义了 HTML 标准的最新版本，是对 HTML 的第五次重大修改，号称下一代的 HTML  两个概念： 是一个新版本的 HTML 语言，定义了新的标签、特性和属性 拥有一个强大的技术集，这些技术集是指： HTML5 、CSS3 、javascript, 这也">
+<meta name="keywords" content="HTML5,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5+CSS3-Day01">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/html5-css3-day01/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第02阶段.移动Web网页开发.HTML5标签  HTML5  第一天什么是 HTML5 HTML5 的概念与定义   定义：HTML5 定义了 HTML 标准的最新版本，是对 HTML 的第五次重大修改，号称下一代的 HTML  两个概念： 是一个新版本的 HTML 语言，定义了新的标签、特性和属性 拥有一个强大的技术集，这些技术集是指： HTML5 、CSS3 、javascript, 这也">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/html5+css3-day01/yuyibq.png">
+<meta property="og:updated_time" content="2020-05-23T02:47:57.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5+CSS3-Day01">
+<meta name="twitter:description" content="第02阶段.移动Web网页开发.HTML5标签  HTML5  第一天什么是 HTML5 HTML5 的概念与定义   定义：HTML5 定义了 HTML 标准的最新版本，是对 HTML 的第五次重大修改，号称下一代的 HTML  两个概念： 是一个新版本的 HTML 语言，定义了新的标签、特性和属性 拥有一个强大的技术集，这些技术集是指： HTML5 、CSS3 、javascript, 这也">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/html5+css3-day01/yuyibq.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="HTML5+CSS3-Day01" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/html5+css3-day01/yuyibq.png" alt="HTML5+CSS3-Day01">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>HTML5+CSS3-Day01
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T02:16:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T02:47:57.359Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    12 分钟 读完 (大约 1753 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第02阶段.移动Web网页开发.HTML5标签</p>
+</blockquote>
+<h3 id="HTML5-第一天"><a href="#HTML5-第一天" class="headerlink" title="HTML5  第一天"></a>HTML5  第一天</h3><h6 id="什么是-HTML5"><a href="#什么是-HTML5" class="headerlink" title="什么是 HTML5"></a>什么是 <code>HTML5</code></h6><ol>
+<li><p><code>HTML5</code> 的概念与定义 </p>
+<ul>
+<li>定义：<code>HTML5</code> 定义了 <code>HTML</code> 标准的最新版本，是对 <code>HTML</code> 的第五次重大修改，号称下一代的 <code>HTML</code> </li>
+<li>两个概念：<ul>
+<li>是一个新版本的 <code>HTML</code> 语言，定义了新的标签、特性和属性</li>
+<li>拥有一个强大的技术集，这些技术集是指： <code>HTML5</code> 、<code>CSS3</code> 、<code>javascript</code>, 这也是广义上的 <code>HTML5</code><a id="more"></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>HTML5</code> 拓展了哪些内容</p>
+<ul>
+<li>语义化标签</li>
+<li>本地存储</li>
+<li>兼容特性</li>
+<li><code>2D</code>、<code>3D</code> </li>
+<li>动画、过渡</li>
+<li><code>CSS3</code> 特性</li>
+<li>性能与集成</li>
+</ul>
+</li>
+<li><p><code>HTML5</code> 的现状</p>
+<p>  绝对多数新的属性，都已经被浏览器所支持，最新版本的浏览器已经开始陆续支持最新的特性，</p>
+<p>  总的来说：<code>HTML5</code> 已经是大势所趋</p>
+</li>
+</ol>
+<h6 id="HTML5-新增标签"><a href="#HTML5-新增标签" class="headerlink" title="HTML5 新增标签"></a><code>HTML5</code> 新增标签</h6><ol>
+<li><p>什么是语义化</p>
+</li>
+<li><p>新增了那些语义化标签</p>
+<ul>
+<li><code>header</code>   —  头部标签</li>
+<li><code>nav</code>        —  导航标签</li>
+<li><code>article</code> —   内容标签</li>
+<li><code>section</code> —   块级标签</li>
+<li><code>aside</code>     —   侧边栏标签</li>
+<li><code>footer</code>   —   尾部标签</li>
+</ul>
+</li>
+</ol>
+<pre><code>![](HTML5-CSS3-Day01/yuyibq.png)</code></pre><ol start="3">
+<li><p>使用语义化标签的注意</p>
+<ul>
+<li>语义化标签主要针对搜索引擎</li>
+<li>新标签可以使用一次或者多次</li>
+<li>在 <code>IE9</code> 浏览器中，需要把语义化标签都转换为块级元素</li>
+<li>语义化标签，在移动端支持比较友好，</li>
+<li>另外，<code>HTML5</code> 新增的了很多的语义化标签，随着课程深入，还会学习到其他的</li>
+</ul>
+</li>
+</ol>
+<h6 id="三、多媒体音频标签"><a href="#三、多媒体音频标签" class="headerlink" title="三、多媒体音频标签"></a>三、多媒体音频标签</h6><ol>
+<li><p>多媒体标签有两个，分别是</p>
+<ul>
+<li>音频  – <code>audio</code></li>
+<li>视频  – <code>video</code></li>
+</ul>
+</li>
+<li><p><code>audio</code> 标签说明</p>
+<ul>
+<li>可以在不使用标签的情况下，也能够原生的支持音频格式文件的播放，</li>
+<li>但是：播放格式是有限的</li>
+</ul>
+</li>
+<li><p>audio 支持的音频格式</p>
+<ul>
+<li>audio 目前支持三种格式</li>
+</ul>
+</li>
+</ol>
+<p>   <img src="/前端笔记/html5-css3-day01/audio.png" alt></p>
+<ol start="4">
+<li>audio 的参数</li>
+</ol>
+<p>   <img src="/前端笔记/html5-css3-day01/audiocanshu.png" alt></p>
+<p>5、audio 代码演示</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="hljs-selector-tag">body</span>&gt;</span><br><span class="line">  &lt;!<span class="hljs-selector-tag">--</span> 注意：在 <span class="hljs-selector-tag">chrome</span> 浏览器中已经禁用了 <span class="hljs-selector-tag">autoplay</span> 属性 <span class="hljs-selector-tag">--</span>&gt;</span><br><span class="line">  &lt;!-- &lt;audio src="./media/snow.mp3" controls autoplay&gt;&lt;/audio&gt; --&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!<span class="hljs-selector-tag">--</span> </span><br><span class="line">    因为不同浏览器支持不同的格式，所以我们采取的方案是这个音频准备多个文件</span><br><span class="line">   <span class="hljs-selector-tag">--</span>&gt;</span><br><span class="line">  &lt;<span class="hljs-selector-tag">audio</span> <span class="hljs-selector-tag">controls</span>&gt;</span><br><span class="line">    &lt;source src="./media/snow.mp3" type="audio/mpeg" /&gt;</span><br><span class="line">  &lt;/audio&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+
+<h6 id="多媒体视频标签"><a href="#多媒体视频标签" class="headerlink" title="多媒体视频标签"></a>多媒体视频标签</h6><ol>
+<li><p>video 视频标签</p>
+<ul>
+<li>目前支持三种格式</li>
+</ul>
+</li>
+</ol>
+<p>   <img src="/前端笔记/html5-css3-day01/vedio.png" alt></p>
+<ol start="2">
+<li><p>语法格式</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./media/video.mp4"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>video 参数</p>
+<p><img src="/前端笔记/html5-css3-day01/videocanshu.png" alt></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>video 代码演示</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">  <span class="hljs-comment">&lt;!-- &lt;video src="./media/video.mp4" controls="controls"&gt;&lt;/video&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">&lt;!-- 谷歌浏览器禁用了自动播放功能，如果想自动播放，需要添加 muted 属性 --&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">video</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"controls"</span> <span class="hljs-attr">autoplay</span> <span class="hljs-attr">muted</span> <span class="hljs-attr">loop</span> <span class="hljs-attr">poster</span>=<span class="hljs-string">"./media/pig.jpg"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./media/video.mp4"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/mp4"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./media/video.ogg"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"video/ogg"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;/<span class="hljs-name">video</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多媒体标签总结</p>
+<ul>
+<li>音频标签与视频标签使用基本一致</li>
+<li>多媒体标签在不同浏览器下情况不同，存在兼容性问题</li>
+<li>谷歌浏览器把音频和视频标签的自动播放都禁止了</li>
+<li>谷歌浏览器中视频添加 muted 标签可以自己播放</li>
+<li>注意：重点记住使用方法以及自动播放即可，其他属性可以在使用时查找对应的手册</li>
+</ul>
+</li>
+</ol>
+<h6 id="新增-input-标签"><a href="#新增-input-标签" class="headerlink" title="新增 input 标签"></a>新增 input 标签</h6><p><img src="/前端笔记/html5-css3-day01/h5input.png" alt></p>
+<h6 id="新增表单属性"><a href="#新增表单属性" class="headerlink" title="新增表单属性"></a>新增表单属性</h6><p><img src="/前端笔记/html5-css3-day01/newinput.png" alt></p>
+<h6 id="CSS3-属性选择器-上"><a href="#CSS3-属性选择器-上" class="headerlink" title="CSS3 属性选择器(上)"></a><code>CSS3</code> 属性选择器(上)</h6><ol>
+<li><p>什么是 <code>CSS3</code></p>
+<ul>
+<li>在 <code>CSS2</code> 的基础上拓展、新增的样式</li>
+</ul>
+</li>
+<li><p><code>CSS3</code> 发展现状</p>
+<ul>
+<li>移动端支持优于 <code>PC</code> 端</li>
+<li><code>CSS3</code> 目前还草案，在不断改进中</li>
+<li><code>CSS3</code> 相对 <code>H5</code>，应用非常广泛</li>
+</ul>
+</li>
+<li><p>属性选择器列表</p>
+<p><img src="/前端笔记/html5-css3-day01/attrcanshu.png" alt></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>属性选择器代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">button</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">button</span><span class="hljs-selector-attr">[disabled]</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">cursor</span>: default</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="CSS3-属性选择器-下"><a href="#CSS3-属性选择器-下" class="headerlink" title="CSS3 属性选择器(下)"></a><code>CSS3</code> 属性选择器(下)</h6><ol>
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=search]</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: skyblue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">span</span><span class="hljs-selector-attr">[class^=black]</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: lightgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">span</span><span class="hljs-selector-attr">[class$=black]</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: lightsalmon;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">span</span><span class="hljs-selector-attr">[class*=black]</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">color</span>: lightseagreen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h6><ol>
+<li><p>属性列表</p>
+<p><img src="/前端笔记/html5-css3-day01/jiegouweilei.png" alt></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:first-child</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: lightseagreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:last-child</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: lightcoral;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(3)</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: aqua;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="nth-child-参数详解"><a href="#nth-child-参数详解" class="headerlink" title="nth-child 参数详解"></a><code>nth-child</code> 参数详解</h6><ol>
+<li><p>nth-child 详解</p>
+<ul>
+<li><p>注意：本质上就是选中第几个子元素</p>
+</li>
+<li><p>n 可以是数字、关键字、公式</p>
+</li>
+<li><p>n 如果是数字，就是选中第几个</p>
+</li>
+<li><p>常见的关键字有 <code>even</code> 偶数、<code>odd</code> 奇数</p>
+</li>
+<li><p>常见的公式如下(如果 n 是公式，则从 0 开始计算)</p>
+</li>
+<li><p>但是第 0 个元素或者超出了元素的个数会被忽略</p>
+<p><img src="/前端笔记/html5-css3-day01/nthchildcanshu.png" alt></p>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="2">
+<li><p>代码演示</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="hljs-selector-tag">style</span>&gt;</span><br><span class="line">  <span class="hljs-comment">/* 偶数 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(even)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: aquamarine;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 奇数 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(odd)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: blueviolet;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/*n 是公式，从 0 开始计算 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(n)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: lightcoral;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 偶数 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(2n)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: lightskyblue;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 奇数 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(2n</span> + 1) &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: lightsalmon;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 选择第 0 5 10 15, 应该怎么选 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(5n)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: orangered;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* n + 5 就是从第5个开始往后选择 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(n</span> + 5) &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: peru;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* -n + 5 前五个 */</span></span><br><span class="line">  <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span><span class="hljs-selector-pseudo">:nth-child(-n</span> + 5) &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: tan;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="nth-child-和-nt-of-type-的区别"><a href="#nth-child-和-nt-of-type-的区别" class="headerlink" title="nth-child 和  nt-of-type 的区别"></a><code>nth-child</code> 和  <code>nt-of-type</code> 的区别</h6><ol>
+<li><p>代码演示</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="hljs-selector-tag">style</span>&gt;</span><br><span class="line">  <span class="hljs-selector-tag">div</span> <span class="hljs-selector-pseudo">:nth-child(1)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: lightblue;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-tag">div</span> <span class="hljs-selector-pseudo">:nth-child(2)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: lightpink;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">:nth-of-type(2)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: lightseagreen;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-selector-tag">div</span> <span class="hljs-selector-tag">span</span><span class="hljs-selector-pseudo">:nth-of-type(3)</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>区别</p>
+<ul>
+<li><code>nth-child</code>  选择父元素里面的第几个子元素，不管是第几个类型</li>
+<li><code>nt-of-type</code>  选择指定类型的元素</li>
+</ul>
+</li>
+</ol>
+<h6 id="十二、伪元素选择器"><a href="#十二、伪元素选择器" class="headerlink" title="十二、伪元素选择器"></a>十二、伪元素选择器</h6><ol>
+<li><p>伪类选择器</p>
+<p><img src="/前端笔记/html5-css3-day01/weiyuansu.png" alt></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>伪类选择器注意事项</p>
+<ul>
+<li><code>before</code> 和 <code>after</code> 必须有 <code>content</code> 属性</li>
+<li><code>before</code> 在内容前面，after 在内容后面</li>
+<li><code>before</code> 和 <code>after</code> 创建的是一个元素，但是属于行内元素</li>
+<li>创建出来的元素在 <code>Dom</code> 中查找不到，所以称为伪元素</li>
+<li>伪元素和标签选择器一样，权重为 1</li>
+</ul>
+</li>
+<li><p>代码演示</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="hljs-selector-tag">style</span>&gt;</span><br><span class="line">    <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">      <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">      <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid lightcoral;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">::after</span>,</span><br><span class="line">    <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">::before</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;</span><br><span class="line">      <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;</span><br><span class="line">      <span class="hljs-attribute">text-align</span>: center;</span><br><span class="line">      <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">content</span>: <span class="hljs-string">'德'</span>;</span><br><span class="line">      <span class="hljs-attribute">background-color</span>: lightskyblue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">::before</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">content</span>: <span class="hljs-string">'道'</span>;</span><br><span class="line">      <span class="hljs-attribute">background-color</span>: mediumaquamarine;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="伪元素的案例"><a href="#伪元素的案例" class="headerlink" title="伪元素的案例"></a>伪元素的案例</h6><ol>
+<li><p>添加字体图标</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">p</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">width</span>: <span class="hljs-number">220px</span>;</span><br><span class="line">   <span class="hljs-attribute">height</span>: <span class="hljs-number">22px</span>;</span><br><span class="line">   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid lightseagreen;</span><br><span class="line">   <span class="hljs-attribute">margin</span>: <span class="hljs-number">60px</span>;</span><br><span class="line">   <span class="hljs-attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-selector-tag">p</span><span class="hljs-selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">content</span>: <span class="hljs-string">'\ea50'</span>;</span><br><span class="line">  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'icomoon'</span>;</span><br><span class="line">  <span class="hljs-attribute">position</span>: absolute;</span><br><span class="line">  <span class="hljs-attribute">top</span>: -<span class="hljs-number">1px</span>;</span><br><span class="line">  <span class="hljs-attribute">right</span>: <span class="hljs-number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="2D-转换之-translate"><a href="#2D-转换之-translate" class="headerlink" title="2D 转换之 translate"></a><code>2D</code> 转换之 <code>translate</code></h6><ol>
+<li><p><code>2D</code> 转换</p>
+<ul>
+<li><p><code>2D</code> 转换是改变标签在二维平面上的位置和形状</p>
+</li>
+<li><p>移动： <code>translate</code></p>
+</li>
+<li><p>旋转： <code>rotate</code></p>
+</li>
+<li><p>缩放： <code>scale</code></p>
+</li>
+</ul>
+</li>
+<li><p><code>translate</code> 语法</p>
+<ul>
+<li>x 就是 x 轴上水平移动</li>
+<li>y 就是 y 轴上水平移动</li>
+</ul>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">translate</span>(<span class="hljs-selector-tag">x</span>, <span class="hljs-selector-tag">y</span>)</span><br><span class="line"><span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">translateX</span>(<span class="hljs-selector-tag">n</span>)</span><br><span class="line"><span class="hljs-selector-tag">transfrom</span>: <span class="hljs-selector-tag">translateY</span>(<span class="hljs-selector-tag">n</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重点知识点</p>
+<ul>
+<li><code>2D</code> 的移动主要是指 水平、垂直方向上的移动</li>
+<li><code>translate</code> 最大的优点就是不影响其他元素的位置</li>
+<li><code>translate</code> 中的100%单位，是相对于本身的宽度和高度来进行计算的</li>
+<li>行内标签没有效果</li>
+</ul>
+</li>
+<li><p>代码演示</p>
+</li>
+</ol>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: lightseagreen;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">  <span class="hljs-comment">/* 平移 */</span></span><br><span class="line">  <span class="hljs-comment">/* 水平垂直移动 100px */</span></span><br><span class="line">  <span class="hljs-comment">/* transform: translate(100px, 100px); */</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 水平移动 100px */</span></span><br><span class="line">  <span class="hljs-comment">/* transform: translate(100px, 0) */</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 垂直移动 100px */</span></span><br><span class="line">  <span class="hljs-comment">/* transform: translate(0, 100px) */</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 水平移动 100px */</span></span><br><span class="line">  <span class="hljs-comment">/* transform: translateX(100px); */</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">/* 垂直移动 100px */</span></span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(100px)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="让一个盒子水平垂直居中"><a href="#让一个盒子水平垂直居中" class="headerlink" title="让一个盒子水平垂直居中"></a>让一个盒子水平垂直居中</h6><ul>
+<li>看代码</li>
+</ul>
+<h6 id="2D-转换-rotate"><a href="#2D-转换-rotate" class="headerlink" title="2D 转换 rotate"></a><code>2D 转换 rotate</code></h6><ol>
+<li><p>rotate 旋转</p>
+<ul>
+<li><code>2D</code> 旋转指的是让元素在二维平面内顺时针或者逆时针旋转</li>
+</ul>
+</li>
+<li><p><code>rotate</code> 语法</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* 单位是：deg */</span></span><br><span class="line"><span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">rotate</span>(度数)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重点知识点</p>
+<ul>
+<li><code>rotate</code> 里面跟度数，单位是 <code>deg</code></li>
+<li>角度为正时，顺时针，角度为负时，逆时针</li>
+<li>默认旋转的中心点是元素的中心点</li>
+</ul>
+</li>
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">img</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(360deg)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/html5-css3-day01/">HTML5+CSS3-Day01</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/html5-css3-day01/">http://www.itfool.cn/前端笔记/html5-css3-day01/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/HTML5-CSS3/">HTML5+CSS3</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/html5-css3-day02/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HTML5+CSS3-Day02</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/css-day07/">
+                <span class="level-item">CSS-Day07</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        16
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#HTML5-第一天">
+        <span class="has-mr-6">1</span>
+        <span>HTML5  第一天</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是-HTML5">
+        <span class="has-mr-6">1.1</span>
+        <span>什么是 HTML5</span>
+        </a></li><li>
+        <a class="is-flex" href="#HTML5-新增标签">
+        <span class="has-mr-6">1.2</span>
+        <span>HTML5 新增标签</span>
+        </a></li><li>
+        <a class="is-flex" href="#三、多媒体音频标签">
+        <span class="has-mr-6">1.3</span>
+        <span>三、多媒体音频标签</span>
+        </a></li><li>
+        <a class="is-flex" href="#多媒体视频标签">
+        <span class="has-mr-6">1.4</span>
+        <span>多媒体视频标签</span>
+        </a></li><li>
+        <a class="is-flex" href="#新增-input-标签">
+        <span class="has-mr-6">1.5</span>
+        <span>新增 input 标签</span>
+        </a></li><li>
+        <a class="is-flex" href="#新增表单属性">
+        <span class="has-mr-6">1.6</span>
+        <span>新增表单属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS3-属性选择器-上">
+        <span class="has-mr-6">1.7</span>
+        <span>CSS3 属性选择器(上)</span>
+        </a></li><li>
+        <a class="is-flex" href="#CSS3-属性选择器-下">
+        <span class="has-mr-6">1.8</span>
+        <span>CSS3 属性选择器(下)</span>
+        </a></li><li>
+        <a class="is-flex" href="#结构伪类选择器">
+        <span class="has-mr-6">1.9</span>
+        <span>结构伪类选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#nth-child-参数详解">
+        <span class="has-mr-6">1.10</span>
+        <span>nth-child 参数详解</span>
+        </a></li><li>
+        <a class="is-flex" href="#nth-child-和-nt-of-type-的区别">
+        <span class="has-mr-6">1.11</span>
+        <span>nth-child 和  nt-of-type 的区别</span>
+        </a></li><li>
+        <a class="is-flex" href="#十二、伪元素选择器">
+        <span class="has-mr-6">1.12</span>
+        <span>十二、伪元素选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#伪元素的案例">
+        <span class="has-mr-6">1.13</span>
+        <span>伪元素的案例</span>
+        </a></li><li>
+        <a class="is-flex" href="#2D-转换之-translate">
+        <span class="has-mr-6">1.14</span>
+        <span>2D 转换之 translate</span>
+        </a></li><li>
+        <a class="is-flex" href="#让一个盒子水平垂直居中">
+        <span class="has-mr-6">1.15</span>
+        <span>让一个盒子水平垂直居中</span>
+        </a></li><li>
+        <a class="is-flex" href="#2D-转换-rotate">
+        <span class="has-mr-6">1.16</span>
+        <span>2D 转换 rotate</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="HTML5+CSS3-Day01" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

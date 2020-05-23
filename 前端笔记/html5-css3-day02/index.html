@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>HTML5+CSS3-Day02 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第02阶段.移动Web网页开发.CSS3属性  HTML5 第二天rotate 2d旋转指的是让元素在2维平面内顺时针旋转或者逆时针旋转 使用步骤：  给元素添加转换属性 transform 属性值为 rotate(角度)  如 transform:rotate(30deg)  顺时针方向旋转30度  123div&amp;#123;      transform: rotate(0deg);&amp;#125">
+<meta name="keywords" content="HTML5,CSS3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5+CSS3-Day02">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/html5-css3-day02/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第02阶段.移动Web网页开发.CSS3属性  HTML5 第二天rotate 2d旋转指的是让元素在2维平面内顺时针旋转或者逆时针旋转 使用步骤：  给元素添加转换属性 transform 属性值为 rotate(角度)  如 transform:rotate(30deg)  顺时针方向旋转30度  123div&amp;#123;      transform: rotate(0deg);&amp;#125">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/html5+css3-day02/animationcanshu.png">
+<meta property="og:updated_time" content="2020-05-23T02:48:19.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5+CSS3-Day02">
+<meta name="twitter:description" content="第02阶段.移动Web网页开发.CSS3属性  HTML5 第二天rotate 2d旋转指的是让元素在2维平面内顺时针旋转或者逆时针旋转 使用步骤：  给元素添加转换属性 transform 属性值为 rotate(角度)  如 transform:rotate(30deg)  顺时针方向旋转30度  123div&amp;#123;      transform: rotate(0deg);&amp;#125">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/html5+css3-day02/animationcanshu.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="HTML5+CSS3-Day02" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/html5+css3-day02/animationcanshu.png" alt="HTML5+CSS3-Day02">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>HTML5+CSS3-Day02
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T02:32:20.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T02:48:19.515Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    8 分钟 读完 (大约 1204 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第02阶段.移动Web网页开发.CSS3属性</p>
+</blockquote>
+<h3 id="HTML5-第二天"><a href="#HTML5-第二天" class="headerlink" title="HTML5 第二天"></a>HTML5 第二天</h3><h6 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h6><p> 2d旋转指的是让元素在2维平面内顺时针旋转或者逆时针旋转</p>
+<p>使用步骤：</p>
+<ol>
+<li>给元素添加转换属性 <code>transform</code></li>
+<li>属性值为 <code>rotate(角度)</code>  如 <code>transform:rotate(30deg)</code>  顺时针方向旋转<strong>30度</strong></li>
+</ol>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span>&#123;</span><br><span class="line">      <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(0deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h6 id="三角"><a href="#三角" class="headerlink" title="三角"></a>三角</h6><ul>
+<li>代码演示</li>
+</ul>
+<h6 id="设置元素旋转中心点-transform-origin"><a href="#设置元素旋转中心点-transform-origin" class="headerlink" title="设置元素旋转中心点(transform-origin)"></a>设置元素旋转中心点(transform-origin)</h6><ol>
+<li><p><code>transform-origin</code> 基础语法</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">transform-origin</span>: <span class="hljs-selector-tag">x</span> <span class="hljs-selector-tag">y</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重要知识点</p>
+<ul>
+<li>注意后面的参数 x 和 y 用空格隔开</li>
+<li>x y 默认旋转的中心点是元素的中心 (50% 50%)，等价于 <code>center</code>  <code>center</code></li>
+<li>还可以给 x y 设置像素或者方位名词(<code>top</code>、<code>bottom</code>、<code>left</code>、<code>right</code>、<code>center</code>)</li>
+</ul>
+</li>
+</ol>
+<h6 id="旋转中心案例"><a href="#旋转中心案例" class="headerlink" title="旋转中心案例"></a>旋转中心案例</h6><ul>
+<li>代码演示</li>
+</ul>
+<h6 id="2D-转换之-scale"><a href="#2D-转换之-scale" class="headerlink" title="2D 转换之 scale"></a><code>2D</code> 转换之 <code>scale</code></h6><ol>
+<li><p><code>scale</code> 的作用</p>
+<ul>
+<li>用来控制元素的放大与缩小</li>
+</ul>
+</li>
+<li><p>语法</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">transform</span>: <span class="hljs-selector-tag">scale</span>(<span class="hljs-selector-tag">x</span>, <span class="hljs-selector-tag">y</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>知识要点</p>
+<ul>
+<li>注意，x 与 y 之间使用逗号进行分隔</li>
+<li><code>transform: scale(1, 1)</code>: 宽高都放大一倍，相当于没有放大</li>
+<li><code>transform: scale(2, 2)</code>: 宽和高都放大了二倍</li>
+<li><code>transform: scale(2)</code>: 如果只写了一个参数，第二个参数就和第一个参数一致</li>
+<li><code>transform:scale(0.5, 0.5)</code>: 缩小</li>
+<li><code>scale</code> 最大的优势：可以设置转换中心点缩放，默认以中心点缩放，而且不影响其他盒子</li>
+</ul>
+</li>
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line"> <span class="hljs-comment">/* 注意，数字是倍数的含义，所以不需要加单位 */</span></span><br><span class="line"> <span class="hljs-comment">/* transform: scale(2, 2) */</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-comment">/* 实现等比缩放，同时修改宽与高 */</span></span><br><span class="line"> <span class="hljs-comment">/* transform: scale(2) */</span></span><br><span class="line"></span><br><span class="line"> <span class="hljs-comment">/* 小于 1 就等于缩放*/</span></span><br><span class="line"> <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(0.5, 0.5)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="图片放大案例"><a href="#图片放大案例" class="headerlink" title="图片放大案例"></a>图片放大案例</h6><ul>
+<li>代码演示</li>
+</ul>
+<h6 id="分页按钮案例"><a href="#分页按钮案例" class="headerlink" title="分页按钮案例"></a>分页按钮案例</h6><ul>
+<li>代码演示</li>
+</ul>
+<h6 id="2D-转换综合写法以及顺序问题"><a href="#2D-转换综合写法以及顺序问题" class="headerlink" title="2D 转换综合写法以及顺序问题"></a><code>2D</code> 转换综合写法以及顺序问题</h6><ol>
+<li><p>知识要点</p>
+<ul>
+<li>同时使用多个转换，其格式为 <code>transform: translate() rotate() scale()</code></li>
+<li>顺序会影响到转换的效果(先旋转会改变坐标轴方向)</li>
+<li>但我们同时有位置或者其他属性的时候，要将位移放到最前面</li>
+</ul>
+</li>
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(200px, 0) <span class="hljs-built_in">rotate</span>(360deg) <span class="hljs-built_in">scale</span>(1.2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="动画-animation"><a href="#动画-animation" class="headerlink" title="动画(animation)"></a>动画(animation)</h6><ol>
+<li><p>什么是动画</p>
+<ul>
+<li>动画是 <code>CSS3</code> 中最具颠覆性的特征之一，可通过设置多个节点来精确的控制一个或者一组动画，从而实现复杂的动画效果</li>
+</ul>
+</li>
+<li><p>动画的基本使用</p>
+<ul>
+<li>先定义动画</li>
+<li>在调用定义好的动画</li>
+</ul>
+</li>
+<li><p>语法格式(定义动画)</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="hljs-keyword">keyframes</span> 动画名称 &#123;</span><br><span class="line">    0% &#123;</span><br><span class="line">        <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    100% &#123;</span><br><span class="line">        <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语法格式(使用动画)</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">	/* 调用动画 */</span><br><span class="line">    animation-name: 动画名称;</span><br><span class="line"> 	/* 持续时间 */</span><br><span class="line"> 	animation-duration: 持续时间；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动画序列</p>
+<ul>
+<li>0% 是动画的开始，100 % 是动画的完成，这样的规则就是动画序列</li>
+<li>在 @keyframs 中规定某项 CSS 样式，就由创建当前样式逐渐改为新样式的动画效果</li>
+<li>动画是使元素从一个样式逐渐变化为另一个样式的效果，可以改变任意多的样式任意多的次数</li>
+<li>用百分比来规定变化发生的时间，或用 <code>from</code> 和 <code>to</code>，等同于 0% 和 100%</li>
+</ul>
+</li>
+<li><p>代码演示</p>
+<figure class="highlight hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="hljs-selector-tag">style</span>&gt;</span><br><span class="line">    <span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">      <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">      <span class="hljs-attribute">background-color</span>: aquamarine;</span><br><span class="line">      <span class="hljs-attribute">animation-name</span>: move;</span><br><span class="line">      <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">0.5s</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @<span class="hljs-keyword">keyframes</span> move&#123;</span><br><span class="line">      0% &#123;</span><br><span class="line">        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(0px)</span><br><span class="line">      &#125;</span><br><span class="line">      100% &#123;</span><br><span class="line">        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translate</span>(500px, 0)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="动画序列"><a href="#动画序列" class="headerlink" title="动画序列"></a>动画序列</h6><ul>
+<li>代码演示</li>
+</ul>
+<h6 id="动画常见属性"><a href="#动画常见属性" class="headerlink" title="动画常见属性"></a>动画常见属性</h6><ol>
+<li><p>常见的属性</p>
+<p><img src="/前端笔记/html5-css3-day02/animationcanshu.png" alt></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: aquamarine;</span><br><span class="line">  <span class="hljs-comment">/* 动画名称 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-name</span>: move;</span><br><span class="line">  <span class="hljs-comment">/* 动画花费时长 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-duration</span>: <span class="hljs-number">2s</span>;</span><br><span class="line">  <span class="hljs-comment">/* 动画速度曲线 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-timing-function</span>: ease-in-out;</span><br><span class="line">  <span class="hljs-comment">/* 动画等待多长时间执行 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-delay</span>: <span class="hljs-number">2s</span>;</span><br><span class="line">  <span class="hljs-comment">/* 规定动画播放次数 infinite: 无限循环 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-iteration-count</span>: infinite;</span><br><span class="line">  <span class="hljs-comment">/* 是否逆行播放 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-direction</span>: alternate;</span><br><span class="line">  <span class="hljs-comment">/* 动画结束之后的状态 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-fill-mode</span>: forwards;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">div</span><span class="hljs-selector-pseudo">:hover</span> &#123;</span><br><span class="line">  <span class="hljs-comment">/* 规定动画是否暂停或者播放 */</span></span><br><span class="line">  <span class="hljs-attribute">animation-play-state</span>: paused;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="动画简写方式"><a href="#动画简写方式" class="headerlink" title="动画简写方式"></a>动画简写方式</h6><ol>
+<li><p>动画简写方式</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/* animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 起始与结束状态 */</span></span><br><span class="line"><span class="hljs-selector-tag">animation</span>: <span class="hljs-selector-tag">name</span> <span class="hljs-selector-tag">duration</span> <span class="hljs-selector-tag">timing-function</span> <span class="hljs-selector-tag">delay</span> <span class="hljs-selector-tag">iteration-count</span> <span class="hljs-selector-tag">direction</span> <span class="hljs-selector-tag">fill-mode</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>知识要点</p>
+<ul>
+<li>简写属性里面不包含 <code>animation-paly-state</code></li>
+<li>暂停动画 <code>animation-paly-state: paused</code>; 经常和鼠标经过等其他配合使用</li>
+<li>要想动画走回来，而不是直接调回来：<code>animation-direction: alternate</code></li>
+<li>盒子动画结束后，停在结束位置：<code>animation-fill-mode: forwards</code> </li>
+</ul>
+</li>
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">animation</span>: <span class="hljs-selector-tag">move</span> 2<span class="hljs-selector-tag">s</span> <span class="hljs-selector-tag">linear</span> 1<span class="hljs-selector-tag">s</span> <span class="hljs-selector-tag">infinite</span> <span class="hljs-selector-tag">alternate</span> <span class="hljs-selector-tag">forwards</span>;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="速度曲线细节"><a href="#速度曲线细节" class="headerlink" title="速度曲线细节"></a>速度曲线细节</h6><ol>
+<li>速度曲线细节<ul>
+<li><code>animation-timing-function</code>: 规定动画的速度曲线，默认是<code>ease</code></li>
+</ul>
+</li>
+</ol>
+<p><img src="/前端笔记/html5-css3-day02/steps.png" alt></p>
+<ol start="2">
+<li><p>代码演示</p>
+<figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">  <span class="hljs-attribute">width</span>: <span class="hljs-number">0px</span>;</span><br><span class="line">  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;</span><br><span class="line">  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">50px</span>;</span><br><span class="line">  <span class="hljs-attribute">white-space</span>: nowrap;</span><br><span class="line">  <span class="hljs-attribute">overflow</span>: hidden;</span><br><span class="line">  <span class="hljs-attribute">background-color</span>: aquamarine;</span><br><span class="line">  <span class="hljs-attribute">animation</span>: move <span class="hljs-number">4s</span> <span class="hljs-built_in">steps</span>(24) forwards;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="hljs-keyword">keyframes</span> move &#123;</span><br><span class="line">  0% &#123;</span><br><span class="line">    <span class="hljs-attribute">width</span>: <span class="hljs-number">0px</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  100% &#123;</span><br><span class="line">    <span class="hljs-attribute">width</span>: <span class="hljs-number">480px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h6 id="奔跑的熊大"><a href="#奔跑的熊大" class="headerlink" title="奔跑的熊大"></a>奔跑的熊大</h6><ol>
+<li>代码演示</li>
+</ol>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ie=edge"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span><br><span class="line">        body &#123;</span><br><span class="line"><span class="hljs-css">            <span class="hljs-selector-tag">background-color</span>: <span class="hljs-selector-id">#ccc</span>;</span></span><br><span class="line">        &#125;      </span><br><span class="line">        div &#123;</span><br><span class="line">            position: absolute;</span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 100px;</span><br><span class="line">            background: url(media/bear.png) no-repeat;</span><br><span class="line"><span class="hljs-css">            <span class="hljs-comment">/* 我们元素可以添加多个动画， 用逗号分隔 */</span></span></span><br><span class="line"><span class="hljs-css">            <span class="hljs-selector-tag">animation</span>: <span class="hljs-selector-tag">bear</span> <span class="hljs-selector-class">.4s</span> <span class="hljs-selector-tag">steps</span>(8) <span class="hljs-selector-tag">infinite</span>, <span class="hljs-selector-tag">move</span> 3<span class="hljs-selector-tag">s</span> <span class="hljs-selector-tag">forwards</span>;</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"><span class="hljs-css">        @<span class="hljs-keyword">keyframes</span> bear &#123;</span></span><br><span class="line">            0% &#123;</span><br><span class="line">                background-position: 0 0;</span><br><span class="line">            &#125;</span><br><span class="line">            100% &#123;</span><br><span class="line">                background-position: -1600px 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"><span class="hljs-css">        @<span class="hljs-keyword">keyframes</span> move &#123;</span></span><br><span class="line">            0% &#123;</span><br><span class="line">                left: 0;</span><br><span class="line">            &#125;</span><br><span class="line">            100% &#123;</span><br><span class="line">                left: 50%;</span><br><span class="line"><span class="hljs-css">                <span class="hljs-comment">/* margin-left: -100px; */</span></span></span><br><span class="line">                transform: translateX(-50%);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/html5-css3-day02/">HTML5+CSS3-Day02</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/html5-css3-day02/">http://www.itfool.cn/前端笔记/html5-css3-day02/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/HTML5-CSS3/">HTML5+CSS3</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/html5-css3-day03/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">HTML5+CSS3-Day03</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/html5-css3-day01/">
+                <span class="level-item">HTML5+CSS3-Day01</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        16
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        4
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#HTML5-第二天">
+        <span class="has-mr-6">1</span>
+        <span>HTML5 第二天</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#rotate">
+        <span class="has-mr-6">1.1</span>
+        <span>rotate</span>
+        </a></li><li>
+        <a class="is-flex" href="#三角">
+        <span class="has-mr-6">1.2</span>
+        <span>三角</span>
+        </a></li><li>
+        <a class="is-flex" href="#设置元素旋转中心点-transform-origin">
+        <span class="has-mr-6">1.3</span>
+        <span>设置元素旋转中心点(transform-origin)</span>
+        </a></li><li>
+        <a class="is-flex" href="#旋转中心案例">
+        <span class="has-mr-6">1.4</span>
+        <span>旋转中心案例</span>
+        </a></li><li>
+        <a class="is-flex" href="#2D-转换之-scale">
+        <span class="has-mr-6">1.5</span>
+        <span>2D 转换之 scale</span>
+        </a></li><li>
+        <a class="is-flex" href="#图片放大案例">
+        <span class="has-mr-6">1.6</span>
+        <span>图片放大案例</span>
+        </a></li><li>
+        <a class="is-flex" href="#分页按钮案例">
+        <span class="has-mr-6">1.7</span>
+        <span>分页按钮案例</span>
+        </a></li><li>
+        <a class="is-flex" href="#2D-转换综合写法以及顺序问题">
+        <span class="has-mr-6">1.8</span>
+        <span>2D 转换综合写法以及顺序问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画-animation">
+        <span class="has-mr-6">1.9</span>
+        <span>动画(animation)</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画序列">
+        <span class="has-mr-6">1.10</span>
+        <span>动画序列</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画常见属性">
+        <span class="has-mr-6">1.11</span>
+        <span>动画常见属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画简写方式">
+        <span class="has-mr-6">1.12</span>
+        <span>动画简写方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#速度曲线细节">
+        <span class="has-mr-6">1.13</span>
+        <span>速度曲线细节</span>
+        </a></li><li>
+        <a class="is-flex" href="#奔跑的熊大">
+        <span class="has-mr-6">1.14</span>
+        <span>奔跑的熊大</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="HTML5+CSS3-Day02" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
