@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>JavaScript-Day06 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.JavaScript基础.内置对象  JavaScript基础第06天笔记内置对象内置对象​         JavaScript 中的对象分为3种：自定义对象 、内置对象、 浏览器对象​        前面两种对象是JS 基础 内容，属于 ECMAScript；  第三个浏览器对象属于 JS 独有的， JS API 讲解内置对象就是指 JS 语言自带的一些对象，这些对象供开发者使用">
+<meta name="keywords" content="JavaScript,js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript-Day06">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/javascript-day06/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第03阶段.JavaScript基础.内置对象  JavaScript基础第06天笔记内置对象内置对象​         JavaScript 中的对象分为3种：自定义对象 、内置对象、 浏览器对象​        前面两种对象是JS 基础 内容，属于 ECMAScript；  第三个浏览器对象属于 JS 独有的， JS API 讲解内置对象就是指 JS 语言自带的一些对象，这些对象供开发者使用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/javascript-day06/%E5%9B%BE%E7%89%871.png">
+<meta property="og:updated_time" content="2020-05-23T06:12:41.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript-Day06">
+<meta name="twitter:description" content="第03阶段.JavaScript基础.内置对象  JavaScript基础第06天笔记内置对象内置对象​         JavaScript 中的对象分为3种：自定义对象 、内置对象、 浏览器对象​        前面两种对象是JS 基础 内容，属于 ECMAScript；  第三个浏览器对象属于 JS 独有的， JS API 讲解内置对象就是指 JS 语言自带的一些对象，这些对象供开发者使用">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/javascript-day06/%E5%9B%BE%E7%89%871.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="JavaScript-Day06" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%871.png" alt="JavaScript-Day06">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>JavaScript-Day06
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T06:09:26.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T06:12:41.577Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    19 分钟 读完 (大约 2884 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.JavaScript基础.内置对象</p>
+</blockquote>
+<h1 id="JavaScript基础第06天笔记"><a href="#JavaScript基础第06天笔记" class="headerlink" title="JavaScript基础第06天笔记"></a>JavaScript基础第06天笔记</h1><h2 id="内置对象"><a href="#内置对象" class="headerlink" title="内置对象"></a>内置对象</h2><h3 id="内置对象-1"><a href="#内置对象-1" class="headerlink" title="内置对象"></a>内置对象</h3><p>​         JavaScript 中的对象分为3种：<strong>自定义对象 、内置对象、 浏览器对象</strong><br>​        前面两种对象是JS 基础 内容，属于 ECMAScript；  第三个浏览器对象属于 JS 独有的， JS API 讲解内置对象就是指 JS 语言自带的一些对象，这些对象供开发者使用，并提供了一些常用的或是<strong>最基本而必要的功能</strong>（属性和方法），内置对象最大的优点就是帮助我们快速开发</p>
+<p>​         JavaScript 提供了多个内置对象：Math、 Date 、Array、String等    </p>
+<h3 id="查文档"><a href="#查文档" class="headerlink" title="查文档"></a>查文档</h3><p>​        查找文档：学习一个内置对象的使用，只要学会其常用成员的使用即可，我们可以通过查文档学习，可以通过MDN/W3C来查询。<br>​        Mozilla 开发者网络（MDN）提供了有关开放网络技术（Open Web）的信息，包括 HTML、CSS 和万维网及 HTML5 应用的 API。<br>​        MDN:<a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/</a></p>
+<a id="more"></a>
+<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><p>​        Math 对象不是构造函数，它具有数学常数和函数的属性和方法。跟数学相关的运算（求绝对值，取整、最大值等）可以使用 Math 中的成员。</p>
+<table>
+<thead>
+<tr>
+<th>属性、方法名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Math.PI</td>
+<td>圆周率</td>
+</tr>
+<tr>
+<td>Math.floor()</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>Math.ceil()</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>Math.round()</td>
+<td>四舍五入版 就近取整   注意 -3.5   结果是  -3</td>
+</tr>
+<tr>
+<td>Math.abs()</td>
+<td>绝对值</td>
+</tr>
+<tr>
+<td>Math.max()/Math.min()</td>
+<td>求最大和最小值</td>
+</tr>
+<tr>
+<td>Math.random()</td>
+<td>获取范围在[0,1)内的随机值</td>
+</tr>
+</tbody></table>
+<p>​    注意：上面的方法使用时必须带括号</p>
+<p>​    <strong>获取指定范围内的随机整数</strong>：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRandom</span>(<span class="hljs-params">min, max</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * (max - min + <span class="hljs-number">1</span>)) + min; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="日期对象"><a href="#日期对象" class="headerlink" title="日期对象"></a>日期对象</h3><p>​         Date 对象和 Math 对象不一样，Date是一个构造函数，所以使用时需要实例化后才能使用其中具体方法和属性。Date 实例用来处理日期和时间</p>
+<ul>
+<li><p>使用Date实例化日期对象</p>
+<ul>
+<li>获取当前时间必须实例化：</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>获取指定时间的日期对象</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> future = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2019/5/1'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果创建实例时并未传入参数，则得到的日期对象是当前时间对应的日期对象</p>
+</li>
+<li><p>使用Date实例的方法和属性    </p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%871.png" alt></p>
+</li>
+<li><p>通过Date实例获取总毫米数</p>
+<ul>
+<li><p>总毫秒数的含义</p>
+<p>​    基于1970年1月1日（世界标准时间）起的毫秒数</p>
+</li>
+<li><p>获取总毫秒数</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 实例化Date对象</span></span><br><span class="line"><span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line"><span class="hljs-comment">// 1. 用于获取对象的原始值</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(date.valueOf())	</span><br><span class="line"><span class="hljs-built_in">console</span>.log(date.getTime())	</span><br><span class="line"><span class="hljs-comment">// 2. 简单写可以这么做</span></span><br><span class="line"><span class="hljs-keyword">var</span> now = + <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();			</span><br><span class="line"><span class="hljs-comment">// 3. HTML5中提供的方法，有兼容性问题</span></span><br><span class="line"><span class="hljs-keyword">var</span> now = <span class="hljs-built_in">Date</span>.now();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组对象"><a href="#数组对象" class="headerlink" title="数组对象"></a>数组对象</h3><h4 id="创建数组的两种方式"><a href="#创建数组的两种方式" class="headerlink" title="创建数组的两种方式"></a>创建数组的两种方式</h4><ul>
+<li><p>字面量方式</p>
+<ul>
+<li><p>示例代码如下：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>,<span class="hljs-string">"test"</span>,<span class="hljs-literal">true</span>];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>new Array()</p>
+<ul>
+<li><p>示例代码如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var arr = new Array();</span><br></pre></td></tr></table></figure>
+
+<p>​    注意：上面代码中arr创建出的是一个空数组，如果需要使用构造函数Array创建非空数组，可以在创建数组时传入参数</p>
+<p>​    参数传递规则如下：</p>
+<ul>
+<li><p>如果只传入一个参数，则参数规定了数组的长度</p>
+</li>
+<li><p>如果传入了多个参数，则参数称为数组的元素</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="检测是否为数组"><a href="#检测是否为数组" class="headerlink" title="检测是否为数组"></a>检测是否为数组</h4><ul>
+<li><p>instanceof 运算符</p>
+<ul>
+<li><p>instanceof 可以判断一个对象是否是某个构造函数的实例</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">23</span>];</span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(arr <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>); <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(obj <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>); <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Array.isArray()</p>
+<ul>
+<li><p>Array.isArray()用于判断一个对象是否为数组，isArray() 是 HTML5 中提供的方法</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> arr = [<span class="hljs-number">1</span>, <span class="hljs-number">23</span>];</span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.isArray(arr));   <span class="hljs-comment">// true</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Array</span>.isArray(obj));   <span class="hljs-comment">// false</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="添加删除数组元素的方法"><a href="#添加删除数组元素的方法" class="headerlink" title="添加删除数组元素的方法"></a>添加删除数组元素的方法</h4><ul>
+<li><p>数组中有进行增加、删除元素的方法，部分方法如下表</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%872.png" alt></p>
+<p>注意：push、unshift为增加元素方法；pop、shift为删除元素的方法</p>
+</li>
+</ul>
+<h4 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h4><ul>
+<li><p>数组中有对数组本身排序的方法，部分方法如下表</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%873.png" alt></p>
+<p>注意：sort方法需要传入参数来设置升序、降序排序</p>
+<ul>
+<li>如果传入“function(a,b){ return a-b;}”，则为升序</li>
+<li>如果传入“function(a,b){ return b-a;}”，则为降序</li>
+</ul>
+</li>
+</ul>
+<h4 id="数组索引方法"><a href="#数组索引方法" class="headerlink" title="数组索引方法"></a>数组索引方法</h4><ul>
+<li><p>数组中有获取数组指定元素索引值的方法，部分方法如下表</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%874.png" alt></p>
+</li>
+</ul>
+<h4 id="数组转换为字符串"><a href="#数组转换为字符串" class="headerlink" title="数组转换为字符串"></a>数组转换为字符串</h4><ul>
+<li><p>数组中有把数组转化为字符串的方法，部分方法如下表</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%875.png" alt></p>
+<p>注意：join方法如果不传入参数，则按照 “ , ”拼接元素</p>
+</li>
+</ul>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><ul>
+<li><p>数组中还有其他操作方法，同学们可以在课下自行查阅学习</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%876.png" alt></p>
+</li>
+</ul>
+<h3 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h3><h4 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h4><p>​        为了方便操作基本数据类型，JavaScript 还提供了三个特殊的引用类型：String、Number和 Boolean。</p>
+<p>​        基本包装类型就是把简单数据类型包装成为复杂数据类型，这样基本数据类型就有了属性和方法。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 下面代码有什么问题？</span></span><br><span class="line"><span class="hljs-keyword">var</span> str = <span class="hljs-string">'andy'</span>;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(str.length);</span><br></pre></td></tr></table></figure>
+
+<p>​        按道理基本数据类型是没有属性和方法的，而对象才有属性和方法，但上面代码却可以执行，这是因为</p>
+<p>​        js 会把基本数据类型包装为复杂数据类型，其执行过程如下 ：</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1. 生成临时变量，把简单类型包装为复杂数据类型</span></span><br><span class="line"><span class="hljs-keyword">var</span> temp = <span class="hljs-keyword">new</span> <span class="hljs-built_in">String</span>(<span class="hljs-string">'andy'</span>);</span><br><span class="line"><span class="hljs-comment">// 2. 赋值给我们声明的字符变量</span></span><br><span class="line">str = temp;</span><br><span class="line"><span class="hljs-comment">// 3. 销毁临时变量</span></span><br><span class="line">temp = <span class="hljs-literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符串的不可变"><a href="#字符串的不可变" class="headerlink" title="字符串的不可变"></a>字符串的不可变</h4><p>​        指的是里面的值不可变，虽然看上去可以改变内容，但其实是地址变了，内存中新开辟了一个内存空间。</p>
+<p>​        当重新给字符串变量赋值的时候，变量之前保存的字符串不会被修改，依然在内存中重新给字符串赋值，会重新在内存中开辟空间，这个特点就是字符串的不可变。<br>​        由于字符串的不可变，在<strong>大量拼接字符串</strong>的时候会有效率问题</p>
+<h4 id="根据字符返回位置"><a href="#根据字符返回位置" class="headerlink" title="根据字符返回位置"></a>根据字符返回位置</h4><p>​        字符串通过基本包装类型可以调用部分方法来操作字符串，以下是返回指定字符的位置的方法：</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%877.png" alt></p>
+<p>​        案例：查找字符串”abcoefoxyozzopp”中所有o出现的位置以及次数</p>
+<ol>
+<li>先查找第一个o出现的位置</li>
+<li>然后 只要indexOf 返回的结果不是 -1 就继续往后查找</li>
+<li>因为indexOf 只能查找到第一个，所以后面的查找，利用第二个参数，当前索引加1，从而继续查找     </li>
+</ol>
+<h4 id="根据位置返回字符"><a href="#根据位置返回字符" class="headerlink" title="根据位置返回字符"></a>根据位置返回字符</h4><p>​        字符串通过基本包装类型可以调用部分方法来操作字符串，以下是根据位置返回指定位置上的字符：</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%878.png" alt></p>
+<p>​        在上述方法中，charCodeAt方法返回的是指定位置上字符对应的ASCII码，ASCII码对照表如下：</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%879.png" alt></p>
+<p>​        案例：判断一个字符串 ‘abcoefoxyozzopp’ 中出现次数最多的字符，并统计其次数</p>
+<ol>
+<li><p>核心算法：利用 charAt(） 遍历这个字符串</p>
+</li>
+<li><p>把每个字符都存储给对象， 如果对象没有该属性，就为1，如果存在了就 +1</p>
+</li>
+<li><p>遍历对象，得到最大值和该字符     </p>
+<p>​    注意：在遍历的过程中，把字符串中的每个字符作为对象的属性存储在对象总，对应的属性值是该字符出现的次数</p>
+</li>
+</ol>
+<h4 id="字符串操作方法"><a href="#字符串操作方法" class="headerlink" title="字符串操作方法"></a>字符串操作方法</h4><p>​        字符串通过基本包装类型可以调用部分方法来操作字符串，以下是部分操作方法：</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%8710.png" alt></p>
+<h4 id="replace-方法"><a href="#replace-方法" class="headerlink" title="replace()方法"></a>replace()方法</h4><p>​        replace() 方法用于在字符串中用一些字符替换另一些字符，其使用格式如下：  </p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串.replace(被替换的字符串， 要替换为的字符串)；</span><br></pre></td></tr></table></figure>
+
+<h4 id="split-方法"><a href="#split-方法" class="headerlink" title="split()方法"></a>split()方法</h4><p>​        split()方法用于切分字符串，它可以将字符串切分为数组。在切分完毕之后，返回的是一个新数组。</p>
+<p>​        其使用格式如下：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字符串.split(&quot;分割字符&quot;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="简单数据类型和复杂数据类型"><a href="#简单数据类型和复杂数据类型" class="headerlink" title="简单数据类型和复杂数据类型"></a>简单数据类型和复杂数据类型</h2><h3 id="简单数据类型"><a href="#简单数据类型" class="headerlink" title="简单数据类型"></a>简单数据类型</h3><p>​        <strong>简单类型</strong>（<strong>基本数据类型</strong>、<strong>值类型</strong>）：在存储时变量中存储的是值本身，包括string ，number，boolean，undefined，null</p>
+<h3 id="复杂数据类型"><a href="#复杂数据类型" class="headerlink" title="复杂数据类型"></a>复杂数据类型</h3><p>​        <strong>复杂数据类型（引用类型）</strong>：在存储时变量中存储的仅仅是地址（引用），通过 new 关键字创建的对象（系统对象、自定义对象），如 Object、Array、Date等；</p>
+<h3 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h3><ul>
+<li>堆栈空间分配区别：</li>
+</ul>
+<p>　　1、栈（操作系统）：由操作系统自动分配释放存放函数的参数值、局部变量的值等。其操作方式类似于数据结构中的栈；</p>
+<p>简单数据类型存放到栈里面</p>
+<p>　　2、堆（操作系统）：存储复杂类型(对象)，一般由程序员分配释放，若程序员不释放，由垃圾回收机制回收。</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%8711.png" alt></p>
+<ul>
+<li><p>简单数据类型的存储方式</p>
+<p>​        值类型变量的数据直接存放在变量（栈空间）中</p>
+</li>
+</ul>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%8712.png" alt></p>
+<ul>
+<li><p>复杂数据类型的存储方式</p>
+<p>​        引用类型变量（栈空间）里存放的是地址，真正的对象实例存放在堆空间中</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%8713.png" alt></p>
+</li>
+</ul>
+<h3 id="简单类型传参"><a href="#简单类型传参" class="headerlink" title="简单类型传参"></a>简单类型传参</h3><p>​        函数的形参也可以看做是一个变量，当我们把一个值类型变量作为参数传给函数的形参时，其实是把变量在栈空间里的值复制了一份给形参，那么在方法内部对形参做任何修改，都不会影响到的外部变量。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params">a</span>) </span>&#123;</span><br><span class="line">    a++;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(a); </span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> x = <span class="hljs-number">10</span>;</span><br><span class="line">fn(x);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(x)；</span><br></pre></td></tr></table></figure>
+
+<p>​        运行结果如下：</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%8714.png" alt></p>
+<h3 id="复杂数据类型传参"><a href="#复杂数据类型传参" class="headerlink" title="复杂数据类型传参"></a>复杂数据类型传参</h3><p>​        函数的形参也可以看做是一个变量，当我们把引用类型变量传给形参时，其实是把变量在栈空间里保存的堆地址复制给了形参，形参和实参其实保存的是同一个堆地址，所以操作的是同一个对象。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">f1</span>(<span class="hljs-params">x</span>) </span>&#123; <span class="hljs-comment">// x = p</span></span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x.name); <span class="hljs-comment">// 2. 这个输出什么 ?    </span></span><br><span class="line">    x.name = <span class="hljs-string">"张学友"</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(x.name); <span class="hljs-comment">// 3. 这个输出什么 ?    </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"刘德华"</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(p.name);    <span class="hljs-comment">// 1. 这个输出什么 ?   </span></span><br><span class="line">f1(p);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(p.name);    <span class="hljs-comment">// 4. 这个输出什么 ?</span></span><br></pre></td></tr></table></figure>
+
+<p>​        运行结果如下：</p>
+<p><img src="/前端笔记/javascript-day06/%E5%9B%BE%E7%89%8715.png" alt></p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/javascript-day06/">JavaScript-Day06</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/javascript-day06/">http://www.itfool.cn/前端笔记/javascript-day06/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/javascript-day05/">
+                <span class="level-item">JavaScript-Day05</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        26
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        6
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#JavaScript基础第06天笔记">
+        <span class="has-mr-6">1</span>
+        <span>JavaScript基础第06天笔记</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#内置对象">
+        <span class="has-mr-6">1.1</span>
+        <span>内置对象</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#内置对象-1">
+        <span class="has-mr-6">1.1.1</span>
+        <span>内置对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#查文档">
+        <span class="has-mr-6">1.1.2</span>
+        <span>查文档</span>
+        </a></li><li>
+        <a class="is-flex" href="#Math对象">
+        <span class="has-mr-6">1.1.3</span>
+        <span>Math对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#日期对象">
+        <span class="has-mr-6">1.1.4</span>
+        <span>日期对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#数组对象">
+        <span class="has-mr-6">1.1.5</span>
+        <span>数组对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#字符串对象">
+        <span class="has-mr-6">1.1.6</span>
+        <span>字符串对象</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#简单数据类型和复杂数据类型">
+        <span class="has-mr-6">1.2</span>
+        <span>简单数据类型和复杂数据类型</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#简单数据类型">
+        <span class="has-mr-6">1.2.1</span>
+        <span>简单数据类型</span>
+        </a></li><li>
+        <a class="is-flex" href="#复杂数据类型">
+        <span class="has-mr-6">1.2.2</span>
+        <span>复杂数据类型</span>
+        </a></li><li>
+        <a class="is-flex" href="#堆栈">
+        <span class="has-mr-6">1.2.3</span>
+        <span>堆栈</span>
+        </a></li><li>
+        <a class="is-flex" href="#简单类型传参">
+        <span class="has-mr-6">1.2.4</span>
+        <span>简单类型传参</span>
+        </a></li><li>
+        <a class="is-flex" href="#复杂数据类型传参">
+        <span class="has-mr-6">1.2.5</span>
+        <span>复杂数据类型传参</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="JavaScript-Day06" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
