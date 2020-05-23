@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>JavaScript高级-Day01 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.JavaScript高级.面向对象  面向过程与面向对象面向过程 面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用就可以了。  面向对象 面向对象是把事务分解成为一个个对象，然后由对象之间分工与合作。  面向过程与面向对象对比    面向过程 面向对象    优点 性能比面向对象高，适合跟硬件联系很紧密的东西，例如单片机就采用的">
+<meta name="keywords" content="面向对象,继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript高级-Day01">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/javascript高级-day01/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.JavaScript高级.面向对象  面向过程与面向对象面向过程 面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用就可以了。  面向对象 面向对象是把事务分解成为一个个对象，然后由对象之间分工与合作。  面向过程与面向对象对比    面向过程 面向对象    优点 性能比面向对象高，适合跟硬件联系很紧密的东西，例如单片机就采用的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/javascript%E9%AB%98%E7%BA%A7-day01/img2.png">
+<meta property="og:updated_time" content="2020-05-23T08:55:21.264Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript高级-Day01">
+<meta name="twitter:description" content="第03阶段.JavaScript高级.面向对象  面向过程与面向对象面向过程 面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用就可以了。  面向对象 面向对象是把事务分解成为一个个对象，然后由对象之间分工与合作。  面向过程与面向对象对比    面向过程 面向对象    优点 性能比面向对象高，适合跟硬件联系很紧密的东西，例如单片机就采用的">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/javascript%E9%AB%98%E7%BA%A7-day01/img2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="JavaScript高级-Day01" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/javascript%E9%AB%98%E7%BA%A7-day01/img2.png" alt="JavaScript高级-Day01">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>JavaScript高级-Day01
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T08:46:28.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T08:55:21.264Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    15 分钟 读完 (大约 2248 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.JavaScript高级.面向对象</p>
+</blockquote>
+<h2 id="面向过程与面向对象"><a href="#面向过程与面向对象" class="headerlink" title="面向过程与面向对象"></a>面向过程与面向对象</h2><h3 id="面向过程"><a href="#面向过程" class="headerlink" title="面向过程"></a>面向过程</h3><ul>
+<li>面向过程就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步实现，使用的时候再一个一个的依次调用就可以了。</li>
+</ul>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ul>
+<li>面向对象是把事务分解成为一个个对象，然后由对象之间分工与合作。</li>
+</ul>
+<h3 id="面向过程与面向对象对比"><a href="#面向过程与面向对象对比" class="headerlink" title="面向过程与面向对象对比"></a>面向过程与面向对象对比</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>面向过程</th>
+<th>面向对象</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>性能比面向对象高，适合跟硬件联系很紧密的东西，例如单片机就采用的面向过程编程。</td>
+<td>易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>不易维护、不易复用、不易扩展</td>
+<td>性能比面向过程低</td>
+</tr>
+</tbody></table>
+<a id="more"></a>
+<h2 id="对象与类"><a href="#对象与类" class="headerlink" title="对象与类"></a>对象与类</h2><h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>对象是由属性和方法组成的：是一个无序键值对的集合,指的是一个具体的事物</p>
+<ul>
+<li>属性：事物的特征，在对象中用属性来表示（常用名词）</li>
+<li>方法：事物的行为，在对象中用方法来表示（常用动词）</li>
+</ul>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//以下代码是对对象的复习</span></span><br><span class="line"><span class="hljs-comment">//字面量创建对象</span></span><br><span class="line"><span class="hljs-keyword">var</span> ldh = &#123;</span><br><span class="line">    name: <span class="hljs-string">'刘德华'</span>,</span><br><span class="line">    age: <span class="hljs-number">18</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-built_in">console</span>.log(ldh);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//构造函数创建对象</span></span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-keyword">this</span>.age = age;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>)<span class="hljs-comment">//实例化对象</span></span><br><span class="line"><span class="hljs-built_in">console</span>.log(ldh);</span><br></pre></td></tr></table></figure>
+
+<p>如上两行代码运行结果为:<img src="/前端笔记/javascript高级-day01/img3.png" alt></p>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><ul>
+<li>在 ES6 中新增加了类的概念，可以使用 class 关键字声明一个类，之后以这个类来实例化对象。类抽象了对象的公共部分，它泛指某一大类（class）对象特指某一个，通过类实例化一个具体的对象</li>
+</ul>
+<h4 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h4><ol>
+<li>语法:</li>
+</ol>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//步骤1 使用class关键字</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">name</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// class body</span></span><br><span class="line">&#125;     </span><br><span class="line"><span class="hljs-comment">//步骤2使用定义的类创建实例  注意new关键字</span></span><br><span class="line"><span class="hljs-keyword">var</span> xx = <span class="hljs-keyword">new</span> name();</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>示例</li>
+</ol>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1. 创建类 class  创建一个 明星类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Star</span> </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// 类的共有属性放到 constructor 里面</span></span><br><span class="line">  <span class="hljs-keyword">constructor</span>(name, age) &#123;</span><br><span class="line">  <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">  <span class="hljs-keyword">this</span>.age = age;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">  <span class="hljs-comment">// 2. 利用类创建对象 new</span></span><br><span class="line">  <span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(ldh);</span><br></pre></td></tr></table></figure>
+
+<p>以上代码运行结果: </p>
+<p><img src="/前端笔记/javascript高级-day01/img4.png" alt></p>
+<p>通过结果我们可以看出,运行结果和使用构造函数方式一样</p>
+<h4 id="类创建添加属性和方法"><a href="#类创建添加属性和方法" class="headerlink" title="类创建添加属性和方法"></a>类创建添加属性和方法</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">// 1. 创建类 class  创建一个类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Star</span> </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 类的共有属性放到 constructor 里面 constructor是 构造器或者构造函数</span></span><br><span class="line">    <span class="hljs-keyword">constructor</span>(uname, age) &#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.uname = uname;</span><br><span class="line">      <span class="hljs-keyword">this</span>.age = age;</span><br><span class="line">    &#125;<span class="hljs-comment">//-------------------------------------------&gt;注意,方法与方法之间不需要添加逗号</span></span><br><span class="line">    sing(song) &#123;</span><br><span class="line">      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.uname + <span class="hljs-string">'唱'</span> + song);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">// 2. 利用类创建对象 new</span></span><br><span class="line"><span class="hljs-keyword">var</span> ldh = <span class="hljs-keyword">new</span> Star(<span class="hljs-string">'刘德华'</span>, <span class="hljs-number">18</span>);</span><br><span class="line"><span class="hljs-built_in">console</span>.log(ldh); <span class="hljs-comment">// Star &#123;uname: "刘德华", age: 18&#125;</span></span><br><span class="line">ldh.sing(<span class="hljs-string">'冰雨'</span>); <span class="hljs-comment">// 刘德华唱冰雨</span></span><br></pre></td></tr></table></figure>
+
+<p> 以上代码运行结果:</p>
+<p><img src="/前端笔记/javascript高级-day01/img5.png" alt></p>
+<p><strong>注意哟:</strong></p>
+<ol>
+<li>通过class 关键字创建类, 类名我们还是习惯性定义首字母大写</li>
+<li>类里面有个constructor 函数,可以接受传递过来的参数,同时返回实例对象</li>
+<li>constructor 函数 只要 new 生成实例时,就会自动调用这个函数, 如果我们不写这个函数,类也会自动生成这个函数</li>
+<li>多个函数方法之间不需要添加逗号分隔</li>
+<li>生成实例 new 不能省略</li>
+<li>语法规范, 创建类 类名后面不要加小括号,生成实例 类名后面加小括号, 构造函数不需要加function</li>
+</ol>
+<h4 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h4><ol>
+<li>语法</li>
+</ol>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 父类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Father</span></span>&#123;   </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 子类继承父类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span>  <span class="hljs-title">Son</span>  <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span> </span>&#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>示例</li>
+</ol>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Father</span> </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">constructor</span>(surname) &#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.surname= surname;</span><br><span class="line">      &#125;</span><br><span class="line">      say() &#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'你的姓是'</span> + <span class="hljs-keyword">this</span>.surname);</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span></span>&#123;  <span class="hljs-comment">// 这样子类就继承了父类的属性和方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> damao= <span class="hljs-keyword">new</span> Son(<span class="hljs-string">'刘'</span>);</span><br><span class="line">damao.say();      <span class="hljs-comment">//结果为 你的姓是刘</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码运行结果:</p>
+<p><img src="/前端笔记/javascript高级-day01/img6.png" alt></p>
+<ul>
+<li><p>子类使用super关键字访问父类的方法</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//定义了父类</span></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Father</span> </span>&#123;</span><br><span class="line">   <span class="hljs-keyword">constructor</span>(x, y) &#123;</span><br><span class="line">   <span class="hljs-keyword">this</span>.x = x;</span><br><span class="line">   <span class="hljs-keyword">this</span>.y = y;</span><br><span class="line">   &#125;</span><br><span class="line">   sum() &#123;</span><br><span class="line">   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.x + <span class="hljs-keyword">this</span>.y);</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="hljs-comment">//子元素继承父类</span></span><br><span class="line">    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span> </span>&#123;</span><br><span class="line">   		 <span class="hljs-keyword">constructor</span>(x, y) &#123;</span><br><span class="line">    		<span class="hljs-keyword">super</span>(x, y); <span class="hljs-comment">//使用super调用了父类中的构造函数</span></span><br><span class="line">    	&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">var</span> son = <span class="hljs-keyword">new</span> Son(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>);</span><br><span class="line">    son.sum(); <span class="hljs-comment">//结果为3</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong> </p>
+<ol>
+<li><p>继承中,如果实例化子类输出一个方法,先看子类有没有这个方法,如果有就先执行子类的</p>
+</li>
+<li><p>继承中,如果子类里面没有,就去查找父类有没有这个方法,如果有,就执行父类的这个方法(就近原则)</p>
+</li>
+<li><p>如果子类想要继承父类的方法,同时在自己内部扩展自己的方法,利用super 调用父类的构造函数,super 必须在子类this之前调用</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-comment">// 父类有加法方法</span></span><br><span class="line"> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Father</span> </span>&#123;</span><br><span class="line">   <span class="hljs-keyword">constructor</span>(x, y) &#123;</span><br><span class="line">   <span class="hljs-keyword">this</span>.x = x;</span><br><span class="line">   <span class="hljs-keyword">this</span>.y = y;</span><br><span class="line">   &#125;</span><br><span class="line">   sum() &#123;</span><br><span class="line">   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.x + <span class="hljs-keyword">this</span>.y);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="hljs-comment">// 子类继承父类加法方法 同时 扩展减法方法</span></span><br><span class="line"> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Son</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Father</span> </span>&#123;</span><br><span class="line">   <span class="hljs-keyword">constructor</span>(x, y) &#123;</span><br><span class="line">   <span class="hljs-comment">// 利用super 调用父类的构造函数 super 必须在子类this之前调用,放到this之后会报错</span></span><br><span class="line">   <span class="hljs-keyword">super</span>(x, y);</span><br><span class="line">   <span class="hljs-keyword">this</span>.x = x;</span><br><span class="line">   <span class="hljs-keyword">this</span>.y = y;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  subtract() &#123;</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.x - <span class="hljs-keyword">this</span>.y);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> son = <span class="hljs-keyword">new</span> Son(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>);</span><br><span class="line">son.subtract(); <span class="hljs-comment">//2</span></span><br><span class="line">son.sum();<span class="hljs-comment">//8</span></span><br></pre></td></tr></table></figure>
+
+<p>以上代码运行结果为:</p>
+<p><img src="/前端笔记/javascript高级-day01/img7.png" alt></p>
+</li>
+<li><p>时刻注意this的指向问题,类里面的共有的属性和方法一定要加this使用.</p>
+<ol>
+<li>constructor中的this指向的是new出来的实例对象 </li>
+<li>自定义的方法,一般也指向的new出来的实例对象</li>
+<li>绑定事件之后this指向的就是触发事件的事件源</li>
+</ol>
+</li>
+<li><p>在 ES6 中类没有变量提升，所以必须先定义类，才能通过类实例化对象<img src="/前端笔记/javascript高级-day01/img2.png" alt></p>
+<p> <img src="/前端笔记/javascript高级-day01/img1.png" alt></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="面向对象版tab-栏切换"><a href="#面向对象版tab-栏切换" class="headerlink" title="面向对象版tab 栏切换"></a>面向对象版tab 栏切换</h2><h3 id="功能需求"><a href="#功能需求" class="headerlink" title="功能需求"></a>功能需求</h3><ol>
+<li>点击 tab栏,可以切换效果.</li>
+<li>点击 + 号, 可以添加 tab 项和内容项.</li>
+<li>点击 x 号, 可以删除当前的tab项和内容项.</li>
+<li>双击tab项文字或者内容项文字可以修改里面的文字内容</li>
+</ol>
+<h3 id="案例准备"><a href="#案例准备" class="headerlink" title="案例准备"></a>案例准备</h3><ol>
+<li>获取到标题元素</li>
+<li>获取到内容元素</li>
+<li>获取到删除的小按钮 x号</li>
+<li>新建js文件,定义类,添加需要的属性方法(切换,删除,增加,修改)</li>
+<li>时刻注意this的指向问题</li>
+</ol>
+<h3 id="切换"><a href="#切换" class="headerlink" title="切换"></a>切换</h3><ul>
+<li><p>为获取到的标题绑定点击事件,展示对应的内容区域,存储对应的索引</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.lis[i].index = i;</span><br><span class="line"><span class="hljs-keyword">this</span>.lis[i].onclick = <span class="hljs-keyword">this</span>.toggleTab;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用排他,实现只有一个元素的显示</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">toggleTab() &#123;</span><br><span class="line">  <span class="hljs-comment">//将所有的标题与内容类样式全部移除</span></span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.lis.length; i++) &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.lis[i].className = <span class="hljs-string">''</span>;</span><br><span class="line">    <span class="hljs-keyword">this</span>.sections[i].className = <span class="hljs-string">''</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="hljs-comment">//为当前的标题添加激活样式</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.className = <span class="hljs-string">'liactive'</span>;</span><br><span class="line">   <span class="hljs-comment">//为当前的内容添加激活样式</span></span><br><span class="line">    that.sections[<span class="hljs-keyword">this</span>.index].className = <span class="hljs-string">'conactive'</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h3><ul>
+<li><p>为添加按钮+ 绑定点击事件 </p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.add.onclick = <span class="hljs-keyword">this</span>.addTab;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现标题与内容的添加,做好排他处理</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">addTab() &#123;</span><br><span class="line">    that.clearClass();</span><br><span class="line">    <span class="hljs-comment">// (1) 创建li元素和section元素 </span></span><br><span class="line">    <span class="hljs-keyword">var</span> random = <span class="hljs-built_in">Math</span>.random();</span><br><span class="line">    <span class="hljs-keyword">var</span> li = <span class="hljs-string">'&lt;li class="liactive"&gt;&lt;span&gt;新选项卡&lt;/span&gt;&lt;span class="iconfont icon-guanbi"&gt;				&lt;/span&gt;&lt;/li&gt;'</span>;</span><br><span class="line">    <span class="hljs-keyword">var</span> section = <span class="hljs-string">'&lt;section class="conactive"&gt;测试 '</span> + random + <span class="hljs-string">'&lt;/section&gt;'</span>;</span><br><span class="line">    <span class="hljs-comment">// (2) 把这两个元素追加到对应的父元素里面</span></span><br><span class="line">    that.ul.insertAdjacentHTML(<span class="hljs-string">'beforeend'</span>, li);</span><br><span class="line">    that.fsection.insertAdjacentHTML(<span class="hljs-string">'beforeend'</span>, section);</span><br><span class="line">    that.init();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><ul>
+<li><p>为元素的删除按钮x绑定点击事件</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.remove[i].onclick = <span class="hljs-keyword">this</span>.removeTab;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取到点击的删除按钮的所在的父元素的所有,删除对应的标题与内容</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">removeTab(e) &#123;</span><br><span class="line">    e.stopPropagation(); <span class="hljs-comment">// 阻止冒泡 防止触发li 的切换点击事件</span></span><br><span class="line">    <span class="hljs-keyword">var</span> index = <span class="hljs-keyword">this</span>.parentNode.index;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(index);</span><br><span class="line">    <span class="hljs-comment">// 根据索引号删除对应的li 和section   remove()方法可以直接删除指定的元素</span></span><br><span class="line">    that.lis[index].remove();</span><br><span class="line">    that.sections[index].remove();</span><br><span class="line">    that.init();</span><br><span class="line">    <span class="hljs-comment">// 当我们删除的不是选中状态的li 的时候,原来的选中状态li保持不变</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.liactive'</span>)) <span class="hljs-keyword">return</span>;</span><br><span class="line">    <span class="hljs-comment">// 当我们删除了选中状态的这个li 的时候, 让它的前一个li 处于选定状态</span></span><br><span class="line">    index--;</span><br><span class="line">    <span class="hljs-comment">// 手动调用我们的点击事件  不需要鼠标触发</span></span><br><span class="line">    that.lis[index] &amp;&amp; that.lis[index].click();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><ul>
+<li><p>为元素(标题与内容)绑定双击事件</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">this</span>.spans[i].ondblclick = <span class="hljs-keyword">this</span>.editTab;</span><br><span class="line"><span class="hljs-keyword">this</span>.sections[i].ondblclick = <span class="hljs-keyword">this</span>.editTab;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在双击事件处理文本选中状态,修改内部DOM节点,实现新旧value值的传递</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">editTab() &#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> str = <span class="hljs-keyword">this</span>.innerHTML;</span><br><span class="line">    <span class="hljs-comment">// 双击禁止选定文字</span></span><br><span class="line">    <span class="hljs-built_in">window</span>.getSelection ? <span class="hljs-built_in">window</span>.getSelection().removeAllRanges() : 				    <span class="hljs-built_in">document</span>.selection.empty();</span><br><span class="line">    <span class="hljs-comment">// alert(11);</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.innerHTML = <span class="hljs-string">'&lt;input type="text" /&gt;'</span>;</span><br><span class="line">      <span class="hljs-keyword">var</span> input = <span class="hljs-keyword">this</span>.children[<span class="hljs-number">0</span>];</span><br><span class="line">      input.value = str;</span><br><span class="line">      input.select(); <span class="hljs-comment">// 文本框里面的文字处于选定状态</span></span><br><span class="line">      <span class="hljs-comment">// 当我们离开文本框就把文本框里面的值给span </span></span><br><span class="line">      input.onblur = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">this</span>.parentNode.innerHTML = <span class="hljs-keyword">this</span>.value;</span><br><span class="line">      &#125;;</span><br><span class="line">      <span class="hljs-comment">// 按下回车也可以把文本框里面的值给span</span></span><br><span class="line">      input.onkeyup = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (e.keyCode === <span class="hljs-number">13</span>) &#123;</span><br><span class="line">      <span class="hljs-comment">// 手动调用表单失去焦点事件  不需要鼠标离开操作</span></span><br><span class="line">      <span class="hljs-keyword">this</span>.blur();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/javascript高级-day01/">JavaScript高级-Day01</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/javascript高级-day01/">http://www.itfool.cn/前端笔记/javascript高级-day01/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/javascript高级-day02/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">JavaScript高级-Day02</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/jquery-day03/">
+                <span class="level-item">jQuery-Day03</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        41
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        8
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#面向过程与面向对象">
+        <span class="has-mr-6">1</span>
+        <span>面向过程与面向对象</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#面向过程">
+        <span class="has-mr-6">1.1</span>
+        <span>面向过程</span>
+        </a></li><li>
+        <a class="is-flex" href="#面向对象">
+        <span class="has-mr-6">1.2</span>
+        <span>面向对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#面向过程与面向对象对比">
+        <span class="has-mr-6">1.3</span>
+        <span>面向过程与面向对象对比</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#对象与类">
+        <span class="has-mr-6">2</span>
+        <span>对象与类</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#对象">
+        <span class="has-mr-6">2.1</span>
+        <span>对象</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#创建对象">
+        <span class="has-mr-6">2.1.1</span>
+        <span>创建对象</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#类">
+        <span class="has-mr-6">2.2</span>
+        <span>类</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#创建类">
+        <span class="has-mr-6">2.2.1</span>
+        <span>创建类</span>
+        </a></li><li>
+        <a class="is-flex" href="#类创建添加属性和方法">
+        <span class="has-mr-6">2.2.2</span>
+        <span>类创建添加属性和方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#类的继承">
+        <span class="has-mr-6">2.2.3</span>
+        <span>类的继承</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#面向对象版tab-栏切换">
+        <span class="has-mr-6">3</span>
+        <span>面向对象版tab 栏切换</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#功能需求">
+        <span class="has-mr-6">3.1</span>
+        <span>功能需求</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例准备">
+        <span class="has-mr-6">3.2</span>
+        <span>案例准备</span>
+        </a></li><li>
+        <a class="is-flex" href="#切换">
+        <span class="has-mr-6">3.3</span>
+        <span>切换</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加">
+        <span class="has-mr-6">3.4</span>
+        <span>添加</span>
+        </a></li><li>
+        <a class="is-flex" href="#删除">
+        <span class="has-mr-6">3.5</span>
+        <span>删除</span>
+        </a></li><li>
+        <a class="is-flex" href="#编辑">
+        <span class="has-mr-6">3.6</span>
+        <span>编辑</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="JavaScript高级-Day01" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
