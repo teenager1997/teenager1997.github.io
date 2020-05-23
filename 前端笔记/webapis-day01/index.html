@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>WebAPIs-Day01 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.JavaScript基础.操作元素">
+<meta name="keywords" content="JavaScript,js,WebAPI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebAPIs-Day01">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/webapis-day01/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.JavaScript基础.操作元素">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/webapis-day01/1550737354861.png">
+<meta property="og:updated_time" content="2020-05-23T06:51:07.436Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebAPIs-Day01">
+<meta name="twitter:description" content="第03阶段.JavaScript基础.操作元素">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/webapis-day01/1550737354861.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="WebAPIs-Day01" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/webapis-day01/1550737354861.png" alt="WebAPIs-Day01">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>WebAPIs-Day01
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T06:43:12.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T06:51:07.436Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    20 分钟 读完 (大约 3032 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.JavaScript基础.操作元素</p>
+</blockquote>
+<p><img src="/前端笔记/webapis-day01/1550737354861.png" alt="1550737354861"></p>
+<a id="more"></a>
+<h2 id="Web-API介绍"><a href="#Web-API介绍" class="headerlink" title="Web API介绍"></a>Web API介绍</h2><h3 id="API的概念"><a href="#API的概念" class="headerlink" title="API的概念"></a>API的概念</h3><p>API（Application Programming Interface，应用程序编程接口）是一些预先定义的函数，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又无需访问源码，无需理解其内部工作机制细节，只需直接调用使用即可。</p>
+<p><img src="/前端笔记/webapis-day01/1550719591484.png" alt></p>
+<blockquote>
+<p>举例解释什么是API。</p>
+<p>例如，</p>
+<p>​    C语言中有一个函数 fopen()可以打开硬盘上的文件，这个函数对于我们来说，就是一个C语言提供的打开文件的工具。</p>
+<p>​    javascript中有一个函数alert()可以在页面弹一个提示框，这个函数就是js提供的一个弹框工具。</p>
+<p>这些工具（函数）由编程语言提供，内部的实现已经封装好了，我们只要学会灵活的使用这些工具即可。</p>
+</blockquote>
+<h3 id="Web-API的概念"><a href="#Web-API的概念" class="headerlink" title="Web  API的概念"></a>Web  API的概念</h3><p>​    Web API 是浏览器提供的一套操作浏览器功能和页面元素的 API ( BOM 和 DOM )。</p>
+<p>​    现阶段我们主要针对于浏览器讲解常用的 API , 主要针对浏览器做交互效果。比如我们想要浏览器弹出一个警示框， 直接使用 alert(‘弹出’)</p>
+<p>​    MDN 详细 API : <a href="https://developer.mozilla.org/zh-CN/docs/Web/API" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API</a></p>
+<p>​    因为 Web API 很多，所以我们将这个阶段称为 Web APIs。</p>
+<p>​    此处的 Web API 特指浏览器提供的一系列API(很多函数或对象方法)，即操作网页的一系列工具。例如：操作html标签、操作页面地址的方法。</p>
+<h3 id="API-和-Web-API-总结"><a href="#API-和-Web-API-总结" class="headerlink" title="API 和 Web  API 总结"></a>API 和 Web  API 总结</h3><ol>
+<li><p>API 是为我们程序员提供的一个接口，帮助我们实现某种功能，我们会使用就可以了，不必纠结内部如何实现</p>
+</li>
+<li><p>Web API 主要是针对于浏览器提供的接口，主要针对于浏览器做交互效果。</p>
+</li>
+<li><p>Web API 一般都有输入和输出（函数的传参和返回值），Web API 很多都是方法（函数）</p>
+</li>
+<li><p>学习 Web API 可以结合前面学习内置对象方法的思路学习</p>
+</li>
+</ol>
+<h2 id="DOM-介绍"><a href="#DOM-介绍" class="headerlink" title="DOM 介绍"></a>DOM 介绍</h2><h3 id="什么是DOM"><a href="#什么是DOM" class="headerlink" title="什么是DOM"></a>什么是DOM</h3><p>​    文档对象模型（Document Object Model，简称DOM），是 <a href="https://baike.baidu.com/item/W3C" target="_blank" rel="noopener">W3C</a> 组织推荐的处理<a href="https://baike.baidu.com/item/%E5%8F%AF%E6%89%A9%E5%B1%95%E7%BD%AE%E6%A0%87%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">可扩展标记语言</a>（html或者xhtml）的标准<a href="https://baike.baidu.com/item/%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3" target="_blank" rel="noopener">编程接口</a>。</p>
+<p>​    W3C 已经定义了一系列的 DOM 接口，通过这些 DOM 接口可以改变网页的内容、结构和样式。</p>
+<blockquote>
+<p>DOM是W3C组织制定的一套处理 html和xml文档的规范，所有的浏览器都遵循了这套标准。</p>
+</blockquote>
+<h3 id="DOM树"><a href="#DOM树" class="headerlink" title="DOM树"></a>DOM树</h3><p><img src="/前端笔记/webapis-day01/1550731974575.png" alt="1550731974575"></p>
+<p>DOM树 又称为文档树模型，把文档映射成树形结构，通过节点对象对其处理，处理的结果可以加入到当前的页面。</p>
+<ul>
+<li>文档：一个页面就是一个文档，DOM中使用document表示</li>
+<li>节点：网页中的所有内容，在文档树中都是节点（标签、属性、文本、注释等），使用node表示</li>
+<li>标签节点：网页中的所有标签，通常称为元素节点，又简称为“元素”，使用element表示</li>
+</ul>
+<p><img src="/前端笔记/webapis-day01/1550732362134.png" alt="1550732362134"></p>
+<h2 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h2><p>为什么要获取页面元素？</p>
+<p>例如：我们想要操作页面上的某部分(显示/隐藏，动画)，需要先获取到该部分对应的元素，再对其进行操作。</p>
+<h3 id="根据ID获取"><a href="#根据ID获取" class="headerlink" title="根据ID获取"></a>根据ID获取</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">语法：<span class="hljs-built_in">document</span>.getElementById(id)</span><br><span class="line">作用：根据ID获取元素对象</span><br><span class="line">参数：id值，区分大小写的字符串</span><br><span class="line">返回值：元素对象 或 <span class="hljs-literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="hljs-string">"time"</span>&gt;<span class="hljs-number">2019</span><span class="hljs-number">-9</span><span class="hljs-number">-9</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 因为我们文档页面从上往下加载，所以先得有标签 所以我们script写到标签的下面</span></span><br><span class="line"><span class="hljs-regexp">        var timer = document.getElementById('time');</span></span><br><span class="line"><span class="hljs-regexp">        console.log(timer);</span></span><br><span class="line"><span class="hljs-regexp">        console.log(typeof timer);</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法</span></span><br><span class="line"><span class="hljs-regexp">        console.dir(timer);</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="根据标签名获取元素"><a href="#根据标签名获取元素" class="headerlink" title="根据标签名获取元素"></a>根据标签名获取元素</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">语法：document.getElementsByTagName(&apos;标签名&apos;) 或者 element.getElementsByTagName(&apos;标签名&apos;) </span><br><span class="line">作用：根据标签名获取元素对象</span><br><span class="line">参数：标签名</span><br><span class="line">返回值：元素对象集合（伪数组，数组元素是元素对象）</span><br></pre></td></tr></table></figure>
+
+<p><strong>案例代码</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;知否知否，应是等你好久<span class="hljs-number">11</span>&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;知否知否，应是等你好久22&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;知否知否，应是等你好久<span class="hljs-number">33</span>&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;知否知否，应是等你好久44&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;知否知否，应是等你好久<span class="hljs-number">55</span>&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/u</span>l&gt;</span><br><span class="line">    &lt;ul id=<span class="hljs-string">"nav"</span>&gt;</span><br><span class="line">        &lt;li&gt;生僻字&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;生僻字&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;生僻字&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;生僻字&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;生僻字&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/u</span>l&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="hljs-comment">// 1.返回的是 获取过来元素对象的集合 以伪数组的形式存储的</span></span><br><span class="line">        <span class="hljs-keyword">var</span> lis = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'li'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(lis);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(lis[<span class="hljs-number">0</span>]);</span><br><span class="line">        <span class="hljs-comment">// 2. 我们想要依次打印里面的元素对象我们可以采取遍历的方式</span></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; lis.length; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(lis[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">// 3. element.getElementsByTagName()  可以得到这个元素里面的某些标签</span></span><br><span class="line">        <span class="hljs-keyword">var</span> nav = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'nav'</span>); <span class="hljs-comment">// 这个获得nav 元素</span></span><br><span class="line">        <span class="hljs-keyword">var</span> navLis = nav.getElementsByTagName(<span class="hljs-string">'li'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(navLis);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/前端笔记/webapis-day01/1550733441663.png" alt="1550733441663"></p>
+<p>注意：getElementsByTagName()获取到是动态集合，即：当页面增加了标签，这个集合中也就增加了元素。</p>
+<h3 id="H5新增获取元素方式"><a href="#H5新增获取元素方式" class="headerlink" title="H5新增获取元素方式"></a>H5新增获取元素方式</h3><p><img src="/前端笔记/webapis-day01/1550733518278.png" alt="1550733518278"></p>
+<p><img src="/前端笔记/webapis-day01/1550733734425.png" alt="1550733734425"></p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"box"</span>&gt;盒子<span class="hljs-number">1</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div class="box"&gt;盒子2&lt;/</span>div&gt;</span><br><span class="line">    &lt;div id=<span class="hljs-string">"nav"</span>&gt;</span><br><span class="line">        &lt;ul&gt;</span><br><span class="line">            &lt;li&gt;首页&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">            &lt;li&gt;产品&lt;/</span>li&gt;</span><br><span class="line">        &lt;<span class="hljs-regexp">/ul&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="hljs-comment">// 1. getElementsByClassName 根据类名获得某些元素集合</span></span><br><span class="line">        <span class="hljs-keyword">var</span> boxs = <span class="hljs-built_in">document</span>.getElementsByClassName(<span class="hljs-string">'box'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(boxs);</span><br><span class="line">        <span class="hljs-comment">// 2. querySelector 返回指定选择器的第一个元素对象  切记 里面的选择器需要加符号 .box  #nav</span></span><br><span class="line">        <span class="hljs-keyword">var</span> firstBox = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.box'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(firstBox);</span><br><span class="line">        <span class="hljs-keyword">var</span> nav = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'#nav'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(nav);</span><br><span class="line">        <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'li'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(li);</span><br><span class="line">        <span class="hljs-comment">// 3. querySelectorAll()返回指定选择器的所有元素对象集合</span></span><br><span class="line">        <span class="hljs-keyword">var</span> allBox = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.box'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(allBox);</span><br><span class="line">        <span class="hljs-keyword">var</span> lis = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'li'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(lis);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取特殊元素（body，html）"><a href="#获取特殊元素（body，html）" class="headerlink" title="获取特殊元素（body，html）"></a>获取特殊元素（body，html）</h3><p><img src="/前端笔记/webapis-day01/1550733794816.png" alt="1550733794816"></p>
+<h2 id="事件基础"><a href="#事件基础" class="headerlink" title="事件基础"></a>事件基础</h2><h3 id="事件概述"><a href="#事件概述" class="headerlink" title="事件概述"></a>事件概述</h3><p>JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScript 侦测到的行为。</p>
+<p>简单理解： <strong>触发— 响应机制</strong>。</p>
+<p>​    网页中的每个元素都可以产生某些可以触发 JavaScript 的事件，例如，我们可以在用户点击某按钮时产生一个 事件，然后去执行某些操作。</p>
+<h3 id="事件三要素"><a href="#事件三要素" class="headerlink" title="事件三要素"></a>事件三要素</h3><ul>
+<li>事件源（谁）：触发事件的元素</li>
+<li>事件类型（什么事件）： 例如 click 点击事件</li>
+<li>事件处理程序（做啥）：事件触发后要执行的代码(函数形式)，事件处理函数</li>
+</ul>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="hljs-string">"btn"</span>&gt;唐伯虎&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 点击一个按钮，弹出对话框</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 1. 事件是有三部分组成  事件源  事件类型  事件处理程序   我们也称为事件三要素</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/(1) 事件源 事件被触发的对象   谁  按钮</span></span><br><span class="line"><span class="hljs-regexp">        var btn = document.getElementById('btn');</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/(2) 事件类型  如何触发 什么事件 比如鼠标点击(onclick) 还是鼠标经过 还是键盘按下</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/(3) 事件处理程序  通过一个函数赋值的方式 完成</span></span><br><span class="line"><span class="hljs-regexp">        btn.onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            alert('点秋香');</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行事件的步骤"><a href="#执行事件的步骤" class="headerlink" title="执行事件的步骤"></a>执行事件的步骤</h3><p><img src="/前端笔记/webapis-day01/1550734387056.png" alt="1550734387056"></p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-number">123</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 执行事件步骤</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 点击div 控制台输出 我被选中了</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 1. 获取事件源</span></span><br><span class="line"><span class="hljs-regexp">        var div = document.querySelector('div');</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 2.绑定事件 注册事件</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ div.onclick </span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 3.添加事件处理程序 </span></span><br><span class="line"><span class="hljs-regexp">        div.onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            console.log('我被选中了');</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常见的鼠标事件"><a href="#常见的鼠标事件" class="headerlink" title="常见的鼠标事件"></a>常见的鼠标事件</h3><p><img src="/前端笔记/webapis-day01/1550734506084.png" alt="1550734506084"></p>
+<h3 id="分析事件三要素"><a href="#分析事件三要素" class="headerlink" title="分析事件三要素"></a>分析事件三要素</h3><ul>
+<li><p>下拉菜单三要素</p>
+</li>
+<li><p>关闭广告三要素</p>
+</li>
+</ul>
+<h2 id="操作元素"><a href="#操作元素" class="headerlink" title="操作元素"></a>操作元素</h2><p>​    JavaScript的 DOM 操作可以改变网页内容、结构和样式，我们可以利用 DOM 操作元素来改变元素里面的内容、属性等。（注意：这些操作都是通过元素对象的属性实现的）</p>
+<h3 id="改变元素内容（获取或设置）"><a href="#改变元素内容（获取或设置）" class="headerlink" title="改变元素内容（获取或设置）"></a>改变元素内容（获取或设置）</h3><p><img src="/前端笔记/webapis-day01/1550735016756.png" alt="1550735016756"></p>
+<p><strong>innerText改变元素内容</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;显示当前系统时间&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div&gt;某个时间&lt;/</span>div&gt;</span><br><span class="line">    &lt;p&gt;<span class="hljs-number">1123</span>&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 当我们点击了按钮，  div里面的文字会发生变化</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 1. 获取元素 </span></span><br><span class="line"><span class="hljs-regexp">        var btn = document.querySelector('button');</span></span><br><span class="line"><span class="hljs-regexp">        var div = document.querySelector('div');</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 2.注册事件</span></span><br><span class="line"><span class="hljs-regexp">        btn.onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ div.innerText = '2019-6-6';</span></span><br><span class="line"><span class="hljs-regexp">            div.innerHTML = getDate();</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">        function getDate() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            var date = new Date();</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 我们写一个 2019年 5月 1日 星期三</span></span><br><span class="line"><span class="hljs-regexp">            var year = date.getFullYear();</span></span><br><span class="line"><span class="hljs-regexp">            var month = date.getMonth() + 1;</span></span><br><span class="line"><span class="hljs-regexp">            var dates = date.getDate();</span></span><br><span class="line"><span class="hljs-regexp">            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];</span></span><br><span class="line"><span class="hljs-regexp">            var day = date.getDay();</span></span><br><span class="line"><span class="hljs-regexp">            return '今天是：' + year + '年' + month + '月' + dates + '日 ' + arr[day];</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>innerText和innerHTML的区别</strong></p>
+<ul>
+<li>获取内容时的区别：</li>
+</ul>
+<p>​    innerText会去除空格和换行，而innerHTML会保留空格和换行    </p>
+<ul>
+<li>设置内容时的区别：</li>
+</ul>
+<p>​    innerText不会识别html，而innerHTML会识别</p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">    &lt;p&gt;</span><br><span class="line">        我是文字</span><br><span class="line">        &lt;span&gt;<span class="hljs-number">123</span>&lt;<span class="hljs-regexp">/span&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>p&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="hljs-comment">// innerText 和 innerHTML的区别 </span></span><br><span class="line">        <span class="hljs-comment">// 1. innerText 不识别html标签 非标准  去除空格和换行</span></span><br><span class="line">        <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'div'</span>);</span><br><span class="line">        <span class="hljs-comment">// div.innerText = '&lt;strong&gt;今天是：&lt;/strong&gt; 2019';</span></span><br><span class="line">        <span class="hljs-comment">// 2. innerHTML 识别html标签 W3C标准 保留空格和换行的</span></span><br><span class="line">        div.innerHTML = <span class="hljs-string">'&lt;strong&gt;今天是：&lt;/strong&gt; 2019'</span>;</span><br><span class="line">        <span class="hljs-comment">// 这两个属性是可读写的  可以获取元素里面的内容</span></span><br><span class="line">        <span class="hljs-keyword">var</span> p = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'p'</span>);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(p.innerText);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(p.innerHTML);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用元素的属性操作"><a href="#常用元素的属性操作" class="headerlink" title="常用元素的属性操作"></a>常用元素的属性操作</h3><p><img src="/前端笔记/webapis-day01/1550735556297.png" alt="1550735556297"></p>
+<p><strong>获取属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名</p>
+</blockquote>
+<p><strong>设置属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名 = 值</p>
+</blockquote>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button id=<span class="hljs-string">"ldh"</span>&gt;刘德华&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;button id="zxy"&gt;张学友&lt;/</span>button&gt; <span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span></span></span><br><span class="line">    &lt;img src="images/ldh.jpg" alt="" title="刘德华"&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 修改元素属性  src</span><br><span class="line">        // 1. 获取元素</span><br><span class="line">        var ldh = document.getElementById('ldh');</span><br><span class="line">        var zxy = document.getElementById('zxy');</span><br><span class="line">        var img = document.querySelector('img');</span><br><span class="line">        // 2. 注册事件  处理程序</span><br><span class="line">        zxy.onclick = function() &#123;</span><br><span class="line">            img.src = 'images/zxy.jpg';</span><br><span class="line">            img.title = '张学友思密达';</span><br><span class="line">        &#125;</span><br><span class="line">        ldh.onclick = function() &#123;</span><br><span class="line">            img.src = 'images/ldh.jpg';</span><br><span class="line">            img.title = '刘德华';</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line"><span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：分时问候"><a href="#案例：分时问候" class="headerlink" title="案例：分时问候"></a>案例：分时问候</h3><p><img src="/前端笔记/webapis-day01/1550735858049.png" alt="1550735858049"></p>
+<p><img src="/前端笔记/webapis-day01/1550735877145.png" alt="1550735877145"></p>
+<h3 id="表单元素的属性操作"><a href="#表单元素的属性操作" class="headerlink" title="表单元素的属性操作"></a>表单元素的属性操作</h3><p><img src="/前端笔记/webapis-day01/1550736039005.png" alt="1550736039005"></p>
+<p><strong>获取属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名</p>
+</blockquote>
+<p><strong>设置属性的值</strong></p>
+<blockquote>
+<p>元素对象.属性名 = 值</p>
+<p>表单元素中有一些属性如：disabled、checked、selected，元素对象的这些属性的值是布尔型。</p>
+</blockquote>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;按钮&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;input type="text" value="输入内容"&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 1. 获取元素</span></span><br><span class="line"><span class="hljs-regexp">        var btn = document.querySelector('button');</span></span><br><span class="line"><span class="hljs-regexp">        var input = document.querySelector('input');</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 2. 注册事件 处理程序</span></span><br><span class="line"><span class="hljs-regexp">        btn.onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 表单里面的值 文字内容是通过 value 来修改的</span></span><br><span class="line"><span class="hljs-regexp">            input.value = '被点击了';</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 如果想要某个表单被禁用 不能再点击 disabled  我们想要这个按钮 button禁用</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ btn.disabled = true;</span></span><br><span class="line"><span class="hljs-regexp">            this.disabled = true;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ this 指向的是事件函数的调用者 btn</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：仿京东显示密码"><a href="#案例：仿京东显示密码" class="headerlink" title="案例：仿京东显示密码"></a>案例：仿京东显示密码</h3><p><img src="/前端笔记/webapis-day01/1550736330331.png" alt="1550736330331"></p>
+<p><img src="/前端笔记/webapis-day01/1550736346822.png" alt="1550736346822"></p>
+<h3 id="样式属性操作"><a href="#样式属性操作" class="headerlink" title="样式属性操作"></a>样式属性操作</h3><p>我们可以通过 JS 修改元素的大小、颜色、位置等样式。</p>
+<p><strong>常用方式</strong></p>
+<p><img src="/前端笔记/webapis-day01/1550736488634.png" alt="1550736488634"></p>
+<h4 id="方式1：通过操作style属性"><a href="#方式1：通过操作style属性" class="headerlink" title="方式1：通过操作style属性"></a>方式1：通过操作style属性</h4><blockquote>
+<p>元素对象的style属性也是一个对象！</p>
+<p>元素对象.style.样式属性 = 值;</p>
+</blockquote>
+<p><img src="/前端笔记/webapis-day01/1550736620181.png" alt="1550736620181"></p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="hljs-comment">// 1. 获取元素</span></span><br><span class="line">        <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'div'</span>);</span><br><span class="line">        <span class="hljs-comment">// 2. 注册事件 处理程序</span></span><br><span class="line">        div.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// div.style里面的属性 采取驼峰命名法 </span></span><br><span class="line">            <span class="hljs-keyword">this</span>.style.backgroundColor = <span class="hljs-string">'purple'</span>;</span><br><span class="line">            <span class="hljs-keyword">this</span>.style.width = <span class="hljs-string">'250px'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="案例：淘宝点击关闭二维码"><a href="#案例：淘宝点击关闭二维码" class="headerlink" title="案例：淘宝点击关闭二维码"></a>案例：淘宝点击关闭二维码</h4><p><img src="/前端笔记/webapis-day01/1550736843659.png" alt="1550736843659"></p>
+<p><img src="/前端笔记/webapis-day01/1550736881832.png" alt="1550736881832"></p>
+<h4 id="案例：循环精灵图背景"><a href="#案例：循环精灵图背景" class="headerlink" title="案例：循环精灵图背景"></a>案例：循环精灵图背景</h4><p><img src="/前端笔记/webapis-day01/1550736940082.png" alt="1550736940082"></p>
+<p><img src="/前端笔记/webapis-day01/1550736956754.png" alt="1550736956754"></p>
+<h4 id="案例：显示隐藏文本框内容"><a href="#案例：显示隐藏文本框内容" class="headerlink" title="案例：显示隐藏文本框内容"></a>案例：显示隐藏文本框内容</h4><p><img src="/前端笔记/webapis-day01/1550737006593.png" alt="1550737006593"></p>
+<p><img src="/前端笔记/webapis-day01/1550737019729.png" alt="1550737019729"></p>
+<h4 id="方式2：通过操作className属性"><a href="#方式2：通过操作className属性" class="headerlink" title="方式2：通过操作className属性"></a>方式2：通过操作className属性</h4><blockquote>
+<p>元素对象.className = 值;</p>
+<p>因为class是关键字，所有使用className。</p>
+</blockquote>
+<p><img src="/前端笔记/webapis-day01/1550737214510.png" alt="1550737214510"></p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"first"</span>&gt;文本&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 1. 使用 element.style 获得修改元素样式  如果样式比较少 或者 功能简单的情况下使用</span></span><br><span class="line"><span class="hljs-regexp">        var test = document.querySelector('div');</span></span><br><span class="line"><span class="hljs-regexp">        test.onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ this.style.backgroundColor = 'purple';</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ this.style.color = '#fff';</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ this.style.fontSize = '25px';</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ this.style.marginTop = '100px';</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 2. 我们可以通过 修改元素的className更改元素的样式 适合于样式较多或者功能复杂的情况</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 3. 如果想要保留原先的类名，我们可以这么做 多类名选择器</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ this.className = 'change';</span></span><br><span class="line"><span class="hljs-regexp">            this.className = 'first change';</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="案例：密码框格式提示错误信息"><a href="#案例：密码框格式提示错误信息" class="headerlink" title="案例：密码框格式提示错误信息"></a>案例：密码框格式提示错误信息</h4><p><img src="/前端笔记/webapis-day01/1550737269546.png" alt="1550737269546"></p>
+<p><img src="/前端笔记/webapis-day01/1550737284218.png" alt="1550737284218"></p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day01/">WebAPIs-Day01</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day01/">http://www.itfool.cn/前端笔记/webapis-day01/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/webapis-day02/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">WebAPIs-Day02</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/javascript-day06/">
+                <span class="level-item">JavaScript-Day06</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#Web-API介绍">
+        <span class="has-mr-6">1</span>
+        <span>Web API介绍</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#API的概念">
+        <span class="has-mr-6">1.1</span>
+        <span>API的概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#Web-API的概念">
+        <span class="has-mr-6">1.2</span>
+        <span>Web  API的概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#API-和-Web-API-总结">
+        <span class="has-mr-6">1.3</span>
+        <span>API 和 Web  API 总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#DOM-介绍">
+        <span class="has-mr-6">2</span>
+        <span>DOM 介绍</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是DOM">
+        <span class="has-mr-6">2.1</span>
+        <span>什么是DOM</span>
+        </a></li><li>
+        <a class="is-flex" href="#DOM树">
+        <span class="has-mr-6">2.2</span>
+        <span>DOM树</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#获取元素">
+        <span class="has-mr-6">3</span>
+        <span>获取元素</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#根据ID获取">
+        <span class="has-mr-6">3.1</span>
+        <span>根据ID获取</span>
+        </a></li><li>
+        <a class="is-flex" href="#根据标签名获取元素">
+        <span class="has-mr-6">3.2</span>
+        <span>根据标签名获取元素</span>
+        </a></li><li>
+        <a class="is-flex" href="#H5新增获取元素方式">
+        <span class="has-mr-6">3.3</span>
+        <span>H5新增获取元素方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#获取特殊元素（body，html）">
+        <span class="has-mr-6">3.4</span>
+        <span>获取特殊元素（body，html）</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#事件基础">
+        <span class="has-mr-6">4</span>
+        <span>事件基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#事件概述">
+        <span class="has-mr-6">4.1</span>
+        <span>事件概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件三要素">
+        <span class="has-mr-6">4.2</span>
+        <span>事件三要素</span>
+        </a></li><li>
+        <a class="is-flex" href="#执行事件的步骤">
+        <span class="has-mr-6">4.3</span>
+        <span>执行事件的步骤</span>
+        </a></li><li>
+        <a class="is-flex" href="#常见的鼠标事件">
+        <span class="has-mr-6">4.4</span>
+        <span>常见的鼠标事件</span>
+        </a></li><li>
+        <a class="is-flex" href="#分析事件三要素">
+        <span class="has-mr-6">4.5</span>
+        <span>分析事件三要素</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#操作元素">
+        <span class="has-mr-6">5</span>
+        <span>操作元素</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#改变元素内容（获取或设置）">
+        <span class="has-mr-6">5.1</span>
+        <span>改变元素内容（获取或设置）</span>
+        </a></li><li>
+        <a class="is-flex" href="#常用元素的属性操作">
+        <span class="has-mr-6">5.2</span>
+        <span>常用元素的属性操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：分时问候">
+        <span class="has-mr-6">5.3</span>
+        <span>案例：分时问候</span>
+        </a></li><li>
+        <a class="is-flex" href="#表单元素的属性操作">
+        <span class="has-mr-6">5.4</span>
+        <span>表单元素的属性操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：仿京东显示密码">
+        <span class="has-mr-6">5.5</span>
+        <span>案例：仿京东显示密码</span>
+        </a></li><li>
+        <a class="is-flex" href="#样式属性操作">
+        <span class="has-mr-6">5.6</span>
+        <span>样式属性操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#方式1：通过操作style属性">
+        <span class="has-mr-6">5.6.1</span>
+        <span>方式1：通过操作style属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：淘宝点击关闭二维码">
+        <span class="has-mr-6">5.6.2</span>
+        <span>案例：淘宝点击关闭二维码</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：循环精灵图背景">
+        <span class="has-mr-6">5.6.3</span>
+        <span>案例：循环精灵图背景</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：显示隐藏文本框内容">
+        <span class="has-mr-6">5.6.4</span>
+        <span>案例：显示隐藏文本框内容</span>
+        </a></li><li>
+        <a class="is-flex" href="#方式2：通过操作className属性">
+        <span class="has-mr-6">5.6.5</span>
+        <span>方式2：通过操作className属性</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：密码框格式提示错误信息">
+        <span class="has-mr-6">5.6.6</span>
+        <span>案例：密码框格式提示错误信息</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="WebAPIs-Day01" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

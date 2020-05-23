@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>WebAPIs-Day07 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.JavaScript基础.移动端特效   学习目标: 能够写出移动端触屏事件能够写出常见的移动端特效能够使用移动端开发插件开发移动端特效能够使用移动端开发框架开发移动端特效能够写出 sessionStorage 数据的存储以及获取能够写出 localStorage 数据的存储以及获取能够说出它们两者的区别">
+<meta name="keywords" content="JavaScript,js,sessionStorage,localStorage">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebAPIs-Day07">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/webapis-day07/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.JavaScript基础.移动端特效   学习目标: 能够写出移动端触屏事件能够写出常见的移动端特效能够使用移动端开发插件开发移动端特效能够使用移动端开发框架开发移动端特效能够写出 sessionStorage 数据的存储以及获取能够写出 localStorage 数据的存储以及获取能够说出它们两者的区别">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/webapis-day07/%E5%9B%BE%E7%89%871.png">
+<meta property="og:updated_time" content="2020-05-23T07:50:29.674Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebAPIs-Day07">
+<meta name="twitter:description" content="第03阶段.JavaScript基础.移动端特效   学习目标: 能够写出移动端触屏事件能够写出常见的移动端特效能够使用移动端开发插件开发移动端特效能够使用移动端开发框架开发移动端特效能够写出 sessionStorage 数据的存储以及获取能够写出 localStorage 数据的存储以及获取能够说出它们两者的区别">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/webapis-day07/%E5%9B%BE%E7%89%871.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="WebAPIs-Day07" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/webapis-day07/%E5%9B%BE%E7%89%871.png" alt="WebAPIs-Day07">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>WebAPIs-Day07
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T07:37:11.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T07:50:29.674Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    20 分钟 读完 (大约 2984 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.JavaScript基础.移动端特效</p>
+</blockquote>
+<blockquote>
+<p><strong>学习目标:</strong></p>
+<p>能够写出移动端触屏事件<br>能够写出常见的移动端特效<br>能够使用移动端开发插件开发移动端特效<br>能够使用移动端开发框架开发移动端特效<br>能够写出 sessionStorage 数据的存储以及获取<br>能够写出 localStorage 数据的存储以及获取<br>能够说出它们两者的区别</p>
+</blockquote>
+ <a id="more"></a>
+
+<h2 id="触屏事件"><a href="#触屏事件" class="headerlink" title="触屏事件"></a>触屏事件</h2><h3 id="触屏事件概述"><a href="#触屏事件概述" class="headerlink" title="触屏事件概述"></a>触屏事件概述</h3><p>移动端浏览器兼容性较好，我们不需要考虑以前 JS 的兼容性问题，可以放心的使用原生 JS 书写效果，但是移动端也有自己独特的地方。比如触屏事件 touch（也称触摸事件），Android 和 IOS 都有。touch 对象代表一个触摸点。触摸点可能是一根手指，也可能是一根触摸笔。触屏事件可响应用户手指（或触控笔）对屏幕或者触控板操作。</p>
+<p>常见的触屏事件如下：</p>
+<p><img src="/前端笔记/webapis-day07/%E5%9B%BE%E7%89%871.png" alt></p>
+<h3 id="触摸事件对象（TouchEvent）"><a href="#触摸事件对象（TouchEvent）" class="headerlink" title="触摸事件对象（TouchEvent）"></a>触摸事件对象（TouchEvent）</h3><p>TouchEvent 是一类描述手指在触摸平面（触摸屏、触摸板等）的状态变化的事件。这类事件用于描述一个或多个触点，使开发者可以检测触点的移动，触点的增加和减少，等等</p>
+<p>touchstart、touchmove、touchend 三个事件都会各自有事件对象。</p>
+<p>触摸事件对象重点我们看三个常见对象列表：</p>
+<p><img src="/前端笔记/webapis-day07/%E5%9B%BE%E7%89%872.png" alt></p>
+<blockquote>
+<p><strong>因为平时我们都是给元素注册触摸事件，所以重点记住 targetTocuhes</strong></p>
+</blockquote>
+<h3 id="移动端拖动元素"><a href="#移动端拖动元素" class="headerlink" title="移动端拖动元素"></a>移动端拖动元素</h3><ol>
+<li>touchstart、touchmove、touchend 可以实现拖动元素</li>
+<li>但是拖动元素需要当前手指的坐标值 我们可以使用  targetTouches[0] 里面的pageX 和 pageY </li>
+<li>移动端拖动的原理：    手指移动中，计算出手指移动的距离。然后用盒子原来的位置 + 手指移动的距离</li>
+<li>手指移动的距离：  手指滑动中的位置 减去  手指刚开始触摸的位置</li>
+</ol>
+<p>拖动元素三步曲：</p>
+<p>（1） 触摸元素 touchstart： 获取手指初始坐标，同时获得盒子原来的位置</p>
+<p>（2） 移动手指 touchmove： 计算手指的滑动距离，并且移动盒子</p>
+<p>（3） 离开手指 touchend:</p>
+<blockquote>
+<p><strong>注意： 手指移动也会触发滚动屏幕所以这里要阻止默认的屏幕滚动 e.preventDefault();</strong></p>
+</blockquote>
+<h2 id="移动端常见特效"><a href="#移动端常见特效" class="headerlink" title="移动端常见特效"></a>移动端常见特效</h2><h3 id="案例-移动轮播图"><a href="#案例-移动轮播图" class="headerlink" title="案例: 移动轮播图"></a>案例: 移动轮播图</h3><p><code>移动端轮播图功能和基本PC端一致。</code></p>
+<ol>
+<li>可以自动播放图片</li>
+<li>手指可以拖动播放轮播图</li>
+</ol>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析:"></a>案例分析:</h3><ol>
+<li>自动播放功能</li>
+<li>开启定时器</li>
+<li>移动端移动，可以使用translate 移动</li>
+<li>想要图片优雅的移动，请添加过渡效果<img src="/前端笔记/webapis-day07/images%5C1551795152(1).jpg" alt="1551795152(1)"></li>
+</ol>
+<ol>
+<li><p>自动播放功能-无缝滚动</p>
+</li>
+<li><p>注意，我们判断条件是要等到图片滚动完毕再去判断，就是过渡完成后判断</p>
+</li>
+<li><p>此时需要添加检测过渡完成事件  transitionend </p>
+</li>
+<li><p>判断条件：如果索引号等于 3 说明走到最后一张图片，此时 索引号要复原为 0</p>
+</li>
+<li><p>此时图片，去掉过渡效果，然后移动</p>
+</li>
+<li><p>如果索引号小于0， 说明是倒着走， 索引号等于2 </p>
+</li>
+<li><p>此时图片，去掉过渡效果，然后移动</p>
+<p><img src="/前端笔记/webapis-day07/1551795483(1).jpg" alt></p>
+</li>
+</ol>
+<h2 id="classList-属性"><a href="#classList-属性" class="headerlink" title="classList 属性"></a>classList 属性</h2><p>classList属性是HTML5新增的一个属性，返回元素的类名。但是ie10以上版本支持。</p>
+<p>该属性用于在元素中添加，移除及切换 CSS 类。有以下方法</p>
+<p><strong>添加类：</strong></p>
+<p>element.classList.add（’类名’）；</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">focus.classList.add(<span class="hljs-string">'current'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>移除类：</strong></p>
+<p>element.classList.remove（’类名’）;</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">focus.classList.remove(<span class="hljs-string">'current'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>切换类：</strong></p>
+<p>element.classList.toggle（’类名’）;</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">focus.classList.toggle(<span class="hljs-string">'current'</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>注意:以上方法里面，所有类名都不带点</code></p>
+<h3 id="案例分析-1"><a href="#案例分析-1" class="headerlink" title="案例分析"></a>案例分析</h3><ol>
+<li><p>小圆点跟随变化效果</p>
+</li>
+<li><p>把ol里面li带有current类名的选出来去掉类名 remove</p>
+</li>
+<li><p>让当前索引号的小li 加上 current   add</p>
+</li>
+<li><p>但是，是等着过渡结束之后变化，所以这个写到 transitionend 事件里面</p>
+<p><img src="/前端笔记/webapis-day07/1551796072(1).jpg" alt></p>
+</li>
+</ol>
+<ol>
+<li>手指滑动轮播图</li>
+<li>本质就是ul跟随手指移动，简单说就是移动端拖动元素</li>
+<li>触摸元素touchstart：  获取手指初始坐标</li>
+<li>移动手指touchmove：  计算手指的滑动距离，并且移动盒子</li>
+<li>离开手指touchend:   根据滑动的距离分不同的情况</li>
+<li>如果移动距离小于某个像素  就回弹原来位置</li>
+<li>如果移动距离大于某个像素就上一张下一张滑动。</li>
+<li>滑动也分为左滑动和右滑动判断的标准是 移动距离正负 如果是负值就是左滑 反之右滑 </li>
+<li>如果是左滑就播放下一张 （index++）</li>
+<li>如果是右滑就播放上一张  (index–)</li>
+</ol>
+<p><img src="/前端笔记/webapis-day07/1551796363(1).jpg" alt></p>
+<p><img src="/前端笔记/webapis-day07/1551796502(1).jpg" alt></p>
+<h3 id="案例：返回顶部"><a href="#案例：返回顶部" class="headerlink" title="案例：返回顶部"></a>案例：返回顶部</h3><p>当页面滚动某个地方，就显示，否则隐藏</p>
+<p>点击可以返回顶部</p>
+<h3 id="案例分析-2"><a href="#案例分析-2" class="headerlink" title="案例分析"></a>案例分析</h3><ol>
+<li>滚动某个地方显示</li>
+<li>事件：scroll页面滚动事件  </li>
+<li>如果被卷去的头部（window.pageYOffset ）大于某个数值</li>
+<li>点击，window.scroll(0,0) 返回顶部</li>
+</ol>
+<p><img src="/前端笔记/webapis-day07/1551797003(1).jpg" alt></p>
+<h2 id="click-延时解决方案"><a href="#click-延时解决方案" class="headerlink" title="click 延时解决方案"></a>click 延时解决方案</h2><p>移动端 click 事件会有 300ms 的延时，原因是移动端屏幕双击会缩放(double tap to zoom) 页面。</p>
+<p>解决方案：</p>
+<p>​    1. 禁用缩放。 浏览器禁用默认的双击缩放行为并且去掉300ms 的点击延迟。</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​    2.利用touch事件自己封装这个事件解决300ms 延迟。 </p>
+<p>​    原理就是：</p>
+<ol>
+<li>当我们手指触摸屏幕，记录当前触摸时间</li>
+<li>当我们手指离开屏幕， 用离开的时间减去触摸的时间</li>
+<li>如果时间小于150ms，并且没有滑动过屏幕， 那么我们就定义为点击</li>
+</ol>
+<p>代码如下:</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//封装tap，解决click 300ms 延时</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tap</span> (<span class="hljs-params">obj, callback</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> isMove = <span class="hljs-literal">false</span>;</span><br><span class="line">        <span class="hljs-keyword">var</span> startTime = <span class="hljs-number">0</span>; <span class="hljs-comment">// 记录触摸时候的时间变量</span></span><br><span class="line">        obj.addEventListener(<span class="hljs-string">'touchstart'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">            startTime = <span class="hljs-built_in">Date</span>.now(); <span class="hljs-comment">// 记录触摸时间</span></span><br><span class="line">        &#125;);</span><br><span class="line">        obj.addEventListener(<span class="hljs-string">'touchmove'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">            isMove = <span class="hljs-literal">true</span>;  <span class="hljs-comment">// 看看是否有滑动，有滑动算拖拽，不算点击</span></span><br><span class="line">        &#125;);</span><br><span class="line">        obj.addEventListener(<span class="hljs-string">'touchend'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (!isMove &amp;&amp; (<span class="hljs-built_in">Date</span>.now() - startTime) &lt; <span class="hljs-number">150</span>) &#123;  <span class="hljs-comment">// 如果手指触摸和离开时间小于150ms 算点击</span></span><br><span class="line">                callback &amp;&amp; callback(); <span class="hljs-comment">// 执行回调函数</span></span><br><span class="line">            &#125;</span><br><span class="line">            isMove = <span class="hljs-literal">false</span>;  <span class="hljs-comment">//  取反 重置</span></span><br><span class="line">            startTime = <span class="hljs-number">0</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//调用  </span></span><br><span class="line">  tap(div, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;   <span class="hljs-comment">// 执行代码  &#125;);</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>使用插件。fastclick 插件解决300ms 延迟。 </p>
+<p><img src="/前端笔记/webapis-day07/1551797533(1).jpg" alt></p>
+</li>
+</ol>
+<h2 id="移动端常用开发插件"><a href="#移动端常用开发插件" class="headerlink" title="移动端常用开发插件"></a>移动端常用开发插件</h2><h3 id="什么是插件"><a href="#什么是插件" class="headerlink" title="什么是插件"></a>什么是插件</h3><p>移动端要求的是快速开发，所以我们经常会借助于一些插件来帮我完成操作，那么什么是插件呢？</p>
+<p>JS 插件是 js 文件，它遵循一定规范编写，方便程序展示效果，拥有特定功能且方便调用。如轮播图和瀑布流插件。</p>
+<p>特点：它一般是为了解决某个问题而专门存在，其功能单一，并且比较小。</p>
+<p>我们以前写的animate.js 也算一个最简单的插件</p>
+<p>fastclick 插件解决 300ms 延迟。 使用延时</p>
+<p>GitHub官网地址： <a href="https://github.com/ftlabs/fastclick" target="_blank" rel="noopener">https://</a><a href="https://github.com/ftlabs/fastclick" target="_blank" rel="noopener">github.com/ftlabs/fastclick</a></p>
+<h3 id="插件的使用"><a href="#插件的使用" class="headerlink" title="插件的使用"></a>插件的使用</h3><ol>
+<li><p>引入 js 插件文件。</p>
+</li>
+<li><p>按照规定语法使用。</p>
+</li>
+<li><p>fastclick 插件解决 300ms 延迟。 使用延时</p>
+</li>
+<li><p>GitHub官网地址： <a href="https://github.com/ftlabs/fastclick" target="_blank" rel="noopener">https://github.com/ftlabs/fastclick</a></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span> (<span class="hljs-string">'addEventListener'</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">document</span>) &#123;</span><br><span class="line">            <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                       FastClick.attach(<span class="hljs-built_in">document</span>.body);</span><br><span class="line">            &#125;, <span class="hljs-literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="Swiper-插件的使用"><a href="#Swiper-插件的使用" class="headerlink" title="Swiper 插件的使用"></a>Swiper 插件的使用</h3><p>中文官网地址： <a href="https://www.swiper.com.cn/" target="_blank" rel="noopener">https://www.swiper.com.cn/</a> </p>
+<ol>
+<li>引入插件相关文件。</li>
+<li>按照规定语法使用</li>
+</ol>
+<h3 id="其他移动端常见插件"><a href="#其他移动端常见插件" class="headerlink" title="其他移动端常见插件"></a>其他移动端常见插件</h3><p>lsuperslide： <a href="http://www.superslide2.com/" target="_blank" rel="noopener">http://www.superslide2.com/</a></p>
+<p>l iscroll： <a href="https://github.com/cubiq/iscroll" target="_blank" rel="noopener">https://github.com/cubiq/iscroll</a></p>
+<h3 id="插件的使用总结"><a href="#插件的使用总结" class="headerlink" title="插件的使用总结"></a>插件的使用总结</h3><p>1.确认插件实现的功能</p>
+<p>2.去官网查看使用说明</p>
+<p>3.下载插件</p>
+<p>4.打开demo实例文件，查看需要引入的相关文件，并且引入</p>
+<p>5.复制demo实例文件中的结构html，样式css以及js代码</p>
+<h3 id="移动端视频插件-zy-media-js"><a href="#移动端视频插件-zy-media-js" class="headerlink" title="移动端视频插件 zy.media.js"></a>移动端视频插件 zy.media.js</h3><p>H5 给我们提供了 video 标签，但是浏览器的支持情况不同。</p>
+<p>不同的视频格式文件，我们可以通过source解决。</p>
+<p>但是外观样式，还有暂停，播放，全屏等功能我们只能自己写代码解决。</p>
+<p>这个时候我们可以使用插件方式来制作。</p>
+<p>我们可以通过 JS 修改元素的大小、颜色、位置等样式。</p>
+<h2 id="移动端常用开发框架"><a href="#移动端常用开发框架" class="headerlink" title="移动端常用开发框架"></a>移动端常用开发框架</h2><h3 id="移动端视频插件-zy-media-js-1"><a href="#移动端视频插件-zy-media-js-1" class="headerlink" title="移动端视频插件 zy.media.js"></a>移动端视频插件 zy.media.js</h3><p>框架，顾名思义就是一套架构，它会基于自身的特点向用户提供一套较为完整的解决方案。框架的控制权在框架本身，使用者要按照框架所规定的某种规范进行开发。</p>
+<p>插件一般是为了解决某个问题而专门存在，其功能单一，并且比较小。</p>
+<p>前端常用的框架有 Bootstrap、Vue、Angular、React 等。既能开发PC端，也能开发移动端</p>
+<p>前端常用的移动端插件有 swiper、superslide、iscroll等。</p>
+<p>框架： 大而全，一整套解决方案</p>
+<p>插件： 小而专一，某个功能的解决方案</p>
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h3><p>Bootstrap 是一个简洁、直观、强悍的前端开发框架，它让 web 开发更迅速、简单。</p>
+<p>它能开发PC端，也能开发移动端 </p>
+<p>Bootstrap JS插件使用步骤：</p>
+<p>1.引入相关js 文件</p>
+<p>2.复制HTML 结构</p>
+<p>3.修改对应样式</p>
+<p>4.修改相应JS 参数</p>
+<h2 id="本地存储"><a href="#本地存储" class="headerlink" title="本地存储"></a>本地存储</h2><p>随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，HTML5规范提出了相关解决方案。</p>
+<h3 id="本地存储特性"><a href="#本地存储特性" class="headerlink" title="本地存储特性"></a>本地存储特性</h3><p>1、数据存储在用户浏览器中</p>
+<p>2、设置、读取方便、甚至页面刷新不丢失数据</p>
+<p>3、容量较大，sessionStorage约5M、localStorage约20M</p>
+<p>4、只能存储字符串，可以将对象JSON.stringify() 编码后存储</p>
+<h3 id="window-sessionStorage"><a href="#window-sessionStorage" class="headerlink" title="window.sessionStorage"></a>window.sessionStorage</h3><p>1、生命周期为关闭浏览器窗口</p>
+<p>2、在同一个窗口(页面)下数据可以共享</p>
+<p>3、以键值对的形式存储使用</p>
+<p>存储数据：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.setItem(key, value)</span><br></pre></td></tr></table></figure>
+
+<p>获取数据：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.getItem(key)</span><br></pre></td></tr></table></figure>
+
+<p>删除数据：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.removeItem(key)</span><br></pre></td></tr></table></figure>
+
+<p>清空数据：(所有都清除掉)</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sessionStorage.clear()</span><br></pre></td></tr></table></figure>
+
+<h3 id="window-localStorage"><a href="#window-localStorage" class="headerlink" title="window.localStorage"></a>window.localStorage</h3><p>1、声明周期永久生效，除非手动删除 否则关闭页面也会存在</p>
+<p>2、可以多窗口（页面）共享（同一浏览器可以共享）</p>
+<ol start="3">
+<li>以键值对的形式存储使用</li>
+</ol>
+<p>存储数据：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(key, value)</span><br></pre></td></tr></table></figure>
+
+<p>获取数据：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.getItem(key)</span><br></pre></td></tr></table></figure>
+
+<p>删除数据：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.removeItem(key)</span><br></pre></td></tr></table></figure>
+
+<p>清空数据：(所有都清除掉)</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localStorage.clear()</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：记住用户名"><a href="#案例：记住用户名" class="headerlink" title="案例：记住用户名"></a>案例：记住用户名</h3><p>如果勾选记住用户名， 下次用户打开浏览器，就在文本框里面自动显示上次登录的用户名</p>
+<h4 id="案例分析-3"><a href="#案例分析-3" class="headerlink" title="案例分析"></a>案例分析</h4><ol>
+<li><p>把数据存起来，用到本地存储</p>
+</li>
+<li><p>关闭页面，也可以显示用户名，所以用到localStorage</p>
+</li>
+<li><p>打开页面，先判断是否有这个用户名，如果有，就在表单里面显示用户名，并且勾选复选框</p>
+</li>
+<li><p>当复选框发生改变的时候change事件</p>
+</li>
+<li><p>如果勾选，就存储，否则就移除</p>
+<p><img src="/前端笔记/webapis-day07/1551800263(1).jpg" alt></p>
+</li>
+</ol>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day07/">WebAPIs-Day07</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day07/">http://www.itfool.cn/前端笔记/webapis-day07/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/jquery-day01/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">jQuery-Day01</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/webapis-day06/">
+                <span class="level-item">WebAPIs-Day06</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#触屏事件">
+        <span class="has-mr-6">1</span>
+        <span>触屏事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#触屏事件概述">
+        <span class="has-mr-6">1.1</span>
+        <span>触屏事件概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#触摸事件对象（TouchEvent）">
+        <span class="has-mr-6">1.2</span>
+        <span>触摸事件对象（TouchEvent）</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端拖动元素">
+        <span class="has-mr-6">1.3</span>
+        <span>移动端拖动元素</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#移动端常见特效">
+        <span class="has-mr-6">2</span>
+        <span>移动端常见特效</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#案例-移动轮播图">
+        <span class="has-mr-6">2.1</span>
+        <span>案例: 移动轮播图</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例分析">
+        <span class="has-mr-6">2.2</span>
+        <span>案例分析:</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#classList-属性">
+        <span class="has-mr-6">3</span>
+        <span>classList 属性</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#案例分析-1">
+        <span class="has-mr-6">3.1</span>
+        <span>案例分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：返回顶部">
+        <span class="has-mr-6">3.2</span>
+        <span>案例：返回顶部</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例分析-2">
+        <span class="has-mr-6">3.3</span>
+        <span>案例分析</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#click-延时解决方案">
+        <span class="has-mr-6">4</span>
+        <span>click 延时解决方案</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端常用开发插件">
+        <span class="has-mr-6">5</span>
+        <span>移动端常用开发插件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是插件">
+        <span class="has-mr-6">5.1</span>
+        <span>什么是插件</span>
+        </a></li><li>
+        <a class="is-flex" href="#插件的使用">
+        <span class="has-mr-6">5.2</span>
+        <span>插件的使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#Swiper-插件的使用">
+        <span class="has-mr-6">5.3</span>
+        <span>Swiper 插件的使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#其他移动端常见插件">
+        <span class="has-mr-6">5.4</span>
+        <span>其他移动端常见插件</span>
+        </a></li><li>
+        <a class="is-flex" href="#插件的使用总结">
+        <span class="has-mr-6">5.5</span>
+        <span>插件的使用总结</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端视频插件-zy-media-js">
+        <span class="has-mr-6">5.6</span>
+        <span>移动端视频插件 zy.media.js</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#移动端常用开发框架">
+        <span class="has-mr-6">6</span>
+        <span>移动端常用开发框架</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#移动端视频插件-zy-media-js-1">
+        <span class="has-mr-6">6.1</span>
+        <span>移动端视频插件 zy.media.js</span>
+        </a></li><li>
+        <a class="is-flex" href="#Bootstrap">
+        <span class="has-mr-6">6.2</span>
+        <span>Bootstrap</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#本地存储">
+        <span class="has-mr-6">7</span>
+        <span>本地存储</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#本地存储特性">
+        <span class="has-mr-6">7.1</span>
+        <span>本地存储特性</span>
+        </a></li><li>
+        <a class="is-flex" href="#window-sessionStorage">
+        <span class="has-mr-6">7.2</span>
+        <span>window.sessionStorage</span>
+        </a></li><li>
+        <a class="is-flex" href="#window-localStorage">
+        <span class="has-mr-6">7.3</span>
+        <span>window.localStorage</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：记住用户名">
+        <span class="has-mr-6">7.4</span>
+        <span>案例：记住用户名</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#案例分析-3">
+        <span class="has-mr-6">7.4.1</span>
+        <span>案例分析</span>
+        </a></li></ul></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="WebAPIs-Day07" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>WebAPIs-Day06 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.JavaScript基础.函数封装   学习目标: 能够封装简单动画函数 能够理解缓动动画的封装 能够使用动画函数 能够写出网页轮播图案例 能够写出移动端触屏事件">
+<meta name="keywords" content="JavaScript,js,函数封装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebAPIs-Day06">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/webapis-day06/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.JavaScript基础.函数封装   学习目标: 能够封装简单动画函数 能够理解缓动动画的封装 能够使用动画函数 能够写出网页轮播图案例 能够写出移动端触屏事件">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/webapis-day06/%E5%9B%BE%E7%89%872(1).png">
+<meta property="og:updated_time" content="2020-05-23T07:50:52.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebAPIs-Day06">
+<meta name="twitter:description" content="第03阶段.JavaScript基础.函数封装   学习目标: 能够封装简单动画函数 能够理解缓动动画的封装 能够使用动画函数 能够写出网页轮播图案例 能够写出移动端触屏事件">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/webapis-day06/%E5%9B%BE%E7%89%872(1).png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="WebAPIs-Day06" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/webapis-day06/%E5%9B%BE%E7%89%872(1).png" alt="WebAPIs-Day06">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>WebAPIs-Day06
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T07:33:00.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T07:50:52.706Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    19 分钟 读完 (大约 2793 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.JavaScript基础.函数封装</p>
+</blockquote>
+<blockquote>
+<p><strong>学习目标:</strong></p>
+<p>能够封装简单动画函数</p>
+<p>能够理解缓动动画的封装</p>
+<p>能够使用动画函数</p>
+<p>能够写出网页轮播图案例</p>
+<p>能够写出移动端触屏事件</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="动画函数封装"><a href="#动画函数封装" class="headerlink" title="动画函数封装"></a>动画函数封装</h2><h3 id="缓动效果原理"><a href="#缓动效果原理" class="headerlink" title="缓动效果原理"></a>缓动效果原理</h3><p>缓动动画就是让元素运动速度有所变化，最常见的是让速度慢慢停下来</p>
+<p>思路：</p>
+<ol>
+<li>让盒子每次移动的距离慢慢变小，速度就会慢慢落下来。</li>
+<li>核心算法： (目标值 - 现在的位置)   /  10    做为每次移动的距离步长</li>
+<li>停止的条件是： 让当前盒子位置等于目标位置就停止定时器  </li>
+<li>注意步长值需要取整  </li>
+</ol>
+<h3 id="动画函数多个目标值之间移动"><a href="#动画函数多个目标值之间移动" class="headerlink" title="动画函数多个目标值之间移动"></a>动画函数多个目标值之间移动</h3><p>可以让动画函数从 800 移动到 500。</p>
+<p>当我们点击按钮时候，判断步长是正值还是负值</p>
+<p>​    1.如果是正值，则步长往大了取整</p>
+<p>​    2.如果是负值，则步长 向小了取整</p>
+<h3 id="动函数添加回调函数"><a href="#动函数添加回调函数" class="headerlink" title="动函数添加回调函数"></a>动函数添加回调函数</h3><p>回调函数原理：函数可以作为一个参数。将这个函数作为参数传到另一个函数里面，当那个函数执行完之后，再执行传进去的这个函数，这个过程就叫做回调。</p>
+<p>回调函数写的位置：定时器结束的位置。</p>
+<h3 id="动画完整版代码"><a href="#动画完整版代码" class="headerlink" title="动画完整版代码:"></a>动画完整版代码:</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animate</span>(<span class="hljs-params">obj, target, callback</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// console.log(callback);  callback = function() &#123;&#125;  调用的时候 callback()</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 先清除以前的定时器，只保留当前的一个定时器执行</span></span><br><span class="line">    clearInterval(obj.timer);</span><br><span class="line">    obj.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 步长值写到定时器的里面</span></span><br><span class="line">        <span class="hljs-comment">// 把我们步长值改为整数 不要出现小数的问题</span></span><br><span class="line">        <span class="hljs-comment">// var step = Math.ceil((target - obj.offsetLeft) / 10);</span></span><br><span class="line">        <span class="hljs-keyword">var</span> step = (target - obj.offsetLeft) / <span class="hljs-number">10</span>;</span><br><span class="line">        step = step &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(step) : <span class="hljs-built_in">Math</span>.floor(step);</span><br><span class="line">        <span class="hljs-keyword">if</span> (obj.offsetLeft == target) &#123;</span><br><span class="line">            <span class="hljs-comment">// 停止动画 本质是停止定时器</span></span><br><span class="line">            clearInterval(obj.timer);</span><br><span class="line">            <span class="hljs-comment">// 回调函数写到定时器结束里面</span></span><br><span class="line">            <span class="hljs-comment">// if (callback) &#123;</span></span><br><span class="line">            <span class="hljs-comment">//     // 调用函数</span></span><br><span class="line">            <span class="hljs-comment">//     callback();</span></span><br><span class="line">            <span class="hljs-comment">// &#125;</span></span><br><span class="line">            callback &amp;&amp; callback();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-comment">// 把每次加1 这个步长值改为一个慢慢变小的值  步长公式：(目标值 - 现在的位置) / 10</span></span><br><span class="line">        obj.style.left = obj.offsetLeft + step + <span class="hljs-string">'px'</span>;</span><br><span class="line"></span><br><span class="line">    &#125;, <span class="hljs-number">15</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="常见网页特效案例"><a href="#常见网页特效案例" class="headerlink" title="常见网页特效案例"></a>常见网页特效案例</h2><h3 id="案例：网页轮播图"><a href="#案例：网页轮播图" class="headerlink" title="案例：网页轮播图"></a>案例：网页轮播图</h3><p>轮播图也称为焦点图，是网页中比较常见的网页特效。</p>
+<p>功能需求：</p>
+<p>​    1.鼠标经过轮播图模块，左右按钮显示，离开隐藏左右按钮。</p>
+<p>​    2.点击右侧按钮一次，图片往左播放一张，以此类推，左侧按钮同理。</p>
+<p>​    3.图片播放的同时，下面小圆圈模块跟随一起变化。</p>
+<p>​    4.点击小圆圈，可以播放相应图片。</p>
+<p>​    5.鼠标不经过轮播图，轮播图也会自动播放图片。</p>
+<p>​    6.鼠标经过，轮播图模块， 自动播放停止。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">window.addEventListener(&apos;load&apos;, function() &#123;</span><br><span class="line">    // 1. 获取元素</span><br><span class="line">    var arrow_l = document.querySelector(&apos;.arrow-l&apos;);</span><br><span class="line">    var arrow_r = document.querySelector(&apos;.arrow-r&apos;);</span><br><span class="line">    var focus = document.querySelector(&apos;.focus&apos;);</span><br><span class="line">    var focusWidth = focus.offsetWidth;</span><br><span class="line">    // 2. 鼠标经过focus 就显示隐藏左右按钮</span><br><span class="line">    focus.addEventListener(&apos;mouseenter&apos;, function() &#123;</span><br><span class="line">        arrow_l.style.display = &apos;block&apos;;</span><br><span class="line">        arrow_r.style.display = &apos;block&apos;;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">        timer = null; // 清除定时器变量</span><br><span class="line">    &#125;);</span><br><span class="line">    focus.addEventListener(&apos;mouseleave&apos;, function() &#123;</span><br><span class="line">        arrow_l.style.display = &apos;none&apos;;</span><br><span class="line">        arrow_r.style.display = &apos;none&apos;;</span><br><span class="line">        timer = setInterval(function() &#123;</span><br><span class="line">            //手动调用点击事件</span><br><span class="line">            arrow_r.click();</span><br><span class="line">        &#125;, 2000);</span><br><span class="line">    &#125;);</span><br><span class="line">    // 3. 动态生成小圆圈  有几张图片，我就生成几个小圆圈</span><br><span class="line">    var ul = focus.querySelector(&apos;ul&apos;);</span><br><span class="line">    var ol = focus.querySelector(&apos;.circle&apos;);</span><br><span class="line">    // console.log(ul.children.length);</span><br><span class="line">    for (var i = 0; i &lt; ul.children.length; i++) &#123;</span><br><span class="line">        // 创建一个小li </span><br><span class="line">        var li = document.createElement(&apos;li&apos;);</span><br><span class="line">        // 记录当前小圆圈的索引号 通过自定义属性来做 </span><br><span class="line">        li.setAttribute(&apos;index&apos;, i);</span><br><span class="line">        // 把小li插入到ol 里面</span><br><span class="line">        ol.appendChild(li);</span><br><span class="line">        // 4. 小圆圈的排他思想 我们可以直接在生成小圆圈的同时直接绑定点击事件</span><br><span class="line">        li.addEventListener(&apos;click&apos;, function() &#123;</span><br><span class="line">            // 干掉所有人 把所有的小li 清除 current 类名</span><br><span class="line">            for (var i = 0; i &lt; ol.children.length; i++) &#123;</span><br><span class="line">                ol.children[i].className = &apos;&apos;;</span><br><span class="line">            &#125;</span><br><span class="line">            // 留下我自己  当前的小li 设置current 类名</span><br><span class="line">            this.className = &apos;current&apos;;</span><br><span class="line">            // 5. 点击小圆圈，移动图片 当然移动的是 ul </span><br><span class="line">            // ul 的移动距离 小圆圈的索引号 乘以 图片的宽度 注意是负值</span><br><span class="line">            // 当我们点击了某个小li 就拿到当前小li 的索引号</span><br><span class="line">            var index = this.getAttribute(&apos;index&apos;);</span><br><span class="line">            // 当我们点击了某个小li 就要把这个li 的索引号给 num  </span><br><span class="line">            num = index;</span><br><span class="line">            // 当我们点击了某个小li 就要把这个li 的索引号给 circle  </span><br><span class="line">            circle = index;</span><br><span class="line">            // num = circle = index;</span><br><span class="line">            console.log(focusWidth);</span><br><span class="line">            console.log(index);</span><br><span class="line"></span><br><span class="line">            animate(ul, -index * focusWidth);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    // 把ol里面的第一个小li设置类名为 current</span><br><span class="line">    ol.children[0].className = &apos;current&apos;;</span><br><span class="line">    // 6. 克隆第一张图片(li)放到ul 最后面</span><br><span class="line">    var first = ul.children[0].cloneNode(true);</span><br><span class="line">    ul.appendChild(first);</span><br><span class="line">    // 7. 点击右侧按钮， 图片滚动一张</span><br><span class="line">    var num = 0;</span><br><span class="line">    // circle 控制小圆圈的播放</span><br><span class="line">    var circle = 0;</span><br><span class="line">    // flag 节流阀</span><br><span class="line">    var flag = true;</span><br><span class="line">    arrow_r.addEventListener(&apos;click&apos;, function() &#123;</span><br><span class="line">        if (flag) &#123;</span><br><span class="line">            flag = false; // 关闭节流阀</span><br><span class="line">            // 如果走到了最后复制的一张图片，此时 我们的ul 要快速复原 left 改为 0</span><br><span class="line">            if (num == ul.children.length - 1) &#123;</span><br><span class="line">                ul.style.left = 0;</span><br><span class="line">                num = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            num++;</span><br><span class="line">            animate(ul, -num * focusWidth, function() &#123;</span><br><span class="line">                flag = true; // 打开节流阀</span><br><span class="line">            &#125;);</span><br><span class="line">            // 8. 点击右侧按钮，小圆圈跟随一起变化 可以再声明一个变量控制小圆圈的播放</span><br><span class="line">            circle++;</span><br><span class="line">            // 如果circle == 4 说明走到最后我们克隆的这张图片了 我们就复原</span><br><span class="line">            if (circle == ol.children.length) &#123;</span><br><span class="line">                circle = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            // 调用函数</span><br><span class="line">            circleChange();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 9. 左侧按钮做法</span><br><span class="line">    arrow_l.addEventListener(&apos;click&apos;, function() &#123;</span><br><span class="line">        if (flag) &#123;</span><br><span class="line">            flag = false;</span><br><span class="line">            if (num == 0) &#123;</span><br><span class="line">                num = ul.children.length - 1;</span><br><span class="line">                ul.style.left = -num * focusWidth + &apos;px&apos;;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            num--;</span><br><span class="line">            animate(ul, -num * focusWidth, function() &#123;</span><br><span class="line">                flag = true;</span><br><span class="line">            &#125;);</span><br><span class="line">            // 点击左侧按钮，小圆圈跟随一起变化 可以再声明一个变量控制小圆圈的播放</span><br><span class="line">            circle--;</span><br><span class="line">            // 如果circle &lt; 0  说明第一张图片，则小圆圈要改为第4个小圆圈（3）</span><br><span class="line">            // if (circle &lt; 0) &#123;</span><br><span class="line">            //     circle = ol.children.length - 1;</span><br><span class="line">            // &#125;</span><br><span class="line">            circle = circle &lt; 0 ? ol.children.length - 1 : circle;</span><br><span class="line">            // 调用函数</span><br><span class="line">            circleChange();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    function circleChange() &#123;</span><br><span class="line">        // 先清除其余小圆圈的current类名</span><br><span class="line">        for (var i = 0; i &lt; ol.children.length; i++) &#123;</span><br><span class="line">            ol.children[i].className = &apos;&apos;;</span><br><span class="line">        &#125;</span><br><span class="line">        // 留下当前的小圆圈的current类名</span><br><span class="line">        ol.children[circle].className = &apos;current&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    // 10. 自动播放轮播图</span><br><span class="line">    var timer = setInterval(function() &#123;</span><br><span class="line">        //手动调用点击事件</span><br><span class="line">        arrow_r.click();</span><br><span class="line">    &#125;, 2000);</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="节流阀"><a href="#节流阀" class="headerlink" title="节流阀"></a>节流阀</h3><p>防止轮播图按钮连续点击造成播放过快。</p>
+<p>节流阀目的：当上一个函数动画内容执行完毕，再去执行下一个函数动画，让事件无法连续触发。</p>
+<p>核心实现思路：利用回调函数，添加一个变量来控制，锁住函数和解锁函数。</p>
+<p> 开始设置一个变量var flag= true;</p>
+<p>If(flag){flag = false; do something}       关闭水龙头</p>
+<p>利用回调函数动画执行完毕， flag = true     打开水龙头</p>
+<h3 id="案例：返回顶部"><a href="#案例：返回顶部" class="headerlink" title="案例：返回顶部"></a>案例：返回顶部</h3><ol>
+<li>带有动画的返回顶部</li>
+<li>此时可以继续使用我们封装的动画函数</li>
+<li>只需要把所有的left 相关的值改为 跟 页面垂直滚动距离相关就可以了</li>
+<li>页面滚动了多少，可以通过 window.pageYOffset 得到</li>
+<li>最后是页面滚动，使用 window.scroll(x,y) </li>
+</ol>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//1. 获取元素</span></span><br><span class="line">      <span class="hljs-keyword">var</span> sliderbar = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.slider-bar'</span>);</span><br><span class="line">      <span class="hljs-keyword">var</span> banner = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.banner'</span>);</span><br><span class="line">      <span class="hljs-comment">// banner.offestTop 就是被卷去头部的大小 一定要写到滚动的外面</span></span><br><span class="line">      <span class="hljs-keyword">var</span> bannerTop = banner.offsetTop</span><br><span class="line">          <span class="hljs-comment">// 当我们侧边栏固定定位之后应该变化的数值</span></span><br><span class="line">      <span class="hljs-keyword">var</span> sliderbarTop = sliderbar.offsetTop - bannerTop;</span><br><span class="line">      <span class="hljs-comment">// 获取main 主体元素</span></span><br><span class="line">      <span class="hljs-keyword">var</span> main = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.main'</span>);</span><br><span class="line">      <span class="hljs-keyword">var</span> goBack = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.goBack'</span>);</span><br><span class="line">      <span class="hljs-keyword">var</span> mainTop = main.offsetTop;</span><br><span class="line">      <span class="hljs-comment">// 2. 页面滚动事件 scroll</span></span><br><span class="line">      <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'scroll'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">              <span class="hljs-comment">// console.log(11);</span></span><br><span class="line">              <span class="hljs-comment">// window.pageYOffset 页面被卷去的头部</span></span><br><span class="line">              <span class="hljs-comment">// console.log(window.pageYOffset);</span></span><br><span class="line">              <span class="hljs-comment">// 3 .当我们页面被卷去的头部大于等于了 172 此时 侧边栏就要改为固定定位</span></span><br><span class="line">              <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.pageYOffset &gt;= bannerTop) &#123;</span><br><span class="line">                  sliderbar.style.position = <span class="hljs-string">'fixed'</span>;</span><br><span class="line">                  sliderbar.style.top = sliderbarTop + <span class="hljs-string">'px'</span>;</span><br><span class="line">              &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                  sliderbar.style.position = <span class="hljs-string">'absolute'</span>;</span><br><span class="line">                  sliderbar.style.top = <span class="hljs-string">'300px'</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              <span class="hljs-comment">// 4. 当我们页面滚动到main盒子，就显示 goback模块</span></span><br><span class="line">              <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.pageYOffset &gt;= mainTop) &#123;</span><br><span class="line">                  goBack.style.display = <span class="hljs-string">'block'</span>;</span><br><span class="line">              &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                  goBack.style.display = <span class="hljs-string">'none'</span>;</span><br><span class="line">              &#125;</span><br><span class="line"></span><br><span class="line">          &#125;)</span><br><span class="line">          <span class="hljs-comment">// 3. 当我们点击了返回顶部模块，就让窗口滚动的页面的最上方</span></span><br><span class="line">      goBack.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          <span class="hljs-comment">// 里面的x和y 不跟单位的 直接写数字即可</span></span><br><span class="line">          <span class="hljs-comment">// window.scroll(0, 0);</span></span><br><span class="line">          <span class="hljs-comment">// 因为是窗口滚动 所以对象是window</span></span><br><span class="line">          animate(<span class="hljs-built_in">window</span>, <span class="hljs-number">0</span>);</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：筋头云案例"><a href="#案例：筋头云案例" class="headerlink" title="案例：筋头云案例"></a>案例：筋头云案例</h3><ol>
+<li>利用动画函数做动画效果</li>
+<li>原先筋斗云的起始位置是0</li>
+<li>鼠标经过某个小li，把当前小li的offsetLeft 位置做为目标值即可</li>
+<li>鼠标离开某个小li，就把目标值设为 0</li>
+<li>如果点击了某个小li， 就把li当前的位置存储起来，做为筋斗云的起始位置</li>
+</ol>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'load'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">           <span class="hljs-comment">// 1. 获取元素</span></span><br><span class="line">           <span class="hljs-keyword">var</span> cloud = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.cloud'</span>);</span><br><span class="line">           <span class="hljs-keyword">var</span> c_nav = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.c-nav'</span>);</span><br><span class="line">           <span class="hljs-keyword">var</span> lis = c_nav.querySelectorAll(<span class="hljs-string">'li'</span>);</span><br><span class="line">           <span class="hljs-comment">// 2. 给所有的小li绑定事件 </span></span><br><span class="line">           <span class="hljs-comment">// 这个current 做为筋斗云的起始位置</span></span><br><span class="line">           <span class="hljs-keyword">var</span> current = <span class="hljs-number">0</span>;</span><br><span class="line">           <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; lis.length; i++) &#123;</span><br><span class="line">               <span class="hljs-comment">// (1) 鼠标经过把当前小li 的位置做为目标值</span></span><br><span class="line">               lis[i].addEventListener(<span class="hljs-string">'mouseenter'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                   animate(cloud, <span class="hljs-keyword">this</span>.offsetLeft);</span><br><span class="line">               &#125;);</span><br><span class="line">               <span class="hljs-comment">// (2) 鼠标离开就回到起始的位置 </span></span><br><span class="line">               lis[i].addEventListener(<span class="hljs-string">'mouseleave'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                   animate(cloud, current);</span><br><span class="line">               &#125;);</span><br><span class="line">               <span class="hljs-comment">// (3) 当我们鼠标点击，就把当前位置做为目标值</span></span><br><span class="line">               lis[i].addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                   current = <span class="hljs-keyword">this</span>.offsetLeft;</span><br><span class="line">               &#125;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="触屏事件"><a href="#触屏事件" class="headerlink" title="触屏事件"></a>触屏事件</h2><h3 id="触屏事件概述"><a href="#触屏事件概述" class="headerlink" title="触屏事件概述"></a>触屏事件概述</h3><p>移动端浏览器兼容性较好，我们不需要考虑以前 JS 的兼容性问题，可以放心的使用原生 JS 书写效果，但是移动端也有自己独特的地方。比如触屏事件 touch（也称触摸事件），Android和 IOS 都有。</p>
+<p>touch 对象代表一个触摸点。触摸点可能是一根手指，也可能是一根触摸笔。触屏事件可响应用户手指（或触控笔）对屏幕或者触控板操作。</p>
+<p>常见的触屏事件如下：</p>
+<p><img src="/前端笔记/webapis-day06/%E5%9B%BE%E7%89%871.png" alt></p>
+<h3 id="触摸事件对象（TouchEvent）"><a href="#触摸事件对象（TouchEvent）" class="headerlink" title="触摸事件对象（TouchEvent）"></a>触摸事件对象（TouchEvent）</h3><p>TouchEvent 是一类描述手指在触摸平面（触摸屏、触摸板等）的状态变化的事件。这类事件用于描述一个或多个触点，使开发者可以检测触点的移动，触点的增加和减少，等等</p>
+<p>touchstart、touchmove、touchend 三个事件都会各自有事件对象。</p>
+<p>触摸事件对象重点我们看三个常见对象列表：</p>
+<p><img src="/前端笔记/webapis-day06/%E5%9B%BE%E7%89%872(1).png" alt></p>
+<blockquote>
+<p><code>因为平时我们都是给元素注册触摸事件，所以重点记住 targetTocuhes</code></p>
+</blockquote>
+<h3 id="案例：移动端拖动元素"><a href="#案例：移动端拖动元素" class="headerlink" title="案例：移动端拖动元素"></a>案例：移动端拖动元素</h3><ol>
+<li><p>touchstart、touchmove、touchend可以实现拖动元素</p>
+</li>
+<li><p>但是拖动元素需要当前手指的坐标值 我们可以使用  targetTouches[0] 里面的pageX 和 pageY </p>
+</li>
+<li><p>移动端拖动的原理：    手指移动中，计算出手指移动的距离。然后用盒子原来的位置 + 手指移动的距离</p>
+</li>
+<li><p>手指移动的距离：  手指滑动中的位置 减去  手指刚开始触摸的位置</p>
+<p>拖动元素三步曲：</p>
+<p>（1） 触摸元素 touchstart： 获取手指初始坐标，同时获得盒子原来的位置</p>
+<p>（2） 移动手指 touchmove： 计算手指的滑动距离，并且移动盒子</p>
+<p>（3） 离开手指 touchend:</p>
+<p><code>注意： 手指移动也会触发滚动屏幕所以这里要阻止默认的屏幕滚动 e.preventDefault();</code></p>
+</li>
+</ol>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day06/">WebAPIs-Day06</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day06/">http://www.itfool.cn/前端笔记/webapis-day06/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/webapis-day07/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">WebAPIs-Day07</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/webapis-day05/">
+                <span class="level-item">WebAPIs-Day05</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#动画函数封装">
+        <span class="has-mr-6">1</span>
+        <span>动画函数封装</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#缓动效果原理">
+        <span class="has-mr-6">1.1</span>
+        <span>缓动效果原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画函数多个目标值之间移动">
+        <span class="has-mr-6">1.2</span>
+        <span>动画函数多个目标值之间移动</span>
+        </a></li><li>
+        <a class="is-flex" href="#动函数添加回调函数">
+        <span class="has-mr-6">1.3</span>
+        <span>动函数添加回调函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#动画完整版代码">
+        <span class="has-mr-6">1.4</span>
+        <span>动画完整版代码:</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#常见网页特效案例">
+        <span class="has-mr-6">2</span>
+        <span>常见网页特效案例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#案例：网页轮播图">
+        <span class="has-mr-6">2.1</span>
+        <span>案例：网页轮播图</span>
+        </a></li><li>
+        <a class="is-flex" href="#节流阀">
+        <span class="has-mr-6">2.2</span>
+        <span>节流阀</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：返回顶部">
+        <span class="has-mr-6">2.3</span>
+        <span>案例：返回顶部</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：筋头云案例">
+        <span class="has-mr-6">2.4</span>
+        <span>案例：筋头云案例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#触屏事件">
+        <span class="has-mr-6">3</span>
+        <span>触屏事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#触屏事件概述">
+        <span class="has-mr-6">3.1</span>
+        <span>触屏事件概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#触摸事件对象（TouchEvent）">
+        <span class="has-mr-6">3.2</span>
+        <span>触摸事件对象（TouchEvent）</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：移动端拖动元素">
+        <span class="has-mr-6">3.3</span>
+        <span>案例：移动端拖动元素</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="WebAPIs-Day06" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>jQuery-Day01 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.jQuery基础.认识jQuery">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery-Day01">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/jquery-day01/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.jQuery基础.认识jQuery">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/jquery-day01/%E6%80%BB%E7%BB%93.png">
+<meta property="og:updated_time" content="2020-05-23T07:55:56.948Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery-Day01">
+<meta name="twitter:description" content="第03阶段.jQuery基础.认识jQuery">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/jquery-day01/%E6%80%BB%E7%BB%93.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="jQuery-Day01" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/jquery-day01/%E6%80%BB%E7%BB%93.png" alt="jQuery-Day01">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>jQuery-Day01
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T07:45:30.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T07:55:56.948Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    24 分钟 读完 (大约 3610 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.jQuery基础.认识jQuery</p>
+</blockquote>
+<p> <img src="/前端笔记/jquery-day01/%E6%80%BB%E7%BB%93.png" alt></p>
+<a id="more"></a>
+
+<blockquote>
+<p>学习目标：</p>
+<p>能够说出什么是 jQuery<br>能够说出 jQuery 的优点<br>能够简单使用 jQuery<br>能够说出 DOM 对象和 jQuery 对象的区别<br>能够写出常用的 jQuery 选择器<br>能够操作 jQuery 样式<br>能够写出常用的 jQuery 动画 </p>
+</blockquote>
+<h2 id="jQuery-介绍"><a href="#jQuery-介绍" class="headerlink" title="jQuery 介绍"></a>jQuery 介绍</h2><h3 id="JavaScript-库"><a href="#JavaScript-库" class="headerlink" title="JavaScript 库"></a>JavaScript 库</h3><p>​    JavaScript库：即 library，是一个封装好的特定的集合（方法和函数）。从封装一大堆函数的角度理解库，就是在这个库中，封装了很多预先定义好的函数在里面，比如动画animate、hide、show，比如获取元素等。</p>
+<blockquote>
+<p>简单理解： 就是一个JS 文件，里面对我们原生js代码进行了封装，存放到里面。这样我们可以快速高效的使用这些封装好的功能了。</p>
+<p>比如 jQuery，就是为了快速方便的操作DOM，里面基本都是函数（方法）。</p>
+</blockquote>
+<p>​    常见的JavaScript 库：jQuery、Prototype、YUI、Dojo、Ext JS、移动端的zepto等，这些库都是对原生 JavaScript 的封装，内部都是用 JavaScript 实现的，我们主要学习的是 jQuery。</p>
+<h3 id="jQuery的概念"><a href="#jQuery的概念" class="headerlink" title="jQuery的概念"></a>jQuery的概念</h3><p>​    jQuery总体概况如下 :</p>
+<ul>
+<li><p>jQuery 是一个快速、简洁的 JavaScript 库，其设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。</p>
+</li>
+<li><p>j 就是 JavaScript；   Query 查询； 意思就是查询js，把js中的DOM操作做了封装，我们可以快速的查询使用里面的功能。</p>
+</li>
+<li><p>jQuery 封装了 JavaScript 常用的功能代码，优化了 DOM 操作、事件处理、动画设计和 Ajax 交互。</p>
+</li>
+<li><p>学习jQuery本质： 就是学习调用这些函数（方法）。</p>
+</li>
+<li><p>jQuery 出现的目的是加快前端人员的开发速度，我们可以非常方便的调用和使用它，从而提高开发效率。</p>
+<p><img src="/前端笔记/jquery-day01/jQuery%E6%A6%82%E8%BF%B0.jpg" alt></p>
+</li>
+</ul>
+<h3 id="jQuery的优点"><a href="#jQuery的优点" class="headerlink" title="jQuery的优点"></a>jQuery的优点</h3><ol>
+<li>轻量级。核心文件才几十kb，不会影响页面加载速度。</li>
+<li>跨浏览器兼容，基本兼容了现在主流的浏览器。</li>
+<li>链式编程、隐式迭代。</li>
+<li>对事件、样式、动画支持，大大简化了DOM操作。</li>
+<li>支持插件扩展开发。有着丰富的第三方的插件，例如：树形菜单、日期控件、轮播图等。</li>
+<li>免费、开源。</li>
+</ol>
+<h2 id="jQuery-的基本使用"><a href="#jQuery-的基本使用" class="headerlink" title="jQuery 的基本使用"></a>jQuery 的基本使用</h2><h3 id="jQuery-的下载"><a href="#jQuery-的下载" class="headerlink" title="jQuery 的下载"></a>jQuery 的下载</h3><p>​    jQuery的官网地址： <a href="https://jquery.com/，官网即可下载最新版本。" target="_blank" rel="noopener">https://jquery.com/，官网即可下载最新版本。</a></p>
+<blockquote>
+<p> 各个版本的下载：<a href="https://code.jquery.com/" target="_blank" rel="noopener">https://code.jquery.com/</a></p>
+</blockquote>
+<p>​    版本介绍：</p>
+<blockquote>
+<p>1x ：兼容 IE 678 等低版本浏览器， 官网不再更新</p>
+<p>2x ：不兼容 IE 678 等低版本浏览器， 官网不再更新</p>
+<p>3x ：不兼容 IE 678 等低版本浏览器， 是官方主要更新维护的版本</p>
+</blockquote>
+<h3 id="体验jQuery"><a href="#体验jQuery" class="headerlink" title="体验jQuery"></a>体验jQuery</h3><p>​    步骤：</p>
+<ul>
+<li>引入jQuery文件。</li>
+<li>在文档最末尾插入 script 标签，书写体验代码。</li>
+<li>$(‘div’).hide() 可以隐藏盒子。</li>
+</ul>
+<h3 id="jQuery的入口函数"><a href="#jQuery的入口函数" class="headerlink" title="jQuery的入口函数"></a>jQuery的入口函数</h3><p>​    jQuery中常见的两种入口函数：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 第一种: 简单易用。</span></span><br><span class="line">$(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;   </span><br><span class="line">    ...  <span class="hljs-comment">// 此处是页面 DOM 加载完成的入口</span></span><br><span class="line">&#125;) ; </span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 第二种: 繁琐，但是也可以实现</span></span><br><span class="line">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">   ...  <span class="hljs-comment">//  此处是页面DOM加载完成的入口</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​    总结：</p>
+<ol>
+<li>等着 DOM 结构渲染完毕即可执行内部代码，不必等到所有外部资源加载完成，jQuery 帮我们完成了封装。</li>
+<li>相当于原生 js 中的 DOMContentLoaded。</li>
+<li>不同于原生 js 中的 load 事件是等页面文档、外部的 js 文件、css文件、图片加载完毕才执行内部代码。</li>
+<li>更推荐使用第一种方式。</li>
+</ol>
+<h3 id="jQuery中的顶级对象"><a href="#jQuery中的顶级对象" class="headerlink" title="jQuery中的顶级对象$"></a>jQuery中的顶级对象$</h3><ol>
+<li>$是 jQuery 的别称，在代码中可以使用 jQuery 代替，但一般为了方便，通常都直接使用 $ 。</li>
+<li>$是jQuery的顶级对象，相当于原生JavaScript中的 window。把元素利用$包装成jQuery对象，就可以调用jQuery 的方法。</li>
+</ol>
+<h3 id="jQuery-对象和-DOM-对象"><a href="#jQuery-对象和-DOM-对象" class="headerlink" title="jQuery 对象和 DOM 对象"></a>jQuery 对象和 DOM 对象</h3><p>​    使用 jQuery 方法和原生JS获取的元素是不一样的，总结如下 : </p>
+<ol>
+<li>用原生 JS 获取来的对象就是 DOM 对象</li>
+<li>jQuery 方法获取的元素就是 jQuery 对象。</li>
+<li>jQuery 对象本质是： 利用$对DOM 对象包装后产生的对象（伪数组形式存储）。</li>
+</ol>
+<blockquote>
+<p>注意：</p>
+<p>只有 jQuery 对象才能使用 jQuery 方法，DOM 对象则使用原生的 JavaScirpt 方法。</p>
+</blockquote>
+<p><img src="/前端笔记/jquery-day01/jQuery%E5%AF%B9%E8%B1%A1%E5%92%8CDOM%E5%AF%B9%E8%B1%A1.png" alt="jQuery对象和DOM对象"></p>
+<h3 id="jQuery-对象和-DOM-对象转换"><a href="#jQuery-对象和-DOM-对象转换" class="headerlink" title="jQuery 对象和 DOM 对象转换"></a>jQuery 对象和 DOM 对象转换</h3><p>​    DOM 对象与 jQuery 对象之间是可以相互转换的。因为原生js 比 jQuery 更大，原生的一些属性和方法 jQuery没有给我们封装. 要想使用这些属性和方法需要把jQuery对象转换为DOM对象才能使用。</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1.DOM对象转换成jQuery对象，方法只有一种</span></span><br><span class="line"><span class="hljs-keyword">var</span> box = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'box'</span>);  <span class="hljs-comment">// 获取DOM对象</span></span><br><span class="line"><span class="hljs-keyword">var</span> jQueryObject = $(box);  <span class="hljs-comment">// 把DOM对象转换为 jQuery 对象</span></span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2.jQuery 对象转换为 DOM 对象有两种方法：</span></span><br><span class="line"><span class="hljs-comment">//   2.1 jQuery对象[索引值]</span></span><br><span class="line"><span class="hljs-keyword">var</span> domObject1 = $(<span class="hljs-string">'div'</span>)[<span class="hljs-number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//   2.2 jQuery对象.get(索引值)</span></span><br><span class="line"><span class="hljs-keyword">var</span> domObject2 = $(<span class="hljs-string">'div'</span>).get(<span class="hljs-number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>总结：实际开发比较常用的是把DOM对象转换为jQuery对象，这样能够调用功能更加强大的jQuery中的方法。</p>
+<h2 id="jQuery-选择器"><a href="#jQuery-选择器" class="headerlink" title="jQuery 选择器"></a>jQuery 选择器</h2><p>​    原生 JS 获取元素方式很多，很杂，而且兼容性情况不一致，因此 jQuery 给我们做了封装，使获取元素统一标准。</p>
+<h3 id="基础选择器"><a href="#基础选择器" class="headerlink" title="基础选择器"></a>基础选择器</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">"选择器"</span>)   <span class="hljs-comment">//  里面选择器直接写 CSS 选择器即可，但是要加引号</span></span><br></pre></td></tr></table></figure>
+
+<p>​    <img src="/前端笔记/jquery-day01/%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8.png" alt="基础选择器"></p>
+<h3 id="层级选择器"><a href="#层级选择器" class="headerlink" title="层级选择器"></a>层级选择器</h3><p>​    层级选择器最常用的两个分别为：后代选择器和子代选择器。</p>
+<p>​    <img src="/前端笔记/jquery-day01/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.png" alt="层级选择器"></p>
+<p><strong>基础选择器和层级选择器案例代码</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;我是div&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div class="nav"&gt;我是nav div&lt;/</span>div&gt;</span><br><span class="line">    &lt;p&gt;我是p&lt;<span class="hljs-regexp">/p&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;ul&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;我是ul 的&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;我是ul 的&lt;<span class="hljs-regexp">/li&gt;        </span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;我是ul 的&lt;/</span>li&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/ul&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        $(function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            console.log($(".nav"));</span></span><br><span class="line"><span class="hljs-regexp">            console.log($("ul li"));</span></span><br><span class="line"><span class="hljs-regexp">        &#125;)</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="筛选选择器"><a href="#筛选选择器" class="headerlink" title="筛选选择器"></a>筛选选择器</h3><p>​    筛选选择器，顾名思义就是在所有的选项中选择满足条件的进行筛选选择。常见如下 :</p>
+<p><img src="/前端笔记/jquery-day01/%E7%AD%9B%E9%80%89%E9%80%89%E6%8B%A9%E5%99%A8.png" alt="筛选选择器"></p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">    &lt;<span class="hljs-regexp">/ul&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;ol&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;多个里面筛选几个&lt;/</span>li&gt;</span><br><span class="line">        &lt;li&gt;多个里面筛选几个&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>ol&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="hljs-string">"ul li:first"</span>).css(<span class="hljs-string">"color"</span>, <span class="hljs-string">"red"</span>);</span><br><span class="line">            $(<span class="hljs-string">"ul li:eq(2)"</span>).css(<span class="hljs-string">"color"</span>, <span class="hljs-string">"blue"</span>);</span><br><span class="line">            $(<span class="hljs-string">"ol li:odd"</span>).css(<span class="hljs-string">"color"</span>, <span class="hljs-string">"skyblue"</span>);</span><br><span class="line">            $(<span class="hljs-string">"ol li:even"</span>).css(<span class="hljs-string">"color"</span>, <span class="hljs-string">"pink"</span>);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>另:  jQuery中还有一些筛选方法，类似DOM中的通过一个节点找另外一个节点，父、子、兄以外有所加强。</p>
+<p><img src="/前端笔记/jquery-day01/relation.png" alt="筛选方法"></p>
+<p>偏重于记忆，演示代码略。</p>
+<h3 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h3><ul>
+<li>jQuery 设置样式</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="hljs-string">'div'</span>).css(<span class="hljs-string">'属性'</span>, <span class="hljs-string">'值'</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jQuery 里面的排他思想</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 想要多选一的效果，排他思想：当前元素设置样式，其余的兄弟元素清除样式。</span></span><br><span class="line">$(<span class="hljs-keyword">this</span>).css(“color”,”red”);</span><br><span class="line">$(<span class="hljs-keyword">this</span>).siblings(). css(“color”,””);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>隐式迭代</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 遍历内部 DOM 元素（伪数组形式存储）的过程就叫做隐式迭代。</span></span><br><span class="line"><span class="hljs-comment">// 简单理解：给匹配到的所有元素进行循环遍历，执行相应的方法，而不用我们再进行循环，简化我们的操作，方便我们调用。</span></span><br><span class="line">$(<span class="hljs-string">'div'</span>).hide();  <span class="hljs-comment">// 页面中所有的div全部隐藏，不用循环操作</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>链式编程</li>
+</ul>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 链式编程是为了节省代码量，看起来更优雅。</span></span><br><span class="line">$(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">'color'</span>, <span class="hljs-string">'red'</span>).sibling().css(<span class="hljs-string">'color'</span>, <span class="hljs-string">''</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：淘宝服饰精品案例"><a href="#案例：淘宝服饰精品案例" class="headerlink" title="案例：淘宝服饰精品案例"></a>案例：淘宝服饰精品案例</h3><blockquote>
+<p>思路分析:<br>1.核心原理：鼠标经过左侧盒子某个小li，就让内容区盒子相对应图片显示，其余的图片隐藏。<br>2.需要得到当前小li 的索引号，就可以显示对应索引号的图片<br>3.jQuery 得到当前元素索引号 $(this).index()<br>4.中间对应的图片，可以通过  eq(index) 方法去选择<br>5.显示元素 show()   隐藏元素 hide()</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h2 id="jQuery-样式操作"><a href="#jQuery-样式操作" class="headerlink" title="jQuery 样式操作"></a>jQuery 样式操作</h2><p>​    jQuery中常用的样式操作有两种：css() 和 设置类样式方法</p>
+<h3 id="方法1-操作-css-方法"><a href="#方法1-操作-css-方法" class="headerlink" title="方法1: 操作 css 方法"></a>方法1: 操作 css 方法</h3><p>​    jQuery 可以使用 css 方法来修改简单元素样式； 也可以操作类，修改多个样式。</p>
+<p>​    常用以下三种形式 : </p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1.参数只写属性名，则是返回属性值</span></span><br><span class="line"><span class="hljs-keyword">var</span> strColor = $(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">'color'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2.  参数是属性名，属性值，逗号分隔，是设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号</span></span><br><span class="line">$(<span class="hljs-keyword">this</span>).css(<span class="hljs-string">''</span>color<span class="hljs-string">''</span>, <span class="hljs-string">''</span>red<span class="hljs-string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3.  参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开， 属性可以不用加引号</span></span><br><span class="line">$(<span class="hljs-keyword">this</span>).css(&#123; <span class="hljs-string">"color"</span>:<span class="hljs-string">"white"</span>,<span class="hljs-string">"font-size"</span>:<span class="hljs-string">"20px"</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​    注意：css() 多用于样式少时操作，多了则不太方便。</p>
+<h3 id="方法2-设置类样式方法"><a href="#方法2-设置类样式方法" class="headerlink" title="方法2: 设置类样式方法"></a>方法2: 设置类样式方法</h3><p>​    作用等同于以前的 classList，可以操作类样式， 注意操作类里面的参数不要加点。</p>
+<p>​    常用的三种设置类样式方法：</p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 1.添加类</span></span><br><span class="line">$(<span class="hljs-string">"div"</span>).addClass(<span class="hljs-string">"current"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 2.删除类</span></span><br><span class="line">$(<span class="hljs-string">"div"</span>).removeClass(<span class="hljs-string">"current"</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 3.切换类</span></span><br><span class="line">$(<span class="hljs-string">"div"</span>).toggleClass(<span class="hljs-string">"current"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>​    注意：</p>
+<ol>
+<li>设置类样式方法比较适合样式多时操作，可以弥补css()的不足。</li>
+<li>原生 JS 中 className 会覆盖元素原先里面的类名，jQuery 里面类操作只是对指定类进行操作，不影响原先的类名。</li>
+</ol>
+<h3 id="案例：tab-栏切换"><a href="#案例：tab-栏切换" class="headerlink" title="案例：tab 栏切换"></a>案例：tab 栏切换</h3><blockquote>
+<p>思路分析:<br>1.点击上部的li，当前li 添加current类，其余兄弟移除类。<br>2.点击的同时，得到当前li 的索引号<br>3.让下部里面相应索引号的item显示，其余的item隐藏</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h2 id="jQuery-效果"><a href="#jQuery-效果" class="headerlink" title="jQuery 效果"></a>jQuery 效果</h2><p>​    jQuery 给我们封装了很多动画效果，最为常见的如下：</p>
+<ul>
+<li>显示隐藏：show() / hide() / toggle() ;</li>
+<li>划入画出：slideDown() / slideUp() / slideToggle() ; </li>
+<li>淡入淡出：fadeIn() / fadeOut() / fadeToggle() / fadeTo() ; </li>
+<li>自定义动画：animate() ;</li>
+</ul>
+<blockquote>
+<p>注意：</p>
+<p>动画或者效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行。</p>
+<p>jQuery为我们提供另一个方法，可以停止动画排队：stop() ;</p>
+</blockquote>
+<h3 id="显示隐藏"><a href="#显示隐藏" class="headerlink" title="显示隐藏"></a>显示隐藏</h3><p>​    显示隐藏动画，常见有三个方法：show() / hide() / toggle() ;</p>
+<p>​    语法规范如下:</p>
+<p><img src="/前端笔记/jquery-day01/show.png" alt="show"></p>
+<p><img src="/前端笔记/jquery-day01/hide.png" alt="hide"></p>
+<p><img src="/前端笔记/jquery-day01/toggle.png" alt="toggle"></p>
+<p><strong>代码演示</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;显示&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;button&gt;隐藏&lt;/</span>button&gt;</span><br><span class="line">    &lt;button&gt;切换&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div&gt;&lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">0</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                $(<span class="hljs-string">"div"</span>).show(<span class="hljs-number">1000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                    alert(<span class="hljs-number">1</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">1</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                $(<span class="hljs-string">"div"</span>).hide(<span class="hljs-number">1000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                    alert(<span class="hljs-number">1</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">2</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">              $(<span class="hljs-string">"div"</span>).toggle(<span class="hljs-number">1000</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="hljs-comment">// 一般情况下，我们都不加参数直接显示隐藏就可以了</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="滑入滑出"><a href="#滑入滑出" class="headerlink" title="滑入滑出"></a>滑入滑出</h3><p>​    滑入滑出动画，常见有三个方法：slideDown() / slideUp() / slideToggle() ; </p>
+<p>​    语法规范如下:</p>
+<p><img src="/前端笔记/jquery-day01/slideDown.png" alt="slideDown"></p>
+<p><img src="/前端笔记/jquery-day01/slideUp.png" alt="slideUp"></p>
+<p><img src="/前端笔记/jquery-day01/slideToggle.png" alt="slideToggle"></p>
+<p><strong>代码演示</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;下拉滑动&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;button&gt;上拉滑动&lt;/</span>button&gt;</span><br><span class="line">    &lt;button&gt;切换滑动&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div&gt;&lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">0</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// 下滑动 slideDown()</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).slideDown();</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">1</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// 上滑动 slideUp()</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).slideUp(<span class="hljs-number">500</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">2</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// 滑动切换 slideToggle()</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).slideToggle(<span class="hljs-number">500</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>小案例：下拉菜单略（详情参看源码）。</p>
+</blockquote>
+<h3 id="淡入淡出"><a href="#淡入淡出" class="headerlink" title="淡入淡出"></a>淡入淡出</h3><p>​    淡入淡出动画，常见有四个方法：fadeIn() / fadeOut() / fadeToggle() / fadeTo() ; </p>
+<p>​    语法规范如下:</p>
+<p><img src="/前端笔记/jquery-day01/fadeIn.png" alt="fadeIn"></p>
+<p><img src="/前端笔记/jquery-day01/fadeOut.png" alt="fadeOut"></p>
+<p><img src="/前端笔记/jquery-day01/fadeToggle.png" alt="fadeToggle"></p>
+<p><img src="/前端笔记/jquery-day01/fadeTo.png" alt="fadeTo"></p>
+<p><strong>代码演示</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;淡入效果&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;button&gt;淡出效果&lt;/</span>button&gt;</span><br><span class="line">    &lt;button&gt;淡入淡出切换&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;button&gt;修改透明度&lt;/</span>button&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">0</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// 淡入 fadeIn()</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).fadeIn(<span class="hljs-number">1000</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">1</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// 淡出 fadeOut()</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).fadeOut(<span class="hljs-number">1000</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">2</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// 淡入淡出切换 fadeToggle()</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).fadeToggle(<span class="hljs-number">1000</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).eq(<span class="hljs-number">3</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">//  修改透明度 fadeTo() 这个速度和透明度要必须写</span></span><br><span class="line">                $(<span class="hljs-string">"div"</span>).fadeTo(<span class="hljs-number">1000</span>, <span class="hljs-number">0.5</span>);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义动画"><a href="#自定义动画" class="headerlink" title="自定义动画"></a>自定义动画</h3><p>​    自定义动画非常强大，通过参数的传递可以模拟以上所有动画，方法为：animate() ;</p>
+<p>​    语法规范如下:</p>
+<p><img src="/前端笔记/jquery-day01/animate.png" alt></p>
+<p><strong>代码演示</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;动起来&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div&gt;&lt;/</span>div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="hljs-string">"button"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                $(<span class="hljs-string">"div"</span>).animate(&#123;</span><br><span class="line">                    left: <span class="hljs-number">500</span>,</span><br><span class="line">                    top: <span class="hljs-number">300</span>,</span><br><span class="line">                    opacity: <span class="hljs-number">.4</span>,</span><br><span class="line">                    width: <span class="hljs-number">500</span></span><br><span class="line">                &#125;, <span class="hljs-number">500</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止动画排队"><a href="#停止动画排队" class="headerlink" title="停止动画排队"></a>停止动画排队</h3><p>​    动画或者效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行。</p>
+<p>​    停止动画排队的方法为：stop() ; </p>
+<ul>
+<li>stop() 方法用于停止动画或效果。</li>
+<li>stop() 写到动画或者效果的前面， 相当于停止结束上一次的动画。</li>
+</ul>
+<p>​        总结: 每次使用动画之前，先调用 stop() ,在调用动画。</p>
+<h3 id="事件切换"><a href="#事件切换" class="headerlink" title="事件切换"></a>事件切换</h3><p>​    jQuery中为我们添加了一个新事件 hover() ; 功能类似 css 中的伪类 :hover 。介绍如下</p>
+<p><strong>语法</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hover([over,]out)     <span class="hljs-comment">// 其中over和out为两个函数</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>over:鼠标移到元素上要触发的函数（相当于mouseenter）</li>
+<li>out:鼠标移出元素要触发的函数（相当于mouseleave）</li>
+<li>如果只写一个函数，则鼠标经过和离开都会触发它</li>
+</ul>
+<p><strong>hover事件和停止动画排列案例</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"nav"</span>&gt;</span><br><span class="line">        &lt;li&gt;</span><br><span class="line">            &lt;a href=<span class="hljs-string">"#"</span>&gt;微博&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">            &lt;ul&gt;&lt;li&gt;&lt;a href=""&gt;私信&lt;/</span>a&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>评论<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>@我<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span></span><br><span class="line">        &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;li&gt;</span></span><br><span class="line"><span class="hljs-regexp">            &lt;a href="#"&gt;微博&lt;/</span>a&gt;</span><br><span class="line">            &lt;ul&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>私信<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>评论<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-xml"><span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>@我<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span></span><br><span class="line">        &lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/u</span>l&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 鼠标经过</span></span><br><span class="line">            <span class="hljs-comment">// $(".nav&gt;li").mouseover(function() &#123;</span></span><br><span class="line">            <span class="hljs-comment">//     // $(this) jQuery 当前元素  this不要加引号</span></span><br><span class="line">            <span class="hljs-comment">//     // show() 显示元素  hide() 隐藏元素</span></span><br><span class="line">            <span class="hljs-comment">//     $(this).children("ul").slideDown(200);</span></span><br><span class="line">            <span class="hljs-comment">// &#125;);</span></span><br><span class="line">            <span class="hljs-comment">// // 鼠标离开</span></span><br><span class="line">            <span class="hljs-comment">// $(".nav&gt;li").mouseout(function() &#123;</span></span><br><span class="line">            <span class="hljs-comment">//     $(this).children("ul").slideUp(200);</span></span><br><span class="line">            <span class="hljs-comment">// &#125;);</span></span><br><span class="line">            <span class="hljs-comment">// 1. 事件切换 hover 就是鼠标经过和离开的复合写法</span></span><br><span class="line">            <span class="hljs-comment">// $(".nav&gt;li").hover(function() &#123;</span></span><br><span class="line">            <span class="hljs-comment">//     $(this).children("ul").slideDown(200);</span></span><br><span class="line">            <span class="hljs-comment">// &#125;, function() &#123;</span></span><br><span class="line">            <span class="hljs-comment">//     $(this).children("ul").slideUp(200);</span></span><br><span class="line">            <span class="hljs-comment">// &#125;);</span></span><br><span class="line">            <span class="hljs-comment">// 2. 事件切换 hover  如果只写一个函数，那么鼠标经过和鼠标离开都会触发这个函数</span></span><br><span class="line">            $(<span class="hljs-string">".nav&gt;li"</span>).hover(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// stop 方法必须写到动画的前面</span></span><br><span class="line">                $(<span class="hljs-keyword">this</span>).children(<span class="hljs-string">"ul"</span>).stop().slideToggle();</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/jquery-day01/">jQuery-Day01</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/jquery-day01/">http://www.itfool.cn/前端笔记/jquery-day01/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/jQuery/">jQuery</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/jquery-day02/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">jQuery-Day02</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/webapis-day07/">
+                <span class="level-item">WebAPIs-Day07</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#jQuery-介绍">
+        <span class="has-mr-6">1</span>
+        <span>jQuery 介绍</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#JavaScript-库">
+        <span class="has-mr-6">1.1</span>
+        <span>JavaScript 库</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery的概念">
+        <span class="has-mr-6">1.2</span>
+        <span>jQuery的概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery的优点">
+        <span class="has-mr-6">1.3</span>
+        <span>jQuery的优点</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-的基本使用">
+        <span class="has-mr-6">2</span>
+        <span>jQuery 的基本使用</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#jQuery-的下载">
+        <span class="has-mr-6">2.1</span>
+        <span>jQuery 的下载</span>
+        </a></li><li>
+        <a class="is-flex" href="#体验jQuery">
+        <span class="has-mr-6">2.2</span>
+        <span>体验jQuery</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery的入口函数">
+        <span class="has-mr-6">2.3</span>
+        <span>jQuery的入口函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery中的顶级对象">
+        <span class="has-mr-6">2.4</span>
+        <span>jQuery中的顶级对象$</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery-对象和-DOM-对象">
+        <span class="has-mr-6">2.5</span>
+        <span>jQuery 对象和 DOM 对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery-对象和-DOM-对象转换">
+        <span class="has-mr-6">2.6</span>
+        <span>jQuery 对象和 DOM 对象转换</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-选择器">
+        <span class="has-mr-6">3</span>
+        <span>jQuery 选择器</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#基础选择器">
+        <span class="has-mr-6">3.1</span>
+        <span>基础选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#层级选择器">
+        <span class="has-mr-6">3.2</span>
+        <span>层级选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#筛选选择器">
+        <span class="has-mr-6">3.3</span>
+        <span>筛选选择器</span>
+        </a></li><li>
+        <a class="is-flex" href="#知识铺垫">
+        <span class="has-mr-6">3.4</span>
+        <span>知识铺垫</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：淘宝服饰精品案例">
+        <span class="has-mr-6">3.5</span>
+        <span>案例：淘宝服饰精品案例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-样式操作">
+        <span class="has-mr-6">4</span>
+        <span>jQuery 样式操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#方法1-操作-css-方法">
+        <span class="has-mr-6">4.1</span>
+        <span>方法1: 操作 css 方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#方法2-设置类样式方法">
+        <span class="has-mr-6">4.2</span>
+        <span>方法2: 设置类样式方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：tab-栏切换">
+        <span class="has-mr-6">4.3</span>
+        <span>案例：tab 栏切换</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-效果">
+        <span class="has-mr-6">5</span>
+        <span>jQuery 效果</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#显示隐藏">
+        <span class="has-mr-6">5.1</span>
+        <span>显示隐藏</span>
+        </a></li><li>
+        <a class="is-flex" href="#滑入滑出">
+        <span class="has-mr-6">5.2</span>
+        <span>滑入滑出</span>
+        </a></li><li>
+        <a class="is-flex" href="#淡入淡出">
+        <span class="has-mr-6">5.3</span>
+        <span>淡入淡出</span>
+        </a></li><li>
+        <a class="is-flex" href="#自定义动画">
+        <span class="has-mr-6">5.4</span>
+        <span>自定义动画</span>
+        </a></li><li>
+        <a class="is-flex" href="#停止动画排队">
+        <span class="has-mr-6">5.5</span>
+        <span>停止动画排队</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件切换">
+        <span class="has-mr-6">5.6</span>
+        <span>事件切换</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="jQuery-Day01" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

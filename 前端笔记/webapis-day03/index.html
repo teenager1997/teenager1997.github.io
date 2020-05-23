@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>WebAPIs-Day03 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.JavaScript基础.事件   学习目标： 能够使用removeChild()方法删除节点 能够完成动态生成表格案例 能够使用传统方式和监听方式给元素注册事件 能够说出事件流执行的三个阶段 能够在事件处理函数中获取事件对象 能够使用事件对象取消默认行为 能够使用事件对象阻止事件冒泡 能够使用事件对象获取鼠标的位置 能够完成跟随鼠标的天使案例">
+<meta name="keywords" content="JavaScript,js,WebAPI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebAPIs-Day03">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/webapis-day03/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.JavaScript基础.事件   学习目标： 能够使用removeChild()方法删除节点 能够完成动态生成表格案例 能够使用传统方式和监听方式给元素注册事件 能够说出事件流执行的三个阶段 能够在事件处理函数中获取事件对象 能够使用事件对象取消默认行为 能够使用事件对象阻止事件冒泡 能够使用事件对象获取鼠标的位置 能够完成跟随鼠标的天使案例">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/webapis-day03/1551169007768.png">
+<meta property="og:updated_time" content="2020-05-23T07:51:26.690Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WebAPIs-Day03">
+<meta name="twitter:description" content="第03阶段.JavaScript基础.事件   学习目标： 能够使用removeChild()方法删除节点 能够完成动态生成表格案例 能够使用传统方式和监听方式给元素注册事件 能够说出事件流执行的三个阶段 能够在事件处理函数中获取事件对象 能够使用事件对象取消默认行为 能够使用事件对象阻止事件冒泡 能够使用事件对象获取鼠标的位置 能够完成跟随鼠标的天使案例">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/webapis-day03/1551169007768.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="WebAPIs-Day03" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/webapis-day03/1551169007768.png" alt="WebAPIs-Day03">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>WebAPIs-Day03
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T07:04:03.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T07:51:26.690Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    25 分钟 读完 (大约 3742 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.JavaScript基础.事件</p>
+</blockquote>
+<blockquote>
+<p>学习目标：</p>
+<p>能够使用removeChild()方法删除节点</p>
+<p>能够完成动态生成表格案例</p>
+<p>能够使用传统方式和监听方式给元素注册事件</p>
+<p>能够说出事件流执行的三个阶段</p>
+<p>能够在事件处理函数中获取事件对象</p>
+<p>能够使用事件对象取消默认行为</p>
+<p>能够使用事件对象阻止事件冒泡</p>
+<p>能够使用事件对象获取鼠标的位置</p>
+<p>能够完成跟随鼠标的天使案例</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h2><h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p><img src="/前端笔记/webapis-day03/1551163384254(1).png" alt></p>
+<p>node.removeChild() 方法从 node节点中删除一个子节点，返回删除的节点。</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;删除&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;ul&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;li&gt;熊大&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;熊二&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;li&gt;光头强&lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/ul&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 1.获取元素</span></span><br><span class="line"><span class="hljs-regexp">    var ul = document.querySelector('ul');</span></span><br><span class="line"><span class="hljs-regexp">    var btn = document.querySelector('button');</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 2. 删除元素  node.removeChild(child)</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ ul.removeChild(ul.children[0]);</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 3. 点击按钮依次删除里面的孩子</span></span><br><span class="line"><span class="hljs-regexp">    btn.onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        if (ul.children.length == 0) &#123;</span></span><br><span class="line"><span class="hljs-regexp">            this.disabled = true;</span></span><br><span class="line"><span class="hljs-regexp">        &#125; else &#123;</span></span><br><span class="line"><span class="hljs-regexp">            ul.removeChild(ul.children[0]);</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：删除留言"><a href="#案例：删除留言" class="headerlink" title="案例：删除留言"></a>案例：删除留言</h3><p><img src="/前端笔记/webapis-day03/1551163586475.png" alt></p>
+<p><img src="/前端笔记/webapis-day03/1551163635501.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea name=<span class="hljs-string">""</span> id=<span class="hljs-string">""</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span></span></span><br><span class="line">&lt;button&gt;发布&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;ul&gt;</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-comment">// 1. 获取元素</span></span><br><span class="line">    <span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'button'</span>);</span><br><span class="line">    <span class="hljs-keyword">var</span> text = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'textarea'</span>);</span><br><span class="line">    <span class="hljs-keyword">var</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>);</span><br><span class="line">    <span class="hljs-comment">// 2. 注册事件</span></span><br><span class="line">    btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">if</span> (text.value == <span class="hljs-string">''</span>) &#123;</span><br><span class="line">            alert(<span class="hljs-string">'您没有输入内容'</span>);</span><br><span class="line">            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-comment">// console.log(text.value);</span></span><br><span class="line">            <span class="hljs-comment">// (1) 创建元素</span></span><br><span class="line">            <span class="hljs-keyword">var</span> li = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'li'</span>);</span><br><span class="line">            <span class="hljs-comment">// 先有li 才能赋值</span></span><br><span class="line">            li.innerHTML = text.value + <span class="hljs-string">"&lt;a href='javascript:;'&gt;删除&lt;/a&gt;"</span>;</span><br><span class="line">            <span class="hljs-comment">// (2) 添加元素</span></span><br><span class="line">            <span class="hljs-comment">// ul.appendChild(li);</span></span><br><span class="line">            ul.insertBefore(li, ul.children[<span class="hljs-number">0</span>]);</span><br><span class="line">            <span class="hljs-comment">// (3) 删除元素 删除的是当前链接的li  它的父亲</span></span><br><span class="line">            <span class="hljs-keyword">var</span> <span class="hljs-keyword">as</span> = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'a'</span>);</span><br><span class="line">            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">as</span>.length; i++) &#123;</span><br><span class="line">                <span class="hljs-keyword">as</span>[i].onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                    <span class="hljs-comment">// 删除的是 li 当前a所在的li  this.parentNode;</span></span><br><span class="line">                    ul.removeChild(<span class="hljs-keyword">this</span>.parentNode);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="复制（克隆）节点"><a href="#复制（克隆）节点" class="headerlink" title="复制（克隆）节点"></a>复制（克隆）节点</h3><p><img src="/前端笔记/webapis-day03/1551163763825.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;<span class="hljs-number">1111</span>&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;li&gt;2&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;<span class="hljs-number">3</span>&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-keyword">var</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>);</span><br><span class="line">    <span class="hljs-comment">// 1. node.cloneNode(); 括号为空或者里面是false 浅拷贝 只复制标签不复制里面的内容</span></span><br><span class="line">    <span class="hljs-comment">// 2. node.cloneNode(true); 括号为true 深拷贝 复制标签复制里面的内容</span></span><br><span class="line">    <span class="hljs-keyword">var</span> lili = ul.children[<span class="hljs-number">0</span>].cloneNode(<span class="hljs-literal">true</span>);</span><br><span class="line">    ul.appendChild(lili);</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：动态生成表格"><a href="#案例：动态生成表格" class="headerlink" title="案例：动态生成表格"></a>案例：动态生成表格</h3><p><img src="/前端笔记/webapis-day03/1551163900675.png" alt></p>
+<p><img src="/前端笔记/webapis-day03/1551163924396.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script&gt;</span><br><span class="line">      <span class="hljs-comment">// 1.先去准备好学生的数据</span></span><br><span class="line">      <span class="hljs-keyword">var</span> datas = [&#123;</span><br><span class="line">          name: <span class="hljs-string">'魏璎珞'</span>,</span><br><span class="line">          subject: <span class="hljs-string">'JavaScript'</span>,</span><br><span class="line">          score: <span class="hljs-number">100</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">          name: <span class="hljs-string">'弘历'</span>,</span><br><span class="line">          subject: <span class="hljs-string">'JavaScript'</span>,</span><br><span class="line">          score: <span class="hljs-number">98</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">          name: <span class="hljs-string">'傅恒'</span>,</span><br><span class="line">          subject: <span class="hljs-string">'JavaScript'</span>,</span><br><span class="line">          score: <span class="hljs-number">99</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">          name: <span class="hljs-string">'明玉'</span>,</span><br><span class="line">          subject: <span class="hljs-string">'JavaScript'</span>,</span><br><span class="line">          score: <span class="hljs-number">88</span></span><br><span class="line">      &#125;, &#123;</span><br><span class="line">          name: <span class="hljs-string">'大猪蹄子'</span>,</span><br><span class="line">          subject: <span class="hljs-string">'JavaScript'</span>,</span><br><span class="line">          score: <span class="hljs-number">0</span></span><br><span class="line">      &#125;];</span><br><span class="line">      <span class="hljs-comment">// 2. 往tbody 里面创建行： 有几个人（通过数组的长度）我们就创建几行</span></span><br><span class="line">      <span class="hljs-keyword">var</span> tbody = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'tbody'</span>);</span><br><span class="line"><span class="hljs-comment">// 遍历数组</span></span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; datas.length; i++) &#123; </span><br><span class="line">          <span class="hljs-comment">// 1. 创建 tr行</span></span><br><span class="line">          <span class="hljs-keyword">var</span> tr = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'tr'</span>);</span><br><span class="line">          tbody.appendChild(tr);</span><br><span class="line">          <span class="hljs-comment">// 2. 行里面创建单元格td 单元格的数量取决于每个对象里面的属性个数  </span></span><br><span class="line">          <span class="hljs-comment">// 使用for in遍历学生对象</span></span><br><span class="line">          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> datas[i]) &#123; </span><br><span class="line">              <span class="hljs-comment">// 创建单元格 </span></span><br><span class="line">              <span class="hljs-keyword">var</span> td = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'td'</span>);</span><br><span class="line">              <span class="hljs-comment">// 把对象里面的属性值 datas[i][k] 给 td  </span></span><br><span class="line">              td.innerHTML = datas[i][k];</span><br><span class="line">              tr.appendChild(td);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="hljs-comment">// 3. 创建有删除2个字的单元格 </span></span><br><span class="line">          <span class="hljs-keyword">var</span> td = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'td'</span>);</span><br><span class="line">          td.innerHTML = <span class="hljs-string">'&lt;a href="javascript:;"&gt;删除 &lt;/a&gt;'</span>;</span><br><span class="line">          tr.appendChild(td);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="hljs-comment">// 4. 删除操作 开始 </span></span><br><span class="line">      <span class="hljs-keyword">var</span> <span class="hljs-keyword">as</span> = <span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'a'</span>);</span><br><span class="line">      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">as</span>.length; i++) &#123;</span><br><span class="line">          <span class="hljs-keyword">as</span>[i].onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">              <span class="hljs-comment">// 点击a 删除 当前a 所在的行(链接的爸爸的爸爸)  node.removeChild(child)  </span></span><br><span class="line">              tbody.removeChild(<span class="hljs-keyword">this</span>.parentNode.parentNode)</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建元素的三种方式"><a href="#创建元素的三种方式" class="headerlink" title="创建元素的三种方式"></a>创建元素的三种方式</h3><p><img src="/前端笔记/webapis-day03/1551164214925.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-comment">// 三种创建元素方式区别 </span></span><br><span class="line">    <span class="hljs-comment">// 1. document.write() 创建元素  如果页面文档流加载完毕，再调用这句话会导致页面重绘</span></span><br><span class="line">     <span class="hljs-keyword">var</span> btn = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'button'</span>);</span><br><span class="line">     btn.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">         <span class="hljs-built_in">document</span>.write(<span class="hljs-string">'&lt;div&gt;123&lt;/div&gt;'</span>);</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-comment">// 2. innerHTML 创建元素</span></span><br><span class="line">    <span class="hljs-keyword">var</span> inner = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.inner'</span>);</span><br><span class="line">     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">100</span>; i++) &#123;</span><br><span class="line">         inner.innerHTML += <span class="hljs-string">'&lt;a href="#"&gt;百度&lt;/a&gt;'</span></span><br><span class="line">     &#125;</span><br><span class="line">    <span class="hljs-keyword">var</span> arr = [];</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">100</span>; i++) &#123;</span><br><span class="line">        arr.push(<span class="hljs-string">'&lt;a href="#"&gt;百度&lt;/a&gt;'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    inner.innerHTML = arr.join(<span class="hljs-string">''</span>);</span><br><span class="line">    <span class="hljs-comment">// 3. document.createElement() 创建元素</span></span><br><span class="line">    <span class="hljs-keyword">var</span> create = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.create'</span>);</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">100</span>; i++) &#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> a = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'a'</span>);</span><br><span class="line">        create.appendChild(a);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="innerTHML和createElement效率对比"><a href="#innerTHML和createElement效率对比" class="headerlink" title="innerTHML和createElement效率对比"></a>innerTHML和createElement效率对比</h3><p><strong>innerHTML字符串拼接方式（效率低）</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> d1 = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">        <span class="hljs-keyword">var</span> str = <span class="hljs-string">''</span>;</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-built_in">document</span>.body.innerHTML += <span class="hljs-string">'&lt;div style="width:100px; height:2px; border:1px solid blue;"&gt;&lt;/div&gt;'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">var</span> d2 = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(d2 - d1);</span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>createElement方式（效率一般）</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> d1 = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line"></span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;</span><br><span class="line">            <span class="hljs-keyword">var</span> div = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'div'</span>);</span><br><span class="line">            div.style.width = <span class="hljs-string">'100px'</span>;</span><br><span class="line">            div.style.height = <span class="hljs-string">'2px'</span>;</span><br><span class="line">            div.style.border = <span class="hljs-string">'1px solid red'</span>;</span><br><span class="line">            <span class="hljs-built_in">document</span>.body.appendChild(div);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">var</span> d2 = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(d2 - d1);</span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>innerHTML数组方式（效率高）</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> d1 = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">        <span class="hljs-keyword">var</span> array = [];</span><br><span class="line">        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++) &#123;</span><br><span class="line">            array.push(<span class="hljs-string">'&lt;div style="width:100px; height:2px; border:1px solid blue;"&gt;&lt;/div&gt;'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-built_in">document</span>.body.innerHTML = array.join(<span class="hljs-string">''</span>);</span><br><span class="line">        <span class="hljs-keyword">var</span> d2 = +<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>();</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(d2 - d1);</span><br><span class="line">    &#125;</span><br><span class="line">    fn();</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="DOM的核心总结"><a href="#DOM的核心总结" class="headerlink" title="DOM的核心总结"></a>DOM的核心总结</h2><p><img src="/前端笔记/webapis-day03/1551164669434.png" alt></p>
+<p><img src="/前端笔记/webapis-day03/1551164715018.png" alt></p>
+<p>关于dom操作，我们主要针对于元素的操作。主要有创建、增、删、改、查、属性操作、事件操作。</p>
+<h3 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h3><p><img src="/前端笔记/webapis-day03/1551164797164.png" alt></p>
+<h3 id="增"><a href="#增" class="headerlink" title="增"></a>增</h3><p><img src="/前端笔记/webapis-day03/1551164829832.png" alt></p>
+<h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><p><img src="/前端笔记/webapis-day03/1551164872533.png" alt></p>
+<h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><p><img src="/前端笔记/webapis-day03/1551164907830.png" alt></p>
+<h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3><p><img src="/前端笔记/webapis-day03/1551164936214.png" alt></p>
+<h3 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h3><p><img src="/前端笔记/webapis-day03/1551164985383.png" alt></p>
+<h2 id="事件高级（重点）"><a href="#事件高级（重点）" class="headerlink" title="事件高级（重点）"></a>事件高级（重点）</h2><h3 id="注册事件（2种方式）"><a href="#注册事件（2种方式）" class="headerlink" title="注册事件（2种方式）"></a>注册事件（2种方式）</h3><p><img src="/前端笔记/webapis-day03/1551165252019.png" alt></p>
+<h3 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h3><h4 id="addEventListener-事件监听（IE9以后支持）"><a href="#addEventListener-事件监听（IE9以后支持）" class="headerlink" title="addEventListener()事件监听（IE9以后支持）"></a>addEventListener()事件监听（IE9以后支持）</h4><p><img src="/前端笔记/webapis-day03/1551165364122.png" alt></p>
+<p>eventTarget.addEventListener()方法将指定的监听器注册到 eventTarget（目标对象）上，当该对象触发指定的事件时，就会执行事件处理函数。</p>
+<p><img src="/前端笔记/webapis-day03/1551165604792.png" alt></p>
+<h4 id="attacheEvent-事件监听（IE678支持）"><a href="#attacheEvent-事件监听（IE678支持）" class="headerlink" title="attacheEvent()事件监听（IE678支持）"></a>attacheEvent()事件监听（IE678支持）</h4><p><img src="/前端笔记/webapis-day03/1551165781836.png" alt></p>
+<p>​    eventTarget.attachEvent()方法将指定的监听器注册到 eventTarget（目标对象） 上，当该对象触发指定的事件时，指定的回调函数就会被执行。</p>
+<p><img src="/前端笔记/webapis-day03/1551165843912.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;传统注册事件&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;button&gt;方法监听注册事件&lt;/</span>button&gt;</span><br><span class="line">&lt;button&gt;ie9 attachEvent&lt;<span class="hljs-regexp">/button&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">    var btns = document.querySelectorAll('button');</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 1. 传统方式注册事件</span></span><br><span class="line"><span class="hljs-regexp">    btns[0].onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        alert('hi');</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">    btns[0].onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            alert('hao a u');</span></span><br><span class="line"><span class="hljs-regexp">        &#125;</span></span><br><span class="line"><span class="hljs-regexp">   /</span><span class="hljs-regexp">/ 2. 事件侦听注册事件 addEventListener </span></span><br><span class="line"><span class="hljs-regexp">   /</span><span class="hljs-regexp">/ (1) 里面的事件类型是字符串 必定加引号 而且不带on</span></span><br><span class="line"><span class="hljs-regexp">   /</span><span class="hljs-regexp">/ (2) 同一个元素 同一个事件可以添加多个侦听器（事件处理程序）</span></span><br><span class="line"><span class="hljs-regexp">    btns[1].addEventListener('click', function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        alert(22);</span></span><br><span class="line"><span class="hljs-regexp">    &#125;)</span></span><br><span class="line"><span class="hljs-regexp">    btns[1].addEventListener('click', function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            alert(33);</span></span><br><span class="line"><span class="hljs-regexp">    &#125;)</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 3. attachEvent ie9以前的版本支持</span></span><br><span class="line"><span class="hljs-regexp">    btns[2].attachEvent('onclick', function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        alert(11);</span></span><br><span class="line"><span class="hljs-regexp">    &#125;)</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件监听兼容性解决方案"><a href="#事件监听兼容性解决方案" class="headerlink" title="事件监听兼容性解决方案"></a>事件监听兼容性解决方案</h4><p>封装一个函数，函数中判断浏览器的类型：</p>
+<p><img src="/前端笔记/webapis-day03/1551166023885.png" alt></p>
+<h3 id="删除事件（解绑事件）"><a href="#删除事件（解绑事件）" class="headerlink" title="删除事件（解绑事件）"></a>删除事件（解绑事件）</h3><p><img src="/前端笔记/webapis-day03/1551166185410.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;<span class="hljs-number">1</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;div&gt;2&lt;/</span>div&gt;</span><br><span class="line">&lt;div&gt;<span class="hljs-number">3</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">    var divs = document.querySelectorAll('div');</span></span><br><span class="line"><span class="hljs-regexp">    divs[0].onclick = function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        alert(11);</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 1. 传统方式删除事件</span></span><br><span class="line"><span class="hljs-regexp">        divs[0].onclick = null;</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 2. removeEventListener 删除事件</span></span><br><span class="line"><span class="hljs-regexp">    divs[1].addEventListener('click', fn) /</span><span class="hljs-regexp">/ 里面的fn 不需要调用加小括号</span></span><br><span class="line"><span class="hljs-regexp">    function fn() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        alert(22);</span></span><br><span class="line"><span class="hljs-regexp">        divs[1].removeEventListener('click', fn);</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 3. detachEvent</span></span><br><span class="line"><span class="hljs-regexp">    divs[2].attachEvent('onclick', fn1);</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">    function fn1() &#123;</span></span><br><span class="line"><span class="hljs-regexp">        alert(33);</span></span><br><span class="line"><span class="hljs-regexp">        divs[2].detachEvent('onclick', fn1);</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>*<em>删除事件兼容性解决方案 *</em></p>
+<p><img src="/前端笔记/webapis-day03/1551166332453.png" alt></p>
+<h3 id="1-3-4-DOM事件流"><a href="#1-3-4-DOM事件流" class="headerlink" title="1.3.4. DOM事件流"></a>1.3.4. DOM事件流</h3><blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; html中的标签都是相互嵌套的，我们可以将元素想象成一个盒子装一个盒子，document是最外面的大盒子。</span><br><span class="line">&gt; 当你单击一个div时，同时你也单击了div的父元素，甚至整个页面。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 那么是先执行父元素的单击事件，还是先执行div的单击事件 ？？？</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="/前端笔记/webapis-day03/1551166423144.png" alt></p>
+<blockquote>
+<p>比如：我们给页面中的一个div注册了单击事件，当你单击了div时，也就单击了body，单击了html，单击了document。</p>
+</blockquote>
+<p><img src="/前端笔记/webapis-day03/1551166555833.png" alt></p>
+<p><img src="/前端笔记/webapis-day03/1551166581552.png" alt="1551166581552"></p>
+<blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; 当时的2大浏览器霸主谁也不服谁！</span><br><span class="line">&gt; IE 提出从目标元素开始，然后一层一层向外接收事件并响应，也就是冒泡型事件流。</span><br><span class="line">&gt; Netscape（网景公司）提出从最外层开始，然后一层一层向内接收事件并响应，也就是捕获型事件流。</span><br><span class="line">&gt; </span><br><span class="line">&gt; 江湖纷争，武林盟主也脑壳疼！！！</span><br><span class="line">&gt; </span><br><span class="line">&gt; 最终，w3c 采用折中的方式，平息了战火，制定了统一的标准 —--— 先捕获再冒泡。</span><br><span class="line">&gt; 现代浏览器都遵循了此标准，所以当事件发生时，会经历3个阶段。</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>DOM 事件流会经历3个阶段： </p>
+<ol>
+<li><p>捕获阶段</p>
+</li>
+<li><p>当前目标阶段</p>
+</li>
+<li><p>冒泡阶段 </p>
+</li>
+</ol>
+<p>​    我们向水里面扔一块石头，首先它会有一个下降的过程，这个过程就可以理解为从最顶层向事件发生的最具体元素（目标点）的捕获过程；之后会产生泡泡，会在最低点（ 最具体元素）之后漂浮到水面上，这个过程相当于事件冒泡。 </p>
+<p><img src="/前端笔记/webapis-day03/1551169007768.png" alt></p>
+<p><img src="/前端笔记/webapis-day03/1551169042295.png" alt></p>
+<p><strong>事件冒泡</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"father"</span>&gt;</span><br><span class="line">      &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"son"</span>&gt;son盒子&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;/</span>div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">      <span class="hljs-comment">// onclick 和 attachEvent（ie） 在冒泡阶段触发</span></span><br><span class="line">      <span class="hljs-comment">// 冒泡阶段 如果addEventListener 第三个参数是 false 或者 省略 </span></span><br><span class="line">      <span class="hljs-comment">// son -&gt; father -&gt;body -&gt; html -&gt; document</span></span><br><span class="line">      <span class="hljs-keyword">var</span> son = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.son'</span>);</span><br><span class="line"><span class="hljs-comment">// 给son注册单击事件</span></span><br><span class="line">      son.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'son'</span>);</span><br><span class="line">      &#125;, <span class="hljs-literal">false</span>);</span><br><span class="line"><span class="hljs-comment">// 给father注册单击事件</span></span><br><span class="line">      <span class="hljs-keyword">var</span> father = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.father'</span>);</span><br><span class="line">      father.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'father'</span>);</span><br><span class="line">      &#125;, <span class="hljs-literal">false</span>);</span><br><span class="line"><span class="hljs-comment">// 给document注册单击事件，省略第3个参数</span></span><br><span class="line">      <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'document'</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">  &lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>事件捕获</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"father"</span>&gt;</span><br><span class="line">      &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"son"</span>&gt;son盒子&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;/</span>div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">      <span class="hljs-comment">// 如果addEventListener() 第三个参数是 true 那么在捕获阶段触发</span></span><br><span class="line">      <span class="hljs-comment">// document -&gt; html -&gt; body -&gt; father -&gt; son</span></span><br><span class="line">       <span class="hljs-keyword">var</span> son = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.son'</span>);</span><br><span class="line"><span class="hljs-comment">// 给son注册单击事件，第3个参数为true</span></span><br><span class="line">       son.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">           alert(<span class="hljs-string">'son'</span>);</span><br><span class="line">       &#125;, <span class="hljs-literal">true</span>);</span><br><span class="line">       <span class="hljs-keyword">var</span> father = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.father'</span>);</span><br><span class="line"><span class="hljs-comment">// 给father注册单击事件，第3个参数为true</span></span><br><span class="line">       father.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">           alert(<span class="hljs-string">'father'</span>);</span><br><span class="line">       &#125;, <span class="hljs-literal">true</span>);</span><br><span class="line"><span class="hljs-comment">// 给document注册单击事件，第3个参数为true</span></span><br><span class="line">      <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'document'</span>);</span><br><span class="line">      &#125;, <span class="hljs-literal">true</span>)</span><br><span class="line">  &lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="事件对象"><a href="#事件对象" class="headerlink" title="事件对象"></a>事件对象</h3><h4 id="什么是事件对象"><a href="#什么是事件对象" class="headerlink" title="什么是事件对象"></a>什么是事件对象</h4><p>事件发生后，跟事件相关的一系列信息数据的集合都放到这个对象里面，这个对象就是事件对象。</p>
+<p>比如：  </p>
+<ol>
+<li><p>谁绑定了这个事件。</p>
+</li>
+<li><p>鼠标触发事件的话，会得到鼠标的相关信息，如鼠标位置。</p>
+</li>
+<li><p>键盘触发事件的话，会得到键盘的相关信息，如按了哪个键。</p>
+</li>
+</ol>
+<h4 id="事件对象的使用"><a href="#事件对象的使用" class="headerlink" title="事件对象的使用"></a>事件对象的使用</h4><p>事件触发发生时就会产生事件对象，并且系统会以实参的形式传给事件处理函数。</p>
+<p>所以，在事件处理函数中声明1个形参用来接收事件对象。</p>
+<p><img src="/前端笔记/webapis-day03/1551169537789.png" alt></p>
+<h4 id="事件对象的兼容性处理"><a href="#事件对象的兼容性处理" class="headerlink" title="事件对象的兼容性处理"></a>事件对象的兼容性处理</h4><p>事件对象本身的获取存在兼容问题：</p>
+<ol>
+<li><p>标准浏览器中是浏览器给方法传递的参数，只需要定义形参 e 就可以获取到。</p>
+</li>
+<li><p>在 IE6~8 中，浏览器不会给方法传递参数，如果需要的话，需要到 window.event 中获取查找。</p>
+</li>
+</ol>
+<p><img src="/前端笔记/webapis-day03/1551169680823.png" alt></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">只要“||”前面为false, 不管“||”后面是true 还是 false，都返回 “||” 后面的值。</span><br><span class="line">只要“||”前面为true, 不管“||”后面是true 还是 false，都返回 “||” 前面的值。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;<span class="hljs-number">123</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">    var div = document.querySelector('div');</span></span><br><span class="line"><span class="hljs-regexp">    div.onclick = function(e) &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 事件对象</span></span><br><span class="line"><span class="hljs-regexp">            e = e || window.event;</span></span><br><span class="line"><span class="hljs-regexp">            console.log(e);</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="事件对象的属性和方法"><a href="#事件对象的属性和方法" class="headerlink" title="事件对象的属性和方法"></a>事件对象的属性和方法</h4><p><img src="/前端笔记/webapis-day03/1551169931778.png" alt></p>
+<h4 id="e-target-和-this-的区别"><a href="#e-target-和-this-的区别" class="headerlink" title="e.target 和 this 的区别"></a>e.target 和 this 的区别</h4><ul>
+<li><p>this 是事件绑定的元素（绑定这个事件处理函数的元素） 。</p>
+</li>
+<li><p>e.target 是事件触发的元素。</p>
+</li>
+</ul>
+<blockquote>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; 常情况下terget 和 this是一致的，</span><br><span class="line">&gt; 但有一种情况不同，那就是在事件冒泡时（父子元素有相同事件，单击子元素，父元素的事件处理函数也会被触发执行），</span><br><span class="line">&gt; 	这时候this指向的是父元素，因为它是绑定事件的元素对象，</span><br><span class="line">&gt; 	而target指向的是子元素，因为他是触发事件的那个具体元素对象。</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;<span class="hljs-number">123</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">    var div = document.querySelector('div');</span></span><br><span class="line"><span class="hljs-regexp">    div.addEventListener('click', function(e) &#123;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ e.target 和 this指向的都是div</span></span><br><span class="line"><span class="hljs-regexp">        console.log(e.target);</span></span><br><span class="line"><span class="hljs-regexp">        console.log(this);</span></span><br><span class="line"><span class="hljs-regexp"></span></span><br><span class="line"><span class="hljs-regexp">    &#125;);</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>事件冒泡下的e.target和this</p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;abc&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;li&gt;abc&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;abc&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-keyword">var</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>);</span><br><span class="line">    ul.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">          <span class="hljs-comment">// 我们给ul 绑定了事件  那么this 就指向ul  </span></span><br><span class="line">          <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>); <span class="hljs-comment">// ul</span></span><br><span class="line"></span><br><span class="line">          <span class="hljs-comment">// e.target 触发了事件的对象 我们点击的是li e.target 指向的就是li</span></span><br><span class="line">          <span class="hljs-built_in">console</span>.log(e.target); <span class="hljs-comment">// li</span></span><br><span class="line">    &#125;);</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="阻止默认行为"><a href="#阻止默认行为" class="headerlink" title="阻止默认行为"></a>阻止默认行为</h3><blockquote>
+<p>html中一些标签有默认行为，例如a标签被单击后，默认会进行页面跳转。</p>
+</blockquote>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="hljs-string">"http://www.baidu.com"</span>&gt;百度&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 2. 阻止默认行为 让链接不跳转 </span></span><br><span class="line"><span class="hljs-regexp">    var a = document.querySelector('a');</span></span><br><span class="line"><span class="hljs-regexp">    a.addEventListener('click', function(e) &#123;</span></span><br><span class="line"><span class="hljs-regexp">         e.preventDefault(); /</span><span class="hljs-regexp">/  dom 标准写法</span></span><br><span class="line"><span class="hljs-regexp">    &#125;);</span></span><br><span class="line"><span class="hljs-regexp">    /</span><span class="hljs-regexp">/ 3. 传统的注册方式</span></span><br><span class="line"><span class="hljs-regexp">    a.onclick = function(e) &#123;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 普通浏览器 e.preventDefault();  方法</span></span><br><span class="line"><span class="hljs-regexp">        e.preventDefault();</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 低版本浏览器 ie678  returnValue  属性</span></span><br><span class="line"><span class="hljs-regexp">        e.returnValue = false;</span></span><br><span class="line"><span class="hljs-regexp">        /</span><span class="hljs-regexp">/ 我们可以利用return false 也能阻止默认行为 没有兼容性问题</span></span><br><span class="line"><span class="hljs-regexp">        return false;</span></span><br><span class="line"><span class="hljs-regexp">    &#125;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="阻止事件冒泡"><a href="#阻止事件冒泡" class="headerlink" title="阻止事件冒泡"></a>阻止事件冒泡</h3><p>事件冒泡本身的特性，会带来的坏处，也会带来的好处。</p>
+<p><img src="/前端笔记/webapis-day03/1551171467194.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"father"</span>&gt;</span><br><span class="line">      &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"son"</span>&gt;son儿子&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">  &lt;/</span>div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">      <span class="hljs-keyword">var</span> son = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.son'</span>);</span><br><span class="line"><span class="hljs-comment">// 给son注册单击事件</span></span><br><span class="line">      son.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'son'</span>);</span><br><span class="line">          e.stopPropagation(); <span class="hljs-comment">// stop 停止  Propagation 传播</span></span><br><span class="line">          <span class="hljs-built_in">window</span>.event.cancelBubble = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 非标准 cancel 取消 bubble 泡泡</span></span><br><span class="line">      &#125;, <span class="hljs-literal">false</span>);</span><br><span class="line"></span><br><span class="line">      <span class="hljs-keyword">var</span> father = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'.father'</span>);</span><br><span class="line"><span class="hljs-comment">// 给father注册单击事件</span></span><br><span class="line">      father.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'father'</span>);</span><br><span class="line">      &#125;, <span class="hljs-literal">false</span>);</span><br><span class="line"><span class="hljs-comment">// 给document注册单击事件</span></span><br><span class="line">      <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">          alert(<span class="hljs-string">'document'</span>);</span><br><span class="line">      &#125;)</span><br><span class="line">  &lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>阻止事件冒泡的兼容性处理</strong></p>
+<p><img src="/前端笔记/webapis-day03/1551171657513.png" alt></p>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>事件冒泡本身的特性，会带来的坏处，也会带来的好处。</p>
+<h4 id="什么是事件委托"><a href="#什么是事件委托" class="headerlink" title="什么是事件委托"></a>什么是事件委托</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把事情委托给别人，代为处理。</span><br></pre></td></tr></table></figure>
+
+<p>事件委托也称为事件代理，在 jQuery 里面称为事件委派。</p>
+<blockquote>
+<p>说白了就是，不给子元素注册事件，给父元素注册事件，把处理代码在父元素的事件中执行。</p>
+</blockquote>
+<p><strong>生活中的代理：</strong></p>
+<p><img src="/前端笔记/webapis-day03/1551172082624.png" alt></p>
+<p><strong>js事件中的代理：</strong></p>
+<p><img src="/前端笔记/webapis-day03/1551172159273.png" alt></p>
+<h4 id="事件委托的原理"><a href="#事件委托的原理" class="headerlink" title="事件委托的原理"></a>事件委托的原理</h4><p>​    给父元素注册事件，利用事件冒泡，当子元素的事件触发，会冒泡到父元素，然后去控制相应的子元素。</p>
+<h4 id="事件委托的作用"><a href="#事件委托的作用" class="headerlink" title="事件委托的作用"></a>事件委托的作用</h4><ul>
+<li><p>我们只操作了一次 DOM ，提高了程序的性能。</p>
+</li>
+<li><p>动态新创建的子元素，也拥有事件。</p>
+</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li&gt;知否知否，点我应有弹框在手！&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;li&gt;知否知否，点我应有弹框在手！&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;知否知否，点我应有弹框在手！&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;li&gt;知否知否，点我应有弹框在手！&lt;/</span>li&gt;</span><br><span class="line">    &lt;li&gt;知否知否，点我应有弹框在手！&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/u</span>l&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-comment">// 事件委托的核心原理：给父节点添加侦听器， 利用事件冒泡影响每一个子节点</span></span><br><span class="line">    <span class="hljs-keyword">var</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'ul'</span>);</span><br><span class="line">    ul.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// e.target 这个可以得到我们点击的对象</span></span><br><span class="line">        e.target.style.backgroundColor = <span class="hljs-string">'pink'</span>;</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="常用鼠标事件"><a href="#常用鼠标事件" class="headerlink" title="常用鼠标事件"></a>常用鼠标事件</h2><p><img src="/前端笔记/webapis-day03/1551172699854.png" alt></p>
+<h3 id="案例：禁止选中文字和禁止右键菜单"><a href="#案例：禁止选中文字和禁止右键菜单" class="headerlink" title="案例：禁止选中文字和禁止右键菜单"></a>案例：禁止选中文字和禁止右键菜单</h3><p><img src="/前端笔记/webapis-day03/1551172755484.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    我是一段不愿意分享的文字</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="hljs-comment">// 1. contextmenu 我们可以禁用右键菜单</span></span><br><span class="line">        <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'contextmenu'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">                e.preventDefault();</span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="hljs-comment">// 2. 禁止选中文字 selectstart</span></span><br><span class="line">        <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'selectstart'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">            e.preventDefault();</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="鼠标事件对象"><a href="#鼠标事件对象" class="headerlink" title="鼠标事件对象"></a>鼠标事件对象</h3><p><img src="/前端笔记/webapis-day03/1551173103741.png" alt></p>
+<h3 id="获取鼠标在页面的坐标"><a href="#获取鼠标在页面的坐标" class="headerlink" title="获取鼠标在页面的坐标"></a>获取鼠标在页面的坐标</h3><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-comment">// 鼠标事件对象 MouseEvent</span></span><br><span class="line">    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">        <span class="hljs-comment">// 1. client 鼠标在可视区的x和y坐标</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e.clientX);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e.clientY);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'---------------------'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 2. page 鼠标在页面文档的x和y坐标</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e.pageX);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e.pageY);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'---------------------'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="hljs-comment">// 3. screen 鼠标在电脑屏幕的x和y坐标</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e.screenX);</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(e.screenY);</span><br><span class="line"></span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：跟随鼠标的天使"><a href="#案例：跟随鼠标的天使" class="headerlink" title="案例：跟随鼠标的天使"></a>案例：跟随鼠标的天使</h3><p><img src="/前端笔记/webapis-day03/1551173172613.png" alt></p>
+<p><img src="/前端笔记/webapis-day03/1551173186812.png" alt></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=<span class="hljs-string">"images/angel.gif"</span> alt=<span class="hljs-string">""</span>&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="hljs-keyword">var</span> pic = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'img'</span>);</span><br><span class="line">    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'mousemove'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>&#123;</span><br><span class="line">    	<span class="hljs-comment">// 1. mousemove只要我们鼠标移动1px 就会触发这个事件</span></span><br><span class="line">    	<span class="hljs-comment">// 2.核心原理： 每次鼠标移动，我们都会获得最新的鼠标坐标， </span></span><br><span class="line">        <span class="hljs-comment">// 把这个x和y坐标做为图片的top和left 值就可以移动图片</span></span><br><span class="line">    	<span class="hljs-keyword">var</span> x = e.pageX;</span><br><span class="line">    	<span class="hljs-keyword">var</span> y = e.pageY;</span><br><span class="line">    	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'x坐标是'</span> + x, <span class="hljs-string">'y坐标是'</span> + y);</span><br><span class="line">    	<span class="hljs-comment">//3 . 千万不要忘记给left 和top 添加px 单位</span></span><br><span class="line">    	pic.style.left = x - <span class="hljs-number">50</span> + <span class="hljs-string">'px'</span>;</span><br><span class="line">    	pic.style.top = y - <span class="hljs-number">40</span> + <span class="hljs-string">'px'</span>;</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;<span class="hljs-regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day03/">WebAPIs-Day03</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/webapis-day03/">http://www.itfool.cn/前端笔记/webapis-day03/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/JavaScript/">JavaScript</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/webapis-day04/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">WebAPIs-Day04</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/webapis-day02/">
+                <span class="level-item">WebAPIs-Day02</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#节点操作">
+        <span class="has-mr-6">1</span>
+        <span>节点操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#删除节点">
+        <span class="has-mr-6">1.1</span>
+        <span>删除节点</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：删除留言">
+        <span class="has-mr-6">1.2</span>
+        <span>案例：删除留言</span>
+        </a></li><li>
+        <a class="is-flex" href="#复制（克隆）节点">
+        <span class="has-mr-6">1.3</span>
+        <span>复制（克隆）节点</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：动态生成表格">
+        <span class="has-mr-6">1.4</span>
+        <span>案例：动态生成表格</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建元素的三种方式">
+        <span class="has-mr-6">1.5</span>
+        <span>创建元素的三种方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#innerTHML和createElement效率对比">
+        <span class="has-mr-6">1.6</span>
+        <span>innerTHML和createElement效率对比</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#DOM的核心总结">
+        <span class="has-mr-6">2</span>
+        <span>DOM的核心总结</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#创建">
+        <span class="has-mr-6">2.1</span>
+        <span>创建</span>
+        </a></li><li>
+        <a class="is-flex" href="#增">
+        <span class="has-mr-6">2.2</span>
+        <span>增</span>
+        </a></li><li>
+        <a class="is-flex" href="#删">
+        <span class="has-mr-6">2.3</span>
+        <span>删</span>
+        </a></li><li>
+        <a class="is-flex" href="#改">
+        <span class="has-mr-6">2.4</span>
+        <span>改</span>
+        </a></li><li>
+        <a class="is-flex" href="#查">
+        <span class="has-mr-6">2.5</span>
+        <span>查</span>
+        </a></li><li>
+        <a class="is-flex" href="#属性操作">
+        <span class="has-mr-6">2.6</span>
+        <span>属性操作</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#事件高级（重点）">
+        <span class="has-mr-6">3</span>
+        <span>事件高级（重点）</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#注册事件（2种方式）">
+        <span class="has-mr-6">3.1</span>
+        <span>注册事件（2种方式）</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件监听">
+        <span class="has-mr-6">3.2</span>
+        <span>事件监听</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#addEventListener-事件监听（IE9以后支持）">
+        <span class="has-mr-6">3.2.1</span>
+        <span>addEventListener()事件监听（IE9以后支持）</span>
+        </a></li><li>
+        <a class="is-flex" href="#attacheEvent-事件监听（IE678支持）">
+        <span class="has-mr-6">3.2.2</span>
+        <span>attacheEvent()事件监听（IE678支持）</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件监听兼容性解决方案">
+        <span class="has-mr-6">3.2.3</span>
+        <span>事件监听兼容性解决方案</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#删除事件（解绑事件）">
+        <span class="has-mr-6">3.3</span>
+        <span>删除事件（解绑事件）</span>
+        </a></li><li>
+        <a class="is-flex" href="#1-3-4-DOM事件流">
+        <span class="has-mr-6">3.4</span>
+        <span>1.3.4. DOM事件流</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件对象">
+        <span class="has-mr-6">3.5</span>
+        <span>事件对象</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是事件对象">
+        <span class="has-mr-6">3.5.1</span>
+        <span>什么是事件对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件对象的使用">
+        <span class="has-mr-6">3.5.2</span>
+        <span>事件对象的使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件对象的兼容性处理">
+        <span class="has-mr-6">3.5.3</span>
+        <span>事件对象的兼容性处理</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件对象的属性和方法">
+        <span class="has-mr-6">3.5.4</span>
+        <span>事件对象的属性和方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#e-target-和-this-的区别">
+        <span class="has-mr-6">3.5.5</span>
+        <span>e.target 和 this 的区别</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#阻止默认行为">
+        <span class="has-mr-6">3.6</span>
+        <span>阻止默认行为</span>
+        </a></li><li>
+        <a class="is-flex" href="#阻止事件冒泡">
+        <span class="has-mr-6">3.7</span>
+        <span>阻止事件冒泡</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件委托">
+        <span class="has-mr-6">3.8</span>
+        <span>事件委托</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是事件委托">
+        <span class="has-mr-6">3.8.1</span>
+        <span>什么是事件委托</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件委托的原理">
+        <span class="has-mr-6">3.8.2</span>
+        <span>事件委托的原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#事件委托的作用">
+        <span class="has-mr-6">3.8.3</span>
+        <span>事件委托的作用</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#常用鼠标事件">
+        <span class="has-mr-6">4</span>
+        <span>常用鼠标事件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#案例：禁止选中文字和禁止右键菜单">
+        <span class="has-mr-6">4.1</span>
+        <span>案例：禁止选中文字和禁止右键菜单</span>
+        </a></li><li>
+        <a class="is-flex" href="#鼠标事件对象">
+        <span class="has-mr-6">4.2</span>
+        <span>鼠标事件对象</span>
+        </a></li><li>
+        <a class="is-flex" href="#获取鼠标在页面的坐标">
+        <span class="has-mr-6">4.3</span>
+        <span>获取鼠标在页面的坐标</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：跟随鼠标的天使">
+        <span class="has-mr-6">4.4</span>
+        <span>案例：跟随鼠标的天使</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="WebAPIs-Day03" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

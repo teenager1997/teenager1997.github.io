@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>jQuery-Day02 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第03阶段.jQuery基础.jQuery操作元素">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery-Day02">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/jquery-day02/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第03阶段.jQuery基础.jQuery操作元素">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/jquery-day02/%E6%80%BB%E7%BB%93.png">
+<meta property="og:updated_time" content="2020-05-23T08:05:13.198Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery-Day02">
+<meta name="twitter:description" content="第03阶段.jQuery基础.jQuery操作元素">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/jquery-day02/%E6%80%BB%E7%BB%93.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="jQuery-Day02" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/jquery-day02/%E6%80%BB%E7%BB%93.png" alt="jQuery-Day02">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>jQuery-Day02
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T07:57:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T08:05:13.198Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    21 分钟 读完 (大约 3181 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第03阶段.jQuery基础.jQuery操作元素</p>
+</blockquote>
+<p><img src="/前端笔记/jquery-day02/%E6%80%BB%E7%BB%93.png" alt></p>
+<a id="more"></a>
+
+<blockquote>
+<p>学习目标：</p>
+<p>能够操作  jQuery 属性<br>能够操作  jQuery 元素<br>能够操作  jQuery 元素尺寸、位置</p>
+</blockquote>
+<h2 id="jQuery-属性操作"><a href="#jQuery-属性操作" class="headerlink" title="jQuery 属性操作"></a>jQuery 属性操作</h2><p>​    jQuery 常用属性操作有三种：prop() / attr() / data() ;</p>
+<h3 id="元素固有属性值-prop"><a href="#元素固有属性值-prop" class="headerlink" title="元素固有属性值 prop()"></a>元素固有属性值 prop()</h3><p>​    所谓元素固有属性就是元素本身自带的属性，比如 <a> 元素里面的 href ，比如 <input> 元素里面的 type。 </a></p>
+<p><strong>语法</strong></p>
+<p><img src="/前端笔记/jquery-day02/prop.png" alt></p>
+<p>​    注意：prop() 除了普通属性操作，更适合操作表单属性：disabled / checked / selected 等。</p>
+<h3 id="元素自定义属性值-attr"><a href="#元素自定义属性值-attr" class="headerlink" title="元素自定义属性值 attr()"></a>元素自定义属性值 attr()</h3><p>​    用户自己给元素添加的属性，我们称为自定义属性。 比如给 div 添加 index =“1”。 </p>
+<p><strong>语法</strong></p>
+<p><img src="/前端笔记/jquery-day02/attr.png" alt></p>
+<p>​    注意：attr() 除了普通属性操作，更适合操作自定义属性。（该方法也可以获取 H5 自定义属性）</p>
+<h3 id="数据缓存-data"><a href="#数据缓存-data" class="headerlink" title="数据缓存 data()"></a>数据缓存 data()</h3><p>​    data() 方法可以在指定的元素上存取数据，并不会修改 DOM 元素结构。一旦页面刷新，之前存放的数据都将被移除。 </p>
+<p><strong>语法</strong></p>
+<p><img src="/前端笔记/jquery-day02/data.png" alt></p>
+<p>​    注意：同时，还可以读取 HTML5 自定义属性  data-index ，得到的是数字型。</p>
+<p><strong>演示代码</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;a href=<span class="hljs-string">"http://www.itcast.cn"</span> title=<span class="hljs-string">"都挺好"</span>&gt;都挺好&lt;<span class="hljs-regexp">/a&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;input type="checkbox" name="" id="" checked&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div index="1" data-index="2"&gt;我是div&lt;/</span>div&gt;</span><br><span class="line">    &lt;span&gt;<span class="hljs-number">123</span>&lt;<span class="hljs-regexp">/span&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        $(function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/1. element.prop("属性名") 获取元素固有的属性值</span></span><br><span class="line"><span class="hljs-regexp">            console.log($("a").prop("href"));</span></span><br><span class="line"><span class="hljs-regexp">            $("a").prop("title", "我们都挺好");</span></span><br><span class="line"><span class="hljs-regexp">            $("input").change(function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">                console.log($(this).prop("checked"));</span></span><br><span class="line"><span class="hljs-regexp">            &#125;);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ console.log($("div").prop("index"));</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 2. 元素的自定义属性 我们通过 attr()</span></span><br><span class="line"><span class="hljs-regexp">            console.log($("div").attr("index"));</span></span><br><span class="line"><span class="hljs-regexp">            $("div").attr("index", 4);</span></span><br><span class="line"><span class="hljs-regexp">            console.log($("div").attr("data-index"));</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 3. 数据缓存 data() 这个里面的数据是存放在元素的内存里面</span></span><br><span class="line"><span class="hljs-regexp">            $("span").data("uname", "andy");</span></span><br><span class="line"><span class="hljs-regexp">            console.log($("span").data("uname"));</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 这个方法获取data-index h5自定义属性 第一个 不用写data-  而且返回的是数字型</span></span><br><span class="line"><span class="hljs-regexp">            console.log($("div").data("index"));</span></span><br><span class="line"><span class="hljs-regexp">        &#125;)</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：购物车案例模块-全选"><a href="#案例：购物车案例模块-全选" class="headerlink" title="案例：购物车案例模块-全选"></a>案例：购物车案例模块-全选</h3><blockquote>
+<p>1.全选思路：里面3个小的复选框按钮（j-checkbox）选中状态（checked）跟着全选按钮（checkall）走。<br>2.因为checked 是复选框的固有属性，此时我们需要利用prop()方法获取和设置该属性。<br>3.把全选按钮状态赋值给3小复选框就可以了。<br>4.当我们每次点击小的复选框按钮，就来判断：<br>5.如果小复选框被选中的个数等于3 就应该把全选按钮选上，否则全选按钮不选。<br>6.:checked 选择器      :checked 查找被选中的表单元素。</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h2 id="jQuery-文本属性值"><a href="#jQuery-文本属性值" class="headerlink" title="jQuery 文本属性值"></a>jQuery 文本属性值</h2><p>​    jQuery的文本属性值常见操作有三种：html() / text() / val() ; 分别对应JS中的 innerHTML 、innerText 和 value 属性。</p>
+<h3 id="jQuery内容文本值"><a href="#jQuery内容文本值" class="headerlink" title="jQuery内容文本值"></a>jQuery内容文本值</h3><p>​    常见操作有三种：html() / text() / val() ; 分别对应JS中的 innerHTML 、innerText 和 value 属性，主要针对元素的内容还有表单的值操作。</p>
+<p><strong>语法</strong></p>
+<p><img src="/前端笔记/jquery-day02/html.png" alt></p>
+<p>​    注意：html() 可识别标签，text() 不识别标签。</p>
+<p><strong>演示代码</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;span&gt;我是内容&lt;<span class="hljs-regexp">/span&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>div&gt;</span><br><span class="line">    &lt;input type=<span class="hljs-string">"text"</span> value=<span class="hljs-string">"请输入内容"</span>&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        <span class="hljs-comment">// 1. 获取设置元素内容 html()</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"div"</span>).html());</span><br><span class="line">        <span class="hljs-comment">// $("div").html("123");</span></span><br><span class="line">        <span class="hljs-comment">// 2. 获取设置元素文本内容 text()</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"div"</span>).text());</span><br><span class="line">        $(<span class="hljs-string">"div"</span>).text(<span class="hljs-string">"123"</span>);</span><br><span class="line">        <span class="hljs-comment">// 3. 获取设置表单值 val()</span></span><br><span class="line">        <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"input"</span>).val());</span><br><span class="line">        $(<span class="hljs-string">"input"</span>).val(<span class="hljs-string">"123"</span>);</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：购物车案例模块-增减商品数量"><a href="#案例：购物车案例模块-增减商品数量" class="headerlink" title="案例：购物车案例模块-增减商品数量"></a>案例：购物车案例模块-增减商品数量</h3><blockquote>
+<p>1.核心思路：首先声明一个变量，当我们点击+号（increment），就让这个值++，然后赋值给文本框。<br>2.注意1： 只能增加本商品的数量， 就是当前+号的兄弟文本框（itxt）的值。<br>3.修改表单的值是val() 方法<br>4.注意2： 这个变量初始值应该是这个文本框的值，在这个值的基础上++。要获取表单的值<br>5.减号（decrement）思路同理，但是如果文本框的值是1，就不能再减了。</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h3 id="案例：购物车案例模块-修改商品小计"><a href="#案例：购物车案例模块-修改商品小计" class="headerlink" title="案例：购物车案例模块-修改商品小计"></a>案例：购物车案例模块-修改商品小计</h3><blockquote>
+<p>1.核心思路：每次点击+号或者-号，根据文本框的值 乘以 当前商品的价格  就是 商品的小计<br>2.注意1： 只能增加本商品的小计， 就是当前商品的小计模块（p-sum）<br>3.修改普通元素的内容是text() 方法<br>4.注意2： 当前商品的价格，要把￥符号去掉再相乘 截取字符串 substr(1)<br>5.parents(‘选择器’) 可以返回指定祖先元素<br>6.最后计算的结果如果想要保留2位小数 通过 toFixed(2)  方法<br>7.用户也可以直接修改表单里面的值，同样要计算小计。 用表单change事件<br>8.用最新的表单内的值 乘以 单价即可  但是还是当前商品小计</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h2 id="jQuery-元素操作"><a href="#jQuery-元素操作" class="headerlink" title="jQuery 元素操作"></a>jQuery 元素操作</h2><p>​    jQuery 元素操作主要讲的是用jQuery方法，操作标签的遍历、创建、添加、删除等操作。</p>
+<h3 id="遍历元素"><a href="#遍历元素" class="headerlink" title="遍历元素"></a>遍历元素</h3><p>​    jQuery 隐式迭代是对同一类元素做了同样的操作。 如果想要给同一类元素做不同操作，就需要用到遍历。</p>
+<p><strong>语法1</strong></p>
+<p><img src="/前端笔记/jquery-day02/each1.png" alt></p>
+<p>​    注意：此方法用于遍历 jQuery 对象中的每一项，回调函数中元素为 DOM 对象，想要使用 jQuery 方法需要转换。</p>
+<p><strong>语法2</strong></p>
+<p><img src="/前端笔记/jquery-day02/each2.png" alt></p>
+<p>​    注意：此方法用于遍历 jQuery 对象中的每一项，回调函数中元素为 DOM 对象，想要使用 jQuery 方法需要转换。</p>
+<p><strong>演示代码</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-number">1</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;div&gt;2&lt;/</span>div&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-number">3</span>&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        $(function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 如果针对于同一类元素做不同操作，需要用到遍历元素（类似for，但是比for强大）</span></span><br><span class="line"><span class="hljs-regexp">            var sum = 0;</span></span><br><span class="line"><span class="hljs-regexp">            var arr = ["red", "green", "blue"];</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 1. each() 方法遍历元素 </span></span><br><span class="line"><span class="hljs-regexp">            $("div").each(function(i, domEle) &#123;</span></span><br><span class="line"><span class="hljs-regexp">                /</span><span class="hljs-regexp">/ 回调函数第一个参数一定是索引号  可以自己指定索引号号名称</span></span><br><span class="line"><span class="hljs-regexp">                /</span><span class="hljs-regexp">/ console.log(i);</span></span><br><span class="line"><span class="hljs-regexp">                /</span><span class="hljs-regexp">/ 回调函数第二个参数一定是 dom 元素对象，也是自己命名</span></span><br><span class="line"><span class="hljs-regexp">                /</span><span class="hljs-regexp">/ console.log(domEle);  /</span><span class="hljs-regexp">/ 使用jQuery方法需要转换 $(domEle)</span></span><br><span class="line"><span class="hljs-regexp">                $(domEle).css("color", arr[i]);</span></span><br><span class="line"><span class="hljs-regexp">                sum += parseInt($(domEle).text());</span></span><br><span class="line"><span class="hljs-regexp">            &#125;)</span></span><br><span class="line"><span class="hljs-regexp">            console.log(sum);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 2. $.each() 方法遍历元素 主要用于遍历数据，处理数据</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ $.each($("div"), function(i, ele) &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/     console.log(i);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/     console.log(ele);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ &#125;);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ $.each(arr, function(i, ele) &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/     console.log(i);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/     console.log(ele);</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ &#125;)</span></span><br><span class="line"><span class="hljs-regexp">            $.each(&#123;</span></span><br><span class="line"><span class="hljs-regexp">                name: "andy",</span></span><br><span class="line"><span class="hljs-regexp">                age: 18</span></span><br><span class="line"><span class="hljs-regexp">            &#125;, function(i, ele) &#123;</span></span><br><span class="line"><span class="hljs-regexp">                console.log(i); /</span><span class="hljs-regexp">/ 输出的是 name age 属性名</span></span><br><span class="line"><span class="hljs-regexp">                console.log(ele); /</span><span class="hljs-regexp">/ 输出的是 andy  18 属性值</span></span><br><span class="line"><span class="hljs-regexp">            &#125;)</span></span><br><span class="line"><span class="hljs-regexp">        &#125;)</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：购物车案例模块-计算总计和总额"><a href="#案例：购物车案例模块-计算总计和总额" class="headerlink" title="案例：购物车案例模块-计算总计和总额"></a>案例：购物车案例模块-计算总计和总额</h3><blockquote>
+<p>1.把所有文本框中的值相加就是总额数量，总计同理。<br>2.文本框里面的值不同，如果想要相加需要用 each() 遍历，声明一个变量做计数器，累加即可。</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h3 id="创建、添加、删除"><a href="#创建、添加、删除" class="headerlink" title="创建、添加、删除"></a>创建、添加、删除</h3><p>​    jQuery方法操作元素的创建、添加、删除方法很多，则重点使用部分，如下：</p>
+<p><strong>语法总和</strong></p>
+<p><img src="/前端笔记/jquery-day02/create.png" alt></p>
+<p><img src="/前端笔记/jquery-day02/append1.png" alt></p>
+<p><img src="/前端笔记/jquery-day02/append2.png" alt></p>
+<p><img src="/前端笔记/jquery-day02/remove.png" alt></p>
+<p>​    注意：以上只是元素的创建、添加、删除方法的常用方法，其他方法请参详API。</p>
+<p><strong>案例代码</strong></p>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;原先的li&lt;<span class="hljs-regexp">/li&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/u</span>l&gt;</span><br><span class="line">    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"test"</span>&gt;我是原先的div&lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">    &lt;script&gt;</span></span><br><span class="line"><span class="hljs-regexp">        $(function() &#123;</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 1. 创建元素</span></span><br><span class="line"><span class="hljs-regexp">            var li = $("&lt;li&gt;我是后来创建的li&lt;/</span>li&gt;<span class="hljs-string">");</span></span><br><span class="line"><span class="hljs-string">      </span></span><br><span class="line"><span class="hljs-string">            // 2. 添加元素</span></span><br><span class="line"><span class="hljs-string">            // 	2.1 内部添加</span></span><br><span class="line"><span class="hljs-string">            // $("</span>ul<span class="hljs-string">").append(li);  内部添加并且放到内容的最后面 </span></span><br><span class="line"><span class="hljs-string">            $("</span>ul<span class="hljs-string">").prepend(li); // 内部添加并且放到内容的最前面</span></span><br><span class="line"><span class="hljs-string">            //  2.2 外部添加</span></span><br><span class="line"><span class="hljs-string">            var div = $("</span>&lt;div&gt;我是后妈生的&lt;<span class="hljs-regexp">/div&gt;");</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ $(".test").after(div);</span></span><br><span class="line"><span class="hljs-regexp">            $(".test").before(div);</span></span><br><span class="line"><span class="hljs-regexp">      </span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ 3. 删除元素</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ $("ul").remove(); 可以删除匹配的元素 自杀</span></span><br><span class="line"><span class="hljs-regexp">            /</span><span class="hljs-regexp">/ $("ul").empty(); /</span><span class="hljs-regexp">/ 可以删除匹配的元素里面的子节点 孩子</span></span><br><span class="line"><span class="hljs-regexp">            $("ul").html(""); /</span><span class="hljs-regexp">/ 可以删除匹配的元素里面的子节点 孩子</span></span><br><span class="line"><span class="hljs-regexp">        &#125;)</span></span><br><span class="line"><span class="hljs-regexp">    &lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="hljs-regexp">/body&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：购物车案例模块-删除商品模块"><a href="#案例：购物车案例模块-删除商品模块" class="headerlink" title="案例：购物车案例模块-删除商品模块"></a>案例：购物车案例模块-删除商品模块</h3><blockquote>
+<p>1.核心思路：把商品remove() 删除元素即可<br>2.有三个地方需要删除： 1. 商品后面的删除按钮 2. 删除选中的商品 3. 清理购物车<br>3.商品后面的删除按钮： 一定是删除当前的商品，所以从 $(this) 出发<br>4.删除选中的商品： 先判断小的复选框按钮是否选中状态，如果是选中，则删除对应的商品<br>5.清理购物车： 则是把所有的商品全部删掉</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h3 id="案例：购物车案例模块-选中商品添加背景"><a href="#案例：购物车案例模块-选中商品添加背景" class="headerlink" title="案例：购物车案例模块-选中商品添加背景"></a>案例：购物车案例模块-选中商品添加背景</h3><blockquote>
+<p>1.核心思路：选中的商品添加背景，不选中移除背景即可<br>2.全选按钮点击：如果全选是选中的，则所有的商品添加背景，否则移除背景<br>3.小的复选框点击： 如果是选中状态，则当前商品添加背景，否则移除背景<br>4.这个背景，可以通过类名修改，添加类和删除类</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h2 id="jQuery-尺寸、位置操作"><a href="#jQuery-尺寸、位置操作" class="headerlink" title="jQuery 尺寸、位置操作"></a>jQuery 尺寸、位置操作</h2><p>​    jQuery中分别为我们提供了两套快速获取和设置元素尺寸和位置的API，方便易用，内容如下。</p>
+<h3 id="jQuery-尺寸操作"><a href="#jQuery-尺寸操作" class="headerlink" title="jQuery 尺寸操作"></a>jQuery 尺寸操作</h3><p>​     jQuery 尺寸操作包括元素宽高的获取和设置，且不一样的API对应不一样的盒子模型。</p>
+<p><strong>语法</strong></p>
+<p><img src="/前端笔记/jquery-day02/size.png" alt></p>
+<p><strong>代码演示</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 1. width() / height() 获取设置元素 width和height大小 </span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"div"</span>).width());</span><br><span class="line">            <span class="hljs-comment">// $("div").width(300);</span></span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// 2. innerWidth() / innerHeight()  获取设置元素 width和height + padding 大小 </span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"div"</span>).innerWidth());</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// 3. outerWidth()  / outerHeight()  获取设置元素 width和height + padding + border 大小 </span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"div"</span>).outerWidth());</span><br><span class="line"></span><br><span class="line">            <span class="hljs-comment">// 4. outerWidth(true) / outerHeight(true) 获取设置 width和height + padding + border + margin</span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">"div"</span>).outerWidth(<span class="hljs-literal">true</span>));</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    注意：有了这套 API 我们将可以快速获取和子的宽高，至于其他属性想要获取和设置，还要使用 css() 等方法配合。</p>
+<h3 id="jQuery-位置操作"><a href="#jQuery-位置操作" class="headerlink" title="jQuery 位置操作"></a>jQuery 位置操作</h3><p>​    jQuery的位置操作主要有三个： offset()、position()、scrollTop()/scrollLeft() , 具体介绍如下: </p>
+<p><strong>语法</strong></p>
+<p><img src="/前端笔记/jquery-day02/offset.png" alt></p>
+<p><img src="/前端笔记/jquery-day02/position.png" alt></p>
+<p><img src="/前端笔记/jquery-day02/scroll.png" alt></p>
+<p><strong>代码演示</strong></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"father"</span>&gt;</span><br><span class="line">        &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"son"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">    &lt;<span class="hljs-regexp">/div&gt;</span></span><br><span class="line"><span class="hljs-regexp">        </span></span><br><span class="line"><span class="hljs-regexp">    &lt;div class="back"&gt;返回顶部&lt;/</span>div&gt;</span><br><span class="line">    &lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"container"</span>&gt;<span class="hljs-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></span><br><span class="line">   </span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        $(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 1. 获取设置距离文档的位置（偏移） offset</span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">".son"</span>).offset());</span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">".son"</span>).offset().top);</span><br><span class="line">            <span class="hljs-comment">// $(".son").offset(&#123;</span></span><br><span class="line">            <span class="hljs-comment">//     top: 200,</span></span><br><span class="line">            <span class="hljs-comment">//     left: 200</span></span><br><span class="line">            <span class="hljs-comment">// &#125;);</span></span><br><span class="line">      </span><br><span class="line">            <span class="hljs-comment">// 2. 获取距离带有定位父级位置（偏移） position   如果没有带有定位的父级，则以文档为准</span></span><br><span class="line">            <span class="hljs-comment">// 这个方法只能获取不能设置偏移</span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log($(<span class="hljs-string">".son"</span>).position());</span><br><span class="line">            <span class="hljs-comment">// $(".son").position(&#123;</span></span><br><span class="line">            <span class="hljs-comment">//     top: 200,</span></span><br><span class="line">            <span class="hljs-comment">//     left: 200</span></span><br><span class="line">            <span class="hljs-comment">// &#125;);</span></span><br><span class="line">      </span><br><span class="line">      		<span class="hljs-comment">// 3. 被卷去的头部</span></span><br><span class="line">      		$(<span class="hljs-built_in">document</span>).scrollTop(<span class="hljs-number">100</span>);</span><br><span class="line">            <span class="hljs-comment">// 被卷去的头部 scrollTop()  / 被卷去的左侧 scrollLeft()</span></span><br><span class="line">            <span class="hljs-comment">// 页面滚动事件</span></span><br><span class="line">            <span class="hljs-keyword">var</span> boxTop = $(<span class="hljs-string">".container"</span>).offset().top;</span><br><span class="line">            $(<span class="hljs-built_in">window</span>).scroll(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// console.log(11);</span></span><br><span class="line">                <span class="hljs-built_in">console</span>.log($(<span class="hljs-built_in">document</span>).scrollTop());</span><br><span class="line">                <span class="hljs-keyword">if</span> ($(<span class="hljs-built_in">document</span>).scrollTop() &gt;= boxTop) &#123;</span><br><span class="line">                    $(<span class="hljs-string">".back"</span>).fadeIn();</span><br><span class="line">                &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                    $(<span class="hljs-string">".back"</span>).fadeOut();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="hljs-comment">// 返回顶部</span></span><br><span class="line">            $(<span class="hljs-string">".back"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">                <span class="hljs-comment">// $(document).scrollTop(0);</span></span><br><span class="line">                $(<span class="hljs-string">"body, html"</span>).stop().animate(&#123;</span><br><span class="line">                    scrollTop: <span class="hljs-number">0</span></span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="hljs-comment">// $(document).stop().animate(&#123;</span></span><br><span class="line">                <span class="hljs-comment">//     scrollTop: 0</span></span><br><span class="line">                <span class="hljs-comment">// &#125;); 不能是文档而是 html和body元素做动画</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &lt;<span class="hljs-regexp">/script&gt;</span></span><br><span class="line"><span class="hljs-regexp">&lt;/</span>body&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="案例：带有动画的返回顶部"><a href="#案例：带有动画的返回顶部" class="headerlink" title="案例：带有动画的返回顶部"></a>案例：带有动画的返回顶部</h3><blockquote>
+<p>1.核心原理： 使用animate动画返回顶部。<br>2.animate动画函数里面有个scrollTop 属性，可以设置位置<br>3.但是是元素做动画，因此 $(“body,html”).animate({scrollTop: 0})</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h3 id="案例：-品优购电梯导航（上）"><a href="#案例：-品优购电梯导航（上）" class="headerlink" title="案例： 品优购电梯导航（上）"></a>案例： 品优购电梯导航（上）</h3><blockquote>
+<p>1.当我们滚动到 今日推荐 模块，就让电梯导航显示出来<br>2.点击电梯导航页面可以滚动到相应内容区域<br>3.核心算法：因为电梯导航模块和内容区模块一一对应的<br>4.当我们点击电梯导航某个小模块，就可以拿到当前小模块的索引号<br>5.就可以把animate要移动的距离求出来：当前索引号内容区模块它的offset().top<br>6.然后执行动画即可</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+<h3 id="案例：品优购电梯导航（下）"><a href="#案例：品优购电梯导航（下）" class="headerlink" title="案例：品优购电梯导航（下）"></a>案例：品优购电梯导航（下）</h3><blockquote>
+<p>1.当我们点击电梯导航某个小li， 当前小li 添加current类，兄弟移除类名<br>2.当我们页面滚动到内容区域某个模块， 左侧电梯导航，相对应的小li模块，也会添加current类， 兄弟移除current类。<br>3.触发的事件是页面滚动，因此这个功能要写到页面滚动事件里面。<br>4.需要用到each，遍历内容区域大模块。 each里面能拿到内容区域每一个模块元素和索引号<br>5.判断的条件：  被卷去的头部 大于等于 内容区域里面每个模块的offset().top<br>6.就利用这个索引号找到相应的电梯导航小li添加类。</p>
+</blockquote>
+<p>​    代码实现略。(详情参考源代码)</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/jquery-day02/">jQuery-Day02</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/jquery-day02/">http://www.itfool.cn/前端笔记/jquery-day02/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/jQuery/">jQuery</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/jquery-day03/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">jQuery-Day03</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/jquery-day01/">
+                <span class="level-item">jQuery-Day01</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        36
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#jQuery-属性操作">
+        <span class="has-mr-6">1</span>
+        <span>jQuery 属性操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#元素固有属性值-prop">
+        <span class="has-mr-6">1.1</span>
+        <span>元素固有属性值 prop()</span>
+        </a></li><li>
+        <a class="is-flex" href="#元素自定义属性值-attr">
+        <span class="has-mr-6">1.2</span>
+        <span>元素自定义属性值 attr()</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据缓存-data">
+        <span class="has-mr-6">1.3</span>
+        <span>数据缓存 data()</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：购物车案例模块-全选">
+        <span class="has-mr-6">1.4</span>
+        <span>案例：购物车案例模块-全选</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-文本属性值">
+        <span class="has-mr-6">2</span>
+        <span>jQuery 文本属性值</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#jQuery内容文本值">
+        <span class="has-mr-6">2.1</span>
+        <span>jQuery内容文本值</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：购物车案例模块-增减商品数量">
+        <span class="has-mr-6">2.2</span>
+        <span>案例：购物车案例模块-增减商品数量</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：购物车案例模块-修改商品小计">
+        <span class="has-mr-6">2.3</span>
+        <span>案例：购物车案例模块-修改商品小计</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-元素操作">
+        <span class="has-mr-6">3</span>
+        <span>jQuery 元素操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#遍历元素">
+        <span class="has-mr-6">3.1</span>
+        <span>遍历元素</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：购物车案例模块-计算总计和总额">
+        <span class="has-mr-6">3.2</span>
+        <span>案例：购物车案例模块-计算总计和总额</span>
+        </a></li><li>
+        <a class="is-flex" href="#创建、添加、删除">
+        <span class="has-mr-6">3.3</span>
+        <span>创建、添加、删除</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：购物车案例模块-删除商品模块">
+        <span class="has-mr-6">3.4</span>
+        <span>案例：购物车案例模块-删除商品模块</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：购物车案例模块-选中商品添加背景">
+        <span class="has-mr-6">3.5</span>
+        <span>案例：购物车案例模块-选中商品添加背景</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#jQuery-尺寸、位置操作">
+        <span class="has-mr-6">4</span>
+        <span>jQuery 尺寸、位置操作</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#jQuery-尺寸操作">
+        <span class="has-mr-6">4.1</span>
+        <span>jQuery 尺寸操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#jQuery-位置操作">
+        <span class="has-mr-6">4.2</span>
+        <span>jQuery 位置操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：带有动画的返回顶部">
+        <span class="has-mr-6">4.3</span>
+        <span>案例：带有动画的返回顶部</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：-品优购电梯导航（上）">
+        <span class="has-mr-6">4.4</span>
+        <span>案例： 品优购电梯导航（上）</span>
+        </a></li><li>
+        <a class="is-flex" href="#案例：品优购电梯导航（下）">
+        <span class="has-mr-6">4.5</span>
+        <span>案例：品优购电梯导航（下）</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="jQuery-Day02" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
