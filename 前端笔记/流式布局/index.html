@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>流式布局 - It Fool - 前端小白</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第02阶段.移动Web网页开发.流式布局  移动web开发——流式布局移动端基础浏览器现状 PC端常见浏览器：360浏览器、谷歌浏览器、火狐浏览器、QQ浏览器、百度浏览器、搜狗浏览器、IE浏览器。 移动端常见浏览器：UC浏览器，QQ浏览器，欧朋浏览器，百度手机浏览器，360安全浏览器，谷歌浏览器，搜狗手机浏览器，猎豹浏览器，以及其他杂牌浏览器。 国内的UC和QQ，百度等手机浏览器都是根据Webk">
+<meta name="keywords" content="流式布局,百分比布局">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流式布局">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/流式布局/index.html">
+<meta property="og:site_name" content="It Fool - 前端小白">
+<meta property="og:description" content="第02阶段.移动Web网页开发.流式布局  移动web开发——流式布局移动端基础浏览器现状 PC端常见浏览器：360浏览器、谷歌浏览器、火狐浏览器、QQ浏览器、百度浏览器、搜狗浏览器、IE浏览器。 移动端常见浏览器：UC浏览器，QQ浏览器，欧朋浏览器，百度手机浏览器，360安全浏览器，谷歌浏览器，搜狗手机浏览器，猎豹浏览器，以及其他杂牌浏览器。 国内的UC和QQ，百度等手机浏览器都是根据Webk">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/%E6%B5%81%E5%BC%8F%E5%B8%83%E5%B1%80/1(1).png">
+<meta property="og:updated_time" content="2020-05-23T03:14:38.810Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="流式布局">
+<meta name="twitter:description" content="第02阶段.移动Web网页开发.流式布局  移动web开发——流式布局移动端基础浏览器现状 PC端常见浏览器：360浏览器、谷歌浏览器、火狐浏览器、QQ浏览器、百度浏览器、搜狗浏览器、IE浏览器。 移动端常见浏览器：UC浏览器，QQ浏览器，欧朋浏览器，百度手机浏览器，360安全浏览器，谷歌浏览器，搜狗手机浏览器，猎豹浏览器，以及其他杂牌浏览器。 国内的UC和QQ，百度等手机浏览器都是根据Webk">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/%E6%B5%81%E5%BC%8F%E5%B8%83%E5%B1%80/1(1).png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="流式布局" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/%E6%B5%81%E5%BC%8F%E5%B8%83%E5%B1%80/1(1).png" alt="流式布局">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>流式布局
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-23T03:02:16.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-23</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-23T03:14:38.810Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-23</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    14 分钟 读完 (大约 2108 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第02阶段.移动Web网页开发.流式布局</p>
+</blockquote>
+<h1 id="移动web开发——流式布局"><a href="#移动web开发——流式布局" class="headerlink" title="移动web开发——流式布局"></a>移动web开发——流式布局</h1><h3 id="移动端基础"><a href="#移动端基础" class="headerlink" title="移动端基础"></a>移动端基础</h3><h4 id="浏览器现状"><a href="#浏览器现状" class="headerlink" title="浏览器现状"></a>浏览器现状</h4><p> PC端常见浏览器：360浏览器、谷歌浏览器、火狐浏览器、QQ浏览器、百度浏览器、搜狗浏览器、IE浏览器。</p>
+<p>移动端常见浏览器：UC浏览器，QQ浏览器，欧朋浏览器，百度手机浏览器，360安全浏览器，谷歌浏览器，搜狗手机浏览器，猎豹浏览器，以及其他杂牌浏览器。</p>
+<p>国内的UC和QQ，百度等手机浏览器都是根据Webkit修改过来的内核，国内尚无自主研发的内核，就像国内的手机操作系统都是基于Android修改开发的一样。</p>
+<p><strong>总结：兼容移动端主流浏览器，处理Webkit内核浏览器即可。</strong></p>
+<a id="more"></a>
+
+
+<h4 id="手机屏幕的现状"><a href="#手机屏幕的现状" class="headerlink" title="手机屏幕的现状"></a>手机屏幕的现状</h4><ul>
+<li>移动端设备屏幕尺寸非常多，碎片化严重。</li>
+<li>Android设备有多种分辨率：480x800, 480x854, 540x960, 720x1280，1080x1920等，还有传说中的2K，4k屏。</li>
+<li>近年来iPhone的碎片化也加剧了，其设备的主要分辨率有：640x960, 640x1136, 750x1334, 1242x2208等。</li>
+<li>作为开发者无需关注这些分辨率，因为我们常用的尺寸单位是 px 。</li>
+</ul>
+<h4 id="常见移动端屏幕尺寸"><a href="#常见移动端屏幕尺寸" class="headerlink" title="常见移动端屏幕尺寸"></a>常见移动端屏幕尺寸</h4><p><img src="/前端笔记/流式布局/1(1).png" alt></p>
+<h4 id="移动端调试方法"><a href="#移动端调试方法" class="headerlink" title="移动端调试方法"></a>移动端调试方法</h4><ul>
+<li>Chrome DevTools（谷歌浏览器）的模拟手机调试</li>
+<li>搭建本地web服务器，手机和服务器一个局域网内，通过手机访问服务器</li>
+<li>使用外网服务器，直接IP或域名访问</li>
+</ul>
+<h3 id="视口"><a href="#视口" class="headerlink" title="视口"></a>视口</h3><p>视口（viewport）就是浏览器显示页面内容的屏幕区域。 视口可以分为布局视口、视觉视口和理想视口</p>
+<h4 id="布局视口-layout-viewport"><a href="#布局视口-layout-viewport" class="headerlink" title="布局视口 layout viewport"></a>布局视口 layout viewport</h4><p>一般移动设备的浏览器都默认设置了一个布局视口，用于解决早期的PC端页面在手机上显示的问题。</p>
+<p>iOS, Android基本都将这个视口分辨率设置为 980px，所以PC上的网页大多都能在手机上呈现，只不过元素看上去很小，一般默认可以通过手动缩放网页。</p>
+<p><img src="/前端笔记/流式布局/2.png" alt></p>
+<h4 id="视觉视口-visual-viewport"><a href="#视觉视口-visual-viewport" class="headerlink" title="视觉视口 visual viewport"></a>视觉视口 visual viewport</h4><p>字面意思，它是用户正在看到的网站的区域。注意：是网站的区域。</p>
+<p>我们可以通过缩放去操作视觉视口，但不会影响布局视口，布局视口仍保持原来的宽度。</p>
+<p><img src="/前端笔记/流式布局/3.png" alt></p>
+<h4 id="理想视口-ideal-viewport"><a href="#理想视口-ideal-viewport" class="headerlink" title="理想视口 ideal viewport"></a>理想视口 ideal viewport</h4><p>为了使网站在移动端有最理想的浏览和阅读宽度而设定</p>
+<p>理想视口，对设备来讲，是最理想的视口尺寸</p>
+<p>需要手动添写meta视口标签通知浏览器操作</p>
+<p>meta视口标签的主要目的：布局视口的宽度应该与理想视口的宽度一致，简单理解就是设备有多宽，我们布局的视口就多宽</p>
+<p><strong>总结：我们开发最终会用理想视口，而理想视口就是将布局视口的宽度修改为视觉视口</strong></p>
+<h4 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h4><p><img src="/前端笔记/流式布局/4.png" alt></p>
+<p>最标准的viewport设置</p>
+<ul>
+<li>视口宽度和设备保持一致</li>
+<li>视口的默认缩放比例1.0</li>
+<li>不允许用户自行缩放</li>
+<li>最大允许的缩放比例1.0</li>
+<li>最小允许的缩放比例1.0</li>
+</ul>
+<h3 id="二倍图"><a href="#二倍图" class="headerlink" title="二倍图"></a>二倍图</h3><h4 id="物理像素-amp-物理像素比"><a href="#物理像素-amp-物理像素比" class="headerlink" title="物理像素&amp;物理像素比"></a>物理像素&amp;物理像素比</h4><p>物理像素点指的是屏幕显示的最小颗粒，是物理真实存在的。这是厂商在出厂时就设置好了,比如苹果6 是  750* 1334</p>
+<p>我们开发时候的1px 不是一定等于1个物理像素的</p>
+<p>一个px的能显示的物理像素点的个数，称为物理像素比或屏幕像素比</p>
+<p>如果把1张100*100的图片放到手机里面会按照物理像素比给我们缩放</p>
+<p>lRetina（视网膜屏幕）是一种显示技术，可以将把更多的物理像素点压缩至一块屏幕里，从而达到更高的分辨率，并提高屏幕显示的细腻程度。</p>
+<p>对于一张 50px * 50px 的图片,在手机或 Retina 屏中打开，按照刚才的物理像素比会放大倍数，这样会造成图片模糊</p>
+<p>在标准的viewport设置中，使用倍图来提高图片质量，解决在高清设备中的模糊问题</p>
+<p>通常使用二倍图， 因为iPhone 6 的影响背景图片 注意缩放问题</p>
+<h4 id="背景缩放background-size"><a href="#背景缩放background-size" class="headerlink" title="背景缩放background-size"></a>背景缩放background-size</h4><p>background-size 属性规定背景图像的尺寸</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background-size: 背景图片宽度 背景图片高度;</span><br></pre></td></tr></table></figure>
+
+<p>单位： 长度|百分比|cover|contain;</p>
+<p>cover把背景图像扩展至足够大，以使背景图像完全覆盖背景区域。</p>
+<p>contain把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域</p>
+<h3 id="移动开发选择和技术解决方案"><a href="#移动开发选择和技术解决方案" class="headerlink" title="移动开发选择和技术解决方案"></a>移动开发选择和技术解决方案</h3><h4 id="移动端主流方案"><a href="#移动端主流方案" class="headerlink" title="移动端主流方案"></a>移动端主流方案</h4><p>1.单独制作移动端页面（主流）</p>
+<p>通常情况下，网址域名前面加 m(mobile)<br>可以打开移动端。通过判断设备，如果是移动设备打开，则跳到移动端页面。  </p>
+<p>也就是说，PC端和移动端为两套网站，pc端是pc断的样式，移动端在写一套，专门针对移动端适配的一套网站</p>
+<p>京东pc端：</p>
+<p><img src="/前端笔记/流式布局/5.png" alt></p>
+<p>京东移动端：</p>
+<p><img src="/前端笔记/流式布局/6.jpg" alt></p>
+<p>2.响应式页面兼容移动端（其次）</p>
+<p><img src="/前端笔记/流式布局/7.jpg" alt></p>
+<p>响应式网站：即pc和移动端共用一套网站，只不过在不同屏幕下，样式会自动适配</p>
+<h4 id="移动端技术解决方案"><a href="#移动端技术解决方案" class="headerlink" title="移动端技术解决方案"></a>移动端技术解决方案</h4><p>1.移动端浏览器兼容问题</p>
+<p>移动端浏览器基本以 webkit 内核为主，因此我们就考虑webkit兼容性问题。</p>
+<p>我们可以放心使用 H5 标签和 CSS3 样式。</p>
+<p>同时我们浏览器的私有前缀我们只需要考虑添加 webkit 即可</p>
+<p>2.移动端公共样式</p>
+<p>移动端 CSS 初始化推荐使用 normalize.css/</p>
+<p>Normalize.css：保护了有价值的默认值</p>
+<p>Normalize.css：修复了浏览器的bug</p>
+<p>Normalize.css：是模块化的</p>
+<p>Normalize.css：拥有详细的文档</p>
+<p>官网地址： <a href="http://necolas.github.io/normalize.css/" target="_blank" rel="noopener">http://necolas.github.io/normalize.css/</a></p>
+<h4 id="移动端大量使用-CSS3盒子模型box-sizin"><a href="#移动端大量使用-CSS3盒子模型box-sizin" class="headerlink" title="移动端大量使用 CSS3盒子模型box-sizin"></a>移动端大量使用 CSS3盒子模型box-sizin</h4><p>传统模式宽度计算：盒子的宽度 = CSS中设置的width + border + padding </p>
+<p>CSS3盒子模型：     盒子的宽度=  CSS中设置的宽度width 里面包含了 border 和 padding </p>
+<p>也就是说，我们的CSS3中的盒子模型， padding 和 border 不会撑大盒子了</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*CSS3盒子模型*/</span><br><span class="line">box-sizing: border-box;</span><br><span class="line">/*传统盒子模型*/</span><br><span class="line">box-sizing: content-box;</span><br></pre></td></tr></table></figure>
+
+<p>移动端可以全部CSS3 盒子模型</p>
+<p>PC端如果完全需要兼容，我们就用传统模式，如果不考虑兼容性，我们就选择 CSS3 盒子模型</p>
+<h4 id="移动端特殊样式"><a href="#移动端特殊样式" class="headerlink" title="移动端特殊样式"></a>移动端特殊样式</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/*CSS3盒子模型*/</span><br><span class="line">box-sizing: border-box;</span><br><span class="line">-webkit-box-sizing: border-box;</span><br><span class="line">/*点击高亮我们需要清除清除  设置为transparent 完成透明*/</span><br><span class="line">-webkit-tap-highlight-color: transparent;</span><br><span class="line">/*在移动端浏览器默认的外观在iOS上加上这个属性才能给按钮和输入框自定义样式*/</span><br><span class="line">-webkit-appearance: none;</span><br><span class="line">/*禁用长按页面时的弹出菜单*/</span><br><span class="line">img,a &#123; -webkit-touch-callout: none; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="移动端常见布局"><a href="#移动端常见布局" class="headerlink" title="移动端常见布局"></a>移动端常见布局</h3><p>移动端单独制作</p>
+<ul>
+<li>流式布局（百分比布局）</li>
+<li>flex 弹性布局（强烈推荐）</li>
+<li>less+rem+媒体查询布局</li>
+<li>混合布局</li>
+</ul>
+<p>响应式</p>
+<ul>
+<li>媒体查询</li>
+<li>bootstarp</li>
+</ul>
+<p>流式布局：</p>
+<p>流式布局，就是百分比布局，也称非固定像素布局。</p>
+<p>通过盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。</p>
+<p>流式布局方式是移动web开发使用的比较常见的布局方式。</p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/流式布局/">流式布局</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/流式布局/">http://www.itfool.cn/前端笔记/流式布局/</a></li>
+            <li><strong>发布时间：</strong>2020-05-23</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/布局/">布局</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/flex布局/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">flex布局</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/html5-css3-day03/">
+                <span class="level-item">HTML5+CSS3-Day03</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        20
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        5
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#移动web开发——流式布局">
+        <span class="has-mr-6">1</span>
+        <span>移动web开发——流式布局</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#移动端基础">
+        <span class="has-mr-6">1.1</span>
+        <span>移动端基础</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#浏览器现状">
+        <span class="has-mr-6">1.1.1</span>
+        <span>浏览器现状</span>
+        </a></li><li>
+        <a class="is-flex" href="#手机屏幕的现状">
+        <span class="has-mr-6">1.1.2</span>
+        <span>手机屏幕的现状</span>
+        </a></li><li>
+        <a class="is-flex" href="#常见移动端屏幕尺寸">
+        <span class="has-mr-6">1.1.3</span>
+        <span>常见移动端屏幕尺寸</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端调试方法">
+        <span class="has-mr-6">1.1.4</span>
+        <span>移动端调试方法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#视口">
+        <span class="has-mr-6">1.2</span>
+        <span>视口</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#布局视口-layout-viewport">
+        <span class="has-mr-6">1.2.1</span>
+        <span>布局视口 layout viewport</span>
+        </a></li><li>
+        <a class="is-flex" href="#视觉视口-visual-viewport">
+        <span class="has-mr-6">1.2.2</span>
+        <span>视觉视口 visual viewport</span>
+        </a></li><li>
+        <a class="is-flex" href="#理想视口-ideal-viewport">
+        <span class="has-mr-6">1.2.3</span>
+        <span>理想视口 ideal viewport</span>
+        </a></li><li>
+        <a class="is-flex" href="#meta标签">
+        <span class="has-mr-6">1.2.4</span>
+        <span>meta标签</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#二倍图">
+        <span class="has-mr-6">1.3</span>
+        <span>二倍图</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#物理像素-amp-物理像素比">
+        <span class="has-mr-6">1.3.1</span>
+        <span>物理像素&amp;物理像素比</span>
+        </a></li><li>
+        <a class="is-flex" href="#背景缩放background-size">
+        <span class="has-mr-6">1.3.2</span>
+        <span>背景缩放background-size</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#移动开发选择和技术解决方案">
+        <span class="has-mr-6">1.4</span>
+        <span>移动开发选择和技术解决方案</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#移动端主流方案">
+        <span class="has-mr-6">1.4.1</span>
+        <span>移动端主流方案</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端技术解决方案">
+        <span class="has-mr-6">1.4.2</span>
+        <span>移动端技术解决方案</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端大量使用-CSS3盒子模型box-sizin">
+        <span class="has-mr-6">1.4.3</span>
+        <span>移动端大量使用 CSS3盒子模型box-sizin</span>
+        </a></li><li>
+        <a class="is-flex" href="#移动端特殊样式">
+        <span class="has-mr-6">1.4.4</span>
+        <span>移动端特殊样式</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#移动端常见布局">
+        <span class="has-mr-6">1.5</span>
+        <span>移动端常见布局</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="流式布局" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
