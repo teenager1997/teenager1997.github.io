@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/javascript-day01/</loc>
+    
+    <lastmod>2020-05-23T06:20:31.850Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/javascript-day05/</loc>
     
     <lastmod>2020-05-23T06:16:46.667Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/javascript-day02/</loc>
     
     <lastmod>2020-05-23T05:58:12.333Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/javascript-day0/</loc>
-    
-    <lastmod>2020-05-23T05:51:36.595Z</lastmod>
     
   </url>
   
