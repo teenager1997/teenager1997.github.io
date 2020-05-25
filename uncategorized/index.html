@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="title: Node.js-Day05date: 2020-05-25 16:11:12tags: Node.jscategories: 前端笔记keywords: Node.js,模板引擎,artTemplatethumbnail: 前端笔记/node-js-day05/image-20200525162036452.png  第04阶段.前后端交互.模板引擎artTemplate  目标 能">
+<meta name="keywords" content="前端,JavaScript,html,css,Jquery,NodeJs,Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="It Fool - 董冬懂冻">
+<meta property="og:url" content="http://www.itfool.cn/uncategorized//index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="title: Node.js-Day05date: 2020-05-25 16:11:12tags: Node.jscategories: 前端笔记keywords: Node.js,模板引擎,artTemplatethumbnail: 前端笔记/node-js-day05/image-20200525162036452.png  第04阶段.前后端交互.模板引擎artTemplate  目标 能">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/images/og_image.png">
+<meta property="og:updated_time" content="2020-05-25T08:50:17.470Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="It Fool - 董冬懂冻">
+<meta name="twitter:description" content="title: Node.js-Day05date: 2020-05-25 16:11:12tags: Node.jscategories: 前端笔记keywords: Node.js,模板引擎,artTemplatethumbnail: 前端笔记/node-js-day05/image-20200525162036452.png  第04阶段.前后端交互.模板引擎artTemplate  目标 能">
+<meta name="twitter:image" content="http://www.itfool.cn/images/og_image.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	  
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-25T08:11:12.994Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-25</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-25T08:50:17.470Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-25</time>
+                
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    7 分钟 读完 (大约 989 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <p>title: Node.js-Day05<br>date: 2020-05-25 16:11:12<br>tags: Node.js<br>categories: 前端笔记<br>keywords: Node.js,模板引擎,artTemplate<br>thumbnail: 前端笔记/node-js-day05/image-20200525162036452.png</p>
+<blockquote>
+<p>第04阶段.前后端交互.模板引擎artTemplate</p>
+</blockquote>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>能够使用模板引擎渲染数据</li>
+<li>能够使用模板引擎进行原文输出</li>
+<li>能够使用循环输出数据</li>
+<li>能够知道如何引用子模板</li>
+<li>能够知道如何如何进行模板继承</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="模板引擎的基础概念"><a href="#模板引擎的基础概念" class="headerlink" title="模板引擎的基础概念"></a>模板引擎的基础概念</h2><h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><p>模板引擎是第三方模块。<br>让开发者以更加友好的方式拼接字符串，使项目代码更加清晰、更加易于维护。</p>
+<p><img src="/uncategorized/image-20200525163951964.png" alt></p>
+<h3 id="art-template模板引擎"><a href="#art-template模板引擎" class="headerlink" title="art-template模板引擎"></a>art-template模板引擎</h3><ol>
+<li>在命令行工具中使用 <strong><font color="#f00">npm install art-template</font></strong> 命令进行下载</li>
+<li>使用const template = require(‘art-template’)引入模板引擎</li>
+<li>告诉模板引擎要拼接的数据和模板在哪 const html = template(‘模板路径’, 数据);</li>
+<li>使用模板语法告诉模板引擎，模板与数据应该如何进行拼接 </li>
+</ol>
+<h3 id="art-template代码示例"><a href="#art-template代码示例" class="headerlink" title="art-template代码示例"></a>art-template代码示例</h3><p><img src="/uncategorized/image-20200525164205035.png" alt></p>
+<h2 id="模板引擎的语法"><a href="#模板引擎的语法" class="headerlink" title="模板引擎的语法"></a>模板引擎的语法</h2><h3 id="模板语法"><a href="#模板语法" class="headerlink" title="模板语法"></a>模板语法</h3><ul>
+<li><p>art-template同时支持两种模板语法：标准语法和原始语法。</p>
+</li>
+<li><p>标准语法可以让模板更容易读写，原始语法具有强大的逻辑处理能力。</p>
+</li>
+</ul>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><p>将某项数据输出在模板中，标准语法和原始语法如下：</p>
+<p><img src="/uncategorized/image-20200525164731879.png" alt></p>
+<h3 id="原文输出"><a href="#原文输出" class="headerlink" title="原文输出"></a>原文输出</h3><p>如果数据中携带HTML标签，默认模板引擎不会解析标签，会将其转义后输出。</p>
+<p><img src="/uncategorized/image-20200525164745112.png" alt></p>
+<h3 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h3><p><img src="/uncategorized/image-20200525164554780.png" alt></p>
+<h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p><img src="/uncategorized/image-20200525164803095.png" alt></p>
+<h3 id="子模版"><a href="#子模版" class="headerlink" title="子模版"></a>子模版</h3><p>使用子模板可以将网站公共区块(头部、底部)抽离到单独的文件中。</p>
+<p><img src="/uncategorized/image-20200525164823479.png" alt></p>
+<h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><p>使用模板继承可以将网站HTML骨架抽离到单独的文件中，其他页面模板可以继承骨架文件。</p>
+<p><img src="/uncategorized/image-20200525162036452.png" alt></p>
+<p><img src="/uncategorized/image-20200525162104183.png" alt></p>
+<h3 id="模板继承示例"><a href="#模板继承示例" class="headerlink" title="模板继承示例"></a>模板继承示例</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">        &lt;title&gt;HTML骨架模板&lt;/title&gt;</span><br><span class="line">        &#123;&#123;block &apos;head&apos;&#125;&#125;&#123;&#123;/block&#125;&#125;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &#123;&#123;block &apos;content&apos;&#125;&#125;&#123;&#123;/block&#125;&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--index.art 首页模板--&gt;</span><br><span class="line">&#123;&#123;extend &apos;./layout.art&apos;&#125;&#125;</span><br><span class="line">&#123;&#123;block &apos;head&apos;&#125;&#125; &lt;link rel=&quot;stylesheet&quot; href=&quot;custom.css&quot;&gt; &#123;&#123;/block&#125;&#125;</span><br><span class="line">&#123;&#123;block &apos;content&apos;&#125;&#125; &lt;p&gt;This is just an awesome page.&lt;/p&gt; &#123;&#123;/block&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模板配置"><a href="#模板配置" class="headerlink" title="模板配置"></a>模板配置</h3><ol>
+<li>向模板中导入变量 template.defaults.imports.变量名 = 变量值;</li>
+<li>设置模板根目录 template.defaults.root = 模板目录</li>
+<li>设置模板默认后缀 template.defaults.extname = ‘.art’</li>
+</ol>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="案例介绍-–-学生档案管理"><a href="#案例介绍-–-学生档案管理" class="headerlink" title="案例介绍 – 学生档案管理"></a>案例介绍 – 学生档案管理</h3><p>目标：模板引擎应用，强化node.js项目制作流程。</p>
+<p>知识点：http请求响应、数据库、模板引擎、静态资源访问。</p>
+<p><img src="/uncategorized/image-20200525162236571.png" alt></p>
+<h3 id="制作流程"><a href="#制作流程" class="headerlink" title="制作流程"></a>制作流程</h3><ol>
+<li>建立项目文件夹并生成项目描述文件</li>
+<li>创建网站服务器实现客户端和服务器端通信</li>
+<li>连接数据库并根据需求设计学员信息表</li>
+<li>创建路由并实现页面模板呈递</li>
+<li>实现静态资源访问</li>
+<li>实现学生信息添加功能</li>
+<li>实现学生信息展示功能</li>
+</ol>
+<h3 id="第三方模块-router"><a href="#第三方模块-router" class="headerlink" title="第三方模块 router"></a>第三方模块 router</h3><p><strong>功能：</strong>实现路由<br><strong>使用步骤：</strong></p>
+<ol>
+<li>获取路由对象</li>
+<li>调用路由对象提供的方法创建路由</li>
+<li>启用路由，使路由生效</li>
+</ol>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const serveStatic = require(&apos;serve-static&apos;)</span><br><span class="line">const serve = serveStatic(&apos;public&apos;)</span><br><span class="line">server.on(&apos;request&apos;, () =&gt; &#123; </span><br><span class="line">    serve(req, res)</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(3000)</span><br></pre></td></tr></table></figure>
+
+<h3 id="添加学生信息功能步骤分析"><a href="#添加学生信息功能步骤分析" class="headerlink" title="添加学生信息功能步骤分析"></a>添加学生信息功能步骤分析</h3><ol>
+<li>在模板的表单中指定请求地址与请求方式</li>
+<li>为每一个表单项添加name属性</li>
+<li>添加实现学生信息功能路由</li>
+<li>接收客户端传递过来的学生信息</li>
+<li>将学生信息添加到数据库中</li>
+<li>将页面重定向到学生信息列表页面</li>
+</ol>
+<h3 id="学生信息列表页面分析"><a href="#学生信息列表页面分析" class="headerlink" title="学生信息列表页面分析"></a>学生信息列表页面分析</h3><ol>
+<li>从数据库中将所有的学生信息查询出来</li>
+<li>通过模板引擎将学生信息和HTML模板进行拼接</li>
+<li>将拼接好的HTML模板响应给客户端</li>
+</ol>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/uncategorized/"></a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/uncategorized/">http://www.itfool.cn/uncategorized/</a></li>
+            <li><strong>发布时间：</strong>2020-05-25</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/node-js-day04/">
+                <span class="level-item">Node.js-Day04</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        46
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#目标">
+        <span class="has-mr-6">1</span>
+        <span>目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#模板引擎的基础概念">
+        <span class="has-mr-6">2</span>
+        <span>模板引擎的基础概念</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#模板引擎">
+        <span class="has-mr-6">2.1</span>
+        <span>模板引擎</span>
+        </a></li><li>
+        <a class="is-flex" href="#art-template模板引擎">
+        <span class="has-mr-6">2.2</span>
+        <span>art-template模板引擎</span>
+        </a></li><li>
+        <a class="is-flex" href="#art-template代码示例">
+        <span class="has-mr-6">2.3</span>
+        <span>art-template代码示例</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#模板引擎的语法">
+        <span class="has-mr-6">3</span>
+        <span>模板引擎的语法</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#模板语法">
+        <span class="has-mr-6">3.1</span>
+        <span>模板语法</span>
+        </a></li><li>
+        <a class="is-flex" href="#输出">
+        <span class="has-mr-6">3.2</span>
+        <span>输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#原文输出">
+        <span class="has-mr-6">3.3</span>
+        <span>原文输出</span>
+        </a></li><li>
+        <a class="is-flex" href="#条件判断">
+        <span class="has-mr-6">3.4</span>
+        <span>条件判断</span>
+        </a></li><li>
+        <a class="is-flex" href="#循环">
+        <span class="has-mr-6">3.5</span>
+        <span>循环</span>
+        </a></li><li>
+        <a class="is-flex" href="#子模版">
+        <span class="has-mr-6">3.6</span>
+        <span>子模版</span>
+        </a></li><li>
+        <a class="is-flex" href="#模板继承">
+        <span class="has-mr-6">3.7</span>
+        <span>模板继承</span>
+        </a></li><li>
+        <a class="is-flex" href="#模板继承示例">
+        <span class="has-mr-6">3.8</span>
+        <span>模板继承示例</span>
+        </a></li><li>
+        <a class="is-flex" href="#模板配置">
+        <span class="has-mr-6">3.9</span>
+        <span>模板配置</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#案例">
+        <span class="has-mr-6">4</span>
+        <span>案例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#案例介绍-–-学生档案管理">
+        <span class="has-mr-6">4.1</span>
+        <span>案例介绍 – 学生档案管理</span>
+        </a></li><li>
+        <a class="is-flex" href="#制作流程">
+        <span class="has-mr-6">4.2</span>
+        <span>制作流程</span>
+        </a></li><li>
+        <a class="is-flex" href="#第三方模块-router">
+        <span class="has-mr-6">4.3</span>
+        <span>第三方模块 router</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加学生信息功能步骤分析">
+        <span class="has-mr-6">4.4</span>
+        <span>添加学生信息功能步骤分析</span>
+        </a></li><li>
+        <a class="is-flex" href="#学生信息列表页面分析">
+        <span class="has-mr-6">4.5</span>
+        <span>学生信息列表页面分析</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

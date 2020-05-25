@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Node.js-Day03 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第04阶段.前后端交互.请求响应原理及HTTP协议  目标 能够知道B/S软件体系结构   能够搭建Web服务器  能够使用获取GET、POST参数的方式获取参数  能够掌握如何制作路由  能够知道同步异步的概念  能够知道回调函数的概念">
+<meta name="keywords" content="Node.js,C&#x2F;S,B&#x2F;S,HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js-Day03">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/node-js-day03/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第04阶段.前后端交互.请求响应原理及HTTP协议  目标 能够知道B/S软件体系结构   能够搭建Web服务器  能够使用获取GET、POST参数的方式获取参数  能够掌握如何制作路由  能够知道同步异步的概念  能够知道回调函数的概念">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/node-js-day03/image-20200525144850186.png">
+<meta property="og:updated_time" content="2020-05-25T07:37:16.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js-Day03">
+<meta name="twitter:description" content="第04阶段.前后端交互.请求响应原理及HTTP协议  目标 能够知道B/S软件体系结构   能够搭建Web服务器  能够使用获取GET、POST参数的方式获取参数  能够掌握如何制作路由  能够知道同步异步的概念  能够知道回调函数的概念">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/node-js-day03/image-20200525144850186.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Node.js-Day03" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/node-js-day03/image-20200525144850186.png" alt="Node.js-Day03">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Node.js-Day03
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-25T06:44:49.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-25</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-25T07:37:16.616Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-25</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    15 分钟 读完 (大约 2314 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第04阶段.前后端交互.请求响应原理及HTTP协议</p>
+</blockquote>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li><p>能够知道B/S软件体系结构 </p>
+</li>
+<li><p>能够搭建Web服务器</p>
+</li>
+<li><p>能够使用获取GET、POST参数的方式获取参数</p>
+</li>
+<li><p>能够掌握如何制作路由</p>
+</li>
+<li><p>能够知道同步异步的概念</p>
+</li>
+<li><p>能够知道回调函数的概念</p>
+</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="服务器端基础概念"><a href="#服务器端基础概念" class="headerlink" title="服务器端基础概念"></a>服务器端基础概念</h2><h3 id="网站的组成"><a href="#网站的组成" class="headerlink" title="网站的组成"></a>网站的组成</h3><ul>
+<li>网站应用程序主要分为两大部分：客户端和服务器端。</li>
+<li>客户端：在浏览器中运行的部分，就是用户看到并与之交互的界面程序。使用HTML、CSS、JavaScript构建。</li>
+<li>服务器端：在服务器中运行的部分，负责存储数据和处理应用逻辑。</li>
+</ul>
+<p><img src="/前端笔记/node-js-day03/image-20200525144850186.png" alt></p>
+<h3 id="Node网站服务器"><a href="#Node网站服务器" class="headerlink" title="Node网站服务器"></a>Node网站服务器</h3><p>能够提供网站访问服务的机器就是网站服务器，它能够接收客户端的<strong><font color="#f00">请求</font></strong>，能够对请求做出<strong><font color="#f00">响应</font></strong>。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525145003480.png" alt></p>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>互联网中设备的唯一标识。<br>IP是Internet Protocol Address的简写，代表互联网协议地址.</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525145132728.png" alt></p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>由于IP地址难于记忆，所以产生了域名的概念，所谓域名就是平时上网所使用的网址。<br><a href="https://www.itfool.cn">https://www.itfool.cn</a><br>虽然在地址栏中输入的是网址, 但是最终还是会将域名转换为ip才能访问到指定的网站服务器。</p>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h3><p>端口是计算机与外界通讯交流的出口，用来区分服务器电脑中提供的不同的服务。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525145530866.png" alt></p>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>统一资源定位符，又叫URL（Uniform Resource Locator），是专为标识Internet网上资源位置而设的一种编址方式，我们平时所说的网页地址指的即是URL。</p>
+<p><strong>URL的组成</strong></p>
+<ul>
+<li><p>传输协议: //服务器IP或域名:端口/资源所在位置标识</p>
+<p><a href="http://www.itfool.cn/前端笔记/node-js-day03/">http://www.itfool.cn/前端笔记/node-js-day03/</a></p>
+</li>
+<li><p>http：超文本传输协议，提供了一种发布和接收HTML页面的方法。</p>
+</li>
+</ul>
+<h3 id="开发过程中客户端和服务器端说明"><a href="#开发过程中客户端和服务器端说明" class="headerlink" title="开发过程中客户端和服务器端说明"></a>开发过程中客户端和服务器端说明</h3><p>在开发阶段，客户端和服务器端使用同一台电脑，即开发人员电脑。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525145818182.png" alt></p>
+<h2 id="创建web服务器"><a href="#创建web服务器" class="headerlink" title="创建web服务器"></a>创建web服务器</h2><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> // 引用系统模块</span><br><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line"> // 创建web服务器</span><br><span class="line">const app = http.createServer();</span><br><span class="line"> // 当客户端发送请求的时候</span><br><span class="line">app.on(&apos;request&apos;, (req, res) =&gt; &#123;</span><br><span class="line">       //  响应</span><br><span class="line">      res.end(&apos;&lt;h1&gt;hi, user&lt;/h1&gt;&apos;);</span><br><span class="line">&#125;);</span><br><span class="line"> // 监听3000端口</span><br><span class="line">app.listen(3000);</span><br><span class="line">console.log(&apos;服务器已启动，监听3000端口，请访问 localhost:3000&apos;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><h3 id="HTTP协议的概念"><a href="#HTTP协议的概念" class="headerlink" title="HTTP协议的概念"></a>HTTP协议的概念</h3><p><strong><font color="#f00">超文本传输协议</font></strong>（英文：HyperText Transfer Protocol，缩写：<strong><font color="#f00">HTTP</font></strong>）规定了如何从网站服务器传输超文本到本地浏览器，它基于客户端服务器架构工作，是客户端（用户）和服务器端（网站）请求和应答的标准。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525150058605.png" alt></p>
+<h3 id="报文"><a href="#报文" class="headerlink" title="报文"></a>报文</h3><p>在HTTP请求和响应的过程中传递的数据块就叫报文，包括要传送的数据和一些附加信息，并且要遵守规定好的格式。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525150132970.png" alt></p>
+<h3 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h3><p><strong>1. 请求方式 （Request Method）</strong></p>
+<ul>
+<li>GET     请求数据</li>
+<li>POST   发送数据</li>
+</ul>
+<p><strong>2. 请求地址 （Request URL）</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.on(&apos;request&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    req.headers  // 获取请求报文</span><br><span class="line">    req.url      // 获取请求地址</span><br><span class="line">    req.method   // 获取请求方法</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h3><p><img src="/前端笔记/node-js-day03/image-20200525150505527.png" alt></p>
+<p><strong>1. HTTP状态码</strong></p>
+<ul>
+<li>200 请求成功</li>
+<li>404 请求的资源没有被找到</li>
+<li>500 服务器端错误</li>
+<li>400 客户端请求有语法错误</li>
+</ul>
+<p><strong>2.内容类型</strong></p>
+<ul>
+<li>200 请求成功</li>
+<li>404 请求的资源没有被找到</li>
+<li>500 服务器端错误</li>
+<li>400 客户端请求有语法错误</li>
+</ul>
+<h2 id="HTTP请求与响应处理"><a href="#HTTP请求与响应处理" class="headerlink" title="HTTP请求与响应处理"></a>HTTP请求与响应处理</h2><h3 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h3><p>客户端向服务器端发送请求时，有时需要携带一些客户信息，客户信息需要通过请求参数的形式传递到服务器端，比如登录操作。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525150642680.png" alt></p>
+<h3 id="GET请求参数"><a href="#GET请求参数" class="headerlink" title="GET请求参数"></a>GET请求参数</h3><ul>
+<li>参数被放置在浏览器地址栏中，例如：<a href="http://localhost:3000/?name=zhangsan&amp;age=20" target="_blank" rel="noopener">http://localhost:3000/?name=zhangsan&amp;age=20</a></li>
+<li>参数获取需要借助系统模块url，url模块用来处理url地址</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line">// 导入url系统模块 用于处理url地址</span><br><span class="line">const url = require(&apos;url&apos;);</span><br><span class="line">const app = http.createServer();</span><br><span class="line">app.on(&apos;request&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    // 将url路径的各个部分解析出来并返回对象</span><br><span class="line">        // true 代表将参数解析为对象格式</span><br><span class="line">    let &#123;query&#125; = url.parse(req.url, true);</span><br><span class="line">    console.log(query);</span><br><span class="line">&#125;);</span><br><span class="line">app.listen(3000);</span><br></pre></td></tr></table></figure>
+
+<h3 id="POST请求参数"><a href="#POST请求参数" class="headerlink" title="POST请求参数"></a>POST请求参数</h3><ul>
+<li>参数被放置在请求体中进行传输</li>
+<li>获取POST参数需要使用data事件和end事件</li>
+<li>使用querystring系统模块将参数转换为对象格式</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 导入系统模块querystring 用于将HTTP参数转换为对象格式</span><br><span class="line">const querystring = require(&apos;querystring&apos;);</span><br><span class="line">app.on(&apos;request&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    let postData = &apos;&apos;;</span><br><span class="line">    // 监听参数传输事件</span><br><span class="line">    req.on(&apos;data&apos;, (chunk) =&gt; postData += chunk;);</span><br><span class="line">    // 监听参数传输完毕事件</span><br><span class="line">    req.on(&apos;end&apos;, () =&gt; &#123; </span><br><span class="line">        console.log(querystring.parse(postData)); </span><br><span class="line">    &#125;); </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p><a href="http://localhost:3000/index" target="_blank" rel="noopener">http://localhost:3000/index</a><br><a href="http://localhost:3000/login" target="_blank" rel="noopener">http://localhost:3000/login</a><br>路由是指客户端请求地址与服务器端程序代码的对应关系。简单的说，就是请求什么响应什么。</p>
+<p><img src="/前端笔记/node-js-day03/image-20200525150828958.png" alt></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 当客户端发来请求的时候</span><br><span class="line">app.on(&apos;request&apos;, (req, res) =&gt; &#123;</span><br><span class="line">    // 获取客户端的请求路径</span><br><span class="line">    let &#123; pathname &#125; = url.parse(req.url);</span><br><span class="line">    if (pathname == &apos;/&apos; || pathname == &apos;/index&apos;) &#123;</span><br><span class="line">        res.end(&apos;欢迎来到首页&apos;);</span><br><span class="line">    &#125; else if (pathname == &apos;/list&apos;) &#123;</span><br><span class="line">        res.end(&apos;欢迎来到列表页页&apos;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">       res.end(&apos;抱歉, 您访问的页面出游了&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h3><p>服务器端不需要处理，可以直接响应给客户端的资源就是静态资源，例如CSS、JavaScript、image文件。</p>
+<div style="text-align: center">
+<img src="https://itfool.cn/images/logo.png" alt="https://itfool.cn/">
+</div>
+
+<h3 id="动态资源"><a href="#动态资源" class="headerlink" title="动态资源"></a>动态资源</h3><p>相同的请求地址不同的响应资源，这种资源就是动态资源。</p>
+<p><a href="https://itfool.cn/archives/" target="_blank" rel="noopener">https://itfool.cn/archives/</a></p>
+<p><a href="https://itfool.cn/categories/" target="_blank" rel="noopener">https://itfool.cn/categories/</a></p>
+<p><img src="/前端笔记/node-js-day03/image-20200525152441995.png" alt></p>
+<h3 id="客户端请求途径"><a href="#客户端请求途径" class="headerlink" title="客户端请求途径"></a>客户端请求途径</h3><p><img src="/前端笔记/node-js-day03/image-20200525152738284.png" alt></p>
+<h2 id="Node-js异步编程"><a href="#Node-js异步编程" class="headerlink" title="Node.js异步编程"></a>Node.js异步编程</h2><h3 id="同步API-异步API"><a href="#同步API-异步API" class="headerlink" title="同步API, 异步API"></a>同步API, 异步API</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 路径拼接</span><br><span class="line">const public = path.join(__dirname, &apos;public&apos;);</span><br><span class="line">// 请求地址解析</span><br><span class="line">const urlObj = url.parse(req.url);</span><br><span class="line">// 读取文件</span><br><span class="line">fs.readFile(&apos;./demo.txt&apos;, &apos;utf8&apos;, (err, result) =&gt; &#123;</span><br><span class="line">    console.log(result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>同步API：只有当前API执行完成后，才能继续执行下一个API</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;before&apos;); </span><br><span class="line">console.log(&apos;after&apos;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>异步API：当前API的执行不会阻塞后续代码的执行</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;before&apos;);</span><br><span class="line">setTimeout(</span><br><span class="line">   () =&gt; &#123; console.log(&apos;last&apos;);</span><br><span class="line">&#125;, 2000);</span><br><span class="line">console.log(&apos;after&apos;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步API-异步API的区别（-获取返回值-）"><a href="#同步API-异步API的区别（-获取返回值-）" class="headerlink" title="同步API, 异步API的区别（ 获取返回值 ）"></a>同步API, 异步API的区别（ 获取返回值 ）</h3><p>同步API可以从返回值中拿到API执行的结果, 但是异步API是不可以的</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  // 同步</span><br><span class="line">function sum (n1, n2) &#123; </span><br><span class="line">    return n1 + n2;</span><br><span class="line">&#125; </span><br><span class="line">const result = sum (10, 20);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  // 异步</span><br><span class="line">function getMsg () &#123; </span><br><span class="line">    setTimeout(function () &#123; </span><br><span class="line">        return &#123; msg: &apos;Hello Node.js&apos; &#125;</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;</span><br><span class="line">const msg = getMsg ();</span><br></pre></td></tr></table></figure>
+
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>自己定义函数让别人去调用。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> // getData函数定义</span><br><span class="line">function getData (callback) &#123;&#125;</span><br><span class="line"> // getData函数调用</span><br><span class="line">getData (() =&gt; &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用回调函数获取异步API执行结果"><a href="#使用回调函数获取异步API执行结果" class="headerlink" title="使用回调函数获取异步API执行结果"></a>使用回调函数获取异步API执行结果</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function getMsg (callback) &#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">        callback (&#123; msg: &apos;Hello Node.js&apos; &#125;)</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;</span><br><span class="line">getMsg (function (msg) &#123; </span><br><span class="line">    console.log(msg);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="同步API-异步API的区别（代码执行顺序）"><a href="#同步API-异步API的区别（代码执行顺序）" class="headerlink" title="同步API, 异步API的区别（代码执行顺序）"></a>同步API, 异步API的区别（代码执行顺序）</h3><p>同步API从上到下依次执行，前面代码会阻塞后面代码的执行</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; 100000; i++) &#123; </span><br><span class="line">    console.log(i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(&apos;for循环后面的代码&apos;);</span><br></pre></td></tr></table></figure>
+
+<p>异步API不会等待API执行完成后再向下执行代码</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;代码开始执行&apos;); </span><br><span class="line">setTimeout(() =&gt; &#123; console.log(&apos;2秒后执行的代码&apos;)&#125;, 2000);</span><br><span class="line">setTimeout(() =&gt; &#123; console.log(&apos;&quot;0秒&quot;后执行的代码&apos;)&#125;, 0); </span><br><span class="line">console.log(&apos;代码结束执行&apos;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Node-js中的异步API"><a href="#Node-js中的异步API" class="headerlink" title="Node.js中的异步API"></a>Node.js中的异步API</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(&apos;./demo.txt&apos;, (err, result) =&gt; &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var server = http.createServer();</span><br><span class="line">server.on(&apos;request&apos;, (req, res) =&gt; &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果异步API后面代码的执行依赖当前异步API的执行结果，但实际上后续代码在执行的时候异步API还没有返回结果，这个问题要怎么解决呢？</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.readFile(&apos;./demo.txt&apos;, (err, result) =&gt; &#123;&#125;);</span><br><span class="line">console.log(&apos;文件读取结果&apos;);</span><br></pre></td></tr></table></figure>
+
+<p>需求：依次读取A文件、B文件、C文件</p>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><p>Promise出现的目的是解决Node.js异步编程中回调地狱的问题。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let promise = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">        if (true) &#123;</span><br><span class="line">            resolve(&#123;name: &apos;张三&apos;&#125;)</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            reject(&apos;失败了&apos;) </span><br><span class="line">        &#125; </span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;);</span><br><span class="line">promise.then(result =&gt; console.log(result); // &#123;name: &apos;张三&apos;&#125;)</span><br><span class="line">       .catch(error =&gt; console.log(error); // 失败了)</span><br></pre></td></tr></table></figure>
+
+<h3 id="异步函数"><a href="#异步函数" class="headerlink" title="异步函数"></a>异步函数</h3><p>异步函数是异步编程语法的终极解决方案，它可以让我们将异步代码写成同步的形式，让代码不再有回调函数嵌套，使代码变得清晰明了。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const fn = async () =&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">async function fn () &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>async关键字</strong></p>
+<ol>
+<li>普通函数定义前加async关键字 普通函数变成异步函数</li>
+<li>异步函数默认返回promise对象</li>
+<li>在异步函数内部使用return关键字进行结果返回 结果会被包裹的promise对象中 return关键字代替了resolve方法</li>
+<li>在异步函数内部使用throw关键字抛出程序异常</li>
+<li>调用异步函数再链式调用then方法获取异步函数执行结果</li>
+<li>调用异步函数再链式调用catch方法获取异步函数执行的错误信息</li>
+</ol>
+<p><strong>await关键字</strong></p>
+<ol>
+<li><p>await关键字只能出现在异步函数中</p>
+</li>
+<li><p>await promise await后面只能写promise对象 写其他类型的API是不不可以的</p>
+</li>
+<li><p>await关键字可是暂停异步函数向下执行 直到promise返回结果</p>
+</li>
+</ol>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/node-js-day03/">Node.js-Day03</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/node-js-day03/">http://www.itfool.cn/前端笔记/node-js-day03/</a></li>
+            <li><strong>发布时间：</strong>2020-05-25</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Node-js/">Node.js</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/node-js-day04/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Node.js-Day04</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/node-js-day02/">
+                <span class="level-item">Node.js-Day02</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        46
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#目标">
+        <span class="has-mr-6">1</span>
+        <span>目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#服务器端基础概念">
+        <span class="has-mr-6">2</span>
+        <span>服务器端基础概念</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#网站的组成">
+        <span class="has-mr-6">2.1</span>
+        <span>网站的组成</span>
+        </a></li><li>
+        <a class="is-flex" href="#Node网站服务器">
+        <span class="has-mr-6">2.2</span>
+        <span>Node网站服务器</span>
+        </a></li><li>
+        <a class="is-flex" href="#IP地址">
+        <span class="has-mr-6">2.3</span>
+        <span>IP地址</span>
+        </a></li><li>
+        <a class="is-flex" href="#域名">
+        <span class="has-mr-6">2.4</span>
+        <span>域名</span>
+        </a></li><li>
+        <a class="is-flex" href="#端口">
+        <span class="has-mr-6">2.5</span>
+        <span>端口</span>
+        </a></li><li>
+        <a class="is-flex" href="#URL">
+        <span class="has-mr-6">2.6</span>
+        <span>URL</span>
+        </a></li><li>
+        <a class="is-flex" href="#开发过程中客户端和服务器端说明">
+        <span class="has-mr-6">2.7</span>
+        <span>开发过程中客户端和服务器端说明</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#创建web服务器">
+        <span class="has-mr-6">3</span>
+        <span>创建web服务器</span>
+        </a></li><li>
+        <a class="is-flex" href="#HTTP协议">
+        <span class="has-mr-6">4</span>
+        <span>HTTP协议</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#HTTP协议的概念">
+        <span class="has-mr-6">4.1</span>
+        <span>HTTP协议的概念</span>
+        </a></li><li>
+        <a class="is-flex" href="#报文">
+        <span class="has-mr-6">4.2</span>
+        <span>报文</span>
+        </a></li><li>
+        <a class="is-flex" href="#请求报文">
+        <span class="has-mr-6">4.3</span>
+        <span>请求报文</span>
+        </a></li><li>
+        <a class="is-flex" href="#响应报文">
+        <span class="has-mr-6">4.4</span>
+        <span>响应报文</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#HTTP请求与响应处理">
+        <span class="has-mr-6">5</span>
+        <span>HTTP请求与响应处理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#请求参数">
+        <span class="has-mr-6">5.1</span>
+        <span>请求参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#GET请求参数">
+        <span class="has-mr-6">5.2</span>
+        <span>GET请求参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#POST请求参数">
+        <span class="has-mr-6">5.3</span>
+        <span>POST请求参数</span>
+        </a></li><li>
+        <a class="is-flex" href="#路由">
+        <span class="has-mr-6">5.4</span>
+        <span>路由</span>
+        </a></li><li>
+        <a class="is-flex" href="#静态资源">
+        <span class="has-mr-6">5.5</span>
+        <span>静态资源</span>
+        </a></li><li>
+        <a class="is-flex" href="#动态资源">
+        <span class="has-mr-6">5.6</span>
+        <span>动态资源</span>
+        </a></li><li>
+        <a class="is-flex" href="#客户端请求途径">
+        <span class="has-mr-6">5.7</span>
+        <span>客户端请求途径</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Node-js异步编程">
+        <span class="has-mr-6">6</span>
+        <span>Node.js异步编程</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#同步API-异步API">
+        <span class="has-mr-6">6.1</span>
+        <span>同步API, 异步API</span>
+        </a></li><li>
+        <a class="is-flex" href="#同步API-异步API的区别（-获取返回值-）">
+        <span class="has-mr-6">6.2</span>
+        <span>同步API, 异步API的区别（ 获取返回值 ）</span>
+        </a></li><li>
+        <a class="is-flex" href="#回调函数">
+        <span class="has-mr-6">6.3</span>
+        <span>回调函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用回调函数获取异步API执行结果">
+        <span class="has-mr-6">6.4</span>
+        <span>使用回调函数获取异步API执行结果</span>
+        </a></li><li>
+        <a class="is-flex" href="#同步API-异步API的区别（代码执行顺序）">
+        <span class="has-mr-6">6.5</span>
+        <span>同步API, 异步API的区别（代码执行顺序）</span>
+        </a></li><li>
+        <a class="is-flex" href="#Node-js中的异步API">
+        <span class="has-mr-6">6.6</span>
+        <span>Node.js中的异步API</span>
+        </a></li><li>
+        <a class="is-flex" href="#Promise">
+        <span class="has-mr-6">6.7</span>
+        <span>Promise</span>
+        </a></li><li>
+        <a class="is-flex" href="#异步函数">
+        <span class="has-mr-6">6.8</span>
+        <span>异步函数</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Node.js-Day03" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

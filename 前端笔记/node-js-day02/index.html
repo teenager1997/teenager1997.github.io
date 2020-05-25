@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Node.js-Day02 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第04阶段.前后端交互.模块加载及第三方包  目标 能够使用模块导入导出方法  能够使用基本的系统模块 能够使用常用的第三方包 能够说出模块的加载机制 能够知道package.json文件的作用">
+<meta name="keywords" content="Node.js,模块化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js-Day02">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/node-js-day02/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第04阶段.前后端交互.模块加载及第三方包  目标 能够使用模块导入导出方法  能够使用基本的系统模块 能够使用常用的第三方包 能够说出模块的加载机制 能够知道package.json文件的作用">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/node-js-day02/image-20200525115010570.png">
+<meta property="og:updated_time" content="2020-05-25T06:42:38.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js-Day02">
+<meta name="twitter:description" content="第04阶段.前后端交互.模块加载及第三方包  目标 能够使用模块导入导出方法  能够使用基本的系统模块 能够使用常用的第三方包 能够说出模块的加载机制 能够知道package.json文件的作用">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/node-js-day02/image-20200525115010570.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Node.js-Day02" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/node-js-day02/image-20200525115010570.png" alt="Node.js-Day02">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Node.js-Day02
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-25T03:43:45.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-25</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-25T06:42:38.976Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-25</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    13 分钟 读完 (大约 1889 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第04阶段.前后端交互.模块加载及第三方包</p>
+</blockquote>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ul>
+<li>能够使用模块导入导出方法 </li>
+<li>能够使用基本的系统模块</li>
+<li>能够使用常用的第三方包</li>
+<li>能够说出模块的加载机制</li>
+<li>能够知道package.json文件的作用</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="Node-js模块化开发"><a href="#Node-js模块化开发" class="headerlink" title="Node.js模块化开发"></a>Node.js模块化开发</h2><h3 id="JavaScript开发弊端"><a href="#JavaScript开发弊端" class="headerlink" title="JavaScript开发弊端"></a>JavaScript开发弊端</h3><p>JavaScript在使用时存在两大问题，<strong><font color="#f00">文件依赖</font></strong>和<strong><font color="#f00">命名冲突</font></strong>。</p>
+<p><img src="/前端笔记/node-js-day02/image-20200525114923070.png" alt></p>
+<h3 id="生活中的模块化开发"><a href="#生活中的模块化开发" class="headerlink" title="生活中的模块化开发"></a>生活中的模块化开发</h3><p><img src="/前端笔记/node-js-day02/image-20200525114938653.png" alt>)<img src="/前端笔记/node-js-day02/image-20200525114943729.png" alt></p>
+<h3 id="软件中的模块化开发"><a href="#软件中的模块化开发" class="headerlink" title="软件中的模块化开发"></a>软件中的模块化开发</h3><p>一个功能就是一个模块，多个模块可以组成完整应用，抽离一个模块不会影响其他功能的运行。</p>
+<p><img src="/前端笔记/node-js-day02/image-20200525115010570.png" alt></p>
+<h3 id="Node-js中模块化开发规范"><a href="#Node-js中模块化开发规范" class="headerlink" title="Node.js中模块化开发规范"></a>Node.js中模块化开发规范</h3><p>Node.js规定一个<strong><font style="color:#f00">JavaScript文件</font></strong>就是一个模块，模块<strong><font style="color:#f00">内部定义的变量和函数</font></strong>默认情况下在<strong><font style="color:#f00">外部无法得到</font></strong></p>
+<p>模块内部可以使用<strong><font style="color:#f00">exports对象进行成员导出</font></strong>， 使用<strong><font style="color:#f00">require方法</font></strong>导入其他模块。</p>
+<p><img src="/前端笔记/node-js-day02/image-20200525115217442.png" alt></p>
+<p><strong>模块成员导出</strong><br><img src="/前端笔记/node-js-day02/image-20200525115505261.png" alt></p>
+<p><strong>模块成员的导入</strong><br><img src="/前端笔记/node-js-day02/image-20200525115611832.png" alt="导入模块时后缀可以省略"></p>
+<p><strong>模块成员导出的另一种方式</strong><br><img src="/前端笔记/node-js-day02/image-20200525115818472.png" alt></p>
+<p><img src="/前端笔记/node-js-day02/image-20200525115827084.png" alt></p>
+<p><strong>模块导出两种方式的联系与区别</strong></p>
+<p><img src="/前端笔记/node-js-day02/image-20200525115944374.png" alt></p>
+<h2 id="系统模块"><a href="#系统模块" class="headerlink" title="系统模块"></a>系统模块</h2><h3 id="什么是系统模块"><a href="#什么是系统模块" class="headerlink" title="什么是系统模块"></a>什么是系统模块</h3><p>Node运行环境提供的API. 因为这些API都是以模块化的方式进行开发的, 所以我们又称Node运行环境提供的API为系统模块</p>
+<p><img src="/前端笔记/node-js-day02/image-20200525120045940.png" alt></p>
+<h3 id="系统模块fs-文件操作"><a href="#系统模块fs-文件操作" class="headerlink" title="系统模块fs 文件操作"></a>系统模块fs 文件操作</h3><p>f：file 文件 ，s：system 系统，文件操作系统。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&apos;fs&apos;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>读取文件内容</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.reaFile(&apos;文件路径/文件名称&apos;[,&apos;文件编码&apos;], callback);</span><br></pre></td></tr></table></figure>
+
+<p><strong>写入文件内容</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(&apos;文件路径/文件名称&apos;, &apos;数据&apos;, callback);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const content = &apos;&lt;h3&gt;正在使用fs.writeFile写入文件内容&lt;/h3&gt;&apos;;</span><br><span class="line"> fs.writeFile(&apos;../index.html&apos;, content, err =&gt; &#123;</span><br><span class="line">   if (err != null) &#123; </span><br><span class="line">       console.log(err);</span><br><span class="line">       return;</span><br><span class="line">   &#125;</span><br><span class="line">   console.log(&apos;文件写入成功&apos;);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统模块path-路径操作"><a href="#系统模块path-路径操作" class="headerlink" title="系统模块path 路径操作"></a>系统模块path 路径操作</h3><p><strong>为什么要进行路径拼接</strong></p>
+<ul>
+<li>不同操作系统的路径分隔符不统一</li>
+<li>/public/uploads/avatar</li>
+<li>Windows 上是 \   /</li>
+<li>Linux 上是 /</li>
+</ul>
+<p><strong>路径拼接语法</strong></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.join(&apos;路径&apos;, &apos;路径&apos;, ...)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> // 导入path模块</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"> // 路径拼接</span><br><span class="line">let finialPath = path.join(&apos;itcast&apos;, &apos;a&apos;, &apos;b&apos;, &apos;c.css&apos;);</span><br><span class="line"> // 输出结果 itcast\a\b\c.css</span><br><span class="line">console.log(finialPath);</span><br></pre></td></tr></table></figure>
+
+<p><strong>相对路径VS绝对路径</strong> </p>
+<ul>
+<li>大多数情况下使用绝对路径，因为相对路径有时候相对的是命令行工具的当前工作目录</li>
+<li>在读取文件或者设置文件路径时都会选择绝对路径</li>
+<li>使用__dirname获取当前文件所在的绝对路径</li>
+</ul>
+<h2 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h2><h3 id="什么是第三方模块"><a href="#什么是第三方模块" class="headerlink" title="什么是第三方模块"></a>什么是第三方模块</h3><p> 别人写好的、具有特定功能的、我们能直接使用的模块即第三方模块，由于第三方模块通常都是由多个文件组成并且被放置在一个文件夹中，所以又名包。</p>
+<p><strong>第三方模块有两种存在形式：</strong></p>
+<ul>
+<li>以js文件的形式存在，提供实现项目具体功能的API接口。</li>
+<li>以命令行工具形式存在，辅助项目开发</li>
+</ul>
+<h3 id="获取第三方模块"><a href="#获取第三方模块" class="headerlink" title="获取第三方模块"></a>获取第三方模块</h3><p><strong>npmjs.com</strong>：第三方模块的存储和分发仓库</p>
+<p><img src="/前端笔记/node-js-day02/image-20200525141557238.png" alt></p>
+<p><strong>npm (node package manager) ：</strong> node的第三方模块管理工具</p>
+<ul>
+<li>下载：npm install 模块名称</li>
+<li>卸载：npm unintall package 模块名称</li>
+</ul>
+<p>全局安装与本地安装</p>
+<ul>
+<li>命令行工具：全局安装</li>
+<li>库文件：本地安装</li>
+</ul>
+<h3 id="nodemon"><a href="#nodemon" class="headerlink" title="nodemon"></a>nodemon</h3><p>nodemon是一个命令行工具，用以辅助项目开发。<br>在Node.js中，每次修改文件都要在命令行工具中重新执行该文件，非常繁琐。</p>
+<p><strong>使用步骤</strong></p>
+<ol>
+<li>使用npm install nodemon –g 下载它</li>
+<li>在命令行工具中用nodemon命令替代node命令执行文件</li>
+</ol>
+<p><img src="/前端笔记/node-js-day02/image-20200525142103049.png" alt></p>
+<h3 id="nrm"><a href="#nrm" class="headerlink" title="nrm"></a>nrm</h3><p>nrm ( npm registry manager )：npm下载地址切换工具<br>npm默认的下载地址在国外，国内下载速度慢</p>
+<p><strong>使用步骤</strong></p>
+<ol>
+<li>使用npm install nrm –g 下载它</li>
+<li>查询可用下载地址列表 nrm ls</li>
+<li>切换npm下载地址 nrm use 下载地址名称</li>
+</ol>
+<h3 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h3><p>基于node平台开发的前端构建工具<br>将机械化操作编写成任务, 想要执行机械化操作时执行一个命令行命令任务就能自动执行了<br>用机器代替手工，提高开发效率。</p>
+<p><strong>Gulp能做什么</strong></p>
+<ul>
+<li>项目上线，HTML、CSS、JS文件压缩合并</li>
+<li>语法转换（es6、less …）</li>
+<li>公共文件抽离</li>
+<li>修改文件浏览器自动刷新</li>
+</ul>
+<p><strong>Gulp使用</strong></p>
+<ol>
+<li>使用npm install gulp下载gulp库文件</li>
+<li>在项目根目录下建立gulpfile.js文件</li>
+<li>重构项目的文件夹结构 src目录放置源代码文件 dist目录放置构建后文件</li>
+<li>在gulpfile.js文件中编写任务</li>
+<li>在命令行工具中执行gulp任务</li>
+</ol>
+<p><strong>Gulp中提供的方法</strong></p>
+<ul>
+<li>gulp.src()：获取任务要处理的文件</li>
+<li>gulp.dest()：输出文件</li>
+<li>gulp.task()：建立gulp任务</li>
+<li>gulp.watch()：监控文件的变化</li>
+</ul>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const gulp = require(&apos;gulp&apos;);</span><br><span class="line"> // 使用gulp.task()方法建立任务</span><br><span class="line">gulp.task(&apos;first&apos;, () =&gt; &#123;</span><br><span class="line">   // 获取要处理的文件</span><br><span class="line">   gulp.src(&apos;./src/css/base.css&apos;) </span><br><span class="line">   // 将处理后的文件输出到dist目录</span><br><span class="line">   .pipe(gulp.dest(&apos;./dist/css&apos;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Gulp插件</strong></p>
+<ul>
+<li>gulp-htmlmin ：html文件压缩</li>
+<li>gulp-csso ：压缩css</li>
+<li>gulp-babel ：JavaScript语法转化</li>
+<li>gulp-less: less语法转化</li>
+<li>gulp-uglify ：压缩混淆JavaScript</li>
+<li>gulp-file-include 公共文件包含</li>
+<li>browsersync 浏览器实时同步</li>
+</ul>
+<h2 id="package-json文件"><a href="#package-json文件" class="headerlink" title="package.json文件"></a>package.json文件</h2><h3 id="node-modules文件夹的问题"><a href="#node-modules文件夹的问题" class="headerlink" title="node_modules文件夹的问题"></a>node_modules文件夹的问题</h3><ol>
+<li>文件夹以及文件过多过碎，当我们将项目整体拷贝给别人的时候,，传输速度会很慢很慢. </li>
+<li>复杂的模块依赖关系需要被记录，确保模块的版本和当前保持一致，否则会导致当前项目运行报错</li>
+</ol>
+<h3 id="package-json文件的作用"><a href="#package-json文件的作用" class="headerlink" title="package.json文件的作用"></a>package.json文件的作用</h3><p>项目描述文件，记录了当前项目信息，例如项目名称、版本、作者、github地址、当前项目依赖了哪些第三方模块等。<br>使用<strong><font style="color:#f00">npm init -y</font></strong>命令生成。</p>
+<h3 id="项目依赖"><a href="#项目依赖" class="headerlink" title="项目依赖"></a>项目依赖</h3><ul>
+<li>在项目的开发阶段和线上运营阶段，都需要依赖的第三方包，称为项目依赖</li>
+<li>使用npm install 包名命令下载的文件会默认被添加到 package.json 文件的 dependencies 字段中</li>
+</ul>
+<p><img src="/前端笔记/node-js-day02/image-20200525144007369.png" alt></p>
+<h3 id="开发依赖"><a href="#开发依赖" class="headerlink" title="开发依赖"></a>开发依赖</h3><ul>
+<li>在项目的开发阶段需要依赖，线上运营阶段不需要依赖的第三方包，称为开发依赖</li>
+<li>使用npm install 包名 –save-dev命令将包添加到package.json文件的devDependencies字段中</li>
+</ul>
+<p><img src="/前端笔记/node-js-day02/image-20200525144050137.png" alt></p>
+<h3 id="package-lock-json文件的作用"><a href="#package-lock-json文件的作用" class="headerlink" title="package-lock.json文件的作用"></a>package-lock.json文件的作用</h3><ul>
+<li>锁定包的版本，确保再次下载时不会因为包版本不同而产生问题</li>
+<li>加快下载速度，因为该文件中已经记录了项目所依赖第三方包的树状结构和包的下载地址，重新安装时只需下载即可，不需要做额外的工作</li>
+</ul>
+<h2 id="Node-js中模块的加载机制"><a href="#Node-js中模块的加载机制" class="headerlink" title="Node.js中模块的加载机制"></a>Node.js中模块的加载机制</h2><h3 id="模块查找规则-当模块拥有路径但没有后缀时"><a href="#模块查找规则-当模块拥有路径但没有后缀时" class="headerlink" title="模块查找规则-当模块拥有路径但没有后缀时"></a>模块查找规则-当模块拥有路径但没有后缀时</h3><p><img src="/前端笔记/node-js-day02/image-20200525144157565.png" alt></p>
+<h3 id="模块查找规则-当模块没有路径且没有后缀时"><a href="#模块查找规则-当模块没有路径且没有后缀时" class="headerlink" title="模块查找规则-当模块没有路径且没有后缀时"></a>模块查找规则-当模块没有路径且没有后缀时</h3><p><img src="/前端笔记/node-js-day02/image-20200525144223190.png" alt></p>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/node-js-day02/">Node.js-Day02</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/node-js-day02/">http://www.itfool.cn/前端笔记/node-js-day02/</a></li>
+            <li><strong>发布时间：</strong>2020-05-25</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Node-js/">Node.js</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/node-js-day03/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Node.js-Day03</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/node-js-day01/">
+                <span class="level-item">Node.js-Day01</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        46
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        9
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#目标">
+        <span class="has-mr-6">1</span>
+        <span>目标</span>
+        </a></li><li>
+        <a class="is-flex" href="#Node-js模块化开发">
+        <span class="has-mr-6">2</span>
+        <span>Node.js模块化开发</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#JavaScript开发弊端">
+        <span class="has-mr-6">2.1</span>
+        <span>JavaScript开发弊端</span>
+        </a></li><li>
+        <a class="is-flex" href="#生活中的模块化开发">
+        <span class="has-mr-6">2.2</span>
+        <span>生活中的模块化开发</span>
+        </a></li><li>
+        <a class="is-flex" href="#软件中的模块化开发">
+        <span class="has-mr-6">2.3</span>
+        <span>软件中的模块化开发</span>
+        </a></li><li>
+        <a class="is-flex" href="#Node-js中模块化开发规范">
+        <span class="has-mr-6">2.4</span>
+        <span>Node.js中模块化开发规范</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#系统模块">
+        <span class="has-mr-6">3</span>
+        <span>系统模块</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是系统模块">
+        <span class="has-mr-6">3.1</span>
+        <span>什么是系统模块</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统模块fs-文件操作">
+        <span class="has-mr-6">3.2</span>
+        <span>系统模块fs 文件操作</span>
+        </a></li><li>
+        <a class="is-flex" href="#系统模块path-路径操作">
+        <span class="has-mr-6">3.3</span>
+        <span>系统模块path 路径操作</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#第三方模块">
+        <span class="has-mr-6">4</span>
+        <span>第三方模块</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是第三方模块">
+        <span class="has-mr-6">4.1</span>
+        <span>什么是第三方模块</span>
+        </a></li><li>
+        <a class="is-flex" href="#获取第三方模块">
+        <span class="has-mr-6">4.2</span>
+        <span>获取第三方模块</span>
+        </a></li><li>
+        <a class="is-flex" href="#nodemon">
+        <span class="has-mr-6">4.3</span>
+        <span>nodemon</span>
+        </a></li><li>
+        <a class="is-flex" href="#nrm">
+        <span class="has-mr-6">4.4</span>
+        <span>nrm</span>
+        </a></li><li>
+        <a class="is-flex" href="#Gulp">
+        <span class="has-mr-6">4.5</span>
+        <span>Gulp</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#package-json文件">
+        <span class="has-mr-6">5</span>
+        <span>package.json文件</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#node-modules文件夹的问题">
+        <span class="has-mr-6">5.1</span>
+        <span>node_modules文件夹的问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#package-json文件的作用">
+        <span class="has-mr-6">5.2</span>
+        <span>package.json文件的作用</span>
+        </a></li><li>
+        <a class="is-flex" href="#项目依赖">
+        <span class="has-mr-6">5.3</span>
+        <span>项目依赖</span>
+        </a></li><li>
+        <a class="is-flex" href="#开发依赖">
+        <span class="has-mr-6">5.4</span>
+        <span>开发依赖</span>
+        </a></li><li>
+        <a class="is-flex" href="#package-lock-json文件的作用">
+        <span class="has-mr-6">5.5</span>
+        <span>package-lock.json文件的作用</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#Node-js中模块的加载机制">
+        <span class="has-mr-6">6</span>
+        <span>Node.js中模块的加载机制</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#模块查找规则-当模块拥有路径但没有后缀时">
+        <span class="has-mr-6">6.1</span>
+        <span>模块查找规则-当模块拥有路径但没有后缀时</span>
+        </a></li><li>
+        <a class="is-flex" href="#模块查找规则-当模块没有路径且没有后缀时">
+        <span class="has-mr-6">6.2</span>
+        <span>模块查找规则-当模块没有路径且没有后缀时</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Node.js-Day02" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

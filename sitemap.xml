@@ -2,9 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.itfool.cn/JavaScript/%E9%9C%80%E8%A6%81%E7%AC%94%E8%AE%B0%E9%87%8C%E7%9A%84%E6%BA%90%E7%A0%81%E3%80%81%E7%B4%A0%E6%9D%90%E8%AF%B7%E5%9C%A8%E8%AF%84%E8%AE%BA%E7%95%99%E4%B8%8B%E9%82%AE%E7%AE%B1%EF%BC%8C%E6%88%91%E4%BC%9A%E5%B0%BD%E9%87%8F%E5%9C%A8%E7%AC%AC%E4%B8%80%E6%97%B6%E9%97%B4%E5%8F%91%E7%BB%99%E4%BD%A0%EF%BC%8C%E5%8A%A0%E6%B2%B9-%EF%BC%81/</loc>
+    <loc>http://www.itfool.cn/uncategorized/</loc>
     
-    <lastmod>2020-05-23T09:23:22.518Z</lastmod>
+    <lastmod>2020-05-25T08:50:17.470Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/node-js-day04/</loc>
+    
+    <lastmod>2020-05-25T08:13:01.169Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/node-js-day03/</loc>
+    
+    <lastmod>2020-05-25T07:37:16.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.itfool.cn/JavaScript/%E9%9C%80%E8%A6%81%E7%AC%94%E8%AE%B0%E9%87%8C%E7%9A%84%E6%BA%90%E7%A0%81%E3%80%81%E7%B4%A0%E6%9D%90%E5%8F%AF%E4%BB%A5%E7%A7%81%E4%BF%A1%E6%88%91%E6%88%96%E5%9C%A8%E8%AF%84%E8%AE%BA%E7%95%99%E4%B8%8B%E9%82%AE%E7%AE%B1/</loc>
+    
+    <lastmod>2020-05-25T06:43:56.742Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/node-js-day02/</loc>
+    
+    <lastmod>2020-05-25T06:42:38.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.itfool.cn/%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0/node-js-day01/</loc>
+    
+    <lastmod>2020-05-25T04:14:23.014Z</lastmod>
     
   </url>
   
