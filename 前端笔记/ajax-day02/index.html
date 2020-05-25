@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>AJAX-Day02 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第04阶段.前后端交互.AJAX拓展  模板引擎模板引擎概述作用：使用模板引擎提供的模板语法，可以将数据和 HTML 拼接起来。 官方地址： https://aui.github.io/art-template/zh-cn/index.html">
+<meta name="keywords" content="AJAX,CORS,JSONP,cookie">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX-Day02">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/ajax-day02/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第04阶段.前后端交互.AJAX拓展  模板引擎模板引擎概述作用：使用模板引擎提供的模板语法，可以将数据和 HTML 拼接起来。 官方地址： https://aui.github.io/art-template/zh-cn/index.html">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/ajax-day02/image-20200525180043706.png">
+<meta property="og:updated_time" content="2020-05-25T10:03:24.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AJAX-Day02">
+<meta name="twitter:description" content="第04阶段.前后端交互.AJAX拓展  模板引擎模板引擎概述作用：使用模板引擎提供的模板语法，可以将数据和 HTML 拼接起来。 官方地址： https://aui.github.io/art-template/zh-cn/index.html">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/ajax-day02/image-20200525180043706.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="AJAX-Day02" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/ajax-day02/image-20200525180043706.png" alt="AJAX-Day02">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>AJAX-Day02
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-25T09:45:58.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-25</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-25T10:03:24.122Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-25</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    11 分钟 读完 (大约 1658 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第04阶段.前后端交互.AJAX拓展</p>
+</blockquote>
+<h2 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h2><h3 id="模板引擎概述"><a href="#模板引擎概述" class="headerlink" title="模板引擎概述"></a>模板引擎概述</h3><p>作用：使用模板引擎提供的模板语法，可以将数据和 HTML 拼接起来。</p>
+<p>官方地址： <a href="https://aui.github.io/art-template/zh-cn/index.html" target="_blank" rel="noopener">https://aui.github.io/art-template/zh-cn/index.html</a></p>
+<a id="more"></a>
+<h3 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h3><ol>
+<li><p>下载 art-template 模板引擎库文件并在 HTML 页面中引入库文件</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;lib/template-web.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>准备 art-template 模板</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script id=&quot;tpl&quot; type=&quot;text/html&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>告诉模板引擎将哪一个模板和哪个数据进行拼接</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var html = template(&apos;tpl&apos;, &#123;username: &apos;zhangsan&apos;, age: &apos;20&apos;&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将拼接好的html字符串添加到页面中</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&apos;container&apos;).innerHTML = html;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过模板语法告诉模板引擎，数据和html字符串要如何拼接</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script id=&quot;tpl&quot; type=&quot;text/html&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;box&quot;&gt; &#123;&#123; username &#125;&#125; &lt;/div&gt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="验证邮箱地址唯一性"><a href="#验证邮箱地址唯一性" class="headerlink" title="验证邮箱地址唯一性"></a>验证邮箱地址唯一性</h3><p><img src="/前端笔记/ajax-day02/image-20200525175308553.png" alt></p>
+<ol>
+<li>获取文本框并为其添加离开焦点事件</li>
+<li>离开焦点时，检测用户输入的邮箱地址是否符合规则</li>
+<li>如果不符合规则，阻止程序向下执行并给出提示信息</li>
+<li>向服务器端发送请求，检测邮箱地址是否被别人注册</li>
+<li>根据服务器端返回值决定客户端显示何种提示信息</li>
+</ol>
+<h3 id="搜索框内容自动提示"><a href="#搜索框内容自动提示" class="headerlink" title="搜索框内容自动提示"></a>搜索框内容自动提示</h3><p><img src="/前端笔记/ajax-day02/image-20200525175320091.png" alt></p>
+<ol>
+<li>获取搜索框并为其添加用户输入事件</li>
+<li>获取用户输入的关键字</li>
+<li>向服务器端发送请求并携带关键字作为请求参数</li>
+<li>将响应数据显示在搜索框底部</li>
+</ol>
+<h3 id="省市区三级联动"><a href="#省市区三级联动" class="headerlink" title="省市区三级联动"></a>省市区三级联动</h3><p><img src="/前端笔记/ajax-day02/image-20200525175349180.png" alt></p>
+<ol>
+<li>通过接口获取省份信息</li>
+<li>使用JavaScript获取到省市区下拉框元素</li>
+<li>将服务器端返回的省份信息显示在下拉框中</li>
+<li>为下拉框元素添加表单值改变事件（onchange）</li>
+<li>当用户选择省份时，根据省份id获取城市信息</li>
+<li>当用户选择城市时，根据城市id获取县城信息</li>
+</ol>
+<h2 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>模拟HTML表单，相当于将HTML表单映射成表单对象，自动将表单对象中的数据拼接成请求参数的格式。</li>
+<li>异步上传二进制文件</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li><p>准备 HTML 表单</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;form id=&quot;form&quot;&gt;</span><br><span class="line">     &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;</span><br><span class="line">     &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;</span><br><span class="line">     &lt;input type=&quot;button&quot;/&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 HTML 表单转化为 formData 对象</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var form = document.getElementById(&apos;form&apos;); </span><br><span class="line">var formData = new FormData(form);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除表单对象中属性的值</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.delete(&apos;key&apos;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>向表单对象中追加属性值</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">formData.append(&apos;key&apos;, &apos;value&apos;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><strong><font color="#f00">注意</font></strong>：set 方法与 append 方法的区别是，在属性名已存在的情况下，set 会覆盖已有键名的值，append会保留两个值。</p>
+<h3 id="二进制文件上传"><a href="#二进制文件上传" class="headerlink" title="二进制文件上传"></a>二进制文件上传</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;file&quot; id=&quot;file&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> var file = document.getElementById(&apos;file&apos;)</span><br><span class="line">// 当用户选择文件的时候</span><br><span class="line"> file.onchange = function () &#123;</span><br><span class="line">     // 创建空表单对象</span><br><span class="line">     var formData = new FormData();</span><br><span class="line">     // 将用户选择的二进制文件追加到表单对象中</span><br><span class="line">     formData.append(&apos;attrName&apos;, this.files[0]);</span><br><span class="line">     // 配置ajax对象，请求方式必须为post</span><br><span class="line">     xhr.open(&apos;post&apos;, &apos;www.example.com&apos;);</span><br><span class="line">     xhr.send(formData);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件上传进度展示"><a href="#文件上传进度展示" class="headerlink" title="文件上传进度展示"></a>文件上传进度展示</h3><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 当用户选择文件的时候</span><br><span class="line">file.onchange = function () &#123;</span><br><span class="line">    // 文件上传过程中持续触发onprogress事件</span><br><span class="line">    xhr.upload.onprogress = function (ev) &#123;</span><br><span class="line">        // 当前上传文件大小/文件总大小 再将结果转换为百分数</span><br><span class="line">        // 将结果赋值给进度条的宽度属性 </span><br><span class="line">        bar.style.width = (ev.loaded / ev.total) * 100 + &apos;%&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件上传图片即时预览"><a href="#文件上传图片即时预览" class="headerlink" title="文件上传图片即时预览"></a>文件上传图片即时预览</h3><p>在我们将图片上传到服务器端以后，服务器端通常都会将图片地址做为响应数据传递到客户端，客户端可以从响应数据中获取图片地址，然后将图片再显示在页面中。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xhr.onload = function () &#123;</span><br><span class="line">    var result = JSON.parse(xhr.responseText);</span><br><span class="line">    var img = document.createElement(&apos;img&apos;);</span><br><span class="line">    img.src = result.src;</span><br><span class="line">    img.onload = function () &#123;</span><br><span class="line">        document.body.appendChild(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="同源政策"><a href="#同源政策" class="headerlink" title="同源政策"></a>同源政策</h2><h3 id="什么是同源"><a href="#什么是同源" class="headerlink" title="什么是同源"></a>什么是同源</h3><p>如果两个页面拥有相同的协议、域名和端口，那么这两个页面就属于同一个源，其中只要有一个不相同，就是不同源。<br><a href="http://www.example.com/dir/page.html" target="_blank" rel="noopener">http://www.example.com/dir/page.html</a></p>
+<p><a href="http://www.example.com/dir2/other.html：同源" target="_blank" rel="noopener">http://www.example.com/dir2/other.html：同源</a><br><a href="http://example.com/dir/other.html：不同源（域名不同）" target="_blank" rel="noopener">http://example.com/dir/other.html：不同源（域名不同）</a><br><a href="http://v2.www.example.com/dir/other.html：不同源（域名不同）" target="_blank" rel="noopener">http://v2.www.example.com/dir/other.html：不同源（域名不同）</a><br><a href="http://www.example.com:81/dir/other.html：不同源（端口不同）" target="_blank" rel="noopener">http://www.example.com:81/dir/other.html：不同源（端口不同）</a><br><a href="https://www.example.com/dir/page.html：不同源（协议不同）" target="_blank" rel="noopener">https://www.example.com/dir/page.html：不同源（协议不同）</a></p>
+<h3 id="同源政策的目的"><a href="#同源政策的目的" class="headerlink" title="同源政策的目的"></a>同源政策的目的</h3><ul>
+<li><p>同源政策是为了保证用户信息的安全，防止恶意的网站窃取数据。最初的同源政策是指 A 网站在客户端设置的 Cookie，B网站是不能访问的。</p>
+</li>
+<li><p>随着互联网的发展，同源政策也越来越严格，在不同源的情况下，其中有一项规定就是无法向非同源地址发送Ajax 请求，如果请求，浏览器就会报错。</p>
+</li>
+</ul>
+<h3 id="使用-JSONP-解决同源限制问题"><a href="#使用-JSONP-解决同源限制问题" class="headerlink" title="使用 JSONP 解决同源限制问题"></a>使用 JSONP 解决同源限制问题</h3><p>jsonp 是 json with padding 的缩写，它不属于 Ajax 请求，但它可以模拟 Ajax 请求。</p>
+<ol>
+<li><p>将不同源的服务器端请求地址写在 script 标签的 src 属性中</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;www.example.com&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=“https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务器端响应数据必须是一个函数的调用，真正要发送给客户端的数据需要作为函数调用的参数。</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const data = &apos;fn(&#123;name: &quot;张三&quot;, age: &quot;20&quot;&#125;)&apos;;</span><br><span class="line">res.send(data);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在客户端全局作用域下定义函数 fn</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function fn (data) &#123; &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 fn 函数内部对服务器端返回的数据进行处理</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function fn (data) &#123; console.log(data); &#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="JSONP-代码优化"><a href="#JSONP-代码优化" class="headerlink" title="JSONP 代码优化"></a>JSONP 代码优化</h3><ol>
+<li>客户端需要将函数名称传递到服务器端。</li>
+<li>将 script 请求的发送变成动态请求。</li>
+<li>封装 jsonp 函数，方便请求发送。</li>
+<li>服务器端代码优化之 res.jsonp 方法。</li>
+</ol>
+<h3 id="CORS-跨域资源共享"><a href="#CORS-跨域资源共享" class="headerlink" title="CORS 跨域资源共享"></a>CORS 跨域资源共享</h3><p>CORS：全称为 Cross-origin resource sharing，即跨域资源共享，它允许浏览器向跨域服务器发送 Ajax 请求，克服了 Ajax 只能同源使用的限制。</p>
+<p><img src="/前端笔记/ajax-day02/image-20200525180043706.png" alt></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">origin: http://localhost:3000</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: &apos;http://localhost:3000&apos;</span><br><span class="line">Access-Control-Allow-Origin: &apos;*&apos;</span><br></pre></td></tr></table></figure>
+
+<p>Node 服务器端设置响应头示例代码：</p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.use((req, res, next) =&gt; &#123;</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Origin&apos;, &apos;*&apos;);</span><br><span class="line">    res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;GET, POST&apos;);</span><br><span class="line">    next();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="访问非同源数据-服务器端解决方案"><a href="#访问非同源数据-服务器端解决方案" class="headerlink" title="访问非同源数据 服务器端解决方案"></a>访问非同源数据 服务器端解决方案</h3><p>同源政策是浏览器给予Ajax技术的限制，服务器端是不存在同源政策限制。</p>
+<p><img src="/前端笔记/ajax-day02/image-20200525180127863.png" alt></p>
+<h3 id="cookie复习"><a href="#cookie复习" class="headerlink" title="cookie复习"></a>cookie复习</h3><p><img src="/前端笔记/ajax-day02/image-20200525180141222.png" alt></p>
+<h3 id="withCredentials属性"><a href="#withCredentials属性" class="headerlink" title="withCredentials属性"></a>withCredentials属性</h3><ul>
+<li>在使用Ajax技术发送跨域请求时，默认情况下不会在请求中携带cookie信息。</li>
+<li>withCredentials：指定在涉及到跨域请求时，是否携带cookie信息，默认值为false</li>
+<li>Access-Control-Allow-Credentials：true 允许客户端发送请求时携带cookie</li>
+</ul>
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/ajax-day02/">AJAX-Day02</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/ajax-day02/">http://www.itfool.cn/前端笔记/ajax-day02/</a></li>
+            <li><strong>发布时间：</strong>2020-05-25</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/AJAX/">AJAX</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/ajax-day01/">
+                <span class="level-item">AJAX-Day01</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        49
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        10
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#模板引擎">
+        <span class="has-mr-6">1</span>
+        <span>模板引擎</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#模板引擎概述">
+        <span class="has-mr-6">1.1</span>
+        <span>模板引擎概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用步骤">
+        <span class="has-mr-6">1.2</span>
+        <span>使用步骤</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#案例">
+        <span class="has-mr-6">2</span>
+        <span>案例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#验证邮箱地址唯一性">
+        <span class="has-mr-6">2.1</span>
+        <span>验证邮箱地址唯一性</span>
+        </a></li><li>
+        <a class="is-flex" href="#搜索框内容自动提示">
+        <span class="has-mr-6">2.2</span>
+        <span>搜索框内容自动提示</span>
+        </a></li><li>
+        <a class="is-flex" href="#省市区三级联动">
+        <span class="has-mr-6">2.3</span>
+        <span>省市区三级联动</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#FormData">
+        <span class="has-mr-6">3</span>
+        <span>FormData</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#作用">
+        <span class="has-mr-6">3.1</span>
+        <span>作用</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用">
+        <span class="has-mr-6">3.2</span>
+        <span>使用</span>
+        </a></li><li>
+        <a class="is-flex" href="#二进制文件上传">
+        <span class="has-mr-6">3.3</span>
+        <span>二进制文件上传</span>
+        </a></li><li>
+        <a class="is-flex" href="#文件上传进度展示">
+        <span class="has-mr-6">3.4</span>
+        <span>文件上传进度展示</span>
+        </a></li><li>
+        <a class="is-flex" href="#文件上传图片即时预览">
+        <span class="has-mr-6">3.5</span>
+        <span>文件上传图片即时预览</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#同源政策">
+        <span class="has-mr-6">4</span>
+        <span>同源政策</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是同源">
+        <span class="has-mr-6">4.1</span>
+        <span>什么是同源</span>
+        </a></li><li>
+        <a class="is-flex" href="#同源政策的目的">
+        <span class="has-mr-6">4.2</span>
+        <span>同源政策的目的</span>
+        </a></li><li>
+        <a class="is-flex" href="#使用-JSONP-解决同源限制问题">
+        <span class="has-mr-6">4.3</span>
+        <span>使用 JSONP 解决同源限制问题</span>
+        </a></li><li>
+        <a class="is-flex" href="#JSONP-代码优化">
+        <span class="has-mr-6">4.4</span>
+        <span>JSONP 代码优化</span>
+        </a></li><li>
+        <a class="is-flex" href="#CORS-跨域资源共享">
+        <span class="has-mr-6">4.5</span>
+        <span>CORS 跨域资源共享</span>
+        </a></li><li>
+        <a class="is-flex" href="#访问非同源数据-服务器端解决方案">
+        <span class="has-mr-6">4.6</span>
+        <span>访问非同源数据 服务器端解决方案</span>
+        </a></li><li>
+        <a class="is-flex" href="#cookie复习">
+        <span class="has-mr-6">4.7</span>
+        <span>cookie复习</span>
+        </a></li><li>
+        <a class="is-flex" href="#withCredentials属性">
+        <span class="has-mr-6">4.8</span>
+        <span>withCredentials属性</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="AJAX-Day02" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
