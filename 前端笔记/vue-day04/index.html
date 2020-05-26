@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+<title>Vue-Day04 - It Fool - 董冬懂冻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+    <meta name="description" content="第05阶段.Vue.js项目实战开发.Vue接口调用方式  接口调用方式 原生ajax 基于jQuery的ajax fetch axios">
+<meta name="keywords" content="Vue,组件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue-Day04">
+<meta property="og:url" content="http://www.itfool.cn/前端笔记/vue-day04/index.html">
+<meta property="og:site_name" content="It Fool - 董冬懂冻">
+<meta property="og:description" content="第05阶段.Vue.js项目实战开发.Vue接口调用方式  接口调用方式 原生ajax 基于jQuery的ajax fetch axios">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.itfool.cn/前端笔记/vue-day02/day01-1.png">
+<meta property="og:updated_time" content="2020-05-26T07:03:50.290Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue-Day04">
+<meta name="twitter:description" content="第05阶段.Vue.js项目实战开发.Vue接口调用方式  接口调用方式 原生ajax 基于jQuery的ajax fetch axios">
+<meta name="twitter:image" content="http://www.itfool.cn/前端笔记/vue-day02/day01-1.png">
+
+
+
+
+
+
+
+<link rel="icon" href="/images/logo.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/tomorrow-night-eighties.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Vue-Day04" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item" href="/">首页</a>
+                
+                <a class="navbar-item" href="/archives/">归档</a>
+                
+                <a class="navbar-item" href="/categories/">分类</a>
+                
+                <a class="navbar-item" href="/tags/">标签</a>
+                
+                <a class="navbar-item" href="/about/">关于我</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main"><div class="card">
+    <!-- 
+	
+	 
+     <div class="card-image">
+         <span  class="image is-7by1">
+             <img class="thumbnail" src="/前端笔记/vue-day02/day01-1.png" alt="Vue-Day04">
+         </span>
+     </div>
+      
+	 
+	 -->
+	
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <i class="fas fa-angle-double-right"></i>Vue-Day04
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-05-26T06:55:32.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-05-26</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-05-26T07:03:50.290Z"><i class="far fa-calendar-check">&nbsp;</i>2020-05-26</time>
+                
+                
+                <div class="level-item">
+                <i class="far fa-folder-open has-text-grey"></i>&nbsp;
+                <a class="has-link-grey -link" href="/categories/前端笔记/">前端笔记</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    <i class="far fa-clock"></i>&nbsp;
+                    
+                    
+                    24 分钟 读完 (大约 3527 个字)
+                </span>
+                
+                
+                <span class="level-item has-text-grey" id="busuanzi_container_page_pv">
+                    <i class="far fa-eye"></i>
+                    <span id="busuanzi_value_page_pv">0</span>次访问
+                </span>
+                
+            </div>
+        </div>
+        
+        <div class="content">
+            <blockquote>
+<p>第05阶段.Vue.js项目实战开发.Vue接口调用方式</p>
+</blockquote>
+<h2 id="接口调用方式"><a href="#接口调用方式" class="headerlink" title="接口调用方式"></a>接口调用方式</h2><ul>
+<li>原生ajax</li>
+<li>基于jQuery的ajax</li>
+<li>fetch</li>
+<li>axios<a id="more"></a>
+
+</li>
+</ul>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><ul>
+<li>JavaScript的执行环境是「单线程」</li>
+<li>所谓单线程，是指JS引擎中负责解释和执行JavaScript代码的线程只有一个，也就是一次只能完成一项任务，这个任务执行完后才能执行下一个，它会「阻塞」其他任务。这个任务可称为主线程</li>
+<li>异步模式可以一起执行<strong>多个任务</strong></li>
+<li>JS中常见的异步调用<ul>
+<li>定时任何</li>
+<li>ajax</li>
+<li>事件函数</li>
+</ul>
+</li>
+</ul>
+<h2 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h2><ul>
+<li>主要解决异步深层嵌套的问题</li>
+<li>promise 提供了简洁的API  使得异步操作更加容易</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">  /*</span><br><span class="line"><span class="hljs-javascript">   <span class="hljs-number">1.</span> <span class="hljs-built_in">Promise</span>基本使用</span></span><br><span class="line"><span class="hljs-javascript">         我们使用<span class="hljs-keyword">new</span>来构建一个<span class="hljs-built_in">Promise</span>  <span class="hljs-built_in">Promise</span>的构造函数接收一个参数，是函数，并且传入两个参数：		   resolve，reject， 分别表示异步操作执行成功后的回调函数和异步操作执行失败后的回调函数</span></span><br><span class="line">  */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-comment">//2. 这里用于实现异步任务  setTimeout</span></span></span><br><span class="line"><span class="hljs-javascript">    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">var</span> flag = <span class="hljs-literal">false</span>;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">if</span>(flag) &#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-comment">//3. 正常情况</span></span></span><br><span class="line"><span class="hljs-javascript">        resolve(<span class="hljs-string">'hello'</span>);</span></span><br><span class="line"><span class="hljs-javascript">      &#125;<span class="hljs-keyword">else</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-comment">//4. 异常情况</span></span></span><br><span class="line"><span class="hljs-javascript">        reject(<span class="hljs-string">'出错了'</span>);</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, 100);</span><br><span class="line">  &#125;);</span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//  5 Promise实例生成以后，可以用then方法指定resolved状态和reject状态的回调函数 </span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//  在then方法中，你也可以直接return数据而不是Promise对象，在后面的then中就可以接收到数据了  </span></span></span><br><span class="line"><span class="hljs-javascript">  p.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line"><span class="hljs-javascript">  &#125;,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">info</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">console</span>.log(info)</span></span><br><span class="line">  &#125;);</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基于Promise发送Ajax请求"><a href="#基于Promise发送Ajax请求" class="headerlink" title="基于Promise发送Ajax请求"></a>基于Promise发送Ajax请求</h3><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">   /*</span><br><span class="line"><span class="hljs-javascript">     基于<span class="hljs-built_in">Promise</span>发送Ajax请求</span></span><br><span class="line">   */</span><br><span class="line"><span class="hljs-javascript">   <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryData</span>(<span class="hljs-params">url</span>) </span>&#123;</span></span><br><span class="line">    #   1.1 创建一个Promise实例</span><br><span class="line"><span class="hljs-javascript">     <span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="hljs-javascript">       xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">         <span class="hljs-keyword">if</span>(xhr.readyState != <span class="hljs-number">4</span>) <span class="hljs-keyword">return</span>;</span></span><br><span class="line"><span class="hljs-javascript">         <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>) &#123;</span></span><br><span class="line">           # 1.2 处理正常的情况</span><br><span class="line">           resolve(xhr.responseText);</span><br><span class="line"><span class="hljs-javascript">         &#125;<span class="hljs-keyword">else</span>&#123;</span></span><br><span class="line">           # 1.3 处理异常情况</span><br><span class="line"><span class="hljs-javascript">           reject(<span class="hljs-string">'服务器错误'</span>);</span></span><br><span class="line">         &#125;</span><br><span class="line">       &#125;;</span><br><span class="line"><span class="hljs-javascript">       xhr.open(<span class="hljs-string">'get'</span>, url);</span></span><br><span class="line"><span class="hljs-javascript">       xhr.send(<span class="hljs-literal">null</span>);</span></span><br><span class="line">     &#125;);</span><br><span class="line"><span class="hljs-javascript">     <span class="hljs-keyword">return</span> p;</span></span><br><span class="line">   &#125;</span><br><span class="line"># 注意：  这里需要开启一个服务 </span><br><span class="line">   # 在then方法中，你也可以直接return数据而不是Promise对象，在后面的then中就可以接收到数据了</span><br><span class="line"><span class="hljs-javascript">   queryData(<span class="hljs-string">'http://localhost:3000/data'</span>)</span></span><br><span class="line"><span class="hljs-javascript">     .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">       #  1.4 想要继续链式编程下去 需要 return  </span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-keyword">return</span> queryData(<span class="hljs-string">'http://localhost:3000/data1'</span>);</span></span><br><span class="line">     &#125;)</span><br><span class="line"><span class="hljs-javascript">     .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-built_in">console</span>.log(data);</span></span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-keyword">return</span> queryData(<span class="hljs-string">'http://localhost:3000/data2'</span>);</span></span><br><span class="line">     &#125;)</span><br><span class="line"><span class="hljs-javascript">     .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">     &#125;);</span><br><span class="line"> <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Promise-基本API"><a href="#Promise-基本API" class="headerlink" title="Promise  基本API"></a>Promise  基本API</h3><h4 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h4><h5 id="then"><a href="#then" class="headerlink" title=".then()"></a>.then()</h5><ul>
+<li>得到异步任务正确的结果</li>
+</ul>
+<h5 id="catch"><a href="#catch" class="headerlink" title=".catch()"></a>.catch()</h5><ul>
+<li>获取异常信息</li>
+</ul>
+<h5 id="finally"><a href="#finally" class="headerlink" title=".finally()"></a>.finally()</h5><ul>
+<li>成功与否都会执行（不是正式标准） </li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">  /*</span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">Promise</span>常用API-实例方法</span></span><br><span class="line">  */</span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">// console.dir(Promise);</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">      setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-comment">// resolve(123);</span></span></span><br><span class="line"><span class="hljs-javascript">        reject(<span class="hljs-string">'error'</span>);</span></span><br><span class="line">      &#125;, 100);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">// foo()</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//   .then(function(data)&#123;</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//     console.log(data)</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//   &#125;)</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//   .catch(function(data)&#123;</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//     console.log(data)</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//   &#125;)</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//   .finally(function()&#123;</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//     console.log('finished')</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">//   &#125;);</span></span></span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">// --------------------------</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">// 两种写法是等效的</span></span></span><br><span class="line">  foo()</span><br><span class="line"><span class="hljs-javascript">    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line">      # 得到异步任务正确的结果</span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line"><span class="hljs-javascript">    &#125;,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line">      # 获取异常信息</span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">    &#125;)</span><br><span class="line">    # 成功与否都会执行（不是正式标准） </span><br><span class="line"><span class="hljs-javascript">    .finally(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'finished'</span>)</span></span><br><span class="line">    &#125;);</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><h5 id="all"><a href="#all" class="headerlink" title=".all()"></a>.all()</h5><ul>
+<li><code>Promise.all</code>方法接受一个数组作参数，数组中的对象（p1、p2、p3）均为promise实例（如果不是一个promise，该项会被用<code>Promise.resolve</code>转换为一个promise)。它的状态由这三个promise实例决定</li>
+</ul>
+<h5 id="race"><a href="#race" class="headerlink" title=".race()"></a>.race()</h5><ul>
+<li><code>Promise.race</code>方法同样接受一个数组作参数。当p1, p2, p3中有一个实例的状态发生改变（变为<code>fulfilled</code>或<code>rejected</code>），p的状态就跟着改变。并把第一个改变状态的promise的返回值，传给p的回调函数</li>
+</ul>
+<p>​    </p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">  /*</span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">Promise</span>常用API-对象方法</span></span><br><span class="line">  */</span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-comment">// console.dir(Promise)</span></span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryData</span>(<span class="hljs-params">url</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">      <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="hljs-javascript">      xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">if</span>(xhr.readyState != <span class="hljs-number">4</span>) <span class="hljs-keyword">return</span>;</span></span><br><span class="line"><span class="hljs-javascript">        <span class="hljs-keyword">if</span>(xhr.readyState == <span class="hljs-number">4</span> &amp;&amp; xhr.status == <span class="hljs-number">200</span>) &#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-comment">// 处理正常的情况</span></span></span><br><span class="line">          resolve(xhr.responseText);</span><br><span class="line"><span class="hljs-javascript">        &#125;<span class="hljs-keyword">else</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">          <span class="hljs-comment">// 处理异常情况</span></span></span><br><span class="line"><span class="hljs-javascript">          reject(<span class="hljs-string">'服务器错误'</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line"><span class="hljs-javascript">      xhr.open(<span class="hljs-string">'get'</span>, url);</span></span><br><span class="line"><span class="hljs-javascript">      xhr.send(<span class="hljs-literal">null</span>);</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">var</span> p1 = queryData(<span class="hljs-string">'http://localhost:3000/a1'</span>);</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">var</span> p2 = queryData(<span class="hljs-string">'http://localhost:3000/a2'</span>);</span></span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-keyword">var</span> p3 = queryData(<span class="hljs-string">'http://localhost:3000/a3'</span>);</span></span><br><span class="line"><span class="hljs-javascript">   <span class="hljs-built_in">Promise</span>.all([p1,p2,p3]).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">     <span class="hljs-comment">//   all 中的参数  [p1,p2,p3]   和 返回的结果一 一对应["HELLO TOM", "HELLO JERRY", "HELLO SPIKE"]</span></span></span><br><span class="line"><span class="hljs-javascript">     <span class="hljs-built_in">console</span>.log(result) <span class="hljs-comment">//["HELLO TOM", "HELLO JERRY", "HELLO SPIKE"]</span></span></span><br><span class="line">   &#125;)</span><br><span class="line"><span class="hljs-javascript">  <span class="hljs-built_in">Promise</span>.race([p1,p2,p3]).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">result</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-comment">// 由于p1执行较快，Promise的then()将获得结果'P1'。p2,p3仍在继续执行，但执行结果将被丢弃。</span></span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">console</span>.log(result) <span class="hljs-comment">// "HELLO TOM"</span></span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h3><ul>
+<li>Fetch API是新的ajax解决方案 Fetch会返回Promise</li>
+<li><strong>fetch不是ajax的进一步封装，而是原生js，没有使用XMLHttpRequest对象</strong>。</li>
+<li>fetch(url, options).then(）</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">  /*</span><br><span class="line">    Fetch API 基本用法</span><br><span class="line">    	fetch(url).then()</span><br><span class="line"><span class="hljs-javascript">   	第一个参数请求的路径   Fetch会返回<span class="hljs-built_in">Promise</span>   所以我们可以使用then 拿到请求成功的结果 </span></span><br><span class="line">  */</span><br><span class="line"><span class="hljs-javascript">  fetch(<span class="hljs-string">'http://localhost:3000/fdata'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-comment">// text()方法属于fetchAPI的一部分，它返回一个Promise实例对象，用于获取后台返回的数据</span></span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">  &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-comment">//   在这个then里面我们能拿到最终的数据  </span></span></span><br><span class="line"><span class="hljs-javascript">    <span class="hljs-built_in">console</span>.log(data);</span></span><br><span class="line">  &#125;)</span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="fetch-API-中的-HTTP-请求"><a href="#fetch-API-中的-HTTP-请求" class="headerlink" title="fetch API  中的 HTTP  请求"></a>fetch API  中的 HTTP  请求</h4><ul>
+<li>fetch(url, options).then(）</li>
+<li>HTTP协议，它给我们提供了很多的方法，如POST，GET，DELETE，UPDATE，PATCH和PUT<ul>
+<li>默认的是 GET 请求</li>
+<li>需要在 options 对象中 指定对应的 method       method:请求使用的方法 </li>
+<li>post 和 普通 请求的时候 需要在options 中 设置  请求头 headers   和  body</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">     /*</span><br><span class="line">           Fetch API 调用接口传递参数</span><br><span class="line">     */</span><br><span class="line">    #1.1 GET参数传递 - 传统URL  通过url  ？ 的形式传参 </span><br><span class="line"><span class="hljs-javascript">     fetch(<span class="hljs-string">'http://localhost:3000/books?id=123'</span>, &#123;</span></span><br><span class="line">         	# get 请求可以省略不写 默认的是GET </span><br><span class="line"><span class="hljs-javascript">             method: <span class="hljs-string">'get'</span></span></span><br><span class="line">         &#125;)</span><br><span class="line"><span class="hljs-javascript">         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line">         	# 它返回一个Promise实例对象，用于获取后台返回的数据</span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">         &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line">         	# 在这个then里面我们能拿到最终的数据  </span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">         &#125;);</span><br><span class="line"></span><br><span class="line">   #1.2  GET参数传递  restful形式的URL  通过/ 的形式传递参数  即  id = 456 和id后台的配置有关   </span><br><span class="line"><span class="hljs-javascript">     fetch(<span class="hljs-string">'http://localhost:3000/books/456'</span>, &#123;</span></span><br><span class="line">         	# get 请求可以省略不写 默认的是GET </span><br><span class="line"><span class="hljs-javascript">             method: <span class="hljs-string">'get'</span></span></span><br><span class="line">         &#125;)</span><br><span class="line"><span class="hljs-javascript">         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">         &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">         &#125;);</span><br><span class="line"></span><br><span class="line">    #2.1  DELETE请求方式参数传递      删除id  是  id=789</span><br><span class="line"><span class="hljs-javascript">     fetch(<span class="hljs-string">'http://localhost:3000/books/789'</span>, &#123;</span></span><br><span class="line"><span class="hljs-javascript">             method: <span class="hljs-string">'delete'</span></span></span><br><span class="line">         &#125;)</span><br><span class="line"><span class="hljs-javascript">         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">         &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">         &#125;);</span><br><span class="line"></span><br><span class="line">    #3 POST请求传参</span><br><span class="line"><span class="hljs-javascript">     fetch(<span class="hljs-string">'http://localhost:3000/books'</span>, &#123;</span></span><br><span class="line"><span class="hljs-javascript">             method: <span class="hljs-string">'post'</span>,</span></span><br><span class="line">         	# 3.1  传递数据 </span><br><span class="line"><span class="hljs-javascript">             body: <span class="hljs-string">'uname=lisi&amp;pwd=123'</span>,</span></span><br><span class="line">         	#  3.2  设置请求头 </span><br><span class="line">             headers: &#123;</span><br><span class="line"><span class="hljs-javascript">                 <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/x-www-form-urlencoded'</span></span></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;)</span><br><span class="line"><span class="hljs-javascript">         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">         &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">         &#125;);</span><br><span class="line"></span><br><span class="line">    # POST请求传参</span><br><span class="line"><span class="hljs-javascript">     fetch(<span class="hljs-string">'http://localhost:3000/books'</span>, &#123;</span></span><br><span class="line"><span class="hljs-javascript">             method: <span class="hljs-string">'post'</span>,</span></span><br><span class="line"><span class="hljs-javascript">             body: <span class="hljs-built_in">JSON</span>.stringify(&#123;</span></span><br><span class="line"><span class="hljs-javascript">                 uname: <span class="hljs-string">'张三'</span>,</span></span><br><span class="line"><span class="hljs-javascript">                 pwd: <span class="hljs-string">'456'</span></span></span><br><span class="line">             &#125;),</span><br><span class="line">             headers: &#123;</span><br><span class="line"><span class="hljs-javascript">                 <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span></span></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;)</span><br><span class="line"><span class="hljs-javascript">         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">         &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">         &#125;);</span><br><span class="line"></span><br><span class="line">     # PUT请求传参     修改id 是 123 的 </span><br><span class="line"><span class="hljs-javascript">     fetch(<span class="hljs-string">'http://localhost:3000/books/123'</span>, &#123;</span></span><br><span class="line"><span class="hljs-javascript">             method: <span class="hljs-string">'put'</span>,</span></span><br><span class="line"><span class="hljs-javascript">             body: <span class="hljs-built_in">JSON</span>.stringify(&#123;</span></span><br><span class="line"><span class="hljs-javascript">                 uname: <span class="hljs-string">'张三'</span>,</span></span><br><span class="line"><span class="hljs-javascript">                 pwd: <span class="hljs-string">'789'</span></span></span><br><span class="line">             &#125;),</span><br><span class="line">             headers: &#123;</span><br><span class="line"><span class="hljs-javascript">                 <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span></span></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;)</span><br><span class="line"><span class="hljs-javascript">         .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-keyword">return</span> data.text();</span></span><br><span class="line"><span class="hljs-javascript">         &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">             <span class="hljs-built_in">console</span>.log(data)</span></span><br><span class="line">         &#125;);</span><br><span class="line"> <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="fetchAPI-中-响应格式"><a href="#fetchAPI-中-响应格式" class="headerlink" title="fetchAPI 中 响应格式"></a>fetchAPI 中 响应格式</h4><ul>
+<li>用fetch来获取数据，如果响应正常返回，我们首先看到的是一个response对象，其中包括返回的一堆原始字节，这些字节需要在收到后，需要我们通过调用方法将其转换为相应格式的数据，比如<code>JSON</code>，<code>BLOB</code>或者<code>TEXT</code>等等</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">/*</span></span><br><span class="line"><span class="hljs-comment">  Fetch响应结果的数据格式</span></span><br><span class="line"><span class="hljs-comment">*/</span></span><br><span class="line">fetch(<span class="hljs-string">'http://localhost:3000/json'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-comment">// return data.json();   //  将获取到的数据使用 json 转换对象</span></span><br><span class="line">  <span class="hljs-keyword">return</span> data.text(); <span class="hljs-comment">//  //  将获取到的数据 转换成字符串 </span></span><br><span class="line">&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span><br><span class="line">  <span class="hljs-comment">// console.log(data.uname)</span></span><br><span class="line">  <span class="hljs-comment">// console.log(typeof data)</span></span><br><span class="line">  <span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">JSON</span>.parse(data);</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(obj.uname,obj.age,obj.gender)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h3><ul>
+<li>基于promise用于浏览器和node.js的http客户端</li>
+<li>支持浏览器和node.js</li>
+<li>支持promise</li>
+<li>能拦截请求和响应</li>
+<li>自动转换JSON数据</li>
+<li>能转换请求和响应数据</li>
+</ul>
+<h4 id="axios基础用法"><a href="#axios基础用法" class="headerlink" title="axios基础用法"></a>axios基础用法</h4><ul>
+<li>get和 delete请求传递参数<ul>
+<li>通过传统的url  以 ? 的形式传递参数</li>
+<li>restful 形式传递参数 </li>
+<li>通过params  形式传递参数 </li>
+</ul>
+</li>
+<li>post  和 put  请求传递参数<ul>
+<li>通过选项传递参数</li>
+<li>通过 URLSearchParams  传递参数 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">   # 1. 发送get 请求 </span><br><span class="line">axios.get(<span class="hljs-string">'http://localhost:3000/adata'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123; </span><br><span class="line">     #  拿到 ret 是一个对象      所有的对象都存在 ret 的data 属性里面</span><br><span class="line">     <span class="hljs-comment">// 注意data属性是固定的用法，用于获取后台的实际数据</span></span><br><span class="line">     <span class="hljs-comment">// console.log(ret.data)</span></span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret)</span><br><span class="line">   &#125;)</span><br><span class="line"># 2.  get 请求传递参数</span><br><span class="line">   # 2.1  通过传统的url  以 ? 的形式传递参数</span><br><span class="line">axios.get(<span class="hljs-string">'http://localhost:3000/axios?id=123'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br><span class="line">   # 2.2  restful 形式传递参数 </span><br><span class="line">   axios.get(<span class="hljs-string">'http://localhost:3000/axios/123'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br><span class="line"># 2.3  通过params  形式传递参数 </span><br><span class="line">   axios.get(<span class="hljs-string">'http://localhost:3000/axios'</span>, &#123;</span><br><span class="line">     params: &#123;</span><br><span class="line">       id: <span class="hljs-number">789</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br><span class="line">#3 axios delete 请求传参     传参的形式和 get 请求一样</span><br><span class="line">   axios.delete(<span class="hljs-string">'http://localhost:3000/axios'</span>, &#123;</span><br><span class="line">     params: &#123;</span><br><span class="line">       id: <span class="hljs-number">111</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"># 4  axios 的 post 请求</span><br><span class="line">   # 4.1  通过选项传递参数</span><br><span class="line">   axios.post(<span class="hljs-string">'http://localhost:3000/axios'</span>, &#123;</span><br><span class="line">     uname: <span class="hljs-string">'lisi'</span>,</span><br><span class="line">     pwd: <span class="hljs-number">123</span></span><br><span class="line">   &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br><span class="line"># 4.2  通过 URLSearchParams  传递参数 </span><br><span class="line">   <span class="hljs-keyword">var</span> params = <span class="hljs-keyword">new</span> URLSearchParams();</span><br><span class="line">   params.append(<span class="hljs-string">'uname'</span>, <span class="hljs-string">'zhangsan'</span>);</span><br><span class="line">   params.append(<span class="hljs-string">'pwd'</span>, <span class="hljs-string">'111'</span>);</span><br><span class="line">   axios.post(<span class="hljs-string">'http://localhost:3000/axios'</span>, params).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">	#5  axios put 请求传参   和 post 请求一样 </span><br><span class="line">   axios.put(<span class="hljs-string">'http://localhost:3000/axios/123'</span>, &#123;</span><br><span class="line">     uname: <span class="hljs-string">'lisi'</span>,</span><br><span class="line">     pwd: <span class="hljs-number">123</span></span><br><span class="line">   &#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ret</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(ret.data)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="axios-全局配置"><a href="#axios-全局配置" class="headerlink" title="axios 全局配置"></a>axios 全局配置</h4><figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#  配置公共的请求头 </span><br><span class="line">axios.defaults.baseURL = <span class="hljs-string">'https://api.example.com'</span>;</span><br><span class="line">#  配置 超时时间</span><br><span class="line">axios.defaults.timeout = <span class="hljs-number">2500</span>;</span><br><span class="line">#  配置公共的请求头</span><br><span class="line">axios.defaults.headers.common[<span class="hljs-string">'Authorization'</span>] = AUTH_TOKEN;</span><br><span class="line"># 配置公共的 post 的 Content-Type</span><br><span class="line">axios.defaults.headers.post[<span class="hljs-string">'Content-Type'</span>] = <span class="hljs-string">'application/x-www-form-urlencoded'</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="axios-拦截器"><a href="#axios-拦截器" class="headerlink" title="axios 拦截器"></a>axios 拦截器</h4><ul>
+<li>请求拦截器<ul>
+<li>请求拦截器的作用是在请求发送前进行一些操作<ul>
+<li>例如在每个请求体里加上token，统一做了处理如果以后要改也非常容易</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>响应拦截器<ul>
+<li>响应拦截器的作用是在接收到响应后进行一些操作<ul>
+<li>例如在服务器返回登录状态失效，需要重新登录的时候，跳转到登录页</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 1. 请求拦截器 </span><br><span class="line">axios.interceptors.request.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">config</span>) </span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(config.url)</span><br><span class="line">     # 1.1  任何请求都会经过这一步   在发送请求之前做些什么   </span><br><span class="line">     config.headers.mytoken = <span class="hljs-string">'nihao'</span>;</span><br><span class="line">     # 1.2  这里一定要return   否则配置不成功  </span><br><span class="line">     <span class="hljs-keyword">return</span> config;</span><br><span class="line">   &#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>&#123;</span><br><span class="line">      #1.3 对请求错误做点什么    </span><br><span class="line">     <span class="hljs-built_in">console</span>.log(err)</span><br><span class="line">   &#125;)</span><br><span class="line">#2. 响应拦截器 </span><br><span class="line">   axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;</span><br><span class="line">     #2.1  在接收响应做些什么  </span><br><span class="line">     <span class="hljs-keyword">var</span> data = res.data;</span><br><span class="line">     <span class="hljs-keyword">return</span> data;</span><br><span class="line">   &#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>)</span>&#123;</span><br><span class="line">     #2.2 对响应错误做点什么  </span><br><span class="line">     <span class="hljs-built_in">console</span>.log(err)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="async-和-await"><a href="#async-和-await" class="headerlink" title="async  和 await"></a>async  和 await</h3><ul>
+<li>async作为一个关键字放到函数前面<ul>
+<li>任何一个<code>async</code>函数都会隐式返回一个<code>promise</code></li>
+</ul>
+</li>
+<li><code>await</code>关键字只能在使用<code>async</code>定义的函数中使用<ul>
+<li>​    await后面可以直接跟一个 Promise实例对象</li>
+<li>​     await函数不能单独使用</li>
+</ul>
+</li>
+<li><strong>async/await 让异步代码看起来、表现起来更像同步代码</strong></li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">	# 1.  async 基础用法</span><br><span class="line">   # 1.1 async作为一个关键字放到函数前面</span><br><span class="line"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryData</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">     # 1.2 await关键字只能在使用async定义的函数中使用      await后面可以直接跟一个 Promise实例对象</span><br><span class="line">     <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>)</span>&#123;</span><br><span class="line">       setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">         resolve(<span class="hljs-string">'nihao'</span>)</span><br><span class="line">       &#125;,<span class="hljs-number">1000</span>);</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="hljs-comment">// console.log(ret.data)</span></span><br><span class="line">     <span class="hljs-keyword">return</span> ret;</span><br><span class="line">   &#125;</span><br><span class="line"># 1.3 任何一个async函数都会隐式返回一个promise   我们可以使用then 进行链式编程</span><br><span class="line">   queryData().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">#2.  async    函数处理多个异步函数</span><br><span class="line">   axios.defaults.baseURL = <span class="hljs-string">'http://localhost:3000'</span>;</span><br><span class="line"></span><br><span class="line">   <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">queryData</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">     # 2.1  添加await之后 当前的await 返回结果之后才会执行后面的代码   </span><br><span class="line">     </span><br><span class="line">     <span class="hljs-keyword">var</span> info = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">'async1'</span>);</span><br><span class="line">     #2.2  让异步代码看起来、表现起来更像同步代码</span><br><span class="line">     <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">'async2?info='</span> + info.data);</span><br><span class="line">     <span class="hljs-keyword">return</span> ret.data;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   queryData().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>&#123;</span><br><span class="line">     <span class="hljs-built_in">console</span>.log(data)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="图书列表案例"><a href="#图书列表案例" class="headerlink" title="图书列表案例"></a>图书列表案例</h2><h3 id="基于接口案例-获取图书列表"><a href="#基于接口案例-获取图书列表" class="headerlink" title="基于接口案例-获取图书列表"></a>基于接口案例-获取图书列表</h3><ul>
+<li>导入axios   用来发送ajax </li>
+<li>把获取到的数据渲染到页面上 </li>
+</ul>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"app"</span>&gt;</span></span><br><span class="line">       <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"grid"</span>&gt;</span></span><br><span class="line">           <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">               <span class="hljs-tag">&lt;<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">                   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>编号<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>名称<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>时间<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>操作<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span></span><br><span class="line">                   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">               <span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span></span><br><span class="line">               <span class="hljs-tag">&lt;<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">                   <span class="hljs-comment">&lt;!-- 5.  把books  中的数据渲染到页面上   --&gt;</span></span><br><span class="line">                   <span class="hljs-tag">&lt;<span class="hljs-name">tr</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">'item.id'</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">'item in books'</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;item.id&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>&#123;&#123;item.date &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">                           <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>修改<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line">                           <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>|<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span><br><span class="line">                           <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">""</span>&gt;</span>删除<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></span><br><span class="line">                       <span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span></span><br><span class="line">                   <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span></span><br><span class="line">               <span class="hljs-tag">&lt;/<span class="hljs-name">tbody</span>&gt;</span></span><br><span class="line">           <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span><br><span class="line">       <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/vue.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">1.  导入axios   </span><br><span class="line">   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/axios.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="line">   <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span></span><br><span class="line">       /*</span><br><span class="line">            图书管理-添加图书</span><br><span class="line">        */</span><br><span class="line">       # 2   配置公共的url地址  简化后面的调用方式</span><br><span class="line"><span class="hljs-javascript">       axios.defaults.baseURL = <span class="hljs-string">'http://localhost:3000/'</span>;</span></span><br><span class="line"><span class="hljs-javascript">       axios.interceptors.response.use(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">           <span class="hljs-keyword">return</span> res.data;</span></span><br><span class="line"><span class="hljs-javascript">       &#125;, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">           <span class="hljs-built_in">console</span>.log(error)</span></span><br><span class="line">       &#125;);</span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">       <span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="hljs-javascript">           el: <span class="hljs-string">'#app'</span>,</span></span><br><span class="line">           data: &#123;</span><br><span class="line"><span class="hljs-javascript">               flag: <span class="hljs-literal">false</span>,</span></span><br><span class="line"><span class="hljs-javascript">               submitFlag: <span class="hljs-literal">false</span>,</span></span><br><span class="line"><span class="hljs-javascript">               id: <span class="hljs-string">''</span>,</span></span><br><span class="line"><span class="hljs-javascript">               name: <span class="hljs-string">''</span>,</span></span><br><span class="line">               books: []</span><br><span class="line">           &#125;,</span><br><span class="line">           methods: &#123;</span><br><span class="line">               # 3 定义一个方法 用来发送 ajax </span><br><span class="line">               # 3.1  使用 async  来 让异步的代码  以同步的形式书写 </span><br><span class="line"><span class="hljs-javascript">               queryData: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line"><span class="hljs-javascript">                   <span class="hljs-comment">// 调用后台接口获取图书列表数据</span></span></span><br><span class="line"><span class="hljs-javascript">                   <span class="hljs-comment">// var ret = await axios.get('books');</span></span></span><br><span class="line"><span class="hljs-javascript">                   <span class="hljs-comment">// this.books = ret.data;</span></span></span><br><span class="line">				# 3.2  发送ajax请求  把拿到的数据放在books 里面   </span><br><span class="line"><span class="hljs-javascript">                   <span class="hljs-keyword">this</span>.books = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">'books'</span>);</span></span><br><span class="line">               &#125;</span><br><span class="line">           &#125;,</span><br><span class="line"></span><br><span class="line"><span class="hljs-javascript">           mounted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span></span><br><span class="line">			#  4 mounted  里面 DOM已经加载完毕  在这里调用函数  </span><br><span class="line"><span class="hljs-javascript">               <span class="hljs-keyword">this</span>.queryData();</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">   <span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="添加图书"><a href="#添加图书" class="headerlink" title="添加图书"></a>添加图书</h3><ul>
+<li>获取用户输入的数据   发送到后台</li>
+<li>渲染最新的数据到页面上</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">   handle: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">         <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.flag) &#123;</span><br><span class="line">           <span class="hljs-comment">// 编辑图书</span></span><br><span class="line">           <span class="hljs-comment">// 就是根据当前的ID去更新数组中对应的数据</span></span><br><span class="line">           <span class="hljs-keyword">this</span>.books.some(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;</span><br><span class="line">             <span class="hljs-keyword">if</span>(item.id == <span class="hljs-keyword">this</span>.id) &#123;</span><br><span class="line">               item.name = <span class="hljs-keyword">this</span>.name;</span><br><span class="line">               <span class="hljs-comment">// 完成更新操作之后，需要终止循环</span></span><br><span class="line">               <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;</span><br><span class="line">             &#125;</span><br><span class="line">           &#125;);</span><br><span class="line">           <span class="hljs-keyword">this</span>.flag = <span class="hljs-literal">false</span>;</span><br><span class="line">         &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">           # 1.1  在前面封装好的 handle 方法中  发送ajax请求  </span><br><span class="line">           # 1.2  使用async  和 await 简化操作 需要在 function 前面添加 async   </span><br><span class="line">           <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">'books'</span>, &#123;</span><br><span class="line">             name: <span class="hljs-keyword">this</span>.name</span><br><span class="line">           &#125;)</span><br><span class="line">           # 1.3  根据后台返回的状态码判断是否加载数据 </span><br><span class="line">           <span class="hljs-keyword">if</span>(ret.status == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">            # 1.4  调用 queryData 这个方法  渲染最新的数据 </span><br><span class="line">             <span class="hljs-keyword">this</span>.queryData();</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="hljs-comment">// 清空表单</span></span><br><span class="line">         <span class="hljs-keyword">this</span>.id = <span class="hljs-string">''</span>;</span><br><span class="line">         <span class="hljs-keyword">this</span>.name = <span class="hljs-string">''</span>;</span><br><span class="line">       &#125;,        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证图书名称是否存在"><a href="#验证图书名称是否存在" class="headerlink" title="验证图书名称是否存在"></a>验证图书名称是否存在</h3><ul>
+<li>添加图书之前发送请求验证图示是否已经存在</li>
+<li>如果不存在 往后台里面添加图书名称<ul>
+<li>图书存在与否只需要修改submitFlag的值即可</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> watch: &#123;</span><br><span class="line">        name: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>) </span>&#123;</span><br><span class="line">          <span class="hljs-comment">// 验证图书名称是否已经存在</span></span><br><span class="line">          <span class="hljs-comment">// var flag = this.books.some(function(item)&#123;</span></span><br><span class="line">          <span class="hljs-comment">//   return item.name == val;</span></span><br><span class="line">          <span class="hljs-comment">// &#125;);</span></span><br><span class="line">          <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">'/books/book/'</span> + <span class="hljs-keyword">this</span>.name);</span><br><span class="line">          <span class="hljs-keyword">if</span>(ret.status == <span class="hljs-number">1</span>) &#123;</span><br><span class="line">            <span class="hljs-comment">// 图书名称存在</span></span><br><span class="line">            <span class="hljs-keyword">this</span>.submitFlag = <span class="hljs-literal">true</span>;</span><br><span class="line">          &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">            <span class="hljs-comment">// 图书名称不存在</span></span><br><span class="line">            <span class="hljs-keyword">this</span>.submitFlag = <span class="hljs-literal">false</span>;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="编辑图书"><a href="#编辑图书" class="headerlink" title="编辑图书"></a>编辑图书</h3><ul>
+<li>根据当前书的id 查询需要编辑的书籍</li>
+<li>需要根据状态位判断是添加还是编辑 </li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">       handle: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">         <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.flag) &#123;</span><br><span class="line">           #4.3 编辑图书   把用户输入的信息提交到后台</span><br><span class="line">           <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.put(<span class="hljs-string">'books/'</span> + <span class="hljs-keyword">this</span>.id, &#123;</span><br><span class="line">             name: <span class="hljs-keyword">this</span>.name</span><br><span class="line">           &#125;);</span><br><span class="line">           <span class="hljs-keyword">if</span>(ret.status == <span class="hljs-number">200</span>)&#123;</span><br><span class="line">             #4.4  完成添加后 重新加载列表数据</span><br><span class="line">             <span class="hljs-keyword">this</span>.queryData();</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="hljs-keyword">this</span>.flag = <span class="hljs-literal">false</span>;</span><br><span class="line">         &#125;<span class="hljs-keyword">else</span>&#123;</span><br><span class="line">           <span class="hljs-comment">// 添加图书</span></span><br><span class="line">           <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.post(<span class="hljs-string">'books'</span>, &#123;</span><br><span class="line">             name: <span class="hljs-keyword">this</span>.name</span><br><span class="line">           &#125;)</span><br><span class="line">           <span class="hljs-keyword">if</span>(ret.status == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">             <span class="hljs-comment">// 重新加载列表数据</span></span><br><span class="line">             <span class="hljs-keyword">this</span>.queryData();</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="hljs-comment">// 清空表单</span></span><br><span class="line">         <span class="hljs-keyword">this</span>.id = <span class="hljs-string">''</span>;</span><br><span class="line">         <span class="hljs-keyword">this</span>.name = <span class="hljs-string">''</span>;</span><br><span class="line">       &#125;,</span><br><span class="line">       toEdit: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id</span>)</span>&#123;</span><br><span class="line">         #4.1  flag状态位用于区分编辑和添加操作</span><br><span class="line">         <span class="hljs-keyword">this</span>.flag = <span class="hljs-literal">true</span>;</span><br><span class="line">         #4.2  根据id查询出对应的图书信息  页面中可以加载出来最新的信息</span><br><span class="line">         # 调用接口发送ajax 请求  </span><br><span class="line">         <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.get(<span class="hljs-string">'books/'</span> + id);</span><br><span class="line">         <span class="hljs-keyword">this</span>.id = ret.id;</span><br><span class="line">         <span class="hljs-keyword">this</span>.name = ret.name;</span><br><span class="line">       &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除图书"><a href="#删除图书" class="headerlink" title="删除图书"></a>删除图书</h3><ul>
+<li>把需要删除的id书籍 通过参数的形式传递到后台</li>
+</ul>
+<figure class="highlight js hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">deleteBook: <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">id</span>)</span>&#123;</span><br><span class="line">       <span class="hljs-comment">// 删除图书</span></span><br><span class="line">       <span class="hljs-keyword">var</span> ret = <span class="hljs-keyword">await</span> axios.delete(<span class="hljs-string">'books/'</span> + id);</span><br><span class="line">       <span class="hljs-keyword">if</span>(ret.status == <span class="hljs-number">200</span>) &#123;</span><br><span class="line">         <span class="hljs-comment">// 重新加载列表数据</span></span><br><span class="line">         <span class="hljs-keyword">this</span>.queryData();</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+            <ul class="post-copyright">
+            <li><strong>本文标题：</strong><a href="http://www.itfool.cn/前端笔记/vue-day04/">Vue-Day04</a></li>
+            <li><strong>本文作者：</strong><a href="http://www.itfool.cn">董冬懂冻</a></li>
+            <li><strong>本文链接：</strong><a href="http://www.itfool.cn/前端笔记/vue-day04/">http://www.itfool.cn/前端笔记/vue-day04/</a></li>
+            <li><strong>发布时间：</strong>2020-05-26</li>
+            <li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+            </li>
+            </ul>
+        
+        
+        <hr style="height:1px;margin:1rem 0">
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Vue/">Vue</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<a class="button is-info donate">
+    <span class="icon is-small">
+        <i class="fab fa-alipay"></i>
+    </span>
+    <span>支付宝</span>
+    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>微信</span>
+    <div class="qrcode"><img src="/images/wx.jpg" alt="微信"></div>
+</a>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/前端笔记/vue-day05/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Vue-Day05</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/前端笔记/vue-day03/">
+                <span class="level-item">Vue-Day03</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="valine-thread" class="content"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#valine-thread' ,
+        notify: true,
+        verify: true,
+        app_id: 'Wutovpd8I67n0m7HL3k5DNjp-gzGzoHsz',
+        app_key: 'IjIiaS1AdcJGn8BKrDmucuef',
+        placeholder: '说些什么...... '
+    });
+</script>
+
+    </div>
+</div>
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-96x96 has-mb-6" src="/images/avatar.jpg" alt="董冬懂冻">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        董冬懂冻
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Web Developer
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>广州</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level menu-list is-mobile" style="margin-bottom:1rem">
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/archives/">
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        55
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/categories/">
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        2
+                    </p>
+                </a>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <a href="/tags/">
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        11
+                    </p>
+                </a>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="https://www.github.com/teenager1997" target="_blank">
+                <i class="fab fa-github"></i>&nbsp;&nbsp;关注我</a>
+        </div>
+        
+        
+    </div>
+</div>
+
+    
+        
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#接口调用方式">
+        <span class="has-mr-6">1</span>
+        <span>接口调用方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#异步">
+        <span class="has-mr-6">2</span>
+        <span>异步</span>
+        </a></li><li>
+        <a class="is-flex" href="#promise">
+        <span class="has-mr-6">3</span>
+        <span>promise</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#基于Promise发送Ajax请求">
+        <span class="has-mr-6">3.1</span>
+        <span>基于Promise发送Ajax请求</span>
+        </a></li><li>
+        <a class="is-flex" href="#Promise-基本API">
+        <span class="has-mr-6">3.2</span>
+        <span>Promise  基本API</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#实例方法">
+        <span class="has-mr-6">3.2.1</span>
+        <span>实例方法</span>
+        </a></li><li>
+        <a class="is-flex" href="#静态方法">
+        <span class="has-mr-6">3.2.2</span>
+        <span>静态方法</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#fetch">
+        <span class="has-mr-6">3.3</span>
+        <span>fetch</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#fetch-API-中的-HTTP-请求">
+        <span class="has-mr-6">3.3.1</span>
+        <span>fetch API  中的 HTTP  请求</span>
+        </a></li><li>
+        <a class="is-flex" href="#fetchAPI-中-响应格式">
+        <span class="has-mr-6">3.3.2</span>
+        <span>fetchAPI 中 响应格式</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#axios">
+        <span class="has-mr-6">3.4</span>
+        <span>axios</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#axios基础用法">
+        <span class="has-mr-6">3.4.1</span>
+        <span>axios基础用法</span>
+        </a></li><li>
+        <a class="is-flex" href="#axios-全局配置">
+        <span class="has-mr-6">3.4.2</span>
+        <span>axios 全局配置</span>
+        </a></li><li>
+        <a class="is-flex" href="#axios-拦截器">
+        <span class="has-mr-6">3.4.3</span>
+        <span>axios 拦截器</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#async-和-await">
+        <span class="has-mr-6">3.5</span>
+        <span>async  和 await</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#图书列表案例">
+        <span class="has-mr-6">4</span>
+        <span>图书列表案例</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#基于接口案例-获取图书列表">
+        <span class="has-mr-6">4.1</span>
+        <span>基于接口案例-获取图书列表</span>
+        </a></li><li>
+        <a class="is-flex" href="#添加图书">
+        <span class="has-mr-6">4.2</span>
+        <span>添加图书</span>
+        </a></li><li>
+        <a class="is-flex" href="#验证图书名称是否存在">
+        <span class="has-mr-6">4.3</span>
+        <span>验证图书名称是否存在</span>
+        </a></li><li>
+        <a class="is-flex" href="#编辑图书">
+        <span class="has-mr-6">4.4</span>
+        <span>编辑图书</span>
+        </a></li><li>
+        <a class="is-flex" href="#删除图书">
+        <span class="has-mr-6">4.5</span>
+        <span>删除图书</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Vue-Day04" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2020 董冬懂冻&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                <br>
+                <a href="http://www.beian.miit.gov.cn/" target="_blank">粤ICP备19134458号-1</a>
+                <br>
+                <span id="busuanzi_container_site_uv"> 来访 <span id="busuanzi_value_site_uv"></span>人</span>
+                <span id="busuanzi_container_site_pv">, 总访问 <span id="busuanzi_value_site_pv"></span>次</span>
+                
+                </p>
+                
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+                        
+                        <i class="fab fa-creative-commons"></i>&nbsp;<i class="fab fa-creative-commons-by"></i>&nbsp;<i class="fab fa-creative-commons-nc"></i>&nbsp;<i class="fab fa-creative-commons-sa"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/teenager1997/teenager1997.github.io">
+                        
+                        <i class="fab fa-github"></i>&nbsp;
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么...">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
